@@ -1,0 +1,637 @@
+@charset "UTF-8";
+@font-face {
+  font-family: Roboto;
+  src: url("../fonts/Roboto/Roboto-Regular.ttf"); }
+
+/* line 8, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+body {
+  background-color: #FFFFFF; }
+
+/* line 12, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+#logo {
+  width: 70%;
+  margin: 0 auto;
+  z-index: 1; }
+
+/* line 18, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+.menu {
+  position: relative;
+  background-color: #E6E6E6;
+  border-radius: 0.5em;
+  margin-left: 1.5em;
+  margin-right: 1.5em;
+  box-shadow: 2px 2px 11px #999;
+  z-index: 2;
+  position: relative; }
+  /* line 28, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+  .menu a {
+    font-weight: bold;
+    font-size: 1.1em;
+    margin-left: 1.2em; }
+
+/* line 35, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+.navbar li a {
+  font-family: Roboto, Sans-Serif;
+  color: #000000 !important;
+  font-size: 0.95em; }
+
+/* line 41, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+.navbar a:hover {
+  color: #045FB4 !important; }
+
+/* line 45, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+#navegacion {
+  border-radius: 9px 9px 9px 9px;
+  -moz-border-radius: 9px 9px 9px 9px;
+  -webkit-border-radius: 9px 9px 9px 9px;
+  border: 0px solid #000000;
+  margin-top: -1.5em;
+  height: 6em;
+  background-color: #045FB4;
+  -webkit-box-shadow: -4px 6px 8px -1px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -4px 6px 8px -1px rgba(0, 0, 0, 0.75);
+  box-shadow: -4px 6px 8px -1px rgba(0, 0, 0, 0.75);
+  position: relative;
+  z-index: 1;
+  color: #FFFFFF; }
+  /* line 60, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+  #navegacion .navDerecha {
+    font-size: 1em;
+    text-align: right;
+    margin-right: -1em; }
+    /* line 65, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+    #navegacion .navDerecha img {
+      width: 7em; }
+  /* line 71, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+  #navegacion .navIzquierda {
+    font-size: 12px;
+    margin-left: 0.1em;
+    text-align: left; }
+  /* line 77, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+  #navegacion span {
+    padding: 1em;
+    font-weight: bolder;
+    cursor: default; }
+
+/* line 84, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+.barra {
+  margin-top: 2em;
+  position: relative; }
+
+/* line 89, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+.contenedorPrincipal {
+  z-index: 1;
+  margin-left: -1%;
+  margin-right: 1%;
+  background-color: #FFFFFF;
+  margin-top: -1em;
+  -webkit-box-shadow: -4px 6px 8px -1px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -4px 6px 8px -1px rgba(0, 0, 0, 0.75);
+  box-shadow: -4px 6px 8px -1px rgba(0, 0, 0, 0.75);
+  /**************** docencia.html ****************/ }
+  /* line 99, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+  .contenedorPrincipal #titulo_cont {
+    background: linear-gradient(to right, black 0%, black 1%, #f2f2f2 1%, #c2c2c2 1%, white 100%); }
+  /* line 103, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+  .contenedorPrincipal #imgSuperior_cont {
+    padding: 2%; }
+    /* line 106, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+    .contenedorPrincipal #imgSuperior_cont img {
+      width: 75%; }
+  /* line 112, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+  .contenedorPrincipal #titulo_cont h1 {
+    padding: 2%;
+    font-weight: bold;
+    font-size: 18px;
+    text-transform: uppercase;
+    cursor: default;
+    margin-top: 1em; }
+  /* line 123, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+  .contenedorPrincipal .contenido_cont_academia {
+    margin: 3em;
+    cursor: default; }
+    /* line 127, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+    .contenedorPrincipal .contenido_cont_academia .destacar_contenido {
+      color: #FFA500; }
+    /* line 131, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+    .contenedorPrincipal .contenido_cont_academia .cajaInfo {
+      margin: 1em; }
+      /* line 134, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+      .contenedorPrincipal .contenido_cont_academia .cajaInfo .infoPersonal {
+        text-align: justify;
+        padding: 1em; }
+        /* line 138, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+        .contenedorPrincipal .contenido_cont_academia .cajaInfo .infoPersonal span {
+          font-style: italic; }
+    /* line 144, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+    .contenedorPrincipal .contenido_cont_academia img {
+      width: 30%;
+      margin-bottom: 0.5em;
+      border: 1px solid #000000; }
+  /* line 151, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+  .contenedorPrincipal #contenido_cont {
+    margin: 5%; }
+    /* line 154, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+    .contenedorPrincipal #contenido_cont .contenido_cont_academia {
+      margin: 3em;
+      cursor: default;
+      /**************** ofertas.html *****************/
+      /************** noticias.html *************/ }
+      /* line 158, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+      .contenedorPrincipal #contenido_cont .contenido_cont_academia .destacar_contenido {
+        color: #FFA500; }
+      /* line 162, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+      .contenedorPrincipal #contenido_cont .contenido_cont_academia img {
+        margin-bottom: 1em;
+        width: 25%;
+        border: 1px solid #000000; }
+      /* line 168, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+      .contenedorPrincipal #contenido_cont .contenido_cont_academia button {
+        margin: 1em;
+        margin-bottom: -0.8em; }
+      /* line 174, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+      .contenedorPrincipal #contenido_cont .contenido_cont_academia #tabla_precios {
+        display: table;
+        width: 100%;
+        text-align: center;
+        margin: 0 auto; }
+        /* line 180, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+        .contenedorPrincipal #contenido_cont .contenido_cont_academia #tabla_precios .contenidos {
+          display: table-row; }
+          /* line 183, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+          .contenedorPrincipal #contenido_cont .contenido_cont_academia #tabla_precios .contenidos .columna1, .contenedorPrincipal #contenido_cont .contenido_cont_academia #tabla_precios .contenidos .columna2, .contenedorPrincipal #contenido_cont .contenido_cont_academia #tabla_precios .contenidos .columna3 {
+            display: table-cell;
+            border: none;
+            vertical-align: middle;
+            padding: 10px;
+            font-weight: bolder; }
+          /* line 191, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+          .contenedorPrincipal #contenido_cont .contenido_cont_academia #tabla_precios .contenidos .titulo_tabla_precios {
+            background-color: #045FB4;
+            font-weight: bolder;
+            color: #FFFFFF;
+            border: 1px solid #F2F2F2; }
+          /* line 198, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+          .contenedorPrincipal #contenido_cont .contenido_cont_academia #tabla_precios .contenidos progress[value] {
+            width: 100%;
+            background-color: #FFFFFF;
+            border: 1px solid #000000;
+            margin-top: 1em; }
+          /* line 205, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+          .contenedorPrincipal #contenido_cont .contenido_cont_academia #tabla_precios .contenidos #info_a1, .contenedorPrincipal #contenido_cont .contenido_cont_academia #tabla_precios .contenidos #info_a2, .contenedorPrincipal #contenido_cont .contenido_cont_academia #tabla_precios .contenidos #info_b1, .contenedorPrincipal #contenido_cont .contenido_cont_academia #tabla_precios .contenidos #info_b2, .contenedorPrincipal #contenido_cont .contenido_cont_academia #tabla_precios .contenidos #info_c1, .contenedorPrincipal #contenido_cont .contenido_cont_academia #tabla_precios .contenidos #info_c2 {
+            cursor: pointer; }
+      /* line 212, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+      .contenedorPrincipal #contenido_cont .contenido_cont_academia .cont_noticia_principal {
+        margin-bottom: 1em; }
+        /* line 215, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+        .contenedorPrincipal #contenido_cont .contenido_cont_academia .cont_noticia_principal h2 {
+          text-align: left;
+          font-size: 1.5em;
+          font-weight: bolder; }
+        /* line 221, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+        .contenedorPrincipal #contenido_cont .contenido_cont_academia .cont_noticia_principal h3 {
+          text-align: left;
+          font-size: 1em;
+          color: #045FB4; }
+        /* line 227, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+        .contenedorPrincipal #contenido_cont .contenido_cont_academia .cont_noticia_principal img {
+          width: 70%;
+          border: 1px solid #000000;
+          padding: 1em;
+          margin: 1em; }
+        /* line 234, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+        .contenedorPrincipal #contenido_cont .contenido_cont_academia .cont_noticia_principal p {
+          text-align: justify; }
+        /* line 238, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+        .contenedorPrincipal #contenido_cont .contenido_cont_academia .cont_noticia_principal button {
+          margin: 0; }
+      /* line 243, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+      .contenedorPrincipal #contenido_cont .contenido_cont_academia .cont_noticias_antiguas {
+        margin-top: 2.5em; }
+        /* line 246, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+        .contenedorPrincipal #contenido_cont .contenido_cont_academia .cont_noticias_antiguas h2 {
+          text-align: left;
+          font-size: 1.2em;
+          font-weight: bolder; }
+        /* line 252, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+        .contenedorPrincipal #contenido_cont .contenido_cont_academia .cont_noticias_antiguas h3 {
+          text-align: left;
+          font-size: 0.8em;
+          color: #045FB4; }
+        /* line 258, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+        .contenedorPrincipal #contenido_cont .contenido_cont_academia .cont_noticias_antiguas img {
+          width: 15em;
+          height: 9em;
+          margin: 1em; }
+        /* line 264, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+        .contenedorPrincipal #contenido_cont .contenido_cont_academia .cont_noticias_antiguas p {
+          text-align: justify;
+          font-size: 0.8em; }
+        /* line 269, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+        .contenedorPrincipal #contenido_cont .contenido_cont_academia .cont_noticias_antiguas button {
+          margin: 0; }
+      /* line 274, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+      .contenedorPrincipal #contenido_cont .contenido_cont_academia #paginacion {
+        margin: 2em; }
+
+/* line 281, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+.cont_modales {
+  cursor: default; }
+  /* line 284, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+  .cont_modales h1 {
+    font-size: 1.5em;
+    font-weight: bolder;
+    text-align: center; }
+  /* line 290, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+  .cont_modales h2 {
+    font-size: 1em;
+    font-weight: bolder;
+    text-align: center; }
+  /* line 296, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+  .cont_modales p {
+    font-size: 0.9em;
+    text-align: justify; }
+  /* line 301, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+  .cont_modales .infoLlamada {
+    text-align: center; }
+    /* line 303, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+    .cont_modales .infoLlamada p {
+      text-align: center; }
+
+/* line 311, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+.colPrecios .filaPrecio {
+  padding-left: 5px;
+  border-left: 1px solid black; }
+
+/* line 316, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+.ui-dialog .ui-dialog-buttonpane .ui-dialog.buttonset {
+  text-align: center;
+  float: none !important; }
+
+/* line 321, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+.menuLateral_acceso, .menuLateral_ultimasNoticias, .menuLateral_docente {
+  background-color: #FFFFFF;
+  margin-top: -1em;
+  z-index: 1;
+  -webkit-box-shadow: -4px 6px 8px -1px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -4px 6px 8px -1px rgba(0, 0, 0, 0.75);
+  box-shadow: -4px 6px 8px -1px rgba(0, 0, 0, 0.75);
+  cursor: default; }
+
+/* line 331, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+.menuLateral_ultimasNoticias, .menuLateral_docente {
+  margin-top: 1em;
+  padding-bottom: 1em; }
+
+/* line 337, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+.menuLateral_acceso div {
+  margin-left: 35%;
+  margin-right: 30%;
+  padding-bottom: 0.8em; }
+
+/* line 343, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+.menuLateral_acceso img {
+  width: 90%; }
+
+/* line 349, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+.menuLateral_docente p {
+  font-size: 12.5px;
+  text-align: justify; }
+
+/* line 354, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+.menuLateral_docente i {
+  font-size: 4em;
+  color: #045FB4; }
+
+/* line 359, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+.menuLateral_docente h5 {
+  padding-top: 2%;
+  font-weight: bolder;
+  font-size: 15px; }
+
+/* line 367, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+.menuLateral_ultimasNoticias h5, .menuLateral_docente h5, .menuLateral_acceso h5 {
+  padding-top: 2%;
+  font-weight: bolder;
+  font-size: 15px; }
+
+/* line 375, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+.menuLateral_ultimasNoticias a {
+  font-size: 14px;
+  text-decoration: none; }
+
+/* line 380, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+.menuLateral_ultimasNoticias span {
+  font-size: 14px;
+  float: right; }
+
+/* line 386, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+.menuLateral_ultimasNoticias #celdaMensajes div {
+  border-bottom: 1px solid #E6E6E6; }
+
+/*************** Página de acceso a plataforma *****************/
+/* line 394, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+#contenedorAcceso {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, #0058ab 0%, #77a4c2 100%);
+  position: absolute; }
+  /* line 400, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+  #contenedorAcceso #barraSup {
+    width: 100%;
+    background-color: #FFFFFF; }
+    /* line 404, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+    #contenedorAcceso #barraSup #accesoPlat {
+      width: 15%;
+      padding: 0.2em; }
+
+/***** Contenidos de página full (sin laterales) ****/
+/* line 413, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+.contenedorFull {
+  width: 90%;
+  margin-left: 5%;
+  /****** faq.html ******/ }
+  /* line 418, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+  .contenedorFull .tituloFAQ {
+    margin-top: 3%;
+    margin-left: 3%;
+    margin-bottom: -3%; }
+    /* line 423, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+    .contenedorFull .tituloFAQ h1 {
+      font-weight: bolder;
+      font-size: 20px; }
+
+/******* info.html ********/
+/* line 432, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+.contenedorQuienesSomos {
+  cursor: default; }
+  /* line 435, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+  .contenedorQuienesSomos #torre_png {
+    opacity: 0.8; }
+  /* line 440, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+  .contenedorQuienesSomos .titulo_quien h1 {
+    font-size: 18px;
+    font-weight: bolder;
+    text-align: center; }
+  /* line 447, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+  .contenedorQuienesSomos .contenido_quien, .contenedorQuienesSomos .titulo_quien {
+    border-top: 2px solid #D8D8D8;
+    padding-bottom: 1em;
+    font-size: 14px; }
+
+/***** contacto.html *****/
+/* line 457, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+.input_contacto input {
+  border-top: none;
+  border-left: none;
+  border-right: none; }
+
+/* line 463, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+.input_contacto label {
+  color: #9F9F9F; }
+
+/* line 467, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+.input_contacto i {
+  margin-bottom: 0.3em; }
+
+/***** canal.html *****/
+/* line 474, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+.imagenYT {
+  margin: 22%;
+  width: 50%;
+  margin-top: -3em;
+  margin-bottom: -2em; }
+
+/* line 482, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+.videosYT iframe {
+  border: 1px solid #000000;
+  margin: 0.5em; }
+
+/* line 487, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+.videosYT h1 {
+  background-color: #F2F2F2;
+  color: #045FB4;
+  font-size: 1.2em;
+  font-weight: bolder;
+  border-bottom: 2px solid #033766;
+  margin: 1em;
+  cursor: default; }
+
+/***** Pie de página *****/
+/* line 500, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+#pie {
+  cursor: default;
+  padding: 1em;
+  color: #FFFFFF;
+  background-color: #045FB4;
+  border-top: 1em solid #033766;
+  margin-top: 1.5em; }
+  /* line 508, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+  #pie i {
+    margin: 0.5em; }
+    /* line 511, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+    #pie i span {
+      margin-top: 0.5em;
+      font-size: 14px;
+      color: #FFFFFF; }
+  /* line 518, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+  #pie a {
+    color: #FFFFFF;
+    text-decoration: none; }
+  /* line 523, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+  #pie h4 {
+    margin-bottom: 0.8em;
+    color: #FFA500; }
+  /* line 529, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+  #pie .redesSociales a {
+    margin-left: 0.5em;
+    margin-right: 0.5em; }
+  /* line 535, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+  #pie #dchosReservados {
+    margin-top: 2.5em;
+    font-size: 12px; }
+
+/*********** sitemap.html **********/
+/* line 542, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+#imagenSitemap {
+  width: 18%; }
+
+/* line 547, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+#atrasError {
+  margin: 3em; }
+  /* line 551, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+  #atrasError a {
+    color: #FFFFFF;
+    font-weight: bolder;
+    font-size: 1.5em;
+    text-decoration: none; }
+  /* line 558, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+  #atrasError a:hover {
+    color: #045FB4; }
+
+/********************************************************/
+/************************ @media ************************/
+/********************************************************/
+@media (min-width: 0px) and (max-width: 768px) {
+  /* line 568, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+  #logo {
+    width: 100%; }
+  /* .contenedorPrincipal, .menuLateral_docente, .menuLateral_acceso, .menuLateral_ultimasNoticias{
+		margin-left: 0;
+		margin-right: 0;
+	} */
+  /******** acceso.html ********/
+  /* line 580, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+  #contenedorAcceso #barraSup {
+    width: 100%;
+    background-color: #FFFFFF; }
+    /* line 584, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+    #contenedorAcceso #barraSup #accesoPlat {
+      width: 30%;
+      padding: 0.2em; }
+  /* line 591, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+  #logoAcceso {
+    padding: 0.5em;
+    margin-bottom: -1em;
+    width: 60%; }
+  /* line 597, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+  .login {
+    margin: auto;
+    width: 100%;
+    color: #000000; }
+  /* line 603, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+  #botonesAcceso {
+    margin-top: 10%; }
+  /********* error.html *********/
+  /* line 608, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+  .contenedorError {
+    margin: 7em; }
+    /* line 611, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+    .contenedorError #atrasError {
+      margin: 3em; }
+      /* line 614, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+      .contenedorError #atrasError a {
+        color: #FFFFFF;
+        font-weight: bolder;
+        font-size: 1.5em;
+        text-decoration: none; }
+      /* line 621, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+      .contenedorError #atrasError a:hover {
+        color: #045FB4; }
+  /********* Contenedor principal ********/
+  /* line 628, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+  #titulo_cont h1 {
+    font-size: 10px;
+    margin-top: 2em; }
+  /* line 633, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+  #contenido_cont {
+    margin: 0; }
+    /* line 636, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+    #contenido_cont .contenido_cont_academia {
+      font-size: 12px;
+      /*********** noticias.html ***********/ }
+      /* line 639, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+      #contenido_cont .contenido_cont_academia h3 {
+        font-size: 12px; }
+      /* line 644, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+      #contenido_cont .contenido_cont_academia .cont_noticias_antiguas, #contenido_cont .contenido_cont_academia .cont_noticia_principal {
+        border-bottom: 1px solid #9F9F9F; }
+        /* line 647, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+        #contenido_cont .contenido_cont_academia .cont_noticias_antiguas button, #contenido_cont .contenido_cont_academia .cont_noticia_principal button {
+          margin-bottom: 1em; }
+      /* line 653, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+      #contenido_cont .contenido_cont_academia .cont_noticias_antiguas h2 {
+        margin-top: -1.4em; }
+  /********* faq.html ********/
+  /* line 661, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+  .tituloFAQ {
+    margin-top: 6%;
+    margin-bottom: 6%;
+    margin-left: 2%; }
+    /* line 666, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+    .tituloFAQ h1 {
+      font-size: 17px; }
+    /* line 670, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+    .tituloFAQ .preguntaFAQ {
+      font-size: 14px; }
+  /* line 676, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+  .contenedorQuienesSomos h1 {
+    font-size: 15px; }
+  /* line 680, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+  .contenedorQuienesSomos .contenido_quien {
+    font-size: 12px; }
+  /* line 684, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+  .contenedorQuienesSomos .filaQuien {
+    margin-left: 0.3em; }
+  /******** contacto.html ********/
+  /* line 690, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+  .input_contacto, .input_contacto input, .input_contacto textarea {
+    font-size: 13px; }
+  /******** canal.html ********/
+  /* line 695, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+  .imagenYT {
+    margin-top: -2em;
+    margin-bottom: -1em; }
+  /*********** sitemap.html **********/
+  /* line 701, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+  #imagenSitemap {
+    width: 25%; } }
+
+@media (min-width: 769px) and (max-width: 991px) {
+  /* line 708, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+  #logo {
+    width: 100%; }
+  /******** acceso.html ********/
+  /* line 713, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+  #logoAcceso {
+    padding: 0.5em;
+    width: 40%;
+    margin-bottom: -1em; }
+  /* line 719, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+  .login {
+    margin: auto;
+    width: 60%;
+    color: #000000; }
+    /* line 724, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+    .login #botonesAcceso {
+      margin-top: 10%; } }
+
+@media (min-width: 0px) and (max-width: 1200px) {
+  /* line 733, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+  .menuLateral_acceso {
+    margin-top: 1em;
+    margin-left: -0.4em; }
+    /* line 737, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+    .menuLateral_acceso img {
+      width: 70%;
+      margin-left: 10%; }
+  /* line 743, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+  .menuLateral_ultimasNoticias, .menuLateral_docente {
+    margin-left: -0.4em; }
+  /******** Pie de página *********/
+  /* line 749, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+  #pie h4 {
+    margin-bottom: -0.8em;
+    padding: 1em; }
+  /******** noticias.html ********/
+  /* line 756, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+  .cont_noticias_antiguas {
+    font-size: 16px; } }
+
+@media (min-width: 991px) {
+  /* line 763, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+  .navDerecha img {
+    margin-top: -1em; }
+  /********* acceso.html *********/
+  /* line 768, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+  #logoAcceso {
+    padding: 0.5em;
+    margin-bottom: -1em;
+    width: 30%; }
+  /* line 774, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
+  .login {
+    margin: auto;
+    width: 35%;
+    color: #000000; } }
+
+/*# sourceMappingURL=estilos.css.map */

@@ -1,0 +1,785 @@
+@import "colores.scss";
+
+@font-face{
+	font-family: Roboto;
+	src: url("../fonts/Roboto/Roboto-Regular.ttf");
+}
+
+body{
+	background-color: $blanco;
+}
+
+#logo{
+	width: 70%;
+	margin: 0 auto;
+	z-index: 1;
+}
+
+.menu{
+	position: relative;
+	background-color: $grisClaro;
+	border-radius: 0.5em;
+	margin-left: 1.5em;
+	margin-right: 1.5em;
+	box-shadow: 2px 2px 11px #999;
+	z-index: 2;
+	position: relative;
+
+	a{
+		font-weight: bold;
+		font-size: 1.1em;
+		margin-left: 1.2em;
+	}
+}
+
+.navbar li a{
+	font-family: Roboto, Sans-Serif;
+	color: $negro !important;
+	font-size: 0.95em;
+}
+
+.navbar a:hover{
+	color: $azulBarra !important;
+}
+
+#navegacion{
+  border-radius: 9px 9px 9px 9px;
+  -moz-border-radius: 9px 9px 9px 9px;
+  -webkit-border-radius: 9px 9px 9px 9px;
+  border: 0px solid $negro;
+  margin-top: -1.5em;
+  height: 6em;
+  background-color: $azulBarra;
+  -webkit-box-shadow: -4px 6px 8px -1px rgba(0,0,0,0.75);
+  -moz-box-shadow: -4px 6px 8px -1px rgba(0,0,0,0.75);
+  box-shadow: -4px 6px 8px -1px rgba(0,0,0,0.75);
+  position: relative;
+  z-index: 1;
+  color: $blanco; 
+
+  .navDerecha{
+  	font-size: 1em;
+  	text-align: right;
+  	margin-right: -1em;
+
+	img{
+		width: 7em;
+	}
+
+  }
+
+  .navIzquierda{
+  	font-size: 12px;
+  	margin-left: 0.1em;
+  	text-align: left;
+  }
+
+  span{
+  	padding: 1em;
+  	font-weight: bolder;
+  	cursor: default;
+  }
+}
+
+.barra{
+	margin-top: 2em;
+	position: relative;
+}
+
+.contenedorPrincipal{
+  z-index: 1;
+  margin-left: -1%;
+  margin-right: 1%;
+  background-color: $blanco;
+  margin-top: -1em;
+  -webkit-box-shadow: -4px 6px 8px -1px rgba(0,0,0,0.75);
+  -moz-box-shadow: -4px 6px 8px -1px rgba(0,0,0,0.75);
+  box-shadow: -4px 6px 8px -1px rgba(0,0,0,0.75);
+
+  #titulo_cont{
+  	background: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 1%, rgba(242,242,242,1) 1%, rgba(194,194,194,1) 1%, rgba(255,255,255,1) 100%);
+  }	
+
+  #imgSuperior_cont{
+	padding: 2%;
+
+		img{
+			width: 75%;
+		}
+	}
+
+	#titulo_cont{
+		h1{
+			padding: 2%;
+			font-weight: bold;
+			font-size: 18px;
+			text-transform: uppercase;
+			cursor: default;
+			margin-top: 1em;
+		}
+	}
+
+	/**************** docencia.html ****************/
+	.contenido_cont_academia{
+			margin: 3em;
+			cursor: default;
+
+			.destacar_contenido{
+				color: $naranja;
+			}
+
+			.cajaInfo{
+				margin: 1em;
+
+				.infoPersonal{
+					text-align: justify;
+					padding: 1em;
+
+					span{
+						font-style: italic;
+					}
+				}
+			}
+
+			img{
+				width: 30%;
+				margin-bottom: 0.5em;
+				border: 1px solid $negro;
+			}
+	}
+	
+	#contenido_cont{
+		margin: 5%;
+
+		.contenido_cont_academia{
+			margin: 3em;
+			cursor: default;
+
+			.destacar_contenido{
+				color: $naranja;
+			}
+
+			img{
+				margin-bottom: 1em;
+				width: 25%;
+				border: 1px solid $negro;
+			}
+
+			button{
+				margin: 1em;
+				margin-bottom: -0.8em;
+			}
+
+			/**************** ofertas.html *****************/
+			#tabla_precios{
+				display: table;
+    			width: 100%;
+    			text-align: center;
+    			margin: 0 auto;
+
+    			.contenidos{
+    				display: table-row;
+
+    				.columna1, .columna2, .columna3{
+    					display: table-cell;
+    					border: none;
+    					vertical-align: middle;
+    					padding: 10px;
+    					font-weight: bolder;
+    				}
+
+    				.titulo_tabla_precios{
+    					background-color: $azulBarra;
+  					    font-weight: bolder;
+  						color: $blanco;
+  						border: 1px solid $grisExtraClaro;
+    				}
+
+    				progress[value]{
+    					width: 100%;
+    					background-color: $blanco;
+    					border: 1px solid $negro;
+    					margin-top: 1em;
+    				}
+
+    				#info_a1, #info_a2, #info_b1, #info_b2, #info_c1, #info_c2{
+    					cursor: pointer;
+    				}
+    			}
+			}
+
+			/************** noticias.html *************/
+			.cont_noticia_principal{
+				margin-bottom: 1em;
+
+				h2{
+					text-align: left;
+					font-size: 1.5em;
+					font-weight: bolder;
+				}
+
+				h3{
+					text-align: left;
+					font-size: 1em;
+					color: $azulBarra;
+				}
+
+				img{
+					width: 70%;
+					border: 1px solid $negro;
+					padding: 1em;
+					margin: 1em;
+				}
+
+				p{
+					text-align: justify;
+				}
+
+				button{
+					margin: 0;
+				}
+			}
+
+			.cont_noticias_antiguas{
+				margin-top: 2.5em;
+
+				h2{
+					text-align: left;
+					font-size: 1.2em;
+					font-weight: bolder;
+				}
+
+				h3{
+					text-align: left;
+					font-size: 0.8em;
+					color: $azulBarra;
+				}
+
+				img{
+					width: 15em;
+					height: 9em;
+					margin: 1em;
+				}
+
+				p{
+					text-align: justify;
+					font-size: 0.8em;
+				}
+
+				button{
+					margin: 0;
+				}
+			}
+
+			#paginacion{
+				margin: 2em;
+			}
+		}
+	}
+}
+
+.cont_modales{
+	cursor: default;
+
+	h1{
+		font-size: 1.5em;
+		font-weight: bolder;
+		text-align: center;
+	}
+
+	h2{
+		font-size: 1em;
+		font-weight: bolder;
+		text-align: center;
+	}
+
+	p{
+		font-size: 0.9em;
+		text-align: justify;
+	}
+
+	.infoLlamada{
+		text-align: center;
+		p{
+			text-align: center;
+		}
+	}
+
+
+}
+
+.colPrecios .filaPrecio{
+		padding-left: 5px;
+		border-left: 1px solid black;
+	}
+
+.ui-dialog .ui-dialog-buttonpane .ui-dialog.buttonset{
+	text-align: center;
+	float: none !important;
+}
+
+.menuLateral_acceso, .menuLateral_ultimasNoticias, .menuLateral_docente{
+  background-color: $blanco;
+  margin-top: -1em;
+  z-index: 1;
+  -webkit-box-shadow: -4px 6px 8px -1px rgba(0,0,0,0.75);
+  -moz-box-shadow: -4px 6px 8px -1px rgba(0,0,0,0.75);
+  box-shadow: -4px 6px 8px -1px rgba(0,0,0,0.75);
+  cursor: default;
+}
+
+.menuLateral_ultimasNoticias, .menuLateral_docente{
+  margin-top: 1em;
+  padding-bottom: 1em;
+}
+
+.menuLateral_acceso{
+	div{
+		margin-left: 35%;
+  		margin-right: 30%;
+  		padding-bottom: 0.8em;
+	}
+
+	img{
+		width: 90%;
+	}
+}
+
+.menuLateral_docente{
+	p{
+		font-size: 12.5px;
+		text-align: justify;
+	}
+
+	i{
+		font-size: 4em;
+		color: $azulBarra;
+	}
+
+	h5{
+		padding-top: 2%;
+		font-weight: bolder;
+		font-size: 15px;
+	}
+}
+
+.menuLateral_ultimasNoticias, .menuLateral_docente, .menuLateral_acceso{
+	h5{
+		padding-top: 2%;
+		font-weight: bolder;
+		font-size: 15px; 
+	}
+}
+
+.menuLateral_ultimasNoticias{
+	a{
+		font-size: 14px;
+		text-decoration: none;
+	}
+
+	span{
+		font-size: 14px;
+		float: right;
+	}
+
+	#celdaMensajes{
+		div{
+		    border-bottom: 1px solid $grisClaro; 
+		}
+	}
+}
+
+/*************** Página de acceso a plataforma *****************/
+
+#contenedorAcceso{
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0,88,171,1) 0%, rgba(119,164,194,1) 100%);
+  position: absolute;
+
+  #barraSup{
+	width: 100%;
+	background-color: $blanco;
+
+	#accesoPlat{
+		width: 15%;
+		padding: 0.2em;
+	}
+  }	
+}
+
+
+/***** Contenidos de página full (sin laterales) ****/
+.contenedorFull{
+	width: 90%;
+	margin-left: 5%;
+
+	/****** faq.html ******/
+	.tituloFAQ{
+		margin-top: 3%;
+		margin-left: 3%;
+		margin-bottom: -3%;
+
+		h1{
+			font-weight: bolder;
+			font-size: 20px;
+		}
+	}
+}
+
+
+/******* info.html ********/
+.contenedorQuienesSomos{
+	cursor: default;
+
+	#torre_png{
+		opacity: 0.8;
+	}
+
+	.titulo_quien{
+		h1{
+			font-size: 18px;
+			font-weight: bolder;
+			text-align: center;
+		}
+	}
+
+	.contenido_quien, .titulo_quien{
+		border-top: 2px solid $grisMedio;
+		padding-bottom: 1em;
+		font-size: 14px;
+	}
+}
+
+
+/***** contacto.html *****/
+.input_contacto{
+	input{
+		border-top: none;
+		border-left: none;
+		border-right: none;
+	}
+
+	label{
+		color: $grisOscuro;
+	}
+
+	i{
+		margin-bottom: 0.3em;
+	}
+}
+
+
+/***** canal.html *****/
+.imagenYT{
+	margin: 22%;
+	width: 50%;
+	margin-top: -3em;
+	margin-bottom: -2em;
+}
+
+.videosYT {
+	iframe{
+		border: 1px solid $negro;
+		margin: 0.5em;
+	}
+
+	h1{
+		background-color: $grisExtraClaro;
+		color: $azulBarra;
+		font-size: 1.2em;
+		font-weight: bolder;
+		border-bottom: 2px solid $azulOscuro;
+		margin: 1em;
+		cursor: default;
+	}
+}
+
+
+/***** Pie de página *****/
+#pie{
+	cursor: default;
+    padding: 1em;
+    color: $blanco;
+    background-color: $azulBarra;
+    border-top: 1em solid $azulOscuro;
+    margin-top: 1.5em;
+
+    i{
+		margin: 0.5em;
+
+    	span{
+    		margin-top: 0.5em;
+    		font-size: 14px;
+    		color: $blanco;
+    	}
+    }
+
+    a{
+    	color: $blanco;
+    	text-decoration: none;
+    }
+
+    h4{
+    	margin-bottom: 0.8em;
+    	color: $naranja;
+    }
+
+    .redesSociales{
+    	a{
+    		margin-left: 0.5em;
+    		margin-right: 0.5em;
+    	}
+    }
+
+    #dchosReservados{
+    	margin-top: 2.5em;
+    	font-size: 12px;
+    }
+}
+
+	/*********** sitemap.html **********/
+	#imagenSitemap{
+		width: 18%;
+	}
+
+
+#atrasError{
+			
+    margin: 3em;
+
+			a{
+				color: $blanco;
+				font-weight: bolder;
+				font-size: 1.5em;
+				text-decoration: none;
+			}
+
+			a:hover{
+				color: $azulBarra;
+			}
+}
+
+/********************************************************/
+/************************ @media ************************/
+/********************************************************/
+
+@media (min-width: 0px) and (max-width:768px) {
+	#logo{
+		width: 100%;
+	}
+
+	/* .contenedorPrincipal, .menuLateral_docente, .menuLateral_acceso, .menuLateral_ultimasNoticias{
+		margin-left: 0;
+		margin-right: 0;
+	} */
+
+	/******** acceso.html ********/
+	#contenedorAcceso{
+
+  		#barraSup{
+			width: 100%;
+			background-color: $blanco;
+
+			#accesoPlat{
+				width: 30%;
+				padding: 0.2em;
+			}
+  		}	
+	}
+
+	#logoAcceso{
+		padding: 0.5em;
+		margin-bottom: -1em;
+		width: 60%;
+	}
+
+	.login{
+		margin: auto;
+		width: 100%;
+		color: $negro;
+	}
+
+	#botonesAcceso{
+		margin-top: 10%;
+	}
+
+	/********* error.html *********/
+	.contenedorError{
+		margin: 7em;
+
+		#atrasError{
+			margin: 3em;
+
+			a{
+				color: $blanco;
+				font-weight: bolder;
+				font-size: 1.5em;
+				text-decoration: none;
+			}
+
+			a:hover{
+				color: $azulBarra;
+			}
+		}
+	}
+
+	/********* Contenedor principal ********/
+	#titulo_cont h1{
+			font-size: 10px;
+			margin-top: 2em;
+	}
+
+	#contenido_cont{
+		margin: 0;
+
+		.contenido_cont_academia{
+			font-size: 12px;
+			
+			h3{
+				font-size: 12px;
+			}
+
+			/*********** noticias.html ***********/
+			.cont_noticias_antiguas, .cont_noticia_principal{
+				border-bottom: 1px solid $grisOscuro;
+
+				button{
+					margin-bottom: 1em;
+				}
+			}
+
+			.cont_noticias_antiguas{
+				h2{
+					margin-top: -1.4em;
+				}
+			}
+		}
+	}
+
+	/********* faq.html ********/
+	.tituloFAQ{
+		margin-top: 6%;
+		margin-bottom: 6%;
+		margin-left: 2%;
+
+		h1{
+			font-size: 17px;
+		}
+
+		.preguntaFAQ{
+			font-size: 14px;
+		}
+	}
+
+	.contenedorQuienesSomos{
+		h1{
+			font-size: 15px;
+		}
+
+		.contenido_quien{
+			font-size: 12px;
+		}
+
+		.filaQuien{
+			margin-left: 0.3em;
+		}
+	}
+
+	/******** contacto.html ********/
+	.input_contacto, .input_contacto input, .input_contacto textarea{
+		font-size: 13px;
+	}
+
+	/******** canal.html ********/
+	.imagenYT{
+		margin-top: -2em;
+		margin-bottom: -1em;
+	}
+
+	/*********** sitemap.html **********/
+	#imagenSitemap{
+		width: 25%;
+	}
+}
+
+
+@media (min-width: 769px) and (max-width:991px) {
+	#logo{
+		width: 100%;
+	}
+
+	/******** acceso.html ********/
+	#logoAcceso{
+		padding: 0.5em;
+		width: 40%;
+		margin-bottom: -1em;
+	}
+
+	.login{
+		margin: auto;
+		width: 60%;
+		color: $negro;
+
+		#botonesAcceso{
+			margin-top: 10%;
+		}
+	}
+
+}
+
+
+@media (min-width: 0px) and (max-width:1200px) {
+    .menuLateral_acceso{
+      margin-top: 1em;
+      margin-left: -0.4em;
+
+      	img{
+      		width: 70%;
+      		margin-left: 10%;
+      	}
+    }
+
+    .menuLateral_ultimasNoticias, .menuLateral_docente{
+    	margin-left: -0.4em;
+    }
+
+  	/******** Pie de página *********/
+  	#pie{
+  		h4{
+  			margin-bottom: -0.8em;
+  			padding: 1em;
+  		}
+  	}
+
+  	/******** noticias.html ********/
+  	.cont_noticias_antiguas{
+  		font-size: 16px;
+  	}
+}
+
+
+@media (min-width: 991px) {
+	.navDerecha img{
+		margin-top: -1em;
+	}
+
+	/********* acceso.html *********/
+	#logoAcceso{
+		padding: 0.5em;
+		margin-bottom: -1em;
+		width: 30%;
+	}
+
+	.login{
+		margin: auto;
+		width: 35%;
+		color: $negro;
+	}
+}
+
+
+
+
+
+

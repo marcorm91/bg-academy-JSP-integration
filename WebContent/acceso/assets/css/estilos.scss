@@ -1,0 +1,852 @@
+@import "../../../assets/css/sass/colores.scss";
+
+@font-face{
+	font-family: Roboto;
+	src: url("../../../assets/fonts/Roboto/Roboto-Regular.ttf");
+}
+
+@font-face{
+	font-family: School;
+	src: url("../../../assets/fonts/Old Bookshop HK.ttf");
+}
+
+
+/* PANELES PRINCIPALES */
+#bg-academy-principal-alumn, 
+#bg-academy-principal-gest, 
+#bg-academy-principal-notic,
+#bg-academy-principal-prof,
+
+/* PANELES DE PROFESOR */
+#bg-academy-principal-prof-ayuda,
+#bg-academy-principal-prof-miperfil,
+#bg-academy-principal-prof-verincidencia,
+#bg-academy-principal-prof-regincidencia,
+#bg-academy-principal-prof-cursos,
+
+/* PANELES DE GESTOR */
+#bg-academy-principal-gest-new,
+#bg-academy-principal-gest-buscar,
+#bg-academy-principal-gest-incidencias,
+#bg-academy-principal-gest-miperfil,
+#bg-academy-principal-gest-eliminar,
+#bg-academy-principal-gest-modificar,
+#bg-academy-principal-gest-ayuda,
+
+/* PANELES DE ALUMNO */
+#bg-academy-principal-alumn-matricula,
+#bg-academy-principal-alumn-miperfil,
+#bg-academy-principal-alumn-calif,
+#bg-academy-principal-alumn-regincidencia,
+#bg-academy-principal-alumn-verincidencia,
+#bg-academy-principal-alumn-ayuda,
+#bg-academy-principal-alumn-curso,
+
+/* PANELES DE NOTICIERO */
+#bg-academy-principal-not-new,
+#bg-academy-principal-not-miperfil,
+#bg-academy-principal-not-ayuda,
+#bg-academy-principal-not-modificar,
+#bg-academy-principal-not-eliminar{
+            
+    #cabeceraPrincipal {
+        
+        position: fixed;
+        width: 100%;
+        z-index: 1;
+        font-family: Roboto;
+        
+        .navbar {
+            border-radius: 0;
+        }
+
+        .bg-faded {
+            background-color: $azulOscuro;
+        }
+
+        i.fa.fa-bars {
+            border: none;
+        }
+    
+        button.navbar-toggler.hidden-sm-up {
+            border: none;
+            outline: none;
+            color: $blanco !important;
+            background-color: $blanco;
+        }
+        
+        #nav-content{
+            ul li a{
+               font-size: 0.9em;
+            }            
+        }
+
+        a.nav-link {
+            margin-top: 0.4em;
+            color: $blanco !important;
+        }
+
+        li.nav-item {
+            padding-left: 1.5em;
+        }
+        
+        i.fa:hover{
+            color: cornflowerblue;
+        }
+
+        li#conectadoComo.nav-item {
+            float: right;
+            padding-top: 0.5em;
+            cursor: default;
+            z-index: 2;
+            span.nav-link {
+                color: $blanco;
+            }
+            #quien,
+            #desconectar {
+                font-weight: bolder;
+                color: $blanco;
+                text-decoration: none;
+            }
+            #desconectar {
+                font-weight: normal;
+            }
+        }
+                
+    }
+       
+    .panel-principal > h1{
+        padding-top: 1em;
+        font-size: 21px;
+        cursor: default;
+        font-weight: bolder;
+        font-family: Roboto;
+    }
+    
+    .panel-principal > h1 a:hover{
+        text-decoration: none;
+    }
+    
+    .panel-principal > img{
+        padding-top: 5em;
+        width: 50%;
+    }
+    
+    .panel-opciones{
+        
+        margin: 1em;
+        background-color: $grisClaro;
+        
+        .row i{
+            padding: 0.4em;
+            color: $negro;
+            font-size: 50px;
+        }
+        
+        p{
+            margin-top: -0.5em;
+            font-weight: bolder;
+            cursor: default;
+            text-transform: uppercase;
+            font-family: School;
+            font-size: 14px;
+            color: $negro;
+            
+        }
+        
+        i:hover{
+            cursor: pointer;
+            
+        } 
+        
+        .row{
+            margin-left: 20%;
+            margin-right: 20%;
+        }
+    }
+    
+    footer{
+        padding: 1em;
+        font-weight: 600;
+        span{
+            cursor: default;
+            font-size: 12px;
+        }
+    }
+    
+    .btn-select{
+        color: cornflowerblue;
+    }
+    
+    .form-publicacion-art{
+        
+        background-color: $grisClaro;
+        
+        cursor: default;
+
+        > .row{
+            padding: .8em;
+        }
+       
+    }
+    
+     @media (min-width: 0px) and (max-width:575px) {
+        #cabeceraPrincipal i.fa{
+            display: none;
+        }
+        nav {
+            font-weight: bolder;
+        }
+         
+        .text-xs-center.conectadoMobile {
+            padding-top: 5em;
+            margin-bottom: -3em;
+        }
+                
+        .panel-principal > h1{
+            padding-top: 2em;
+            font-size: 20px;
+        }
+         
+         .panel-opciones .row i{
+             font-size: 50px;
+         }
+         
+         .panel-opciones .row div{
+             margin-top: 1em;
+             margin-bottom: 1em;
+         }
+                  
+         .panel-principal img{
+             width: 80%;
+         }
+
+    }
+    
+      
+    @media (min-width: 576px) and (max-width:991px) {
+        
+        .text-xs-center.conectadoMobile {
+            padding-top: 6em;
+            margin-bottom: -3em;
+        }
+        
+        .panel-principal > h1{
+            padding-top: 1em;
+            font-size: 30px;
+        }
+        
+        .panel-principal img{
+             width: 80%;
+         }
+        
+    }
+        
+}
+
+#bg-academy-principal-gest-new,
+#bg-academy-principal-gest-buscar,
+#bg-academy-principal-gest-incidencias,
+#bg-academy-principal-gest-miperfil,
+#bg-academy-principal-gest-eliminar,
+#bg-academy-principal-gest-modificar,
+#bg-academy-principal-gest-ayuda,
+#bg-academy-principal-not-new,
+#bg-academy-principal-not-miperfil,
+#bg-academy-principal-not-ayuda,
+#bg-academy-principal-not-modificar,
+#bg-academy-principal-not-eliminar,
+#bg-academy-principal-alumn-miperfil,
+#bg-academy-principal-alumn-calif,
+#bg-academy-principal-alumn-regincidencia,
+#bg-academy-principal-alumn-verincidencia,
+#bg-academy-principal-alumn-ayuda,
+#bg-academy-principal-alumn-curso,
+#bg-academy-principal-prof-ayuda,
+#bg-academy-principal-prof-miperfil,
+#bg-academy-principal-prof-verincidencia,
+#bg-academy-principal-prof-cursos{
+    
+    font-family: Roboto;
+    
+    .panel-opciones{
+        
+        .resolucion-imagen{
+            font-size: 12px;
+            font-style: italic;
+        }
+        
+        .imagen-perfil{
+                        
+            img{
+                width: 8em;
+                height: 10em;
+                border: 1px solid black; 
+                border-radius: 100px;
+                margin-bottom: .5em;
+            }   
+        }
+        
+        #img-modificar-gest-perfil{
+            padding-bottom: 1.5em;
+        }
+        
+    }
+    
+    .panel-opciones > h2{
+        font-size: 25px;
+        padding: 1em 0;
+        font-weight: 600;
+        cursor: default;
+    }
+    
+    .title{
+        font-size: 25px;
+        padding: .2em 0;
+        font-weight: 600;
+        cursor: default;
+    }
+    
+    .btn-enviar{
+        padding: 1em 0;
+    }
+    
+    #tit-tareas-notas-alumno, #tit-examenes-notas-alumno{
+        h3{
+            color: $azulOscuro;
+            font-size: 20px;
+            font-weight: bolder;
+            border-bottom: 1px solid $azulOscuro;
+            margin-bottom: -.2em;
+            cursor: pointer;
+        }
+    }
+    
+    .tareas-notas-alumno{
+        h4{
+            font-size: 18px;
+            font-weight: bolder;
+        }
+        h5{
+            font-size: 15px;
+        }
+        span{
+            display: block;
+            > span{
+                display: inline;
+            }
+        }
+        .fecha-alumno-calif{
+            font-size: 15px;
+            font-style: italic;
+        }
+        .nota-alumno-calif{
+            font-size: 15px;
+            font-weight: bolder;
+            margin: 0.5em 0;
+        }
+        hr{
+            margin: 1.5em 8em;
+        }
+    }
+    
+    .pdf{
+        i{
+            padding: .3em;
+            font-size: 50px;
+            cursor: pointer;
+        }
+        p{
+            font-size: 14px;
+            font-family: Arial;
+            font-weight: bolder;
+            text-transform: uppercase;
+        }
+    }
+    
+    #accordion{
+        i{
+            margin: 0 .3em;
+        }
+        button{
+           border: none; 
+           outline: none;
+        }
+        button:hover{
+            background-color: #0275d8;
+            cursor: default;
+            border: none;
+        }
+        button:focus{
+            background-color: #0275d8;
+        }
+    }
+    
+    .tabla-info .fa.fa-trash.text-danger {
+            padding-left: .4em;
+    }
+    
+    
+    @media (min-width: 0px) and (max-width:575px) {
+        
+        .panel-opciones > h2{
+            font-size: 20px;
+            padding: 1em 0;
+            font-weight: 600;
+            cursor: default;
+        }
+        
+        .panel-opciones .title{
+            font-size: 20px;
+            padding: .2em 0;
+            font-weight: 600;
+            cursor: default;
+        }
+        
+    }
+    
+}
+
+/** Modales **/
+#modal-aniadir-profesor, 
+#modal-aniadir-alumno,
+#modal-aniadir-noticiario,
+#modal-aniadir-gestor,
+#modal-aniadir-curso{
+    
+    font-family: Roboto;
+    cursor: default;
+    
+    .modal-header, .modal-footer{
+        border: none; 
+    }
+    
+    .modal-footer{
+        text-align: center;
+        .btn{
+            margin: .8em;
+        }
+    }
+     
+    
+    h5{
+        font-weight: 700;
+        margin-bottom: 1.5em;
+        font-size: 20px;
+    }
+    
+    h6{
+        font-weight: 100;
+        border-bottom: 1px solid $azulOscuro;
+        margin-bottom: 2em;
+        margin-top: 1.5em;
+        color: $azulOscuro;
+        text-transform: uppercase;
+    }
+    
+    option{
+        padding: .3em 0;
+    }
+    
+    .contenedor-comentarios{
+        
+        label{
+            padding: 0;
+        }
+        
+        textarea{
+            margin-left: -.5em;
+        }
+    }
+}
+
+/** Para tabla modificar y eliminar **/
+#bg-academy-principal-not-modificar,
+#bg-academy-principal-not-eliminar,
+#bg-academy-principal-alumn-verincidencia,
+#bg-academy-principal-prof-verincidencia{
+    
+    .panel-opciones{
+         background-color: $blanco;
+        
+        .menu-busqueda{
+            padding-bottom: 2em; 
+            padding-top: 1em;
+        }
+    }
+    
+    table{
+        cursor: default;
+        font-size: 14px;
+        margin-top: 2em;
+        
+        thead{
+            background-color: $azulOscuro;
+            color: $blanco;
+            font-weight: 100;
+        }
+        
+        td{
+            vertical-align: middle;
+        }
+        
+        .tabla-mod, .tabla-eli{
+            padding-left: 2.5em;
+            i{
+                font-size: 1.5em;
+            }
+        }
+        
+        .tabla-mod{
+            i{
+                color: orange;
+            }
+        }
+        
+        .tabla-eli{
+            i{
+                color: red;
+            }
+        }
+    }
+        
+    .paginacion-busq .page-link{
+        border: none;
+    }
+    
+    .paginacion-busq .page-link:hover{
+        background-color: $blanco;
+    }
+    
+}
+
+/** Subpaneles de búsqueda, incidencia, eliminar **/
+#subpanel-busqueda-profesor,
+#subpanel-busqueda-alumno,
+#subpanel-busqueda-noticiario,
+#subpanel-busqueda-gestor,
+#subpanel-busqueda-curso,
+#subpanel-incidencia-profesor,
+#subpanel-incidencia-alumno,
+#subpanel-eliminar-profesor,
+#subpanel-eliminar-alumno,
+#subpanel-eliminar-noticiario,
+#subpanel-eliminar-curso,
+#subpanel-eliminar-gestor,
+#subpanel-modificar-profesor,
+#subpanel-modificar-alumno,
+#subpanel-modificar-noticiario,
+#subpanel-modificar-curso,
+#subpanel-modificar-gestor,
+#subpanel-calendario-alumno,
+#subpanel-apuntes-alumno,
+#subpanel-tareas-alumno,
+#subpanel-examenes-alumno,
+#subpanel-calendario-profesor,
+#subpanel-sub-tarea-profesor,
+#subpanel-sub-examen-profesor,
+#subpanel-sub-apuntes-profesor,
+#subpanel-list-alumnos-profesor,
+#subpanel-tareas-alumnos-profesor,
+#subpanel-examenes-alumnos-profesor{
+    
+    display: none;
+    
+    h1{
+        font-size: 18px;
+    }
+    
+    .menu-busqueda{
+        margin-top: 1.5em;
+        
+        input, select{
+            z-index: 0;
+        }
+        
+    }
+    
+    table{
+        margin: 2.5em 0;
+        cursor: default;
+        font-size: 14px;
+        
+        thead{
+            background-color: $azulOscuro;
+            color: $blanco;
+            font-weight: 100;
+        }
+        
+        td{
+            vertical-align: middle;
+        }
+        
+        .tabla-info{
+            font-size: 1.5em;
+            padding-left: 1.2em;
+            
+            .fa.fa-pencil {
+                padding-left: .5em;
+            }
+        }
+        
+        .tabla-incidencia-ver{
+            padding-left: 2.8em;
+            font-size: 1.5em;
+            a{
+                color: #FAAC58;
+            }
+            a:hover{
+                color: #FF8000;
+            }
+        }
+        
+        .tabla-incidencia-resolucion{
+            
+            padding-left: 3em;
+            
+            i.fa-thumbs-up{
+                color: forestgreen;
+            }
+            
+            i.fa-thumbs-down{
+                color: #C94040;
+            }
+        }
+        
+    }
+    
+    .paginacion-busq .page-link{
+        border: none;
+    }
+    
+    .paginacion-busq .page-link:hover{
+        background-color: $blanco;
+    }
+    
+    .btn-atras{
+        font-family: Roboto;
+        cursor: default;
+        font-size: 12px;
+        text-decoration: none;
+        font-weight: 100;
+        color: $azulOscuro;
+        margin-bottom: 1em;
+        span{
+            font-weight: bolder;
+            color: #0275d8;
+            text-transform: uppercase;
+            font-family: Roboto;
+            font-size: 15px;
+        }
+        span:hover{
+            color: #033766;
+        }
+        i{
+            font-size: 15px;
+        }
+    }
+    
+    @media (min-width: 0px) and (max-width:575px) {
+        table{
+            font-size: 11px;
+        }   
+    }
+    
+}
+
+/*** PANELES ALUMNO ***/
+#bg-academy-principal-alumn-matricula{
+    
+    .p-alumno{
+        
+        .row{
+            margin: 1.5em 0;
+            cursor: default;
+        }
+                
+        h2{
+            font-family: Roboto;
+            padding-top: 1em;
+            font-weight: 600;
+            font-size: 23px;
+            cursor: default;
+        }
+        
+        .subtitular{
+            color: $azulOscuro;
+            border-bottom: 1px solid $azulOscuro;
+            margin: 1em 0;
+           
+        }
+        
+        .fixed-text{
+            color: $azulOscuro;
+        }
+        
+        .pdf{
+            padding: 1em 0;
+        }
+        
+        
+        p{
+            font-family: Arial;
+        }
+                
+    }
+    
+}
+
+//Ver-incidencias de alumnos y profesores
+#bg-academy-principal-alumn-verincidencia,
+#bg-academy-principal-prof-verincidencia{
+    
+    .form-publicacion-art{
+        background-color: $blanco;
+    }
+    
+    table{
+        margin: 0 auto;
+        width: 100%;
+        td,th{
+            text-align: center;
+        }
+        td{
+            background-color: $blanco;
+        }
+        .tabla-incidencia-ver, .tabla-incidencia-resolucion{
+            font-size: 1.5em;
+        }
+    }
+    
+    .btn-enviar{
+        margin-top: 1.5em;
+    }
+    
+    .advertencia{
+        margin-top: 2em;
+    }
+}
+
+/*** Subpanel de calendario de alumno **/
+#subpanel-calendario-alumno,
+#subpanel-calendario-profesor{
+    
+    margin-top: 2em;
+    
+    .btn-atras{
+        margin-bottom: 3em;
+    }
+
+    /** Tabla calendario **/
+    #calendario{
+        border-collapse: separate;
+        padding-left: 12.8em;
+
+        td{
+            cursor: pointer;
+            margin: 15px;
+            padding: 18px;
+            background-color: #FFF;
+            border: solid 1px $grisOscuro;
+            text-align: center;
+            font-weight: bolder;
+        }
+
+        th{
+           cursor: default;
+           padding-left: 2em;
+           padding-right: 2em;
+           background-color: $azulOscuro;
+           border: solid 1px #000;
+           color: $blanco;
+        }
+    }
+
+    .hoy{
+        width: 100%;
+        margin: 0 auto;
+        text-align: center;
+        padding-bottom: 1em;
+        button{
+            text-align: center;
+            font-weight: bold;
+        }
+    }
+
+    #mesActual {
+        font-weight: bolder;
+        font-size: 25px;
+        margin-top: .5em;
+    }
+
+
+    #calendario .sinFecha{
+        background-color: #E6E6E6;
+        opacity: 0.5;
+        cursor: default;
+        padding: 15px;
+    }
+
+    #calendario .conFecha{
+        cursor: pointer;
+        margin: 15px;
+        padding: 15px;
+        background-color: #FFF;
+        text-align: center;
+    }
+
+    #calendario .finde{
+        cursor: default;
+        color: red;
+    }
+
+    #calendario .encima:hover{
+        background-color: #dddfff;
+    }
+    
+}
+
+#subpanel-apuntes-alumno,
+#subpanel-tareas-alumno,
+#subpanel-examenes-alumno,
+#subpanel-sub-tarea-profesor,
+#subpanel-sub-examen-profesor,
+#subpanel-sub-apuntes-profesor,
+#subpanel-list-alumnos-profesor,
+#subpanel-tareas-alumnos-profesor,
+#subpanel-examenes-alumnos-profesor{
+    
+    .menu-busqueda{
+        margin-bottom: 1.5em;
+    }
+    
+    .table{
+        
+        margin-top: -.5em;
+        
+        .descarga-apuntes i{
+            margin-left: 28px;
+            cursor: pointer; 
+            font-size: 20px;
+        }
+        
+        .sube-tarea i{
+            margin-left: 8px;
+            cursor: pointer;
+            font-size: 20px;
+        }
+        
+    }
+    
+    .btn-atras{
+        margin: 2.5em 0;
+        a{
+            text-decoration: none;
+        }
+        #reg-tarea, #reg-examen, #reg-apuntes{
+            margin-left: 1em;
+        }
+    }
+}
+
+
