@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<title>Inicio - Big Ben Academy</title>
+	<title>Nuestros profesores - Big Ben Academy</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap/bootstrap.min.css">
@@ -16,7 +16,7 @@
 		
 		<!-- Contenedor de logo principal de la academia -->
 		<div id="cabecera"></div>
-		
+
 		<!-- Cabecera que contiene menú principal para el acceso a las distintas secciones de la web -->
 		<div id="menu"></div>
 
@@ -24,7 +24,7 @@
 		<div id="navegacion">
 			<div class="col-xs-12 barra">
 				<div class="col-xs-6 navIzquierda">
-					<span> INICIO </span>
+					<span> NUESTROS PROFESORES </span>
 				</div>
 			</div>
 		</div> <!-- Fin de 'Panel de navegación' -->
@@ -40,44 +40,80 @@
 		<!-- Contenedor de bienvenida con datos varios de la web -->
 		<div class="col-xl-8 col-xs-12 contenedorPrincipal">
 
-			<div id="titulo_cont" class="">
-				<h1> Big Ben Academy en cifras </h1>
+			<div id="titulo_cont">
+				<h1> Conoce a nuestros profesores </h1>
 			</div>
 
-			<div id="imgSuperior_cont" class="text-xs-center">
-				<img src="assets/imagenes/birrete.png" class="img-fluid">
-			</div>
-
-			<div id="contenido_cont" class="text-xs-center">
+			<div class="text-xs-center">
 			
 					<div class="contenido_cont_academia">
-						<i class="fa fa-graduation-cap fa-4x" aria-hidden="true"></i>
-						<h3> <b class="destacar_contenido"> 5.000 </b> personas obtienen su certificado </h3>
-						<p> 
-							Conscientes de la situación actual de la educación nos comprometemos, 
-							no sólo a que nuestros alumnos aprendan, sino a que disfruten con
-							su aprendizaje.  La motivación es nuestro camino y te invitamos a
-							invadirlo junto a nosotros.
-						</p>
-					</div>
-				
-					<div class="contenido_cont_academia">
-						<i class="fa fa-users fa-4x" aria-hidden="true"></i>
-						<h3> <b class="destacar_contenido"> 3.000 </b> estudiantes cada año </h3>
-						<p>
-							Nuestros estudiantes son la motivación del día a día en Big Ben Academy,
-							y por ello, tenemos a los docentes más cualificados de la provincia en el ámbito
-							y la enseñanza idiomática.  Las cifras lo dicen todo y nunca engañan.
-						</p>
+						<img src="assets/imagenes/perfil1.jpg" class="img-fluid">
+						<h3> <b class="destacar_contenido"> LUIS </b> FERNÁNDEZ RODRÍGUEZ </h3>
+						<button class="btn btn-primary" type="button" data-toggle="collapse" href="#info1">
+    						Saber más sobre <b> Luis </b>
+  						</button>
+  						<div class="collapse cajaInfo" id="info1">
+  							<div class="infoPersonal" >
+								<b>Hola Luis, háblanos de ti.</b>
+								<p>¡Hola! Me llamo Luis. Nací y crecí en Madrid, España. He tenido la gran suerte de haber vivido en muchos lugares del mundo enseñando y aprendiendo otros idiomas. Ha sido una experiencia maravillosa, ¡y una manera fantástica de sacarle partido a mi licenciatura en idiomas!</p>
+
+								<b>¿Cuál es tu experiencia como profesor de inglés?</b>
+								<p>He estado enseñando inglés durante más de 12 años en distintos países del mundo, incluyendo Brasil, España, Camboya y Sudáfrica. He dado clases en academias pequeñas y en grandes escuelas internacionales, adaptando mis métodos de enseñanza al entorno en el que me tocara trabajar. </p>
+
+								<b>¿Qué crees que es importante para enseñar inglés?</b>
+								<p>Para mí es importante establecer una relación individual con los alumnos, para ayudar a que haya una confianza mutua. Aprender un idioma nuevo puede ser un poco difícil, por eso pienso que los puntos clave tanto para enseñar como para aprender son trabajar mucho y poder contar con el apoyo de tu profesor. ¡Hacer que la clase sea divertida también es importante!</p>
+
+								<span> Luis Fernández Rodríguez, profesor para niveles C1 y C2. </span>
+  							</div>
+  						</div>
 					</div>
 
-					<div class="contenido_cont_academia">
-						<i class="fa fa-signal fa-4x" aria-hidden="true"></i>
-						<h3> <b class="destacar_contenido"> 6 </b> niveles </h3>
-						<p>
-							No importa que no sepas inglés.  En absoluto.  Ofrecemos desde el nivel más básico
-							de inglés (A1) hasta el nivel más avanzado (C2).  
-						</p>
+					<hr/>
+				
+					<div class="contenido_cont_academia" >
+						<img src="assets/imagenes/perfil2.jpg" class="img-fluid">
+						<h3> <b class="destacar_contenido"> ANA </b> GUTIERREZ SOLÍS </h3>
+						<button class="btn btn-primary" type="button" data-toggle="collapse" href="#info2">
+    						Saber más sobre <b> Ana </b>
+  						</button>
+  						<div class="collapse cajaInfo" id="info2">
+  							<div class="infoPersonal">
+								<b>Hola Ana, háblanos de ti.</b>
+								<p>¡Hola! Me llamo Ana. Crecí en una familia multilingüe en Barcelona: todos en mi familia hablamos inglés, español y catalán. Acabo de mudarme a Barcelona después de vivir varios años en el extranjero. Soy licenciada en Comunicación y me encantan los idiomas. ¡Me encantaría poder hablar Japonés algún día!</p>
+
+								<b>¿Cuál es tu experiencia como profesor de inglés?</b>
+								<p>Llevo más de 10 años enseñando inglés en tres países diferentes: España, India y Camboya.</p>
+
+								<b>¿Qué crees que es importante para enseñar inglés?</b>
+								<p>El entusiasmo es un factor muy importante: como profesores, debemos transmitir nuestra pasión por el idioma a nuestros alumnos. ¡Cuanto más disfruten aprendiendo, más aprenderán!</p>
+
+								<span> Ana Gutierrez Solís, profesora para niveles A1 y A2. </span>
+  							</div>
+  						</div>
+					</div>
+
+					<hr/>
+
+					<div class="contenido_cont_academia" >
+						<img src="assets/imagenes/perfil3.jpg" class="img-fluid">
+						<h3> <b class="destacar_contenido"> GRAHAM </b> NORTON WALKER </h3>
+						<button class="btn btn-primary" type="button" data-toggle="collapse" href="#info3">
+    						Saber más sobre <b> Graham </b>
+  						</button>
+  						<div class="collapse cajaInfo" id="info3">
+  							<div class="infoPersonal">
+								<b>Hola Graham, háblanos de ti.</b>
+								<p>Hola, me llamo Graham, soy de Londres. Mi lengua materna es el inglés pero hablo también español y catalán. He estudiado literatura inglesa y arte en Inglaterra. Ahora vivo en España y soy profesor de inglés.</p>
+
+								<b>¿Cuál es tu experiencia como profesor de inglés?</b>
+								<p>He sido profesor de inglés en Madrid durante más de 15 años y ahora enseño inglés aquí, en Cádiz.</p>
+
+								<b>¿Qué crees que es importante para enseñar inglés?</b>
+								<p>Para enseñar un idioma siempre hay que ser positivo y muy paciente; yo disfruto cuando puedo compartir mis conocimientos con mis alumnos.</p>
+
+								<span> Graham Norton Walker, profesor para niveles B1 y B2. </span>
+  							</div>
+  						</div>
 					</div>
 			
 			</div>
@@ -180,23 +216,6 @@
 				</div>
 		</div> <!-- Fin contenedor últimas noticias -->
 
-		<!-- Contenedor que contiene el menú lateral de acceso a conocer la docencia de la academia -->
-		<div class="col-xl-4 col-xs-12 menuLateral_docente">
-			<h5> Nuestro equipo docente </h5>
-			<div>
-				<p> 
-					El equipo de profesores de nuestra academia está formado por profesionales activos
-					y en constante renovación.
-					Entra y échale un vistazo al perfil de cada uno.
-				</p>
-				<div class="text-xs-center">
-					<a href="./docencia.jsp" title="Ir a Docencia">
-						<i class="fa fa-id-card-o" aria-hidden="true"></i>
-					</a>
-				</div>
-			</div>
-		</div> <!-- Fin contenedor acceso a docencia de academia -->
-
 	</div>
 	</div>
 
@@ -212,6 +231,6 @@
 	<!-- Script personal -->
 	<script type="text/javascript" src="assets/js/script.js"></script>
 	<iframe src="youtube.com" hidden/>
-
+	
 </body>
 </html>
