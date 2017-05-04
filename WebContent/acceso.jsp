@@ -34,15 +34,15 @@
 				
                     <!-- Formulario que lleva al controlador para identificar el tipo de usuario que accede
                          para llevar a un sitio u otro -->
-					<form class="form-horizontal col-xs-12 col-md-12" action="acceso/principal-alumno.jsp">
+					<form class="form-horizontal col-xs-12 col-md-12" method="post" action="${pageContext.request.contextPath}/Acceso_plataforma">
 						<div class="form-group">
 							<label for="formGroup">Nombre de usuario: </label>
-								<input class="form-control" type="text" id="inputUser" placeholder="Introduzca su nombre de usuario" autofocus required>
+								<input class="form-control" type="text" id="inputUser" name="user" placeholder="Introduzca su nombre de usuario" autofocus required>
 						</div>
 
 						<div class="form-group">
 							<label for="formGroup">Contraseña: </label>
-								<input class="form-control" type="password" id="inputPass" placeholder="Introduzca su clave de acceso" required>
+								<input class="form-control" type="password" id="inputPass" name="pass" placeholder="Introduzca su clave de acceso" required>
 						</div>
 
 						<div class="form-group">

@@ -67,7 +67,7 @@
 			                		<li><a href="./docencia.jsp" title="Conoce a nuestros profesores">Conoce a nuestros profesores</a></li>
 			                	</ul>
 			                <li><a href="./contacto.jsp" title="Contacto">Contacto</a></li>
-			            <ul>
+			            </ul>
 				
 					</div>
 
