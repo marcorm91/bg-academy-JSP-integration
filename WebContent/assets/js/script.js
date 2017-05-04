@@ -4,7 +4,7 @@ $(document).ready(function() {
 	// Para ello, decidí poner como estático la cabecera, el menú y el pie.
 	$.ajax({
 		type:"GET",
-		url:"assets/includes/cabecera.jsp",
+		url:"assets/includes/cabecera.html",
 		async: false,
 		success:function(resp){
 			$("#cabecera").html(resp);
@@ -13,7 +13,7 @@ $(document).ready(function() {
 
 	$.ajax({
 		type:"GET",
-		url:"assets/includes/menu.jsp",
+		url:"assets/includes/menu.html",
 		async: false,
 		success:function(resp){
 			$("#menu").html(resp);
@@ -22,10 +22,10 @@ $(document).ready(function() {
 
 	$.ajax({
 		type:"GET",
-		url:"assets/includes/pie.jsp",
+		url:"assets/includes/pie.html",
 		async: false,
 		success:function(resp){
-			$("#pie_pag").html(resp);
+			$("#pie_pag").html(html);
 		}
 	});
 	

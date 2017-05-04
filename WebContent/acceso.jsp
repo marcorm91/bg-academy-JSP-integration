@@ -1,3 +1,5 @@
+<%@ page contentType="text/html; charset=UTF-8" %>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -32,7 +34,7 @@
 				
                     <!-- Formulario que lleva al controlador para identificar el tipo de usuario que accede
                          para llevar a un sitio u otro -->
-					<form class="form-horizontal col-xs-12 col-md-12" action="acceso/principal-alumno.html">
+					<form class="form-horizontal col-xs-12 col-md-12" action="acceso/principal-alumno.jsp">
 						<div class="form-group">
 							<label for="formGroup">Nombre de usuario: </label>
 								<input class="form-control" type="text" id="inputUser" placeholder="Introduzca su nombre de usuario" autofocus required>
