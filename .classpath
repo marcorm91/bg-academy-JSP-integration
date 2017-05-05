@@ -10,5 +10,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="C:/xampp/tomcat/lib/jsp-api.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Marco/Desktop/postgresql-jdbc3-9.2.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
