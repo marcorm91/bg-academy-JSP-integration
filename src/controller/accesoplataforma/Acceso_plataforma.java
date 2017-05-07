@@ -1,6 +1,8 @@
 package controller.accesoplataforma;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,7 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Conexion;
-import model.MLog;
+import model.MAlumno;
+import model.MGestor;
+import model.MNoticiero;
+import model.MProfesor;
 
 /**
  * Servlet implementation class Acceso_plataforma
@@ -16,12 +21,14 @@ import model.MLog;
 @WebServlet("/Acceso_plataforma")
 public class Acceso_plataforma extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private MLog modeloLog;
+	private MAlumno modelo_alumno;
+	private MProfesor modelo_profesor;
+	private MGestor modelo_gestor;
+	private MNoticiero modelo_noticiero;
 	private Conexion conexionBD;
 	private String user;
 	private String pass;
-	private boolean checkLogin;
-	private String tipouser;
+	private boolean checkLogin_al, checkLogin_prof, checkLogin_gest, checkLogin_not;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -29,7 +36,10 @@ public class Acceso_plataforma extends HttpServlet {
     public Acceso_plataforma() {
         super();
         conexionBD = new Conexion();
-        modeloLog = new MLog(conexionBD.getConexion());
+        modelo_alumno = new MAlumno(conexionBD.getConexion());
+        modelo_profesor = new MProfesor(conexionBD.getConexion());
+        modelo_gestor = new MGestor(conexionBD.getConexion());
+        modelo_noticiero = new MNoticiero(conexionBD.getConexion());
     }
 
 	/**
@@ -38,27 +48,36 @@ public class Acceso_plataforma extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		user = request.getParameter("user");
-		pass = request.getParameter("pass");
+		pass = request.getParameter("pass");			
 		
-		checkLogin = modeloLog.checkLogin(user, pass);
-		
-		if(checkLogin){
-			
-			tipouser = modeloLog.checkTipo(user, pass);
-			
-			switch(tipouser){
-			
-				case "G": response.sendRedirect("acceso/principal-gestor.jsp"); break;
-				case "N": response.sendRedirect("acceso/principal-noticiero.jsp"); break;
-				case "A": response.sendRedirect("acceso/principal-alumno.jsp"); break;
-				case "P": response.sendRedirect("acceso/principal-profesor.jsp"); break;
-			
-			}
-			
-		}else{
-			System.out.println("incorrecto");
-		}
-		
+		//Comprobación de igualdad entre user y pass en tabla alumno.
+		checkLogin_al = modelo_alumno.checkLogin(user, pass);
+		if(checkLogin_al){
+			response.sendRedirect("acceso/principal-alumno.jsp");
+			return;
+		}else
+			//Comprobación de igualdad entre user y pass en tabla profesor.
+			checkLogin_prof = modelo_profesor.checkLogin(user, pass);
+			if(checkLogin_prof){
+				response.sendRedirect("acceso/principal-profesor.jsp");	
+				return;
+			}else
+				//Comprobación de igualdad entre user y pass en tabla gestor.
+				checkLogin_gest = modelo_gestor.checkLogin(user, pass);
+				if(checkLogin_gest){
+					response.sendRedirect("acceso/principal-gestor.jsp");
+					return;
+				}else
+					//Comprobación de igualdad entre user y pass en tabla noticiero.
+					checkLogin_not = modelo_noticiero.checkLogin(user, pass);
+					if(checkLogin_not){
+						response.sendRedirect("acceso/principal-noticiario.jsp");
+						return;
+					//Si tras una comprobación previa entre las 4 tablas no se cumple la igualidad entre
+					//user y pass, retornamos a la misma página de acceso (acceso.jsp).
+					}else{
+						response.sendRedirect("acceso.jsp");
+					}
 		
 	}
 

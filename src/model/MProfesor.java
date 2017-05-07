@@ -5,11 +5,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class MLog {
+public class MProfesor {
 	
 	private final Connection conexion;
 	
-	public MLog(Connection conexion){
+	public MProfesor(Connection conexion){
 		this.conexion = conexion;
 	}
 	
@@ -22,7 +22,7 @@ public class MLog {
      */
     public boolean checkLogin(String usuario, String password){
     	
-		String consultaUserPass = "SELECT COUNT(*) AS contador FROM bgacademy.logs WHERE usuario = ? AND pass = ?;";
+		String consultaUserPass = "SELECT COUNT(*) AS contador FROM bgacademy.profesor WHERE usuario = ? AND pass = ?;";
 		boolean correcto = false;
 		int contador = 0;
     			        
@@ -52,28 +52,7 @@ public class MLog {
 		         
     }
 
-	public String checkTipo(String usuario, String password) {
-		
-		String consultaTipo = "SELECT tipouser FROM bgacademy.logs WHERE usuario = ? AND pass = ?;";
-		String tipouser = null;
-    			        
-        try{
-        	
-            PreparedStatement sentencia = conexion.prepareStatement(consultaTipo);
-            sentencia.setString(1, usuario);
-            sentencia.setString(2, password);
-            
-            ResultSet rs = sentencia.executeQuery();
-            
-            while(rs.next()){
-            	tipouser = rs.getString("tipouser");
-            }
-            
-        }catch(SQLException e){
-            System.out.println(e);
-        }
-               
-        return tipouser;
-	}
+	
 
 }
+
