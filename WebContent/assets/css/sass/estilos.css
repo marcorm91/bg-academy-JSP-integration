@@ -636,7 +636,6 @@ body {
     
 /** NUEVOS CAMBIOS **/
 #login-incorrecto{
-	border: solid 1px red;
 	color: red;
 	margin-bottom: 12px;
 	font-weight: bolder;

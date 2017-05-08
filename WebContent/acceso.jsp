@@ -70,14 +70,13 @@
 								<input class="form-control" type="password" id="inputPass" name="pass" placeholder="Introduzca su clave de acceso" required>
 						</div>
 						
-						<% if(session.getAttribute("log") != null){  %>
-						<%! 	String s1 = ""; 											%>
-						<% 		s1  = (String) session.getAttribute("log").toString();		%>
-    					<% 		if(s1.equals("errorLog")){ 									%>
+						<% 	if(session.getAttribute("log") != null){  								%>
+						<%! 	String s = ""; 														%>
+						<% 		s  = (String) session.getAttribute("log").toString();				%>
+    					<% 		if(s.equals("errorLog")){ 											%>
     								<div id="login-incorrecto">Email/Contraseña incorrectos</div>
-    					<% 		}
-    					  	
-						}
+    					<% 		}	
+							}
     					%>
 
 						<div class="form-group">

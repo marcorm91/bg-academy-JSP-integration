@@ -52,7 +52,35 @@ public class MProfesor {
 		         
     }
 
-	
+    
+public Object[] dameDatos(String user) {
+		
+		Object datos[] = new Object[22];
+		String selectDatosProf = "SELECT * FROM bgacademy.profesor WHERE usuario = ?";
+		
+		try{
+			 
+			 PreparedStatement sentencia = conexion.prepareStatement(selectDatosProf);
+			 
+			 sentencia.setString(1, user);
+
+			 ResultSet rs = sentencia.executeQuery();
+	         
+			 while(rs.next()){
+				 datos[0] = rs.getInt("iduser");
+				 datos[1] = rs.getString("nombre");
+				 datos[2] = rs.getString("apellido1");
+				 datos[3] = rs.getString("apellido2");
+				 datos[4] = rs.getString("usuario");
+				 datos[5] = rs.getString("pass");
+			 }
+	            
+		 }catch(Exception e){
+	    	 System.out.println(e);
+		 }
+		
+		return datos;
+	}
 
 }
 

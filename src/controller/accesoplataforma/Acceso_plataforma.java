@@ -32,6 +32,7 @@ public class Acceso_plataforma extends HttpServlet {
 	private String pass;
 	private boolean checkLogin_al, checkLogin_prof, checkLogin_gest, checkLogin_not;
 	private HttpSession hs;
+	private Object [] datos_prof, datos_alumn, datos_gest, datos_not;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -58,30 +59,58 @@ public class Acceso_plataforma extends HttpServlet {
 		//Comprobación de igualdad entre user y pass en tabla alumno.
 		checkLogin_al = modelo_alumno.checkLogin(user, pass);
 		if(checkLogin_al){
+			
+			//Sesión de login
 			hs.setAttribute("log", "logAlumn");
+			
+			//Sesión con los datos de alumno
+			datos_alumn = modelo_alumno.dameDatos(user);
+			hs.setAttribute("identificacion", datos_alumn);
 			response.sendRedirect("acceso/principal-alumno.jsp");
 			return;
+			
 		}else
 			//Comprobación de igualdad entre user y pass en tabla profesor.
 			checkLogin_prof = modelo_profesor.checkLogin(user, pass);
 			if(checkLogin_prof){
+				
+				//Sesión de login
 				hs.setAttribute("log", "logProf");
+				
+				//Sesión con los datos de profesor
+				datos_prof = modelo_profesor.dameDatos(user);
+				hs.setAttribute("identificacion", datos_prof);
 				response.sendRedirect("acceso/principal-profesor.jsp");	
 				return;
+				
 			}else
 				//Comprobación de igualdad entre user y pass en tabla gestor.
 				checkLogin_gest = modelo_gestor.checkLogin(user, pass);
 				if(checkLogin_gest){
+					
+					//Sesión de login
 					hs.setAttribute("log", "logGest");
+					
+					//Sesión con los datos de gestor
+					datos_gest = modelo_gestor.dameDatos(user);
+					hs.setAttribute("identificacion", datos_gest);
 					response.sendRedirect("acceso/principal-gestor.jsp");
 					return;
+					
 				}else
 					//Comprobación de igualdad entre user y pass en tabla noticiero.
-					checkLogin_not = modelo_noticiero.checkLogin(user, pass);
+					checkLogin_not = modelo_noticiero.checkLogin(user, pass);					
 					if(checkLogin_not){
+						
+						//Sesión de login
 						hs.setAttribute("log", "logNot");
+						
+						//Sesión con los datos de noticiero
+						datos_not = modelo_noticiero.dameDatos(user);
+						hs.setAttribute("identificacion", datos_not);
 						response.sendRedirect("acceso/principal-noticiario.jsp");
 						return;
+						
 					//Si tras una comprobación previa entre las 4 tablas no se cumple la igualidad entre
 					//user y pass, retornamos a la misma página de acceso (acceso.jsp).
 					}else{

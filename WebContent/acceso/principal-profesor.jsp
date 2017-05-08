@@ -1,5 +1,12 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 
+<% if(session.getAttribute("log") == null){  
+	response.sendRedirect("error.jsp");
+} else{
+%>
+
+<% Object[] datos_prof = (Object []) session.getAttribute("identificacion"); %>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -71,8 +78,8 @@
                          <li class="nav-item hidden-md-down" id="conectadoComo">  
                             <span class="nav-link">
                                 Conectado como 
-                                <span id="quien" title="Ir a Mi Perfil"> Marco </span>
-                                <a href="../index.jsp"> <span id="desconectar">(Desconectar)</span></a>
+                                <span id="quien" title="Ir a Mi Perfil"> <% out.print(datos_prof[1]); %> </span>
+                                <a href="${pageContext.request.contextPath}/Logout"> <span id="desconectar">(Desconectar)</span></a>
                             </span>
                         </li>
                     </ul>
@@ -84,8 +91,8 @@
             <div class="text-xs-center conectadoMobile">
                 <span class="nav-link hidden-lg-up">
                     Conectado como 
-                    <span id="quien" title="Ir a Mi Perfil"> Marco </span>
-                    <a href="../index.jsp"> <span id="desconectar">(Desconectar)</span></a>
+                    <span id="quien" title="Ir a Mi Perfil"> <% out.print(datos_prof[1]); %> </span>
+                    <a href="${pageContext.request.contextPath}/Logout"> <span id="desconectar">(Desconectar)</span></a>
                 </span> 
             </div>
         
@@ -129,7 +136,7 @@
                                 <p> Ayuda </p>
                             </div>
                              <div class="col-md-4 col-xs-12">
-                                <a href="../index.jsp"> <i class="fa fa-sign-out fa-4x" aria-hidden="true"> </i> </a> 
+                                <a href="${pageContext.request.contextPath}/Logout"> <i class="fa fa-sign-out fa-4x" aria-hidden="true"> </i> </a> 
                                 <p> Salir </p>
                             </div>
                         </div>
@@ -152,6 +159,8 @@
     <script src="${request.contextPath}/assets/js/jquery-3.1.1.min.js"></script>
     <script src="${request.contextPath}/assets/js/bootstrap.min.js"></script>
     <script src="${request.contextPath}/assets/js/jquery-ui.js"></script>
-    <script src="${request.contextPath}acceso/assets/js/script.js"></script>
+    <script src="${request.contextPath}/acceso/assets/js/script.js"></script>
 </body>
 </html>
+
+<% } %>
