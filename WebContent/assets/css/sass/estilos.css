@@ -333,7 +333,7 @@ body {
 /* line 394, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
 #contenedorAcceso {
   width: 100%;
-  height: 100%;
+  height: 100vh;
   background: linear-gradient(to bottom, #0058ab 0%, #77a4c2 100%);
   position: absolute; }
   /* line 400, C:/xampp/htdocs/design-project/assets/css/sass/estilos.scss */
@@ -633,5 +633,22 @@ body {
     margin: auto;
     width: 35%;
     color: #000000; } }
+    
+/** NUEVOS CAMBIOS **/
+#login-incorrecto{
+	border: solid 1px red;
+	color: red;
+	margin-bottom: 12px;
+	font-weight: bolder;
+	cursor: default;
+}
+
+#contenedorAcceso{
+	width: 100%;
+	height: 100vh;
+	background: linear-gradient(to bottom, #0058ab 0%, #77a4c2 100vh);
+	position: absolute;
+	overflow: auto;
+}
 
 /*# sourceMappingURL=estilos.css.map */

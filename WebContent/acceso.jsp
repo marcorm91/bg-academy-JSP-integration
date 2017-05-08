@@ -1,16 +1,41 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 
+<% if(session.getAttribute("log") != null){  %>
+		
+		<% 
+			
+			if(session.getAttribute("log").equals("logAlumn")){
+				response.sendRedirect("acceso/principal-alumno.jsp");
+				return;
+			}else
+				if(session.getAttribute("log").equals("logProf")){
+					response.sendRedirect("acceso/principal-profesor.jsp");
+					return;
+				}else
+					if(session.getAttribute("log").equals("logGest")){
+						response.sendRedirect("acceso/principal-gestor.jsp");
+						return;
+					}else
+						if(session.getAttribute("log").equals("logNot")){
+							response.sendRedirect("acceso/principal-noticiero.jsp");
+							return;
+						}
+		%>
+		
+<% } %>
+		
 <!DOCTYPE html>
 <html lang="es">
 <head>
 	<title>Acceso - Big Ben Academy</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="assets/css/sass/estilos.css">
-	<link rel="shortcut icon" href="assets/imagenes/favicon.ico">
+	<link rel="stylesheet" type="text/css" href="${request.contextPath}/assets/css/bootstrap/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="${request.contextPath}/assets/css/sass/estilos.css">
+	<link rel="shortcut icon" href="${request.contextPath}/assets/imagenes/favicon.ico">
 </head>
 <body>
+
 		<!-- Contenedor que engloba a todo el contenido de acceso.html -->
 		<div id="contenedorAcceso">
 
@@ -44,6 +69,16 @@
 							<label for="formGroup">Contraseña: </label>
 								<input class="form-control" type="password" id="inputPass" name="pass" placeholder="Introduzca su clave de acceso" required>
 						</div>
+						
+						<% if(session.getAttribute("log") != null){  %>
+						<%! 	String s1 = ""; 											%>
+						<% 		s1  = (String) session.getAttribute("log").toString();		%>
+    					<% 		if(s1.equals("errorLog")){ 									%>
+    								<div id="login-incorrecto">Email/Contraseña incorrectos</div>
+    					<% 		}
+    					  	
+						}
+    					%>
 
 						<div class="form-group">
 							<label> <input type="checkbox" id="checkSession"> Mantener iniciada mi sesión</label>
@@ -59,6 +94,7 @@
 								<button type="button" class="btn btn-danger">¿Perdió su clave/usuario de acceso?</button>
 							</div>
 						</div>
+						
 
 					</form>
 
@@ -70,12 +106,13 @@
 
 
 	<!-- jQuery -->
-	<script type="text/javascript" src="assets/js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="${request.contextPath}/assets/js/jquery-3.1.1.min.js"></script>
 	<!-- Tether -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
 	<!-- Bootstrap -->
-	<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="${request.contextPath}/assets/js/bootstrap.min.js"></script>
 	<!-- Script personal -->
-	<script type="text/javascript" src="assets/js/script.js"></script>
+	<script type="text/javascript" src="${request.contextPath}/assets/js/script.js"></script>
 </body>
 </html>
+
