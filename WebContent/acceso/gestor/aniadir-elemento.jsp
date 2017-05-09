@@ -1,5 +1,12 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 
+<% if(session.getAttribute("log") == null){  
+	response.sendRedirect("error.jsp");
+} else{
+%>
+
+<% Object[] datos_gest = (Object []) session.getAttribute("identificacion"); %>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -83,8 +90,8 @@
                         <li class="nav-item hidden-md-down" id="conectadoComo">  
                             <span class="nav-link">
                                 Conectado como 
-                                <span id="quien" title="Ir a Mi Perfil"> Marco </span>
-                                <a href="../../index.jsp"> <span id="desconectar">(Desconectar)</span></a>
+                                <span id="quien" title="Ir a Mi Perfil"> out.print(datos_gest[1]); </span>
+                                <a href="/Logout"> <span id="desconectar">(Desconectar)</span></a>
                             </span>
                         </li>
                     </ul>
@@ -96,8 +103,8 @@
             <div class="text-xs-center conectadoMobile">
                 <span class="nav-link hidden-lg-up">
                     Conectado como 
-                    <span id="quien" title="Ir a Mi Perfil"> Marco </span>
-                    <a href="../index.jsp"> <span id="desconectar">(Desconectar)</span></a>
+                    <span id="quien" title="Ir a Mi Perfil"> out.print(datos_gest[1]); </span>
+                    <a href="/Logout"> <span id="desconectar">(Desconectar)</span></a>
                 </span> 
             </div>
         
@@ -156,6 +163,7 @@
  <!------- MODALES ------->
     
  <!-- REGISTRAR PROFESOR -->
+ <form id="form-reg-profesor" action="/Regprofesor" method="post">
  <div class="modal fade" id="modal-aniadir-profesor" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
@@ -177,43 +185,43 @@
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Nombre:</label>
                 <div class="col-md-7">
-                    <input class="form-control" type="text" id="nombre-profesor">
+                    <input class="form-control" type="text" name="nombre-profesor" id="nombre-profesor">
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Apellido 1:</label>
                 <div class="col-md-7">
-                    <input class="form-control" type="text" id="apellido-1-profesor">
+                    <input class="form-control" type="text" name="apellido-1" id="apellido-1-profesor">
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Apellido 2:</label>
                 <div class="col-md-7">
-                    <input class="form-control" type="text" id="apellido-2-profesor">
+                    <input class="form-control" type="text" name="apellido-2" id="apellido-2-profesor">
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">NIF / NIE:</label>
                 <div class="col-md-4">
-                    <input class="form-control" type="text" id="nifnie-profesor">
+                    <input class="form-control" type="text" name="nif" id="nifnie-profesor">
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">F. de nacimiento:</label>
                 <div class="col-md-4">
-                    <input class="form-control" type="text" id="fecha-nacimiento-profesor">
+                    <input class="form-control" type="text" name="fecnac" id="fecha-nacimiento-profesor">
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Nacido en:</label>
                 <div class="col-md-7">
-                    <input class="form-control" type="text" id="nacimiento-profesor">
+                    <input class="form-control" type="text" name="nacimiento" id="nacimiento-profesor">
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Nacionalidad:</label>
                 <div class="col-md-7">
-                    <input class="form-control" type="text" id="nacionalidad-profesor">
+                    <input class="form-control" type="text" name="nacionalidad" id="nacionalidad-profesor">
                 </div>
             </div>
             <div class="row">
@@ -224,25 +232,25 @@
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Calle:</label>
                 <div class="col-md-7">
-                    <input class="form-control" type="text" id="calle-profesor">
+                    <input class="form-control" type="text" name="calle" id="calle-profesor">
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Código Postal:</label>
                 <div class="col-md-4">
-                    <input class="form-control" type="text" id="cp-profesor">
+                    <input class="form-control" type="text" name="cp" id="cp-profesor">
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Población:</label>
                 <div class="col-md-7">
-                    <input class="form-control" type="text" id="poblacion-profesor">
+                    <input class="form-control" type="text" name="poblacion" id="poblacion-profesor">
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Provincia:</label>
                 <div class="col-md-7">
-                    <input class="form-control" type="text" id="provincia-profesor">
+                    <input class="form-control" type="text" name="provincia" id="provincia-profesor">
                 </div>
             </div>
             <div class="row">
@@ -253,26 +261,26 @@
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Fecha de alta:</label>
                 <div class="col-md-4">
-                    <input class="form-control" type="text" id="fecha-alta-profesor" disabled>
+                    <input class="form-control" type="text" name="fecalta" id="fecha-alta-profesor" disabled>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">E-mail:</label>
                 <div class="col-md-7">
-                    <input class="form-control" type="text" id="email-profesor">
+                    <input class="form-control" type="text" name="email" id="email-profesor">
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Teléfono:</label>
                 <div class="col-md-4">
-                    <input class="form-control" type="text" id="tlf-profesor">
+                    <input class="form-control" type="text" name="tlf" id="tlf-profesor">
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Año promoción:</label>
                 <div class="col-md-7">
                     <!-- PROMOCIONES CURSOS REGISTRADOS PREVIAMENTE -->
-                    <select class="form-control" id="anio-curso">
+                    <select class="form-control" name="anio-curso" id="anio-curso">
                         <option>2011 - 2012</option>
                         <option>2012 - 2013</option>
                         <option>2013 - 2014</option>
@@ -285,7 +293,7 @@
                 <label class="col-md-3 col-form-label push-md-1">Cursos a impartir:</label>
                 <div class="col-md-7">
                     <!-- CURSOS REGISTRADOS PREVIAMENTE -->
-                    <select multiple class="form-control" id="cursos-profesor">
+                    <select multiple class="form-control" name="cursos" id="cursos-profesor">
                         <option>[A1] - Nivel Básico - 1er Curso</option>
                         <option>[A2] - Nivel Básico - 2º Curso</option>
                         <option>[B1] - Nivel Intermedio - 3er Curso</option>
@@ -299,18 +307,19 @@
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Foto perfil:</label>
                 <div class="col-md-7">
-                    <input class="form-control file" type="file" id="foto-profesor">
+                    <input class="form-control file" type="file" name="foto" id="foto-profesor">
                 </div>
             </div>
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary">Registrar</button>
+        <button type="submit" class="btn btn-primary">Registrar</button>
       </div>
     </div>
   </div>
 </div>
+</form>
     
     
  <!-- REGISTRAR ALUMNO -->
@@ -679,3 +688,5 @@
     
 </body>
 </html>
+
+<% } %>

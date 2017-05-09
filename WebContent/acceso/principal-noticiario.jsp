@@ -79,7 +79,7 @@
                             <span class="nav-link">
                                 Conectado como 
                                 <span id="quien" title="Ir a Mi Perfil"> <% out.print(datos_not[1]); %> </span>
-                                <a href="${pageContext.request.contextPath}/Logout"> <span id="desconectar">(Desconectar)</span></a>
+                                <a href="/Logout"> <span id="desconectar">(Desconectar)</span></a>
                             </span>
                         </li>
                     </ul>
@@ -92,7 +92,7 @@
                 <span class="nav-link hidden-lg-up">
                     Conectado como 
                     <span id="quien" title="Ir a Mi Perfil"> <% out.print(datos_not[1]); %> </span>
-                    <a href="../index.jsp"> <span id="desconectar">(Desconectar)</span></a>
+                    <a href="/Logout"> <span id="desconectar">(Desconectar)</span></a>
                 </span> 
             </div>
         
