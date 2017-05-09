@@ -1,9 +1,15 @@
 package model;
 
+import java.awt.List;
+import java.io.IOException;
+import java.sql.Array;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Date;
 
 public class MProfesor {
 	
@@ -53,7 +59,7 @@ public class MProfesor {
     }
 
     
-public Object[] dameDatos(String user) {
+    public Object[] dameDatos(String user) {
 		
 		Object datos[] = new Object[22];
 		String selectDatosProf = "SELECT * FROM bgacademy.profesor WHERE usuario = ?";
@@ -80,7 +86,70 @@ public Object[] dameDatos(String user) {
 		 }
 		
 		return datos;
-	}
+    }
+
+    /**
+     * Realiza un INSERT en la tabla profesor.
+     * @param nombre
+     * @param apellido1
+     * @param apellido2
+     * @param nif
+     * @param fecna_date
+     * @param nacimiento
+     * @param nacionalidad
+     * @param calle
+     * @param cp
+     * @param poblacion
+     * @param provincia
+     * @param fecalta_date
+     * @param email
+     * @param tlf
+     * @param anioprom
+     * @param cursoimp
+     * @throws IOException
+     */
+    public void registraProfesor(	String nombre, String apellido1, String apellido2, String nif, Date fecna_date,
+									String nacimiento, String nacionalidad, String calle, String cp, String poblacion, String provincia,
+									Date fecalta_date, String email, String tlf, String anioprom, String[] cursoimp) throws IOException {
+	
+    	String insertProf = "INSERT INTO bgacademy.profesor (nombre, apellido1, apellido2, usuario, pass, fnac, nif, nacimiento, nacionalidad, tipouser, calle, cp, provincia, poblacion, fecalta, email, tlf, anioprom, asignimp) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
+		  
+    	ArrayList<String> lista = new ArrayList<String>();
+    	for(int i = 0; i < cursoimp.length; i++) lista.add(cursoimp[i]);
+    	
+		 try{
+			 
+			 PreparedStatement sentencia = conexion.prepareStatement(insertProf);
+			 
+			 java.sql.Date sqlDate1 = new java.sql.Date(fecna_date.getTime());
+			 java.sql.Date sqlDate2 = new java.sql.Date(fecalta_date.getTime());		 
+			 
+			 	 sentencia.setString(1, nombre);
+				 sentencia.setString(2, apellido1);
+				 sentencia.setString(3, apellido2);
+				 sentencia.setString(4, nif);
+				 sentencia.setString(5, nif);
+				 sentencia.setDate(6, (java.sql.Date) sqlDate1);
+				 sentencia.setString(7, nif);
+				 sentencia.setString(8, nacimiento);
+				 sentencia.setString(9, nacionalidad);
+				 sentencia.setString(10, "P");
+				 sentencia.setString(11, calle);
+				 sentencia.setString(12, cp);
+				 sentencia.setString(13, poblacion);
+				 sentencia.setString(14, provincia);
+				 sentencia.setDate(15, (java.sql.Date) sqlDate2);
+				 sentencia.setString(16, email);
+				 sentencia.setString(17, tlf);
+				 sentencia.setString(18, anioprom);
+				 sentencia.setString(19, lista.toString());
+
+				 sentencia.executeUpdate();
+				 
+		 }catch(Exception e){
+	    	 System.out.println(e);
+		 }
+    }
 
 }
 

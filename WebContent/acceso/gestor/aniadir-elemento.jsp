@@ -191,13 +191,13 @@
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Apellido 1:</label>
                 <div class="col-md-7">
-                    <input class="form-control" type="text" name="apellido-1" id="apellido-1-profesor">
+                    <input class="form-control" type="text" name="apellido1" id="apellido-1-profesor">
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Apellido 2:</label>
                 <div class="col-md-7">
-                    <input class="form-control" type="text" name="apellido-2" id="apellido-2-profesor">
+                    <input class="form-control" type="text" name="apellido2" id="apellido-2-profesor">
                 </div>
             </div>
             <div class="form-group row">
@@ -209,7 +209,7 @@
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">F. de nacimiento:</label>
                 <div class="col-md-4">
-                    <input class="form-control" type="text" name="fecnac" id="fecha-nacimiento-profesor">
+                    <input class="form-control" type="text" name="fecna" id="fecha-nacimiento-profesor">
                 </div>
             </div>
             <div class="form-group row">
@@ -261,7 +261,7 @@
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Fecha de alta:</label>
                 <div class="col-md-4">
-                    <input class="form-control" type="text" name="fecalta" id="fecha-alta-profesor" disabled>
+                    <input class="form-control" type="text" name="fecalta" id="fecha-alta-profesor" readonly>
                 </div>
             </div>
             <div class="form-group row">
