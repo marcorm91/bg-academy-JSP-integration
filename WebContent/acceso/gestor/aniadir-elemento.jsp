@@ -1,5 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 
+
+
+
 <% if(session.getAttribute("log") == null){  
 	response.sendRedirect("error.jsp");
 } else{
@@ -90,7 +93,7 @@
                         <li class="nav-item hidden-md-down" id="conectadoComo">  
                             <span class="nav-link">
                                 Conectado como 
-                                <span id="quien" title="Ir a Mi Perfil"> out.print(datos_gest[1]); </span>
+                                <span id="quien" title="Ir a Mi Perfil"> <% out.print(datos_gest[1]); %> </span>
                                 <a href="/Logout"> <span id="desconectar">(Desconectar)</span></a>
                             </span>
                         </li>
@@ -103,7 +106,7 @@
             <div class="text-xs-center conectadoMobile">
                 <span class="nav-link hidden-lg-up">
                     Conectado como 
-                    <span id="quien" title="Ir a Mi Perfil"> out.print(datos_gest[1]); </span>
+                    <span id="quien" title="Ir a Mi Perfil"> <% out.print(datos_gest[1]); %> </span>
                     <a href="/Logout"> <span id="desconectar">(Desconectar)</span></a>
                 </span> 
             </div>
@@ -185,43 +188,43 @@
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Nombre:</label>
                 <div class="col-md-7">
-                    <input class="form-control" type="text" name="nombre-profesor" id="nombre-profesor">
+                    <input class="form-control" type="text" name="nombre-profesor" id="nombre-profesor" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Apellido 1:</label>
                 <div class="col-md-7">
-                    <input class="form-control" type="text" name="apellido1" id="apellido-1-profesor">
+                    <input class="form-control" type="text" name="apellido1" id="apellido-1-profesor" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Apellido 2:</label>
                 <div class="col-md-7">
-                    <input class="form-control" type="text" name="apellido2" id="apellido-2-profesor">
+                    <input class="form-control" type="text" name="apellido2" id="apellido-2-profesor" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">NIF / NIE:</label>
                 <div class="col-md-4">
-                    <input class="form-control" type="text" name="nif" id="nifnie-profesor">
+                    <input class="form-control" type="text" name="nif" id="nifnie-profesor" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">F. de nacimiento:</label>
                 <div class="col-md-4">
-                    <input class="form-control" type="text" name="fecna" id="fecha-nacimiento-profesor">
+                    <input class="form-control" type="text" name="fecna" id="fecha-nacimiento-profesor" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Nacido en:</label>
                 <div class="col-md-7">
-                    <input class="form-control" type="text" name="nacimiento" id="nacimiento-profesor">
+                    <input class="form-control" type="text" name="nacimiento" id="nacimiento-profesor" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Nacionalidad:</label>
                 <div class="col-md-7">
-                    <input class="form-control" type="text" name="nacionalidad" id="nacionalidad-profesor">
+                    <input class="form-control" type="text" name="nacionalidad" id="nacionalidad-profesor" required>
                 </div>
             </div>
             <div class="row">
@@ -232,25 +235,25 @@
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Calle:</label>
                 <div class="col-md-7">
-                    <input class="form-control" type="text" name="calle" id="calle-profesor">
+                    <input class="form-control" type="text" name="calle" id="calle-profesor" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Código Postal:</label>
                 <div class="col-md-4">
-                    <input class="form-control" type="text" name="cp" id="cp-profesor">
+                    <input class="form-control" type="text" name="cp" id="cp-profesor" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Población:</label>
                 <div class="col-md-7">
-                    <input class="form-control" type="text" name="poblacion" id="poblacion-profesor">
+                    <input class="form-control" type="text" name="poblacion" id="poblacion-profesor" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Provincia:</label>
                 <div class="col-md-7">
-                    <input class="form-control" type="text" name="provincia" id="provincia-profesor">
+                    <input class="form-control" type="text" name="provincia" id="provincia-profesor" required>
                 </div>
             </div>
             <div class="row">
@@ -267,20 +270,20 @@
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">E-mail:</label>
                 <div class="col-md-7">
-                    <input class="form-control" type="text" name="email" id="email-profesor">
+                    <input class="form-control" type="text" name="email" id="email-profesor" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Teléfono:</label>
                 <div class="col-md-4">
-                    <input class="form-control" type="text" name="tlf" id="tlf-profesor">
+                    <input class="form-control" type="text" name="tlf" id="tlf-profesor" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Año promoción:</label>
                 <div class="col-md-7">
                     <!-- PROMOCIONES CURSOS REGISTRADOS PREVIAMENTE -->
-                    <select class="form-control" name="anio-curso" id="anio-curso">
+                    <select class="form-control" name="anio-curso" id="anio-curso" required>
                         <option>2011 - 2012</option>
                         <option>2012 - 2013</option>
                         <option>2013 - 2014</option>
@@ -293,7 +296,7 @@
                 <label class="col-md-3 col-form-label push-md-1">Cursos a impartir:</label>
                 <div class="col-md-7">
                     <!-- CURSOS REGISTRADOS PREVIAMENTE -->
-                    <select multiple class="form-control" name="cursos" id="cursos-profesor">
+                    <select multiple class="form-control" name="cursos" id="cursos-profesor" required>
                         <option>[A1] - Nivel Básico - 1er Curso</option>
                         <option>[A2] - Nivel Básico - 2º Curso</option>
                         <option>[B1] - Nivel Intermedio - 3er Curso</option>
@@ -302,12 +305,6 @@
                         <option>[C1] - Nivel Avanzado - 6º Curso</option>
                         <option>[C2] - Nivel Avanzado - 7º Curso</option>
                     </select>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label class="col-md-3 col-form-label push-md-1">Foto perfil:</label>
-                <div class="col-md-7">
-                    <input class="form-control file" type="file" name="foto" id="foto-profesor">
                 </div>
             </div>
         </div>
@@ -323,6 +320,7 @@
     
     
  <!-- REGISTRAR ALUMNO -->
+  <form id="form-reg-alumno" action="/Regalumno" method="post">
  <div class="modal fade" id="modal-aniadir-alumno" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
@@ -344,43 +342,43 @@
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Nombre:</label>
                 <div class="col-md-7">
-                    <input class="form-control" type="text" id="nombre-alumno">
+                    <input class="form-control" type="text" name="nombre-alumno" id="nombre-alumno" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Apellido 1:</label>
                 <div class="col-md-7">
-                    <input class="form-control" type="text" id="apellido-1-alumno">
+                    <input class="form-control" type="text" name="apellido1" id="apellido-1-alumno" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Apellido 2:</label>
                 <div class="col-md-7">
-                    <input class="form-control" type="text" id="apellido-2-alumno">
+                    <input class="form-control" type="text" name="apellido2" id="apellido-2-alumno" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">NIF / NIE:</label>
                 <div class="col-md-4">
-                    <input class="form-control" type="text" id="nifnie-alumno">
+                    <input class="form-control" type="text" name="nif" id="nifnie-alumno" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">F. de nacimiento:</label>
                 <div class="col-md-4">
-                    <input class="form-control" type="text" id="fecha-nacimiento-alumno">
+                    <input class="form-control" type="text" name="fecna" id="fecha-nacimiento-alumno" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Nacido en:</label>
                 <div class="col-md-7">
-                    <input class="form-control" type="text" id="nacimiento-alumno">
+                    <input class="form-control" type="text" name="nacimiento" id="nacimiento-alumno" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Nacionalidad:</label>
                 <div class="col-md-7">
-                    <input class="form-control" type="text" id="nacionalidad-alumno">
+                    <input class="form-control" type="text" name="nacionalidad" id="nacionalidad-alumno" required>
                 </div>
             </div>
             <div class="row">
@@ -391,25 +389,25 @@
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Calle:</label>
                 <div class="col-md-7">
-                    <input class="form-control" type="text" id="calle-alumno">
+                    <input class="form-control" type="text" name="calle" id="calle-alumno" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Código Postal:</label>
                 <div class="col-md-7">
-                    <input class="form-control" type="text" id="cp-alumno">
+                    <input class="form-control" type="text" name="cp" id="cp-alumno" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Población:</label>
                 <div class="col-md-7">
-                    <input class="form-control" type="text" id="poblacion-alumno">
+                    <input class="form-control" type="text" name="poblacion" id="poblacion-alumno" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Provincia:</label>
                 <div class="col-md-7">
-                    <input class="form-control" type="text" id="provincia-alumno">
+                    <input class="form-control" type="text" name="provincia" id="provincia-alumno" required>
                 </div>
             </div>
             <div class="row">
@@ -420,26 +418,26 @@
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Fecha de alta:</label>
                 <div class="col-md-4">
-                    <input class="form-control" type="text" id="fecha-alta-alumno" disabled>
+                    <input class="form-control" type="text" name="fecalta" id="fecha-alta-alumno" readonly>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">E-mail:</label>
                 <div class="col-md-7">
-                    <input class="form-control" type="text" id="email-alumno">
+                    <input class="form-control" type="text" name="email" id="email-alumno" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Teléfono:</label>
                 <div class="col-md-4">
-                    <input class="form-control" type="text" id="tlf-alumno">
+                    <input class="form-control" type="text" name="tlf" id="tlf-alumno" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Año promoción:</label>
                 <div class="col-md-7">
                     <!-- PROMOCIONES CURSOS REGISTRADOS PREVIAMENTE -->
-                    <select class="form-control" id="anio-curso">
+                    <select class="form-control" id="anio-curso" name="anio-curso" required>
                         <option>2011 - 2012</option>
                         <option>2012 - 2013</option>
                         <option>2013 - 2014</option>
@@ -452,7 +450,7 @@
                 <label class="col-md-3 col-form-label push-md-1">Selección de curso:</label>
                 <div class="col-md-7">
                     <!-- CURSOS REGISTRADOS PREVIAMENTE -->
-                    <select class="form-control" id="curso-alumno">
+                    <select class="form-control" id="curso-alumno" name="curso" required>
                         <option>[A1] - Nivel Básico - 1er Curso</option>
                         <option>[A2] - Nivel Básico - 2º Curso </option>
                         <option>[B1] - Nivel Intermedio - 3er Curso</option>
@@ -463,27 +461,22 @@
                     </select>
                 </div>
             </div>
-            <div class="form-group row">
-                <label class="col-md-3 col-form-label push-md-1">Foto perfil:</label>
-                <div class="col-md-7">
-                    <input class="form-control file" type="file" id="foto-alumno">
-                </div>
-            </div>
             <div class="form-group contenedor-comentarios">
                 <label class="col-md-3 col-form-label push-md-1">Comentarios:</label>
                     <div class="col-md-7">
-                        <textarea class="form-control" id="comentario-alumno" rows="7"></textarea>
+                        <textarea class="form-control" name="comentarios" id="comentario-alumno" rows="7" required></textarea>
                     </div>
                 </div>
             </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary">Registrar</button>
+        <button type="submit" class="btn btn-primary">Registrar</button>
       </div>
     </div>
   </div>
-</div>   
+</div>
+</form>
     
 <!-- REGISTRAR NOTICIARIO -->
  <div class="modal fade" id="modal-aniadir-noticiario" tabindex="-1" role="dialog" aria-hidden="true">
@@ -683,7 +676,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
     <script src="../../assets/js/jquery-3.1.1.min.js"></script>
     <script src="../../assets/js/bootstrap.min.js"></script>
-    <script src="../../assets/js/jquery-ui.js"></script>
+    <script src="../../assets/js/jquery-ui.js"></script>    
     <script src="../assets/js/script.js"></script>
     
 </body>

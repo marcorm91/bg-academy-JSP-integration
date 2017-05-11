@@ -2,11 +2,11 @@ package controller.gestor.regelemento;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -14,44 +14,44 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.Conexion;
-import model.MProfesor;
+import model.MAlumno;
+
 
 /**
- * Servlet implementation class Regprofesor
+ * Servlet implementation class Regalumno
  */
-@WebServlet("/Regprofesor")
-public class Regprofesor extends HttpServlet {
+@WebServlet("/Regalumno")
+public class Regalumno extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession hs;
-	private MProfesor modelo_profesor;
+	private MAlumno modelo_alumno;
 	private Conexion conexionBD;
-	private String nombre, apellido1, apellido2, nif, nacimiento, nacionalidad, calle, cp, poblacion, provincia, email, tlf, anioprom;
+	private String nombre, apellido1, apellido2, nif, nacimiento, nacionalidad, calle, cp, poblacion, provincia, email, tlf, anioprom, cursoasign, comentarios;
 	private String fecna, fecalta;
-	private String[] cursoimp;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Regprofesor() {
+    public Regalumno() {
         super();
         conexionBD = new Conexion();
-        modelo_profesor = new MProfesor(conexionBD.getConexion());
+        modelo_alumno = new MAlumno(conexionBD.getConexion());
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-				
+		
 		hs = request.getSession();
 		
 		if(hs.getAttribute("log") == null){
 			response.sendRedirect("error.jsp");
 		}else{
-
+			
 			try{
 				nif = request.getParameter("nif");
-				nombre = request.getParameter("nombre-profesor");
+				nombre = request.getParameter("nombre-alumno");
 				apellido1 = request.getParameter("apellido1");
 				apellido2 = request.getParameter("apellido2");
 				fecna = request.getParameter("fecna");
@@ -65,7 +65,8 @@ public class Regprofesor extends HttpServlet {
 				email = request.getParameter("email");
 				tlf = request.getParameter("tlf");
 				anioprom = request.getParameter("anio-curso");
-				cursoimp = request.getParameterValues("cursos");
+				cursoasign = request.getParameter("curso");
+				comentarios = request.getParameter("comentarios");
 									
 				SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 				Date fecna_date = null;
@@ -83,14 +84,14 @@ public class Regprofesor extends HttpServlet {
 					e.printStackTrace();
 				}
 				
-				File dir = new File("WebContent/recursos/profesores/"+nif+"/fotopersonal");
+				File dir = new File("WebContent/recursos/alumnos/"+nif+"/fotopersonal");
 				dir.mkdirs();
 				
-				dir = new File("WebContent/recursos/profesores/"+nif+"/dirpersonal");
+				dir = new File("WebContent/recursos/alumnos/"+nif+"/dirpersonal");
 				dir.mkdirs();
 				
 		
-				modelo_profesor.registraProfesor(	nombre, 
+				modelo_alumno.registraAlumno(		nombre, 
 													apellido1, 
 													apellido2, 
 													nif, 
@@ -105,7 +106,8 @@ public class Regprofesor extends HttpServlet {
 													email,
 													tlf,
 													anioprom,
-													cursoimp);
+													cursoasign,
+													comentarios);
 				
 				response.sendRedirect("acceso/principal-gestor.jsp");
 
@@ -113,7 +115,10 @@ public class Regprofesor extends HttpServlet {
 				response.sendRedirect("acceso/principal-gestor.jsp");
 				System.out.println(e);
 			}
-		}		
+			
+		}
+		
+		
 	}
 
 	/**
