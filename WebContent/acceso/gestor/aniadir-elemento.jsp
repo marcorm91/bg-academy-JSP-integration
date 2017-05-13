@@ -320,7 +320,7 @@
     
     
  <!-- REGISTRAR ALUMNO -->
-  <form id="form-reg-alumno" action="/Regalumno" method="post">
+ <form id="form-reg-alumno" action="/Regalumno" method="post">
  <div class="modal fade" id="modal-aniadir-alumno" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
@@ -479,6 +479,7 @@
 </form>
     
 <!-- REGISTRAR NOTICIARIO -->
+<form id="form-reg-noticiario" action="/Regnoticiario" method="post">
  <div class="modal fade" id="modal-aniadir-noticiario" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
@@ -500,19 +501,25 @@
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Nombre:</label>
                 <div class="col-md-7">
-                    <input class="form-control" type="text" id="nombre-noticiario">
+                    <input class="form-control" type="text" name="nombre-noticiario" id="nombre-noticiario" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Apellido 1:</label>
                 <div class="col-md-7">
-                    <input class="form-control" type="text" id="apellido-1-noticiario">
+                    <input class="form-control" type="text" name="apellido1" id="apellido-1-noticiario" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Apellido 2:</label>
                 <div class="col-md-7">
-                    <input class="form-control" type="text" id="apellido-2-noticiario">
+                    <input class="form-control" type="text" name="apellido2" id="apellido-2-noticiario" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-3 col-form-label push-md-1">NIF/NIE:</label>
+                <div class="col-md-7">
+                    <input class="form-control" name="nif" type="text" id="nif-noticiario" required>
                 </div>
             </div>
             <div class="row">
@@ -523,32 +530,34 @@
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Fecha de alta:</label>
                 <div class="col-md-4">
-                    <input class="form-control" type="text" id="fecha-alta-noticiario" disabled>
+                    <input class="form-control" type="text" name="fecalta" id="fecha-alta-noticiario" readonly>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">E-mail:</label>
                 <div class="col-md-7">
-                    <input class="form-control" type="text" id="email-noticiario">
+                    <input class="form-control" type="text" name="email" id="email-noticiario" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Teléfono:</label>
                 <div class="col-md-4">
-                    <input class="form-control" type="text" id="tlf-noticiario">
+                    <input class="form-control" type="text" name="tlf" id="tlf-noticiario" required>
                 </div>
             </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary">Registrar</button>
+        <button type="submit" class="btn btn-primary">Registrar</button>
       </div>
     </div>
   </div>
  </div>  
 </div>
+</form>
 
 <!-- REGISTRAR GESTOR -->
+<form id="form-reg-gestor" action="/Reggestor" method="post">
  <div class="modal fade" id="modal-aniadir-gestor" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
@@ -570,19 +579,25 @@
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Nombre:</label>
                 <div class="col-md-7">
-                    <input class="form-control" type="text" id="nombre-gestor">
+                    <input class="form-control" name="nombre-gestor" type="text" id="nombre-gestor" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Apellido 1:</label>
                 <div class="col-md-7">
-                    <input class="form-control" type="text" id="apellido-1-gestor">
+                    <input class="form-control" name="apellido1" type="text" id="apellido-1-gestor" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Apellido 2:</label>
                 <div class="col-md-7">
-                    <input class="form-control" type="text" id="apellido-2-gestor">
+                    <input class="form-control" name="apellido2" type="text" id="apellido-2-gestor" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-3 col-form-label push-md-1">NIF/NIE:</label>
+                <div class="col-md-7">
+                    <input class="form-control" name="nif" type="text" id="nif-gestor" required>
                 </div>
             </div>
             <div class="row">
@@ -593,32 +608,34 @@
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Fecha de alta:</label>
                 <div class="col-md-4">
-                    <input class="form-control" type="text" id="fecha-alta-gestor" disabled>
+                    <input class="form-control" type="text" name="fecalta" id="fecha-alta-gestor" readonly>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">E-mail:</label>
                 <div class="col-md-7">
-                    <input class="form-control" type="text" id="email-gestor">
+                    <input class="form-control" type="text" name="email" id="email-gestor" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Teléfono:</label>
                 <div class="col-md-4">
-                    <input class="form-control" type="text" id="tlf-gestor">
+                    <input class="form-control" type="text" name="tlf" id="tlf-gestor" required>
                 </div>
             </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary">Registrar</button>
+        <button type="submits" class="btn btn-primary">Registrar</button>
       </div>
     </div>
   </div>
  </div>  
 </div>
+</form>
     
 <!-- REGISTRAR CURSO -->
+<form id="form-reg-gestor" action="/Regcurso" method="post">
  <div class="modal fade" id="modal-aniadir-curso" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
@@ -640,7 +657,7 @@
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Tipo curso:</label>
                 <div class="col-md-7">
-                    <select class="form-control" id="curso-alumno">
+                    <select class="form-control" id="curso" name="curso" required>
                         <option>[A1] - Nivel Básico - 1er Curso</option>
                         <option>[A2] - Nivel Básico - 2º Curso</option>
                         <option>[B1] - Nivel Intermedio - 3er Curso</option>
@@ -654,24 +671,25 @@
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Año inicio: </label>
                 <div class="col-md-2">
-                    <input class="form-control" type="text" id="anio-inicial-curso">
+                    <input class="form-control" name="anioinicio" type="text" id="anio-inicial-curso" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Año fin: </label>
                 <div class="col-md-2">
-                    <input class="form-control" type="text" id="anio-fin-curso">
+                    <input class="form-control" name="aniofin" type="text" id="anio-fin-curso" required>
                 </div>
             </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary">Registrar</button>
+        <button type="submit" class="btn btn-primary">Registrar</button>
       </div>
     </div>
   </div>
  </div>  
 </div>
+</form>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
     <script src="../../assets/js/jquery-3.1.1.min.js"></script>

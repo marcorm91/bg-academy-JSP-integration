@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 
 public class MGestor {
 	
@@ -80,6 +81,48 @@ public Object[] dameDatos(String user) {
 		 }
 		
 		return datos;
+	}
+
+
+	/**
+	 * Regista gestor en la base de datos.
+	 * @param nombre
+	 * @param apellido1
+	 * @param apellido2
+	 * @param nif
+	 * @param fecna_date
+	 * @param fecalta_date
+	 * @param email
+	 * @param tlf
+	 */
+	public void registraGestor(	String nombre, String apellido1, String apellido2, String nif,
+								Date fecalta_date, String email, String tlf) {
+		
+		String insertGestor = "INSERT INTO bgacademy.gestor (nombre, apellido1, apellido2, usuario, pass, nif, tipouser, fecalta, email, tlf) VALUES (?,?,?,?,?,?,?,?,?,?);";
+		
+		try{
+			 
+			 PreparedStatement sentencia = conexion.prepareStatement(insertGestor);
+			 
+			 java.sql.Date sqlDate1 = new java.sql.Date(fecalta_date.getTime());		 
+			 
+			 	 sentencia.setString(1, nombre);
+				 sentencia.setString(2, apellido1);
+				 sentencia.setString(3, apellido2);
+				 sentencia.setString(4, nif);
+				 sentencia.setString(5, nif);
+				 sentencia.setString(6, nif);
+				 sentencia.setString(7, "G");
+				 sentencia.setDate(8, (java.sql.Date) sqlDate1);		
+				 sentencia.setString(9, email);
+				 sentencia.setString(10, tlf);
+				 
+				 sentencia.executeUpdate();
+				 
+		 }catch(Exception e){
+	    	 System.out.println(e);
+		 }
+		
 	}
 
 }

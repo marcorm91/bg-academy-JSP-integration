@@ -40,7 +40,7 @@ public class Logout extends HttpServlet {
 		hs.invalidate();
 				
 		// Redirigimos a index.jsp
-		response.sendRedirect("index.jsp");
+		response.sendRedirect("acceso.jsp");
 		
 	}
 
