@@ -5,7 +5,12 @@
 } else{
 %>
 
-<% Object[] datos_gest = (Object []) session.getAttribute("identificacion"); %>
+<% 
+	Object[] datos_gest = (Object []) session.getAttribute("identificacion"); 
+	if(datos_gest[3] != "G"){
+		response.sendRedirect("error.jsp");
+	}else{
+%>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -190,4 +195,7 @@
 </body>
 </html>
 
-<% } %>
+<% 		
+		}
+	}
+%>

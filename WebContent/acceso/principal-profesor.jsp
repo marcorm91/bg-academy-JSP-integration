@@ -5,7 +5,12 @@
 } else{
 %>
 
-<% Object[] datos_prof = (Object []) session.getAttribute("identificacion"); %>
+<% 
+	Object[] datos_prof = (Object []) session.getAttribute("identificacion"); 
+	if(datos_prof[3] != "P"){
+		response.sendRedirect("error.jsp");
+	}else{
+%>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -163,4 +168,7 @@
 </body>
 </html>
 
-<% } %>
+<% 		
+		}
+	}
+%>

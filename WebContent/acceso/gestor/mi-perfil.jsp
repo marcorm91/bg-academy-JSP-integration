@@ -1,11 +1,13 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 
-<% if(session.getAttribute("log") == null){  
-	response.sendRedirect("error.jsp");
-} else{
-%>
-
 <% Object[] datos_gest = (Object []) session.getAttribute("identificacion"); %>
+
+<% 
+	// Si la session es nula (sin identificación previa) ó el tipo de user no es gestor...
+	if(session.getAttribute("log") == null || datos_gest[3] != "G"){  
+		response.sendRedirect("error.jsp");
+	} else{
+%>
 
 <!DOCTYPE html>
 <html lang="es">

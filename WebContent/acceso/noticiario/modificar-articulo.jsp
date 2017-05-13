@@ -1,11 +1,13 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 
-<% if(session.getAttribute("log") == null){  
-	response.sendRedirect("error.jsp");
-} else{
-%>
+<% Object[] datos_not = (Object []) session.getAttribute("identificacion"); %>
 
-<% Object[] datos_gest = (Object []) session.getAttribute("identificacion"); %>
+<% 
+	// Si la session es nula (sin identificación previa) ó el tipo de user no es noticiario...
+	if(session.getAttribute("log") == null || datos_not[3] != "N"){  
+		response.sendRedirect("error.jsp");
+	} else{
+%>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -78,7 +80,7 @@
                         <li class="nav-item hidden-md-down" id="conectadoComo">  
                             <span class="nav-link">
                                 Conectado como 
-                                <span id="quien" title="Ir a Mi Perfil"> <% out.print(datos_gest[1]); %> </span>
+                                <span id="quien" title="Ir a Mi Perfil"> <% out.print(datos_not[1]); %> </span>
                                 <a href="/Logout"> <span id="desconectar">(Desconectar)</span></a>
                             </span>
                         </li>
@@ -91,7 +93,7 @@
             <div class="text-xs-center conectadoMobile">
                 <span class="nav-link hidden-lg-up">
                     Conectado como 
-                    <span id="quien" title="Ir a Mi Perfil"> <% out.print(datos_gest[1]); %> </span>
+                    <span id="quien" title="Ir a Mi Perfil"> <% out.print(datos_not[1]); %> </span>
                     <a href="/Logout"> <span id="desconectar">(Desconectar)</span></a>
                 </span> 
             </div>
