@@ -1,8 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 
-
-
-
 <% if(session.getAttribute("log") == null){  
 	response.sendRedirect("error.jsp");
 } else{
@@ -85,7 +82,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../../index.jsp" title="Salir">
+                            <a class="nav-link" href="/Logout" title="Salir">
                                 <i class="fa fa-sign-out fa-2x" aria-hidden="true"></i>
                                 <span class="hidden-sm-up"> Salir </span>
                             </a>
