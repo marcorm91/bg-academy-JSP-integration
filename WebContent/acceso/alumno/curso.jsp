@@ -1,10 +1,35 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 
+<% 
+// 		 DATOS RELEVANTES PARA IMPRIMIR POR PANTALLA
+// 		 datos[0] = "iduser";
+// 		 datos[1] = "tipouser";
+// 		 datos[2] = "nombre";
+// 		 datos[3] = "apellido1";
+// 		 datos[4] = "apellido2";
+// 		 datos[5] = "usuario";
+// 		 datos[6] = "pass";
+// 		 datos[7] = "nif";
+// 		 datos[8] = "fnac";
+// 		 datos[9] = "nacimiento";
+// 		 datos[10] = "nacionalidad";
+// 		 datos[11] = "calle";
+// 		 datos[12] = "cp";
+// 		 datos[13] = "poblacion";
+// 		 datos[14] = "provincia";
+// 		 datos[15] = "fecalta";
+// 		 datos[16] = "anioprom";
+// 		 datos[17] = "cursoasign";
+// 		 datos[18] = "comentarios";
+// 		 datos[19] = "tlf";
+// 		 datos[20] = "email";
+%>
+
 <% Object[] datos_alumn = (Object []) session.getAttribute("identificacion"); %>
 
 <% 
 	// Si la session es nula (sin identificación previa) ó el tipo de user no es alumno...
-	if(session.getAttribute("log") == null || datos_alumn[3] != "A"){  
+	if(session.getAttribute("log") == null || !datos_alumn[1].equals("A")){  
 		response.sendRedirect("error.jsp");
 	} else{
 %>
@@ -92,7 +117,7 @@
                         <li class="nav-item hidden-md-down" id="conectadoComo">  
                             <span class="nav-link">
                                 Conectado como 
-                                <span id="quien" title="Ir a Mi Perfil"> <% out.print(datos_alumn[1]); %> </span>
+                                <span id="quien" title="Ir a Mi Perfil"> <% out.print(datos_alumn[2]); %> </span>
                                 <a href="/Logout"> <span id="desconectar">(Desconectar)</span></a>
                             </span>
                         </li>
@@ -105,7 +130,7 @@
             <div class="text-xs-center conectadoMobile">
                 <span class="nav-link hidden-lg-up">
                     Conectado como 
-                    <span id="quien" title="Ir a Mi Perfil"> <% out.print(datos_alumn[1]); %> </span>
+                    <span id="quien" title="Ir a Mi Perfil"> <% out.print(datos_alumn[2]); %> </span>
                     <a href="/Logout"> <span id="desconectar">(Desconectar)</span></a>
                 </span> 
             </div>

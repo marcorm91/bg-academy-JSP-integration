@@ -69,11 +69,16 @@ public Object[] dameDatos(String user) {
 	         
 			 while(rs.next()){
 				 datos[0] = rs.getInt("iduser");
-				 datos[1] = rs.getString("nombre");
-				 datos[2] = rs.getString("apellido1");
-				 datos[3] = rs.getString("apellido2");
-				 datos[4] = rs.getString("usuario");
-				 datos[5] = rs.getString("pass");
+				 datos[1] = rs.getString("tipouser");
+				 datos[2] = rs.getString("nombre");
+				 datos[3] = rs.getString("apellido1");
+				 datos[4] = rs.getString("apellido2");
+				 datos[5] = rs.getString("usuario");
+				 datos[6] = rs.getString("pass");
+				 datos[7] = rs.getDate("fecalta");
+				 datos[8] = rs.getString("email");
+				 datos[9] = rs.getString("nif");
+				 datos[10] = rs.getString("tlf");
 			 }
 	            
 		 }catch(Exception e){

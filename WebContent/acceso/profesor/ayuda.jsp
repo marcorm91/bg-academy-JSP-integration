@@ -1,11 +1,36 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 
-<% if(session.getAttribute("log") == null){  
-	response.sendRedirect("error.jsp");
-} else{
+<%
+//	 DATOS RELEVANTES PARA IMPRIMIR POR PANTALLA
+// 	 datos[0] = "iduser";
+// 	 datos[1] = "tipouser";
+// 	 datos[2] = "nombre";
+// 	 datos[3] = "apellido1";
+// 	 datos[4] = "apellido2";
+// 	 datos[5] = "usuario";
+// 	 datos[6] = "pass";
+// 	 datos[7] = "fnac";
+// 	 datos[8] = "nif";
+// 	 datos[9] = "nacimiento";
+// 	 datos[10] = "calle";
+// 	 datos[11] = "cp";
+// 	 datos[12] = "provincia";
+// 	 datos[13] = "poblacion";
+// 	 datos[14] = "fecalta";
+// 	 datos[15] = "email";
+// 	 datos[16] = "tlf";
+// 	 datos[17] = "anioprom";
+// 	 datos[18] = "asignimp";	
 %>
 
-<% Object[] datos_gest = (Object []) session.getAttribute("identificacion"); %>
+<% Object[] datos_prof = (Object []) session.getAttribute("identificacion"); %>
+
+<% 
+	// Si la session es nula (sin identificación previa) ó el tipo de user no es profesor...
+	if(session.getAttribute("log") == null || !datos_prof[1].equals("P")){  
+		response.sendRedirect("error.jsp");
+	} else{
+%>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -78,7 +103,7 @@
                         <li class="nav-item hidden-md-down" id="conectadoComo">  
                             <span class="nav-link">
                                 Conectado como 
-                                <span id="quien" title="Ir a Mi Perfil"> <% out.print(datos_gest[1]); %> </span>
+                                <span id="quien" title="Ir a Mi Perfil"> <% out.print(datos_prof[2]); %> </span>
                                 <a href="/Logout"> <span id="desconectar">(Desconectar)</span></a>
                             </span>
                         </li>
@@ -91,7 +116,7 @@
             <div class="text-xs-center conectadoMobile">
                 <span class="nav-link hidden-lg-up">
                     Conectado como 
-                    <span id="quien" title="Ir a Mi Perfil"> <% out.print(datos_gest[1]); %> </span>
+                    <span id="quien" title="Ir a Mi Perfil"> <% out.print(datos_prof[2]); %> </span>
                     <a href="/Logout"> <span id="desconectar">(Desconectar)</span></a>
                 </span> 
             </div>

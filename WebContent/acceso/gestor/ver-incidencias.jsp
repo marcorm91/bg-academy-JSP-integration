@@ -1,10 +1,25 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 
+<%
+// 	DATOS RELEVANTES PARA IMPRIMIR POR PANTALLA
+// 	datos[0] = "iduser";
+// 	datos[1] = "tipouser";
+// 	datos[2] = "nombre";
+// 	datos[3] = "apellido1";
+// 	datos[4] = "apellido2";
+// 	datos[5] = "usuario";
+// 	datos[6] = "pass";
+// 	datos[7] = "fecalta";
+// 	datos[8] = "email";
+// 	datos[9] = "nif";
+// 	datos[10] = "tlf";
+%>
+
 <% Object[] datos_gest = (Object []) session.getAttribute("identificacion"); %>
 
 <% 
 	// Si la session es nula (sin identificación previa) ó el tipo de user no es gestor...
-	if(session.getAttribute("log") == null || datos_gest[3] != "G"){  
+	if(session.getAttribute("log") == null || !datos_gest[1].equals("G")){  
 		response.sendRedirect("error.jsp");
 	} else{
 %>

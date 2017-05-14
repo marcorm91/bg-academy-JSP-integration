@@ -1,10 +1,36 @@
+<%@page import="java.text.SimpleDateFormat"%>
 <%@ page contentType="text/html; charset=UTF-8" %>
+
+<% 
+// 		 DATOS RELEVANTES PARA IMPRIMIR POR PANTALLA
+// 		 datos[0] = "iduser";
+// 		 datos[1] = "tipouser";
+// 		 datos[2] = "nombre";
+// 		 datos[3] = "apellido1";
+// 		 datos[4] = "apellido2";
+// 		 datos[5] = "usuario";
+// 		 datos[6] = "pass";
+// 		 datos[7] = "nif";
+// 		 datos[8] = "fnac";
+// 		 datos[9] = "nacimiento";
+// 		 datos[10] = "nacionalidad";
+// 		 datos[11] = "calle";
+// 		 datos[12] = "cp";
+// 		 datos[13] = "poblacion";
+// 		 datos[14] = "provincia";
+// 		 datos[15] = "fecalta";
+// 		 datos[16] = "anioprom";
+// 		 datos[17] = "cursoasign";
+// 		 datos[18] = "comentarios";
+// 		 datos[19] = "tlf";
+// 		 datos[20] = "email";
+%>
 
 <% Object[] datos_alumn = (Object []) session.getAttribute("identificacion"); %>
 
 <% 
 	// Si la session es nula (sin identificación previa) ó el tipo de user no es alumno...
-	if(session.getAttribute("log") == null || datos_alumn[3] != "A"){  
+	if(session.getAttribute("log") == null || !datos_alumn[1].equals("A")){  
 		response.sendRedirect("error.jsp");
 	} else{
 %>
@@ -93,7 +119,7 @@
                          <li class="nav-item hidden-md-down" id="conectadoComo">  
                             <span class="nav-link">
                                 Conectado como 
-                                <span id="quien" title="Ir a Mi Perfil"> <% out.print(datos_alumn[1]); %> </span>
+                                <span id="quien" title="Ir a Mi Perfil"> <% out.print(datos_alumn[2]); %> </span>
                                 <a href="/Logout"> <span id="desconectar">(Desconectar)</span></a>
                             </span>
                         </li>
@@ -106,7 +132,7 @@
             <div class="text-xs-center conectadoMobile">
                 <span class="nav-link hidden-lg-up">
                     Conectado como 
-                    <span id="quien" title="Ir a Mi Perfil"> <% out.print(datos_alumn[1]); %> </span>
+                    <span id="quien" title="Ir a Mi Perfil"> <% out.print(datos_alumn[2]); %> </span>
                     <a href="/Logout"> <span id="desconectar">(Desconectar)</span></a>
                 </span> 
             </div>
@@ -128,15 +154,15 @@
                                 <span class="fixed-text">Nombre: </span>
                             </div>
                             <div class="col-xs-12 col-lg-3">
-                                <span>Marco Antonio</span>
+                                <span><% out.print(datos_alumn[2]); %></span>
                             </div>
                                                         
                             <div class="col-xs-12 col-lg-3 text-lg-right">
                                 <span class="fixed-text">Apellidos: </span>
                             </div>
                             <div class="col-xs-12 col-lg-3">
-                                <span>Romero</span>
-                                <span>Martín</span>
+                                <span><% out.print(datos_alumn[3]); %></span>
+                                <span><% out.print(datos_alumn[4]); %></span>
                             </div>
                         </div>
                     
@@ -146,14 +172,18 @@
                                 <span class="fixed-text">Fecha de nacimiento: </span>
                             </div>
                             <div class="col-xs-12 col-lg-3">
-                                <span>10/02/1991</span>
+                            	<% 
+                            		String fechaoriginal = datos_alumn[8].toString(); 
+                            		String [] formatfecha = fechaoriginal.split("-");
+                            	%>
+                                <span><% out.print(formatfecha[2] + "/" + formatfecha[1] + "/" + formatfecha[0]); %></span>
                             </div>
                                                         
                             <div class="col-xs-12 col-lg-3 text-lg-right">
                                 <span class="fixed-text">NIF/NIE: </span>
                             </div>
                             <div class="col-xs-12 col-lg-3 ">
-                                <span>12121212-R</span>
+                                <span><% out.print(datos_alumn[7]); %></span>
                             </div>
                         </div>
                     
@@ -163,14 +193,14 @@
                                 <span class="fixed-text">Nacido en: </span>
                             </div>
                             <div class="col-xs-12 col-lg-3">
-                                <span>Puerto de Santa María, El</span>
+                                <span><% out.print(datos_alumn[9]); %></span>
                             </div>
                                                         
                             <div class="col-xs-12 col-lg-3 text-lg-right">
                                 <span class="fixed-text">Nacionalidad: </span>
                             </div>
                             <div class="col-xs-12 col-lg-3">
-                                <span>Española</span>
+                                <span><% out.print(datos_alumn[10]); %></span>
                             </div>
                         </div>
                     
@@ -183,14 +213,14 @@
                                 <span class="fixed-text">Calle / Vía / Avenida: </span>
                             </div>
                             <div class="col-xs-12 col-lg-3">
-                                <span>C/ Avenida de la Libertad, Bloque 10D 4ºB</span>
+                                <span><% out.print(datos_alumn[11]); %></span>
                             </div>
                                                         
                             <div class="col-xs-12 col-lg-3 text-lg-right">
                                 <span class="fixed-text">Código Postal: </span>
                             </div>
                             <div class="col-xs-12 col-lg-3">
-                                <span>11500</span>
+                                <span><% out.print(datos_alumn[12]); %></span>
                             </div>
                         </div>
                     
@@ -200,14 +230,14 @@
                                 <span class="fixed-text">Población: </span>
                             </div>
                             <div class="col-xs-12 col-lg-3">
-                                <span>Puerto de Santa María, El</span>
+                                <span><% out.print(datos_alumn[13]); %></span>
                             </div>
                                                         
                             <div class="col-xs-12 col-lg-3 text-lg-right">
                                 <span class="fixed-text">Provincia: </span>
                             </div>
                             <div class="col-xs-12 col-lg-3">
-                                <span>Cádiz</span>
+                                <span><% out.print(datos_alumn[14]); %></span>
                             </div>
                         </div>
                     
@@ -220,14 +250,18 @@
                                 <span class="fixed-text">Fecha de alta: </span>
                             </div>
                             <div class="col-xs-12 col-lg-3">
-                                <span>09/03/2011</span>
+                            	<% 
+                            		fechaoriginal = datos_alumn[15].toString(); 
+                            		formatfecha = fechaoriginal.split("-");
+                            	%>
+                                <span><% out.print(formatfecha[2] + "/" + formatfecha[1] + "/" + formatfecha[0]); %></span>
                             </div>
                                                         
                             <div class="col-xs-12 col-lg-3 text-lg-right">
                                 <span class="fixed-text">E-Mail: </span>
                             </div>
                             <div class="col-xs-12 col-lg-3">
-                                <span>marco@gmail.com</span>
+                                <span><% out.print(datos_alumn[20]); %></span>
                             </div>
                         </div>
                     
@@ -237,14 +271,14 @@
                                 <span class="fixed-text">Teléfono: </span>
                             </div>
                             <div class="col-xs-12 col-lg-3">
-                                <span>654 434 456</span>
+                                <span><% out.print(datos_alumn[19]); %></span>
                             </div>
                                                         
                             <div class="col-xs-12 col-lg-3 text-lg-right">
                                 <span class="fixed-text">Año promoción: </span>
                             </div>
                             <div class="col-xs-12 col-lg-3">
-                                <span>2016 - 2017</span>
+                                <span><% out.print(datos_alumn[16]); %></span>
                             </div>
                         </div>
                     
@@ -254,13 +288,13 @@
                                 <span class="fixed-text">Curso: </span>
                             </div>
                             <div class="col-xs-12 col-lg-3">
-                                <span>[C1] - Nivel Avanzado - 6º Curso</span>
+                                <span><% out.print(datos_alumn[17]); %></span>
                             </div>
                             <div class="col-xs-12 col-lg-3 text-lg-right">
                                 <span class="fixed-text">ID registro: </span>
                             </div>
                             <div class="col-xs-12 col-lg-3">
-                                <span>14</span>
+                                <span><% out.print(datos_alumn[0]); %></span>
                             </div>
                         </div>
                     

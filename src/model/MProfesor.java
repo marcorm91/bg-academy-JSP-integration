@@ -74,11 +74,24 @@ public class MProfesor {
 	         
 			 while(rs.next()){
 				 datos[0] = rs.getInt("iduser");
-				 datos[1] = rs.getString("nombre");
-				 datos[2] = rs.getString("apellido1");
-				 datos[3] = rs.getString("apellido2");
-				 datos[4] = rs.getString("usuario");
-				 datos[5] = rs.getString("pass");
+				 datos[1] = rs.getString("tipouser");
+				 datos[2] = rs.getString("nombre");
+				 datos[3] = rs.getString("apellido1");
+				 datos[4] = rs.getString("apellido2");
+				 datos[5] = rs.getString("usuario");
+				 datos[6] = rs.getString("pass");
+				 datos[7] = rs.getDate("fnac");
+				 datos[8] = rs.getString("nif");
+				 datos[9] = rs.getString("nacimiento");
+				 datos[10] = rs.getString("calle");
+				 datos[11] = rs.getString("cp");
+				 datos[12] = rs.getString("provincia");
+				 datos[13] = rs.getString("poblacion");
+				 datos[14] = rs.getDate("fecalta");
+				 datos[15] = rs.getString("email");
+				 datos[16] = rs.getString("tlf");
+				 datos[17] = rs.getString("anioprom");
+				 datos[18] = rs.getString("asignimp");				 
 			 }
 	            
 		 }catch(Exception e){

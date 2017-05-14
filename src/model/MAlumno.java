@@ -55,7 +55,7 @@ public class MAlumno {
     }
 
     
-public Object[] dameDatos(String user) {
+    public Object[] dameDatos(String user) {
 		
 		Object datos[] = new Object[22];
 		String selectDatosAlumn = "SELECT * FROM bgacademy.alumno WHERE usuario = ?";
@@ -70,11 +70,26 @@ public Object[] dameDatos(String user) {
 	         
 			 while(rs.next()){
 				 datos[0] = rs.getInt("iduser");
-				 datos[1] = rs.getString("nombre");
-				 datos[2] = rs.getString("apellido1");
-				 datos[3] = rs.getString("apellido2");
-				 datos[4] = rs.getString("usuario");
-				 datos[5] = rs.getString("pass");
+				 datos[1] = rs.getString("tipouser");
+				 datos[2] = rs.getString("nombre");
+				 datos[3] = rs.getString("apellido1");
+				 datos[4] = rs.getString("apellido2");
+				 datos[5] = rs.getString("usuario");
+				 datos[6] = rs.getString("pass");
+				 datos[7] = rs.getString("nif");
+				 datos[8] = rs.getDate("fnac");
+				 datos[9] = rs.getString("nacimiento");
+				 datos[10] = rs.getString("nacionalidad");
+				 datos[11] = rs.getString("calle");
+				 datos[12] = rs.getString("cp");
+				 datos[13] = rs.getString("poblacion");
+				 datos[14] = rs.getString("provincia");
+				 datos[15] = rs.getDate("fecalta");
+				 datos[16] = rs.getString("anioprom");
+				 datos[17] = rs.getString("cursoasign");
+				 datos[18] = rs.getString("comentarios");
+				 datos[19] = rs.getString("tlf");
+				 datos[20] = rs.getString("email");
 			 }
 	            
 		 }catch(Exception e){
