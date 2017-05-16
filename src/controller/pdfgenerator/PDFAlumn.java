@@ -2,13 +2,10 @@ package controller.pdfgenerator;
 
 import java.io.IOException;
 import java.io.OutputStream;
-import java.text.DateFormat;
-import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
-import java.time.format.TextStyle;
 import java.util.Locale;
 
 import javax.servlet.ServletException;
@@ -27,7 +24,6 @@ import com.itextpdf.text.Image;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfWriter;
-import com.itextpdf.text.pdf.draw.LineSeparator;
 
 /**
  * Servlet implementation class PDFAlumn
@@ -99,42 +95,48 @@ public class PDFAlumn extends HttpServlet {
 									
 					Font datos = new Font(Font.FontFamily.UNDEFINED, 9, Font.NORMAL, BaseColor.BLACK);
 					par2.add(new Phrase("Nombre: ", datos));
-					par2.add(new Chunk().TABBING);
-					par2.add(new Chunk().TABBING);
+					new Chunk();
+					par2.add(Chunk.TABBING);
+					new Chunk();
+					par2.add(Chunk.TABBING);
 					par2.add(new Phrase(datos_alumn[2].toString(), datos));
 					
 					par2.add(new Phrase(Chunk.NEWLINE));
 					
 					par2.add(new Phrase("Apellidos: ", datos));
-					par2.add(new Chunk().TABBING);
-					par2.add(new Chunk().TABBING);
+					new Chunk();
+					par2.add(Chunk.TABBING);
+					new Chunk();
+					par2.add(Chunk.TABBING);
 					par2.add(new Phrase(datos_alumn[3].toString() +" "+ datos_alumn[4].toString(), datos));
 					
 					par2.add(new Phrase(Chunk.NEWLINE));
 					
 					par2.add(new Phrase("Fecha de nacimiento: ", datos));
-					par2.add(new Chunk().TABBING);
+					new Chunk();
+					par2.add(Chunk.TABBING);
 					par2.add(new Phrase(datos_alumn[8].toString(), datos));
 					
 					par2.add(new Phrase(Chunk.NEWLINE));
 					
 					par2.add(new Phrase("NIF/NIE: ", datos));
-					par2.add(new Chunk().TABBING);
-					par2.add(new Chunk().TABBING);
+					new Chunk();
+					par2.add(Chunk.TABBING);
+					par2.add(Chunk.TABBING);
 					par2.add(new Phrase(datos_alumn[7].toString(), datos));
 					
 					par2.add(new Phrase(Chunk.NEWLINE));
 					
 					par2.add(new Phrase("Nacido en: ", datos));
-					par2.add(new Chunk().TABBING);
-					par2.add(new Chunk().TABBING);
+					par2.add(Chunk.TABBING);
+					par2.add(Chunk.TABBING);
 					par2.add(new Phrase(datos_alumn[9].toString(), datos));
 					
 					par2.add(new Phrase(Chunk.NEWLINE));
 					
 					par2.add(new Phrase("Nacionalidad: ", datos));
-					par2.add(new Chunk().TABBING);
-					par2.add(new Chunk().TABBING);
+					par2.add(Chunk.TABBING);
+					par2.add(Chunk.TABBING);
 					par2.add(new Phrase(datos_alumn[10].toString(), datos));
 					
 					par2.add(new Phrase(Chunk.NEWLINE));
@@ -154,28 +156,28 @@ public class PDFAlumn extends HttpServlet {
 					par3.add(new Phrase(Chunk.NEWLINE));
 					
 					par3.add(new Phrase("Calle / Vía / Avda.: ", datos));
-					par3.add(new Chunk().TABBING);
+					par3.add(Chunk.TABBING);
 					par3.add(new Phrase(datos_alumn[11].toString(), datos));
 					
 					par3.add(new Phrase(Chunk.NEWLINE));
 					
 					par3.add(new Phrase("Código Postal: ", datos));
-					par3.add(new Chunk().TABBING);
-					par3.add(new Chunk().TABBING);
+					par3.add(Chunk.TABBING);
+					par3.add(Chunk.TABBING);
 					par3.add(new Phrase(datos_alumn[12].toString(), datos));
 					
 					par3.add(new Phrase(Chunk.NEWLINE));
 					
 					par3.add(new Phrase("Población: ", datos));
-					par3.add(new Chunk().TABBING);
-					par3.add(new Chunk().TABBING);
+					par3.add(Chunk.TABBING);
+					par3.add(Chunk.TABBING);
 					par3.add(new Phrase(datos_alumn[13].toString(), datos));
 					
 					par3.add(new Phrase(Chunk.NEWLINE));
 					
 					par3.add(new Phrase("Provincia: ", datos));
-					par3.add(new Chunk().TABBING);
-					par3.add(new Chunk().TABBING);
+					par3.add(Chunk.TABBING);
+					par3.add(Chunk.TABBING);
 					par3.add(new Phrase(datos_alumn[14].toString(), datos));
 					
 					par3.add(new Phrase(Chunk.NEWLINE));
@@ -195,38 +197,38 @@ public class PDFAlumn extends HttpServlet {
 					par4.add(new Phrase(Chunk.NEWLINE));
 					
 					par4.add(new Phrase("Fecha de alta: ", datos));
-					par4.add(new Chunk().TABBING);
-					par4.add(new Chunk().TABBING);
+					par4.add(Chunk.TABBING);
+					par4.add(Chunk.TABBING);
 					par4.add(new Phrase(datos_alumn[15].toString(), datos));
 					
 					par4.add(new Phrase(Chunk.NEWLINE));
 					
 					par4.add(new Phrase("E-Mail: ", datos));
-					par4.add(new Chunk().TABBING);
-					par4.add(new Chunk().TABBING);
-					par4.add(new Chunk().TABBING);
+					par4.add(Chunk.TABBING);
+					par4.add(Chunk.TABBING);
+					par4.add(Chunk.TABBING);
 					par4.add(new Phrase(datos_alumn[20].toString(), datos));
 					
 					par4.add(new Phrase(Chunk.NEWLINE));
 					
 					par4.add(new Phrase("Tlf. de contacto: ", datos));
-					par4.add(new Chunk().TABBING);
-					par4.add(new Chunk().TABBING);
+					par4.add(Chunk.TABBING);
+					par4.add(Chunk.TABBING);
 					par4.add(new Phrase(datos_alumn[19].toString(), datos));
 					
 					par4.add(new Phrase(Chunk.NEWLINE));
 					
 					par4.add(new Phrase("Año promoción: ", datos));
-					par4.add(new Chunk().TABBING);
-					par4.add(new Chunk().TABBING);
+					par4.add(Chunk.TABBING);
+					par4.add(Chunk.TABBING);
 					par4.add(new Phrase(datos_alumn[16].toString(), datos));
 					
 					par4.add(new Phrase(Chunk.NEWLINE));
 					
 					par4.add(new Phrase("Curso: ", datos));
-					par4.add(new Chunk().TABBING);
-					par4.add(new Chunk().TABBING);
-					par4.add(new Chunk().TABBING);
+					par4.add(Chunk.TABBING);
+					par4.add(Chunk.TABBING);
+					par4.add(Chunk.TABBING);
 					par4.add(new Phrase(datos_alumn[17].toString(), datos));
 					
 					par4.add(new Phrase(Chunk.NEWLINE));
