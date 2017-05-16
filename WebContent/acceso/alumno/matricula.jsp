@@ -299,12 +299,15 @@
                         </div>
                     
                         <!-- Novena fila -->
-                        <div class="row text-xs-center pdf">                           
-                            <div class="col-xs-12">
-                                <i class="fa fa-file-pdf-o text-danger" aria-hidden="true"></i>
-                                <p class="text-danger">Descargar en PDF</p>
-                            </div>
-                        </div>
+	                        <div class="row text-xs-center pdf">                           
+	                            <div class="col-xs-12">
+	                            	<a href="/PDFAlumn">
+	                                <i class="fa fa-file-pdf-o text-danger" aria-hidden="true"></i>
+	                                <p class="text-danger">Descargar en PDF</p>
+	                                </a>
+	                            </div>
+	                        </div>
+                        
                     
                         <!-- Décima fila -->
                         <div class="row text-xs-center">                           

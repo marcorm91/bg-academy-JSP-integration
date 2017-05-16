@@ -130,5 +130,43 @@ public Object[] dameDatos(String user) {
 		
 	}
 
+	
+	/**
+	 * Comprueba existencia de gestor en la academia con ese NIF.
+	 * @param nif
+	 * @return
+	 */
+	public boolean compruebaExistencia(String nif) {
+		
+		String selectNIF = "SELECT COUNT(*) as contador FROM bgacademy.gestor WHERE nif = ?";
+		
+		boolean existe = false;
+		int contador = 0;
+		    			        
+        try{
+        	
+            PreparedStatement sentencia = conexion.prepareStatement(selectNIF);
+            sentencia.setString(1, nif);
+            
+            ResultSet rs = sentencia.executeQuery();
+            
+            while(rs.next()){
+            	contador = rs.getInt("contador");
+            }
+            
+            
+        }catch(SQLException e){
+            System.out.println(e);
+        }
+        
+	        if(contador == 0){
+	        	existe = false;
+	        }else{
+	        	existe = true;
+	        }
+	               
+        return existe;
+	}
+
 }
 

@@ -54,7 +54,11 @@ public class MAlumno {
 		         
     }
 
-    
+    /**
+     * Recoge todos los datos del usuario que se loguea.
+     * @param user
+     * @return
+     */
     public Object[] dameDatos(String user) {
 		
 		Object datos[] = new Object[22];
@@ -159,6 +163,45 @@ public class MAlumno {
 	    	 System.out.println(e);
 		 }
 	
+	}
+
+	
+	/**
+	 * Comprueba la existencia de usuario para realizar el registro.
+	 * @param nif
+	 * @return
+	 */
+	public boolean compruebaExistencia(String nif) {
+		
+		String selectNIF = "SELECT COUNT(*) as contador FROM bgacademy.alumno WHERE nif = ?";
+		
+		boolean existe = false;
+		int contador = 0;
+		    			        
+        try{
+        	
+            PreparedStatement sentencia = conexion.prepareStatement(selectNIF);
+            sentencia.setString(1, nif);
+            
+            ResultSet rs = sentencia.executeQuery();
+            
+            while(rs.next()){
+            	contador = rs.getInt("contador");
+            }
+            
+            
+        }catch(SQLException e){
+            System.out.println(e);
+        }
+        
+	        if(contador == 0){
+	        	existe = false;
+	        }else{
+	        	existe = true;
+	        }
+	               
+        return existe;
+		
 	}
 
 }

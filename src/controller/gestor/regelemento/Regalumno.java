@@ -2,6 +2,7 @@ package controller.gestor.regelemento;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -15,6 +16,9 @@ import javax.servlet.http.HttpSession;
 
 import model.Conexion;
 import model.MAlumno;
+import model.MGestor;
+import model.MNoticiero;
+import model.MProfesor;
 
 
 /**
@@ -25,9 +29,15 @@ public class Regalumno extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession hs;
 	private MAlumno modelo_alumno;
+	private MProfesor modelo_profesor;
+	private MGestor modelo_gestor;
+	private MNoticiero modelo_noticiario;
 	private Conexion conexionBD;
 	private String nombre, apellido1, apellido2, nif, nacimiento, nacionalidad, calle, cp, poblacion, provincia, email, tlf, anioprom, cursoasign, comentarios;
 	private String fecna, fecalta;
+	private boolean existeAlumno, existeProfesor, existeGestor, existeNoticiario;
+	
+	private PrintWriter out;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -36,6 +46,9 @@ public class Regalumno extends HttpServlet {
         super();
         conexionBD = new Conexion();
         modelo_alumno = new MAlumno(conexionBD.getConexion());
+        modelo_profesor = new MProfesor(conexionBD.getConexion());
+        modelo_gestor = new MGestor(conexionBD.getConexion());
+        modelo_noticiario = new MNoticiero(conexionBD.getConexion());
     }
 
 	/**
@@ -43,6 +56,7 @@ public class Regalumno extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		out = response.getWriter();
 		hs = request.getSession();
 		
 		if(hs.getAttribute("log") == null){
@@ -84,32 +98,52 @@ public class Regalumno extends HttpServlet {
 					e.printStackTrace();
 				}
 				
-				File dir = new File("WebContent/recursos/alumnos/"+nif+"/fotopersonal");
-				dir.mkdirs();
+				existeAlumno = modelo_alumno.compruebaExistencia(nif);
+				existeProfesor = modelo_profesor.compruebaExistencia(nif);
+				existeGestor = modelo_gestor.compruebaExistencia(nif);
+				existeNoticiario = modelo_noticiario.compruebaExistencia(nif);
 				
-				dir = new File("WebContent/recursos/alumnos/"+nif+"/dirpersonal");
-				dir.mkdirs();
+				// En el caso de que se cumpla uno de los booleanos no se realizará el registro en la BD.
+				if(existeAlumno || existeProfesor || existeGestor || existeNoticiario){
+					out.println("<script type=\"text/javascript\">");
+					out.println("alert('¡Ups! Hubo un error de registro.  Comprueba que no existe ese usuario.');");
+					out.println("location='acceso/gestor/aniadir-elemento.jsp';");
+					out.println("</script>");
+					return;
+				}else{
 				
-		
-				modelo_alumno.registraAlumno(		nombre, 
-													apellido1, 
-													apellido2, 
-													nif, 
-													fecna_date, 
-													nacimiento, 
-													nacionalidad, 
-													calle, 
-													cp, 
-													poblacion, 
-													provincia,
-													fecalta_date,
-													email,
-													tlf,
-													anioprom,
-													cursoasign,
-													comentarios);
+					File dir = new File("WebContent/recursos/alumnos/"+nif+"/fotopersonal");
+					dir.mkdirs();
+					
+					dir = new File("WebContent/recursos/alumnos/"+nif+"/dirpersonal");
+					dir.mkdirs();
+					
+			
+					modelo_alumno.registraAlumno(		nombre, 
+														apellido1, 
+														apellido2, 
+														nif, 
+														fecna_date, 
+														nacimiento, 
+														nacionalidad, 
+														calle, 
+														cp, 
+														poblacion, 
+														provincia,
+														fecalta_date,
+														email,
+														tlf,
+														anioprom,
+														cursoasign,
+														comentarios);
+					
+					out.println("<script type=\"text/javascript\">");
+					out.println("alert('¡Usuario registrado con éxito!');");
+					out.println("location='acceso/gestor/aniadir-elemento.jsp';");
+					out.println("</script>");
+					//response.sendRedirect("acceso/principal-gestor.jsp");
 				
-				response.sendRedirect("acceso/principal-gestor.jsp");
+				}
 
 			}catch(Exception e){
 				response.sendRedirect("acceso/principal-gestor.jsp");

@@ -13,5 +13,6 @@
 	<classpathentry kind="lib" path="C:/Users/Marco/Documents/bg-academy-project/WebContent/WEB-INF/lib/postgresql-jdbc3-9.2.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Marco/Documents/bg-academy-project/WebContent/WEB-INF/lib/commons-fileupload-1.3.2.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Marco/Documents/bg-academy-project/WebContent/WEB-INF/lib/commons-io-2.5.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Marco/Documents/bg-academy-project/WebContent/WEB-INF/lib/itextpdf-5.5.9.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

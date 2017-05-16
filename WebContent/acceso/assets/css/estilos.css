@@ -2904,5 +2904,9 @@
   #subpanel-examenes-alumnos-profesor .btn-atras #reg-examen,
   #subpanel-examenes-alumnos-profesor .btn-atras #reg-apuntes {
     margin-left: 1em; }
+    
+  .pdf a{
+  text-decoration:none;
+  cursor:pointer;}
 
 /*# sourceMappingURL=estilos.css.map */
