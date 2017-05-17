@@ -199,8 +199,11 @@
                             </div>
                              <div class="form-group row">
                                 <label class="col-md-3 col-xs-12 col-form-label text-xs-left">Contraseña: </label>
-                                <div class="col-md-9 col-xs-12">
-                                    <input class="form-control" id="pass-modificar-gest-perfil" type="password" name="pass" value="<% out.print(datos_gest[6]); %>">
+                                <div class="col-md-7 col-xs-12">
+                                    <input class="form-control" id="pass-modificar-gest-perfil" type="password" name="pass" value="<% out.print(datos_gest[6]); %>" />               
+                                </div>
+                                <div class="col-md-2 col-xs-12">
+                                	<i class="fa fa-eye" id="ver-pass" aria-hidden="true"></i>
                                 </div>
                             </div>
                             <div class="form-group row btn-enviar">

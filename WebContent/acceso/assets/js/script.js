@@ -307,6 +307,15 @@ $(document).ready(function() {
         }      
     });
     
+    
+    // Mostrar contraseña si el usuario lo desea en Mi-perfil
+    $("#ver-pass").on("click", function(){
+    	if($("#pass-modificar-gest-perfil").attr("type") === "password"){
+    		$("#pass-modificar-gest-perfil").attr("type", "text");    	
+    	}else{
+    		$("#pass-modificar-gest-perfil").attr("type", "password");    	
+    	}
+    });
          
 
 });

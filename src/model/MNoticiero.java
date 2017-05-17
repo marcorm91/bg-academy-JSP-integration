@@ -56,7 +56,7 @@ public class MNoticiero {
     
     public Object[] dameDatos(String user) {
 		
-		Object datos[] = new Object[22];
+		Object datos[] = new Object[11];
 		String selectDatosNot = "SELECT * FROM bgacademy.noticiario WHERE usuario = ?";
 		
 		try{
@@ -164,6 +164,77 @@ public class MNoticiero {
 	        }
 	               
         return existe;
+	}
+
+	/**
+	 * Realiza el update del usuario noticiario.
+	 * @param id
+	 * @param nombre
+	 * @param apellido1
+	 * @param apellido2
+	 * @param email
+	 * @param tlf
+	 * @param pass
+	 */
+	public void updateNoticiario(	String id, String nombre, String apellido1, String apellido2, String email, String tlf,
+									String pass) {
+	
+		String updateUser = "UPDATE bgacademy.noticiario SET nombre = ?, apellido1 = ?, apellido2 = ?, email = ?, tlf = ?, pass = ? where iduser = ?;";
+		
+		 try{
+            PreparedStatement sentencia = conexion.prepareStatement(updateUser);
+            sentencia.setString(1, nombre);
+            sentencia.setString(2, apellido1);
+            sentencia.setString(3, apellido2);
+            sentencia.setString(4, email);
+            sentencia.setString(5, tlf);
+            sentencia.setString(6, pass);
+            sentencia.setInt(7, Integer.valueOf(id));
+            sentencia.executeUpdate();
+		 }catch(Exception e){
+			 System.out.println(e);
+		 }
+		 
+	}
+
+	
+	/**
+	 * Devuelve los datos del usuario con la ID del mismo.
+	 * @param id
+	 * @return
+	 */
+	public Object[] dameDatosPorID(String id) {
+		
+		Object datos[] = new Object[11];
+		String selectDatosNot = "SELECT * FROM bgacademy.noticiario WHERE iduser = ?";
+		
+		try{
+			 
+			 PreparedStatement sentencia = conexion.prepareStatement(selectDatosNot);
+			 
+			 sentencia.setInt(1, Integer.valueOf(id));
+
+			 ResultSet rs = sentencia.executeQuery();
+	         
+			 while(rs.next()){
+				 datos[0] = rs.getInt("iduser");
+				 datos[1] = rs.getString("tipouser");
+				 datos[2] = rs.getString("nombre");
+				 datos[3] = rs.getString("apellido1");
+				 datos[4] = rs.getString("apellido2");
+				 datos[5] = rs.getString("usuario");
+				 datos[6] = rs.getString("pass");
+				 datos[7] = rs.getDate("fecalta");
+				 datos[8] = rs.getString("email");
+				 datos[9] = rs.getString("tlf");
+				 datos[10] = rs.getString("nif");
+			 }
+	            
+		 }catch(Exception e){
+	    	 System.out.println(e);
+		 }
+				
+		return datos;		
 	}
 
 }

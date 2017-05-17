@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.Conexion;
+
 /**
  * Servlet implementation class Logout
  */
@@ -15,13 +17,13 @@ import javax.servlet.http.HttpSession;
 public class Logout extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession hs;
+	private Conexion conexionBD;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
     public Logout() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**

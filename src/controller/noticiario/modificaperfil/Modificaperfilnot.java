@@ -1,4 +1,4 @@
-package controller.gestor.modificaperfil;
+package controller.noticiario.modificaperfil;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -11,34 +11,34 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.Conexion;
-import model.MGestor;
+import model.MNoticiero;
 
 /**
- * Servlet implementation class Miperfil
+ * Servlet implementation class Modificaperfilnot
  */
-@WebServlet("/Modificarperfilgest")
-public class Modificaperfilgest extends HttpServlet {
+@WebServlet("/Modificaperfilnot")
+public class Modificaperfilnot extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession hs;
 	private Conexion conexionBD;
-	private MGestor modelo_gestor;
+	private MNoticiero modelo_noticiario;
 	private String nombre, apellido1, apellido2, email, tlf, id, pass;
 	private PrintWriter out;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Modificaperfilgest() {
+    public Modificaperfilnot() {
         super();
         conexionBD = new Conexion();
-        modelo_gestor = new MGestor(conexionBD.getConexion());
+        modelo_noticiario = new MNoticiero(conexionBD.getConexion());
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		
 		hs = request.getSession();
 		out = response.getWriter();
 		
@@ -46,7 +46,7 @@ public class Modificaperfilgest extends HttpServlet {
 			response.sendRedirect("error.jsp");
 		}else{
 			
-			Object[] datos_gest = (Object []) hs.getAttribute("identificacion");
+			Object[] datos_not = (Object []) hs.getAttribute("identificacion");
 			
 			try{
 				nombre = request.getParameter("nombre");
@@ -55,25 +55,25 @@ public class Modificaperfilgest extends HttpServlet {
 				email = request.getParameter("email");
 				tlf = request.getParameter("tlf");
 				pass = request.getParameter("pass");
-				id = datos_gest[0].toString();
+				id = datos_not[0].toString();
 								
 				//Llamamos al modelo para actualizar los datos del usuario con los datos.
-				modelo_gestor.updateGestor(id, nombre, apellido1, apellido2, email, tlf, pass);
+				modelo_noticiario.updateNoticiario(id, nombre, apellido1, apellido2, email, tlf, pass);
 				
 				// Reactualizamos la session para seguir manejando los datos del user actualizados.
-				datos_gest = modelo_gestor.dameDatosPorID(id);
-				hs.setAttribute("identificacion", datos_gest);
+				datos_not = modelo_noticiario.dameDatosPorID(id);
+				hs.setAttribute("identificacion", datos_not);
 				
 				out.println("<script type=\"text/javascript\">");
 				out.println("alert('¡Usuario modificado con éxito!');");
-				out.println("location='acceso/gestor/mi-perfil.jsp';");
+				out.println("location='acceso/noticiario/mi-perfil.jsp';");
 				out.println("</script>");
 				
 			}catch(Exception e){
-				response.sendRedirect("acceso/gestor/mi-perfil.jsp");
+				response.sendRedirect("acceso/noticiario/mi-perfil.jsp");
 				System.out.println(e);
 			}
-			
+						
 		}
 		
 	}

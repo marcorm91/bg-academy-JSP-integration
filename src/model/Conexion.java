@@ -13,6 +13,9 @@ public class Conexion {
 		conectar();
 	}
 	
+	/**
+	 * Conexión con la base de datos.
+	 */
 	private void conectar(){
 		try {
 			Class.forName("org.postgresql.Driver");
@@ -29,9 +32,13 @@ public class Conexion {
 			e.printStackTrace();
 		}
 	}
-		
+	
+	/**
+	 * Devuelve un objeto de tipo Connection para realizar la conexión en el controller.
+	 * @return
+	 */
 	public Connection getConexion(){
 	    return conexion;
 	}
-
+	
 }

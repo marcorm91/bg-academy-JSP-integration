@@ -22,6 +22,12 @@
 	if(session.getAttribute("log") == null || !datos_not[1].equals("N")){  
 		response.sendRedirect("error.jsp");
 	} else{
+		
+		for(int i = 0; i < datos_not.length; i++){
+			if(datos_not[i] == null){
+				datos_not[i] = "";
+			}
+		}
 %>
 
 <!DOCTYPE html>
@@ -120,7 +126,7 @@
                 <div class="panel-opciones">
                     
                     <h2> Mi Perfil </h2>
-                    
+               <form action="${request.contextPath}/Modificaperfilnot" method="POST">
                     <div class="container-fluid">
                         
                             <div class="form-group row">
@@ -134,54 +140,68 @@
                             <div class="form-group row">
                                 <label class="col-md-3 col-xs-12 col-form-label text-xs-left">ID de usuario: </label>
                                 <div class="col-md-3 col-xs-12">
-                                    <input class="form-control" type="text" id="id-modificar-gest-perfil" disabled>
+                                    <input class="form-control" type="text" id="id-modificar-not-perfil" value="<% out.print(datos_not[0]); %>" disabled>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-md-3 col-xs-12 col-form-label text-xs-left">Fecha de alta: </label>
                                 <div class="col-md-4 col-xs-12">
-                                    <input class="form-control" type="search" id="alta-modificar-gest-perfil" disabled>
+                                	<% 
+	                            		String fechaoriginal = datos_not[7].toString(); 
+	                            		String [] formatfecha = fechaoriginal.split("-");
+                            		%>
+                                    <input class="form-control" type="text" id="alta-modificar-not-perfil" value="<% out.print(formatfecha[2] + "/" + formatfecha[1] + "/" + formatfecha[0]); %>" disabled>
                                 </div>
                             </div>
                         <hr/>
                             <div class="form-group row">
                                 <label class="col-md-3 col-xs-12 col-form-label text-xs-left">Nombre: </label>
                                 <div class="col-md-9 col-xs-12">
-                                    <input class="form-control" type="search" id="nombre-modificar-gest-perfil">
+                                    <input class="form-control" type="text" name="nombre" id="nombre-modificar-not-perfil" value="<% out.print(datos_not[2]); %>">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-md-3 col-xs-12 col-form-label text-xs-left">Apellido 1: </label>
                                 <div class="col-md-9 col-xs-12">
-                                    <input class="form-control" type="search" id="ape1-modificar-gest-perfil">
+                                    <input class="form-control" type="text" name="apellido1" id="ape1-modificar-not-perfil" value="<% out.print(datos_not[3]); %>">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-md-3 col-xs-12 col-form-label text-xs-left">Apellido 2: </label>
                                 <div class="col-md-9 col-xs-12">
-                                    <input class="form-control" type="search" id="ape2-modificar-gest-perfil">
+                                    <input class="form-control" type="text" name="apellido2" id="ape2-modificar-not-perfil" value="<% out.print(datos_not[4]); %>">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-md-3 col-xs-12 col-form-label text-xs-left">E-mail: </label>
                                 <div class="col-md-9 col-xs-12">
-                                    <input class="form-control" type="search" id="email-modificar-gest-perfil">
+                                    <input class="form-control" type="text" name="email" id="email-modificar-not-perfil" value="<% out.print(datos_not[8]); %>">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-md-3 col-xs-12 col-form-label text-xs-left">Teléfono: </label>
                                 <div class="col-md-4 col-xs-12">
-                                    <input class="form-control" type="search" id="tlf-modificar-gest-perfil">
+                                    <input class="form-control" type="text" name="tlf" id="tlf-modificar-not-perfil" value="<% out.print(datos_not[9]); %>">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-3 col-xs-12 col-form-label text-xs-left">Contraseña: </label>
+                                <div class="col-md-7 col-xs-12">
+                                    <input class="form-control" id="pass-modificar-gest-perfil" name="pass" type="password" name="pass" value="<% out.print(datos_not[6]); %>" />               
+                                </div>
+                                <div class="col-md-2 col-xs-12">
+                                	<i class="fa fa-eye" id="ver-pass" aria-hidden="true"></i>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-xs-12">
-                                    <button type="button" class="btn btn-primary">Volver</button>
-                                    <button type="button" class="btn btn-primary">Modificar</button>
+                                    <a href="../principal-noticiario.jsp"><button type="button" class="btn btn-primary">Volver</button></a>
+                                    <button type="submit" class="btn btn-primary">Modificar</button>
                                 </div>
                             </div>
                        
                     </div> 
+                    </form>
                 </div>
             </div>
     </div>
