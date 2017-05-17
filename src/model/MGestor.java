@@ -54,7 +54,12 @@ public class MGestor {
     }
 
     
-public Object[] dameDatos(String user) {
+    /**
+     * Recoge todos los datos del usuario tras iniciar la sesión por primera vez.
+     * @param user
+     * @return
+     */
+    public Object[] dameDatos(String user) {
 		
 		Object datos[] = new Object[22];
 		String selectDatosGest = "SELECT * FROM bgacademy.gestor WHERE usuario = ?";
@@ -87,10 +92,50 @@ public Object[] dameDatos(String user) {
 		
 		return datos;
 	}
+    
+    
+    /**
+     * Recoge todos los datos del usuario tras iniciar la sesión por primera vez.
+     * @param user
+     * @return
+     */
+    public Object[] dameDatosPorID(String id) {
+		
+		Object datos[] = new Object[22];
+		String selectDatosGest = "SELECT * FROM bgacademy.gestor WHERE iduser = ?";
+		
+		try{
+			 
+			 PreparedStatement sentencia = conexion.prepareStatement(selectDatosGest);
+			 
+		     sentencia.setInt(1, Integer.valueOf(id));
+
+			 ResultSet rs = sentencia.executeQuery();
+	         
+			 while(rs.next()){
+				 datos[0] = rs.getInt("iduser");
+				 datos[1] = rs.getString("tipouser");
+				 datos[2] = rs.getString("nombre");
+				 datos[3] = rs.getString("apellido1");
+				 datos[4] = rs.getString("apellido2");
+				 datos[5] = rs.getString("usuario");
+				 datos[6] = rs.getString("pass");
+				 datos[7] = rs.getDate("fecalta");
+				 datos[8] = rs.getString("email");
+				 datos[9] = rs.getString("nif");
+				 datos[10] = rs.getString("tlf");
+			 }
+	            
+		 }catch(Exception e){
+	    	 System.out.println(e);
+		 }
+		
+		return datos;
+	}
 
 
 	/**
-	 * Regista gestor en la base de datos.
+	 * Registra gestor en la base de datos.
 	 * @param nombre
 	 * @param apellido1
 	 * @param apellido2
@@ -166,6 +211,36 @@ public Object[] dameDatos(String user) {
 	        }
 	               
         return existe;
+	}
+
+	/**
+	 * Actualización del usuario profesor.
+	 * @param id
+	 * @param nombre
+	 * @param apellido1
+	 * @param apellido2
+	 * @param email
+	 * @param tlf
+	 */
+	public void updateGestor(	String id, String nombre, String apellido1, String apellido2, String email,
+								String tlf, String pass) {
+		
+		String updateUser = "UPDATE bgacademy.gestor SET nombre = ?, apellido1 = ?, apellido2 = ?, email = ?, tlf = ?, pass = ? where iduser = ?;";
+		
+		 try{
+             PreparedStatement sentencia = conexion.prepareStatement(updateUser);
+             sentencia.setString(1, nombre);
+             sentencia.setString(2, apellido1);
+             sentencia.setString(3, apellido2);
+             sentencia.setString(4, email);
+             sentencia.setString(5, tlf);
+             sentencia.setString(6, pass);
+             sentencia.setInt(7, Integer.valueOf(id));
+             sentencia.executeUpdate();
+		 }catch(Exception e){
+			 System.out.println(e);
+		 }
+		
 	}
 
 }

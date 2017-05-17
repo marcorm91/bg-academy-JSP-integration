@@ -306,6 +306,7 @@ $(document).ready(function() {
             $("#tit-examenes-notas-alumno > h3 > i").addClass("fa-chevron-down");
         }      
     });
-     
+    
+         
 
 });

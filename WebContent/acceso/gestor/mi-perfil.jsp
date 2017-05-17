@@ -21,6 +21,14 @@
 	if(session.getAttribute("log") == null || !datos_gest[1].equals("G")){  
 		response.sendRedirect("error.jsp");
 	} else{
+		
+		
+		for(int i = 0; i < datos_gest.length; i++){
+			if(datos_gest[i] == null){
+				datos_gest[i] = "";
+			}
+		}
+		
 %>
 
 <!DOCTYPE html>
@@ -131,7 +139,7 @@
                 <div class="panel-opciones">
                     
                     <h2> Mi Perfil </h2>
-                    
+               <form action="${request.contextPath}/Modificarperfilgest" method="POST">
                     <div class="container-fluid">
                         
                             <div class="form-group row">
@@ -145,54 +153,64 @@
                             <div class="form-group row">
                                 <label class="col-md-3 col-xs-12 col-form-label text-xs-left">ID de usuario: </label>
                                 <div class="col-md-3 col-xs-12">
-                                    <input class="form-control" id="id-modificar-gest-perfil" disabled>
+                                    <input class="form-control" id="id-modificar-gest-perfil" value="<% out.print(datos_gest[0]);  %>" disabled>
                                 </div>
                             </div>
                             <div class="form-group row">
+                            	<% 
+                            		String fechaoriginal = datos_gest[7].toString(); 
+                            		String [] formatfecha = fechaoriginal.split("-");
+                            	%>
                                 <label class="col-md-3 col-xs-12 col-form-label text-xs-left">Fecha de alta: </label>
                                 <div class="col-md-4 col-xs-12">
-                                    <input class="form-control" id="alta-modificar-gest-perfil" disabled>
+                                    <input class="form-control" id="alta-modificar-gest-perfil" value="<% out.print(formatfecha[2] + "/" + formatfecha[1] + "/" + formatfecha[0]); %>" disabled>
                                 </div>
                             </div>
                         <hr/>
                             <div class="form-group row">
                                 <label class="col-md-3 col-xs-12 col-form-label text-xs-left">Nombre: </label>
                                 <div class="col-md-9 col-xs-12">
-                                    <input class="form-control" id="nombre-modificar-gest-perfil">
+                                    <input class="form-control" id="nombre-modificar-gest-perfil" name="nombre" value="<% out.print(datos_gest[2]); %>" />
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-md-3 col-xs-12 col-form-label text-xs-left">Apellido 1: </label>
                                 <div class="col-md-9 col-xs-12">
-                                    <input class="form-control" id="ape1-modificar-gest-perfil">
+                                    <input class="form-control" id="ape1-modificar-gest-perfil" name="apellido1" value="<% out.print(datos_gest[3]); %>">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-md-3 col-xs-12 col-form-label text-xs-left">Apellido 2: </label>
                                 <div class="col-md-9 col-xs-12">
-                                    <input class="form-control" id="ape2-modificar-gest-perfil">
+                                    <input class="form-control" id="ape2-modificar-gest-perfil" name="apellido2" value="<% out.print(datos_gest[4]); %>">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-md-3 col-xs-12 col-form-label text-xs-left">E-mail: </label>
                                 <div class="col-md-9 col-xs-12">
-                                    <input class="form-control" id="email-modificar-gest-perfil">
+                                    <input class="form-control" id="email-modificar-gest-perfil" name="email" value="<% out.print(datos_gest[8]); %>">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-md-3 col-xs-12 col-form-label text-xs-left">Teléfono: </label>
                                 <div class="col-md-4 col-xs-12">
-                                    <input class="form-control" id="tlf-modificar-gest-perfil">
+                                    <input class="form-control" id="tlf-modificar-gest-perfil" name="tlf" value="<% out.print(datos_gest[10]); %>">
+                                </div>
+                            </div>
+                             <div class="form-group row">
+                                <label class="col-md-3 col-xs-12 col-form-label text-xs-left">Contraseña: </label>
+                                <div class="col-md-9 col-xs-12">
+                                    <input class="form-control" id="pass-modificar-gest-perfil" type="password" name="pass" value="<% out.print(datos_gest[6]); %>">
                                 </div>
                             </div>
                             <div class="form-group row btn-enviar">
                                 <div class="col-xs-12">
-                                    <button type="button" class="btn btn-primary">Volver</button>
-                                    <button type="button" class="btn btn-primary">Modificar</button>
+                                    <a href="../principal-gestor.jsp"><button type="button" class="btn btn-primary">Volver</button></a>
+                                    <button type="submit" class="btn btn-primary">Modificar</button>
                                 </div>
                             </div>
-                       
-                    </div> 
+                     </div> 
+                   </form>
                 </div>
             </div>
     </div>

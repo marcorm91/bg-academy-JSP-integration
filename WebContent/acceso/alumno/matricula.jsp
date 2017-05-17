@@ -173,7 +173,7 @@
                             </div>
                             <div class="col-xs-12 col-lg-3">
                             	<% 
-                            		String fechaoriginal = datos_alumn[8].toString(); 
+                            		String fechaoriginal = datos_alumn[7].toString(); 
                             		String [] formatfecha = fechaoriginal.split("-");
                             	%>
                                 <span><% out.print(formatfecha[2] + "/" + formatfecha[1] + "/" + formatfecha[0]); %></span>
