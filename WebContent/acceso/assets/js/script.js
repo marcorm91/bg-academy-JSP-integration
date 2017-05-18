@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    
+	    
     // Capturamos el año actual para adaptarlo al copyright del footer.
     $("#fechaActual").append((new Date).getFullYear());
     
@@ -316,6 +316,62 @@ $(document).ready(function() {
     		$("#pass-modificar-gest-perfil").attr("type", "password");    	
     	}
     });
-         
-
+    
+    /**************** PETICIONES AJAX *******************/
+    
+    /**
+     * Realiza el registro del alumno.
+     */
+    $("#reg-alumno").on("click", function(e){
+    	
+    	e.preventDefault();
+    	
+    	var nombre = $("#nombre-alumno").val();
+    	var apellido1 = $("#apellido-1-alumno").val();
+    	var apellido2 = $("#apellido-2-alumno").val();
+    	var nif = $("#nifnie-alumno").val();
+    	var fecna = $("#fecha-nacimiento-alumno").val();
+    	var nacimiento = $("#nacimiento-alumno").val();
+    	var nacionalidad = $("#nacionalidad-alumno").val();
+    	var calle = $("#calle-alumno").val();
+    	var cp = $("#cp-alumno").val();
+    	var poblacion = $("#poblacion-alumno").val();
+    	var provincia = $("#provincia-alumno").val();
+    	var fecalta = $("#fecha-alta-alumno").val();
+    	var email = $("#email-alumno").val();
+    	var tlf = $("#tlf-alumno").val();
+    	var aniocurso = $("#anio-curso").val();
+    	var curso = $("#curso-alumno").val();
+    	var comentarios = $("#comentario-alumno").val();
+    	    	
+    	$.ajax({
+    		
+    		type: "POST",
+    		dataType: "json",
+    		data: {nombre:nombre, apellido1:apellido1, apellido2: apellido2, nif:nif, fecna:fecna, nacimiento:nacimiento, nacionalidad:nacionalidad, calle:calle, cp:cp, poblacion:poblacion, provincia:provincia, fecalta:fecalta, email:email, tlf:tlf, aniocurso:aniocurso, curso:curso, comentarios:comentarios},
+    		url: "/Regalumno",
+    		success: function(resp){
+    			    			
+    			if(resp == "1"){
+    				$("#nifnie-alumno").css("background-color", "#ffb9aa");
+    				$("#nifnie-alumno").focus();
+    			}else{
+    				if (resp == "0"){
+    					$("#nifnie-alumno").css("background-color", "#fff");
+    					$("#form-reg-alumno")[0].reset();
+    					$("#fecha-alta-alumno").val(fecalta);
+    					$("#modal-aniadir-alumno").modal("toggle");
+        				$("#modal-success").dialog();
+    				}	
+    			}
+    			
+    		}
+    		
+    		
+    	});
+    	
+    	
+    });
+    
+    
 });

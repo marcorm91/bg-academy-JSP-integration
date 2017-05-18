@@ -334,7 +334,7 @@
     
     
  <!-- REGISTRAR ALUMNO -->
- <form id="form-reg-alumno" action="/Regalumno" method="post">
+ <form id="form-reg-alumno"  action="" method="">
  <div class="modal fade" id="modal-aniadir-alumno" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
@@ -356,7 +356,7 @@
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Nombre:</label>
                 <div class="col-md-7">
-                    <input class="form-control" type="text" name="nombre-alumno" id="nombre-alumno" required>
+                    <input class="form-control" type="text" name="nombrealumno" id="nombre-alumno" required>
                 </div>
             </div>
             <div class="form-group row">
@@ -451,7 +451,7 @@
                 <label class="col-md-3 col-form-label push-md-1">Año promoción:</label>
                 <div class="col-md-7">
                     <!-- PROMOCIONES CURSOS REGISTRADOS PREVIAMENTE -->
-                    <select class="form-control" id="anio-curso" name="anio-curso" required>
+                    <select class="form-control" id="anio-curso" name="aniocurso" required>
                         <option>2011 - 2012</option>
                         <option>2012 - 2013</option>
                         <option>2013 - 2014</option>
@@ -485,7 +485,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="submit" class="btn btn-primary">Registrar</button>
+        <button type="submit" id="reg-alumno" class="btn btn-primary">Registrar</button>
       </div>
     </div>
   </div>
@@ -704,6 +704,11 @@
  </div>  
 </div>
 </form>
+
+<!-- MODAL SUCCESS-->
+<div id="modal-success" title="¡Usuario registrado!" style="display: none">
+	<p> ¡Se ha registrado el usuario correctamente! </p>
+</div>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
     <script src="../../assets/js/jquery-3.1.1.min.js"></script>

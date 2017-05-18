@@ -889,6 +889,7 @@ body .ui-tooltip {
 }
 .ui-widget .ui-widget {
 	font-size: 1em;
+	outline:none;
 }
 .ui-widget input,
 .ui-widget select,
