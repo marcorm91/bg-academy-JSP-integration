@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.google.gson.Gson;
+
 import model.Conexion;
 import model.MCurso;
 
@@ -22,6 +24,7 @@ public class Regcurso extends HttpServlet {
 	private MCurso modelo_curso;
 	private Conexion conexionBD;
 	private String curso, anioinicio, aniofin;
+	private boolean existeCurso;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -48,12 +51,29 @@ public class Regcurso extends HttpServlet {
 				anioinicio = request.getParameter("anioinicio");
 				aniofin = request.getParameter("aniofin");
 				
-		
-				modelo_curso.registraCurso(			curso, 
+				existeCurso = modelo_curso.compruebaExistencia(anioinicio, aniofin, curso);
+				
+				String existe = "";
+				
+				if(existeCurso){
+					existe = new Gson().toJson("1");
+					response.setContentType("application/json");
+					response.setCharacterEncoding("UTF-8");
+					response.getWriter().write(existe);					
+					return;
+				}else{
+					
+					modelo_curso.registraCurso(		curso, 
 													anioinicio, 
 													aniofin);
-				
-				response.sendRedirect("acceso/principal-gestor.jsp");
+					
+					existe = new Gson().toJson("0");
+					response.setContentType("application/json");
+					response.setCharacterEncoding("UTF-8");
+					response.getWriter().write(existe);	
+					
+				}
+					
 
 			}catch(Exception e){
 				response.sendRedirect("acceso/principal-gestor.jsp");

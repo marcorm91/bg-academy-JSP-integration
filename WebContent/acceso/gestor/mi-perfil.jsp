@@ -139,7 +139,7 @@
                 <div class="panel-opciones">
                     
                     <h2> Mi Perfil </h2>
-               <form action="${request.contextPath}/Modificarperfilgest" method="POST">
+               <form id="form-mod-perfil-gestor" action="" method="">
                     <div class="container-fluid">
                         
                             <div class="form-group row">
@@ -209,7 +209,7 @@
                             <div class="form-group row btn-enviar">
                                 <div class="col-xs-12">
                                     <a href="../principal-gestor.jsp"><button type="button" class="btn btn-primary">Volver</button></a>
-                                    <button type="submit" class="btn btn-primary">Modificar</button>
+                                    <button type="submit" id="mod-perfil-gestor" class="btn btn-primary">Modificar</button>
                                 </div>
                             </div>
                      </div> 
@@ -225,7 +225,16 @@
             </div>
         </div>
     </footer>
-        
+            
+</div>
+
+<!-- MODAL SUCCESS / ERROR-->
+<div id="modal-success-perfil" title="¡Usuario modificado!" style="display: none">
+	<p> ¡Se ha modificado el usuario correctamente! </p>
+</div>
+
+<div id="modal-error-perfil" title="¡Comprueba los datos!" style="display: none">
+	<p> ¡ERROR! Comprueba que no falta ningún dato. </p>
 </div>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>

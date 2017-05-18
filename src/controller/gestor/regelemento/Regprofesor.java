@@ -2,7 +2,6 @@ package controller.gestor.regelemento;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -12,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import com.google.gson.Gson;
 
 import model.Conexion;
 import model.MAlumno;
@@ -36,7 +37,6 @@ public class Regprofesor extends HttpServlet {
 	private String[] cursoimp;
 	private boolean existeAlumno, existeProfesor, existeGestor, existeNoticiario;
 	
-	private PrintWriter out;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -55,7 +55,6 @@ public class Regprofesor extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			
-		out = response.getWriter();
 		hs = request.getSession();
 		
 		if(hs.getAttribute("log") == null){
@@ -64,7 +63,7 @@ public class Regprofesor extends HttpServlet {
 
 			try{
 				nif = request.getParameter("nif");
-				nombre = request.getParameter("nombre-profesor");
+				nombre = request.getParameter("nombre");
 				apellido1 = request.getParameter("apellido1");
 				apellido2 = request.getParameter("apellido2");
 				fecna = request.getParameter("fecna");
@@ -101,12 +100,14 @@ public class Regprofesor extends HttpServlet {
 				existeGestor = modelo_gestor.compruebaExistencia(nif);
 				existeNoticiario = modelo_noticiario.compruebaExistencia(nif);
 				
+				String existe = "";
+				
 				// En el caso de que se cumpla uno de los booleanos no se realizará el registro en la BD.
 				if(existeAlumno || existeProfesor || existeGestor || existeNoticiario){
-					out.println("<script type=\"text/javascript\">");
-					out.println("alert('¡Ups! Hubo un error de registro.  Comprueba que no existe ese usuario.');");
-					out.println("location='acceso/gestor/aniadir-elemento.jsp';");
-					out.println("</script>");
+					existe = new Gson().toJson("1");
+					response.setContentType("application/json");
+					response.setCharacterEncoding("UTF-8");
+					response.getWriter().write(existe);
 					return;
 				}else{
 				
@@ -134,11 +135,10 @@ public class Regprofesor extends HttpServlet {
 														anioprom,
 														cursoimp);
 					
-					out.println("<script type=\"text/javascript\">");
-					out.println("alert('¡Usuario registrado con éxito!');");
-					out.println("location='acceso/gestor/aniadir-elemento.jsp';");
-					out.println("</script>");
-					//response.sendRedirect("acceso/principal-gestor.jsp");
+					existe = new Gson().toJson("0");
+					response.setContentType("application/json");
+					response.setCharacterEncoding("UTF-8");
+					response.getWriter().write(existe);
 				
 				}
 

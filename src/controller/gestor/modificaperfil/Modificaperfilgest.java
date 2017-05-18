@@ -1,7 +1,6 @@
 package controller.gestor.modificaperfil;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import com.google.gson.Gson;
 
 import model.Conexion;
 import model.MGestor;
@@ -23,7 +24,6 @@ public class Modificaperfilgest extends HttpServlet {
 	private Conexion conexionBD;
 	private MGestor modelo_gestor;
 	private String nombre, apellido1, apellido2, email, tlf, id, pass;
-	private PrintWriter out;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -40,7 +40,6 @@ public class Modificaperfilgest extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		hs = request.getSession();
-		out = response.getWriter();
 		
 		if(hs.getAttribute("log") == null){
 			response.sendRedirect("error.jsp");
@@ -64,10 +63,10 @@ public class Modificaperfilgest extends HttpServlet {
 				datos_gest = modelo_gestor.dameDatosPorID(id);
 				hs.setAttribute("identificacion", datos_gest);
 				
-				out.println("<script type=\"text/javascript\">");
-				out.println("alert('¡Usuario modificado con éxito!');");
-				out.println("location='acceso/gestor/mi-perfil.jsp';");
-				out.println("</script>");
+				String modOK = new Gson().toJson("0");
+				response.setContentType("application/json");
+				response.setCharacterEncoding("UTF-8");
+				response.getWriter().write(modOK);
 				
 			}catch(Exception e){
 				response.sendRedirect("acceso/gestor/mi-perfil.jsp");

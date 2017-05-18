@@ -664,6 +664,7 @@ button.ui-button::-moz-focus-inner {
 }
 .ui-draggable .ui-dialog-titlebar {
 	cursor: move;
+	background-color: #db605e;
 }
 .ui-progressbar {
 	height: 2em;
@@ -900,6 +901,7 @@ body .ui-tooltip {
 }
 .ui-widget.ui-widget-content {
 	border: 1px solid #c5c5c5;
+	z-index: 9999;
 }
 .ui-widget-content {
 	border: 1px solid #dddddd;

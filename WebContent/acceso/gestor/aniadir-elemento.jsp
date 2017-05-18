@@ -180,7 +180,7 @@
  <!------- MODALES ------->
     
  <!-- REGISTRAR PROFESOR -->
- <form id="form-reg-profesor" action="/Regprofesor" method="post">
+ <form id="form-reg-profesor" action="" method="">
  <div class="modal fade" id="modal-aniadir-profesor" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
@@ -297,7 +297,7 @@
                 <label class="col-md-3 col-form-label push-md-1">Año promoción:</label>
                 <div class="col-md-7">
                     <!-- PROMOCIONES CURSOS REGISTRADOS PREVIAMENTE -->
-                    <select class="form-control" name="anio-curso" id="anio-curso" required>
+                    <select class="form-control" name="anio-curso" id="anio-curso-profesor" required>
                         <option>2011 - 2012</option>
                         <option>2012 - 2013</option>
                         <option>2013 - 2014</option>
@@ -325,7 +325,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="submit" class="btn btn-primary">Registrar</button>
+        <button type="submit" id="reg-profesor" class="btn btn-primary">Registrar</button>
       </div>
     </div>
   </div>
@@ -493,7 +493,7 @@
 </form>
     
 <!-- REGISTRAR NOTICIARIO -->
-<form id="form-reg-noticiario" action="/Regnoticiario" method="post">
+<form id="form-reg-noticiario" action="" method="">
  <div class="modal fade" id="modal-aniadir-noticiario" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
@@ -533,7 +533,7 @@
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">NIF/NIE:</label>
                 <div class="col-md-7">
-                    <input class="form-control" name="nif" type="text" id="nif-noticiario" required>
+                    <input class="form-control" name="nif" type="text" id="nifnie-noticiario" required>
                 </div>
             </div>
             <div class="row">
@@ -562,7 +562,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="submit" class="btn btn-primary">Registrar</button>
+        <button type="submit" id="reg-noticiario"  class="btn btn-primary">Registrar</button>
       </div>
     </div>
   </div>
@@ -571,7 +571,7 @@
 </form>
 
 <!-- REGISTRAR GESTOR -->
-<form id="form-reg-gestor" action="/Reggestor" method="post">
+<form id="form-reg-gestor" action="" method="">
  <div class="modal fade" id="modal-aniadir-gestor" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
@@ -611,7 +611,7 @@
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">NIF/NIE:</label>
                 <div class="col-md-7">
-                    <input class="form-control" name="nif" type="text" id="nif-gestor" required>
+                    <input class="form-control" name="nif" type="text" id="nifnie-gestor" required>
                 </div>
             </div>
             <div class="row">
@@ -640,7 +640,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="submits" class="btn btn-primary">Registrar</button>
+        <button type="submit" id="reg-gestor" class="btn btn-primary">Registrar</button>
       </div>
     </div>
   </div>
@@ -649,7 +649,7 @@
 </form>
     
 <!-- REGISTRAR CURSO -->
-<form id="form-reg-gestor" action="/Regcurso" method="post">
+<form id="form-reg-curso" action="" method="">
  <div class="modal fade" id="modal-aniadir-curso" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
@@ -697,7 +697,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="submit" class="btn btn-primary">Registrar</button>
+        <button type="submit" id="reg-curso" class="btn btn-primary">Registrar</button>
       </div>
     </div>
   </div>
@@ -705,11 +705,28 @@
 </div>
 </form>
 
-<!-- MODAL SUCCESS-->
+<!-- MODAL SUCCESS / ERROR-->
 <div id="modal-success" title="¡Usuario registrado!" style="display: none">
 	<p> ¡Se ha registrado el usuario correctamente! </p>
 </div>
-    
+
+<div id="modal-error" title="¡Comprueba los datos!" style="display: none">
+	<p> ¡ERROR! Comprueba que no falta ningún dato. </p>
+</div>
+
+<div id="modal-existe" title="¡Usuario existente!" style="display: none">
+	<p> ¡ERROR! Ese usuario ya fue registrado en la Base de Datos. </p>
+</div>
+
+<div id="modal-existe-curso" title="¡Curso existente!" style="display: none">
+	<p> ¡ERROR! Ese curso, año fin e inicio ya fue registrado en la Base de Datos. </p>
+</div>
+
+<div id="modal-ok-curso" title="¡Curso registrado!" style="display: none">
+	<p> ¡Se ha registrado el curso correctamente!. </p>
+</div>
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
     <script src="../../assets/js/jquery-3.1.1.min.js"></script>
     <script src="../../assets/js/bootstrap.min.js"></script>

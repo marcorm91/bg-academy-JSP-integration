@@ -2,7 +2,6 @@ package controller.gestor.regelemento;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -38,8 +37,6 @@ public class Regalumno extends HttpServlet {
 	private String nombre, apellido1, apellido2, nif, nacimiento, nacionalidad, calle, cp, poblacion, provincia, email, tlf, anioprom, cursoasign, comentarios;
 	private String fecna, fecalta;
 	private boolean existeAlumno, existeProfesor, existeGestor, existeNoticiario;
-	
-	private PrintWriter out;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -58,8 +55,6 @@ public class Regalumno extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
-		out = response.getWriter();
 		hs = request.getSession();
 		
 		if(hs.getAttribute("log") == null){
@@ -146,7 +141,6 @@ public class Regalumno extends HttpServlet {
 					response.setContentType("application/json");
 					response.setCharacterEncoding("UTF-8");
 					response.getWriter().write(existe);
-					//response.sendRedirect("acceso/principal-gestor.jsp");
 				
 				}
 

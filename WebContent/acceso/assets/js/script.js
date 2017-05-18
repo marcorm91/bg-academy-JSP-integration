@@ -317,7 +317,9 @@ $(document).ready(function() {
     	}
     });
     
+    /****************************************************/
     /**************** PETICIONES AJAX *******************/
+    /****************************************************/
     
     /**
      * Realiza el registro del alumno.
@@ -343,34 +345,281 @@ $(document).ready(function() {
     	var aniocurso = $("#anio-curso").val();
     	var curso = $("#curso-alumno").val();
     	var comentarios = $("#comentario-alumno").val();
+    	
+    	if(nombre == "" || apellido1 == "" || apellido2 == "" || nif == "" || fecna == "" || nacimiento == "" || nacionalidad == "" || calle == "" || cp == "" || poblacion == "" || provincia == "" || fecalta == "" || email == "" || tlf == "" || aniocurso == "" || curso == "" || comentarios == ""){
+    		$("#modal-error").dialog();
+    	}else{
     	    	
-    	$.ajax({
-    		
-    		type: "POST",
-    		dataType: "json",
-    		data: {nombre:nombre, apellido1:apellido1, apellido2: apellido2, nif:nif, fecna:fecna, nacimiento:nacimiento, nacionalidad:nacionalidad, calle:calle, cp:cp, poblacion:poblacion, provincia:provincia, fecalta:fecalta, email:email, tlf:tlf, aniocurso:aniocurso, curso:curso, comentarios:comentarios},
-    		url: "/Regalumno",
-    		success: function(resp){
-    			    			
-    			if(resp == "1"){
-    				$("#nifnie-alumno").css("background-color", "#ffb9aa");
-    				$("#nifnie-alumno").focus();
-    			}else{
-    				if (resp == "0"){
-    					$("#nifnie-alumno").css("background-color", "#fff");
-    					$("#form-reg-alumno")[0].reset();
-    					$("#fecha-alta-alumno").val(fecalta);
-    					$("#modal-aniadir-alumno").modal("toggle");
-        				$("#modal-success").dialog();
-    				}	
-    			}
-    			
-    		}
-    		
-    		
-    	});
+	    	$.ajax({
+	    		type: "POST",
+	    		dataType: "json",
+	    		data: {nombre:nombre, apellido1:apellido1, apellido2: apellido2, nif:nif, fecna:fecna, nacimiento:nacimiento, nacionalidad:nacionalidad, calle:calle, cp:cp, poblacion:poblacion, provincia:provincia, fecalta:fecalta, email:email, tlf:tlf, aniocurso:aniocurso, curso:curso, comentarios:comentarios},
+	    		url: "/Regalumno",
+	    		success: function(resp){
+	    			    			
+	    			if(resp == "1"){
+	    				$("#modal-existe").dialog();
+	    				$("#nifnie-alumno").css("background-color", "#ffb9aa");
+	    				$("#nifnie-alumno").focus();
+	    			}else{
+	    				if (resp == "0"){
+	    					$("#nifnie-alumno").css("background-color", "#fff");
+	    					$("#form-reg-alumno")[0].reset();
+	    					$("#fecha-alta-alumno").val(fecalta);
+	    					$("#modal-aniadir-alumno").modal("toggle");
+	        				$("#modal-success").dialog();
+	    				}	
+	    			}
+	    		}
+	    	});
     	
+    	}
+    
+    });
+    
+    
+    /**
+     * Realiza el registro de profesor.
+     */
+    $("#reg-profesor").on("click", function(e){
     	
+    	e.preventDefault();
+    	
+    	var nombre = $("#nombre-profesor").val();
+    	var apellido1 = $("#apellido-1-profesor").val();
+    	var apellido2 = $("#apellido-2-profesor").val();
+    	var nif = $("#nifnie-profesor").val();
+    	var fecna = $("#fecha-nacimiento-profesor").val();
+    	var nacimiento = $("#nacimiento-profesor").val();
+    	var nacionalidad = $("#nacionalidad-profesor").val();
+    	var calle = $("#calle-profesor").val();
+    	var cp = $("#cp-profesor").val();
+    	var poblacion = $("#poblacion-profesor").val();
+    	var provincia = $("#provincia-profesor").val();
+    	var fecalta = $("#fecha-alta-profesor").val();
+    	var email = $("#email-profesor").val();
+    	var tlf = $("#tlf-profesor").val();
+    	var aniocurso = $("#anio-curso-profesor").val();
+    	var cursos = $("#cursos-profesor").val();
+    	
+    	if(nombre == "" || apellido1 == "" || apellido2 == "" || nif == "" || fecna == "" || nacimiento == "" || nacionalidad == "" || calle == "" || cp == "" || poblacion == "" || provincia == "" || fecalta == "" || email == "" || tlf == "" || aniocurso == "" || cursos == ""){
+    		$("#modal-error").dialog();
+    	}else{
+    	    	
+	    	$.ajax({
+	    		type: "POST",
+	    		dataType: "json",
+	    		data: {nombre:nombre, apellido1:apellido1, apellido2: apellido2, nif:nif, fecna:fecna, nacimiento:nacimiento, nacionalidad:nacionalidad, calle:calle, cp:cp, poblacion:poblacion, provincia:provincia, fecalta:fecalta, email:email, tlf:tlf, aniocurso:aniocurso, cursos:cursos},
+	    		url: "/Regprofesor",
+	    		success: function(resp){
+	    			    			
+	    			if(resp == "1"){
+	    				$("#modal-existe").dialog();
+	    				$("#nifnie-profesor").css("background-color", "#ffb9aa");
+	    				$("#nifnie-profesor").focus();
+	    			}else{
+	    				if (resp == "0"){
+	    					$("#nifnie-profesor").css("background-color", "#fff");
+	    					$("#form-reg-profesor")[0].reset();
+	    					$("#fecha-alta-profesor").val(fecalta);
+	    					$("#modal-aniadir-profesor").modal("toggle");
+	        				$("#modal-success").dialog();
+	    				}	
+	    			}
+	    		}
+	    	});
+    	
+    	}
+    
+    });
+    
+    
+    /**
+     * Realiza el registro de gestor.
+     */
+    $("#reg-gestor").on("click", function(e){
+    	
+    	e.preventDefault();
+    	
+    	var nombre = $("#nombre-gestor").val();
+    	var apellido1 = $("#apellido-1-gestor").val();
+    	var apellido2 = $("#apellido-2-gestor").val();
+    	var nif = $("#nifnie-gestor").val();
+    	var fecalta = $("#fecha-alta-gestor").val();
+    	var email = $("#email-gestor").val();
+    	var tlf = $("#tlf-gestor").val();
+    	
+    	if(nombre == "" || apellido1 == "" || apellido2 == "" || nif == "" || fecalta == "" || email == "" || tlf == ""){
+    		$("#modal-error").dialog();
+    	}else{
+    	    	
+	    	$.ajax({
+	    		type: "POST",
+	    		dataType: "json",
+	    		data: {nombre:nombre, apellido1:apellido1, apellido2: apellido2, nif:nif, fecalta:fecalta, email:email, tlf:tlf},
+	    		url: "/Reggestor",
+	    		success: function(resp){
+	    			    			
+	    			if(resp == "1"){
+	    				$("#modal-existe").dialog();
+	    				$("#nifnie-gestor").css("background-color", "#ffb9aa");
+	    				$("#nifnie-gestor").focus();
+	    			}else{
+	    				if (resp == "0"){
+	    					$("#nifnie-gestor").css("background-color", "#fff");
+	    					$("#form-reg-gestor")[0].reset();
+	    					$("#fecha-alta-gestor").val(fecalta);
+	    					$("#modal-aniadir-gestor").modal("toggle");
+	        				$("#modal-success").dialog();
+	    				}	
+	    			}
+	    		}
+	    	});
+    	
+    	}
+    
+    });
+    
+    
+    /**
+     * Realiza el registro de noticiario.
+     */
+    $("#reg-noticiario").on("click", function(e){
+    	
+    	e.preventDefault();
+    	
+    	var nombre = $("#nombre-noticiario").val();
+    	var apellido1 = $("#apellido-1-noticiario").val();
+    	var apellido2 = $("#apellido-2-noticiario").val();
+    	var nif = $("#nifnie-noticiario").val();
+    	var fecalta = $("#fecha-alta-noticiario").val();
+    	var email = $("#email-noticiario").val();
+    	var tlf = $("#tlf-noticiario").val();
+    	
+    	if(nombre == "" || apellido1 == "" || apellido2 == "" || nif == "" || fecalta == "" || email == "" || tlf == ""){
+    		$("#modal-error").dialog();
+    	}else{
+    	    	
+	    	$.ajax({
+	    		type: "POST",
+	    		dataType: "json",
+	    		data: {nombre:nombre, apellido1:apellido1, apellido2: apellido2, nif:nif, fecalta:fecalta, email:email, tlf:tlf},
+	    		url: "/Regnoticiario",
+	    		success: function(resp){
+	    			    			
+	    			if(resp == "1"){
+	    				$("#modal-existe").dialog();
+	    				$("#nifnie-noticiario").css("background-color", "#ffb9aa");
+	    				$("#nifnie-noticiario").focus();
+	    			}else{
+	    				if (resp == "0"){
+	    					$("#nifnie-noticiario").css("background-color", "#fff");
+	    					$("#form-reg-noticiario")[0].reset();
+	    					$("#fecha-alta-noticiario").val(fecalta);
+	    					$("#modal-aniadir-noticiario").modal("toggle");
+	        				$("#modal-success").dialog();
+	    				}	
+	    			}
+	    		}
+	    	});
+    	
+    	}
+    
+    });
+    
+    
+    /**
+     * Realiza el registro de curso.
+     */
+    $("#reg-curso").on("click", function(e){
+    	
+    	e.preventDefault();
+    	
+    	var curso = $("#curso").val();
+    	var anioinicio = $("#anio-inicial-curso").val();
+    	var aniofin = $("#anio-fin-curso").val();
+    	
+    	if(anioinicio == "" || aniofin == ""){
+    		$("#modal-error").dialog();
+    	}else{
+    	    	
+	    	$.ajax({
+	    		type: "POST",
+	    		dataType: "json",
+	    		data: {curso:curso, anioinicio:anioinicio, aniofin: aniofin},
+	    		url: "/Regcurso",
+	    		success: function(resp){
+	    			    			
+	    			if(resp == "1"){
+	    				$("#modal-existe-curso").dialog();
+	    				$("#anio-inicial-curso").css("background-color", "#ffb9aa");
+	    				$("#anio-fin-curso").css("background-color", "#ffb9aa");
+	    				$("#curso").css("background-color", "#ffb9aa");
+	    			}else{
+	    				if (resp == "0"){
+	    					$("#anio-inicial-curso").css("background-color", "#fff");
+		    				$("#anio-fin-curso").css("background-color", "#fff");
+		    				$("#curso").css("background-color", "#fff");
+	    					$("#form-reg-curso")[0].reset();
+	    					$("#modal-aniadir-curso").modal("toggle");
+	        				$("#modal-ok-curso").dialog();
+	    				}	
+	    			}
+	    		}
+	    	});
+    	
+    	}
+    
+    });
+    
+    
+    /**
+     * Realiza la modificación de perfil de gestor.
+     */
+    $("#mod-perfil-gestor").on("click", function(e){
+    	
+    	e.preventDefault();
+    	
+    	var nombre = $("#nombre-modificar-gest-perfil").val();
+    	var apellido1 = $("#ape1-modificar-gest-perfil").val();
+    	var apellido2 = $("#ape2-modificar-gest-perfil").val();
+    	var email = $("#email-modificar-gest-perfil").val();
+    	var tlf = $("#tlf-modificar-gest-perfil").val();
+    	var pass = $("#pass-modificar-gest-perfil").val();
+    	
+    	if(nombre == "" || apellido1 == "" || apellido2 == "" || email == "" || tlf == "" || pass == ""){
+    		$("#modal-error-perfil").dialog();
+    	}else{
+    	    	
+	    	$.ajax({
+	    		type: "POST",
+	    		dataType: "json",
+	    		data: {nombre:nombre, apellido1:apellido1, apellido2:apellido2, email:email, tlf:tlf, pass:pass},
+	    		url: "/Modificarperfilgest",
+	    		success: function(resp){  			
+	    			if(resp == "0"){
+    					$("#form-mod-perfil-gestor")[0].reset();
+        				$("#modal-success-perfil").dialog({
+        						open: function(event, ui) {
+        						        	$(".ui-dialog-titlebar-close", ui.dialog | ui).hide();
+        						        	$("#mod-perfil-gestor").css("pointer-events", "none");
+        						    	},
+        						closeOnEscape: false,	
+        						buttons: {
+        			        		"OK": function() {
+        			        			$("body").css("overflow", "auto");
+        			        			$(this).dialog("close");
+            			    			location.reload();
+        			        		}
+        			    		}        				
+        				});
+        				$("body").css("overflow", "hidden");
+	    			}
+	    		}
+	    	});
+    	
+    	}
+    
     });
     
     
