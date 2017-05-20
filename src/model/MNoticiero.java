@@ -48,7 +48,7 @@ public class MNoticiero {
 	        }else{
 	        	correcto = true;
 	        }
-	               
+         
         return correcto;
 		         
     }
@@ -126,7 +126,7 @@ public class MNoticiero {
 		 }catch(Exception e){
 	    	 System.out.println(e);
 		 }
-	
+		
 	}
 
 	
@@ -162,7 +162,7 @@ public class MNoticiero {
 	        }else{
 	        	existe = true;
 	        }
-	               
+	        
         return existe;
 	}
 
@@ -233,7 +233,8 @@ public class MNoticiero {
 		 }catch(Exception e){
 	    	 System.out.println(e);
 		 }
-				
+		
+		
 		return datos;		
 	}
 

@@ -162,7 +162,7 @@ public class MAlumno {
 		 }catch(Exception e){
 	    	 System.out.println(e);
 		 }
-	
+
 	}
 
 	
@@ -199,8 +199,105 @@ public class MAlumno {
 	        }else{
 	        	existe = true;
 	        }
-	               
+	         
         return existe;
+		
+	}
+
+	
+	/**
+	 * Actualización de datos de alumno.
+	 * @param id
+	 * @param nombre
+	 * @param apellido1
+	 * @param apellido2
+	 * @param email
+	 * @param tlf
+	 * @param poblacion
+	 * @param calle
+	 * @param cp
+	 * @param nacido
+	 * @param nacionalidad
+	 * @param fecna
+	 * @param pass
+	 */
+	public void updateAlumno(	String id, String nombre, String apellido1, String apellido2, String email, String tlf,
+								String poblacion, String calle, String cp, String nacimiento, String nacionalidad, Date fnac, String pass) {
+		
+		String updateUser = "UPDATE bgacademy.alumno SET nombre = ?, apellido1 = ?, apellido2 = ?, email = ?, tlf = ?,  poblacion = ?, calle = ?, cp = ?, nacimiento = ?, nacionalidad = ?, fnac = ?, pass = ? where iduser = ?;";
+		
+		java.sql.Date sqlDate1 = new java.sql.Date(fnac.getTime());
+		
+		 try{
+            PreparedStatement sentencia = conexion.prepareStatement(updateUser);
+            sentencia.setString(1, nombre);
+            sentencia.setString(2, apellido1);
+            sentencia.setString(3, apellido2);
+            sentencia.setString(4, email);
+            sentencia.setString(5, tlf);
+            sentencia.setString(6, poblacion);
+            sentencia.setString(7, calle);
+            sentencia.setString(8, cp);
+            sentencia.setString(9, nacimiento);
+            sentencia.setString(10, nacionalidad);
+            sentencia.setDate(11, (java.sql.Date) sqlDate1);
+            sentencia.setString(12, pass);
+            sentencia.setInt(13, Integer.valueOf(id));
+            sentencia.executeUpdate();
+		 }catch(Exception e){
+			 System.out.println(e);
+		 }
+		 
+	}
+
+	
+	/**
+	 * Devuelve todos los datos del alumno por ID.
+	 * @param id
+	 * @return
+	 */
+	public Object[] dameDatosPorID(String id) {
+		
+		Object datos[] = new Object[22];
+		String selectDatosAlumn = "SELECT * FROM bgacademy.alumno WHERE iduser = ?";
+		
+		try{
+			 
+			 PreparedStatement sentencia = conexion.prepareStatement(selectDatosAlumn);
+			 
+		     sentencia.setInt(1, Integer.valueOf(id));
+
+			 ResultSet rs = sentencia.executeQuery();
+	         
+			 while(rs.next()){
+				 datos[0] = rs.getInt("iduser");
+				 datos[1] = rs.getString("tipouser");
+				 datos[2] = rs.getString("nombre");
+				 datos[3] = rs.getString("apellido1");
+				 datos[4] = rs.getString("apellido2");
+				 datos[5] = rs.getString("usuario");
+				 datos[6] = rs.getString("pass");
+				 datos[7] = rs.getString("nif");
+				 datos[8] = rs.getDate("fnac");
+				 datos[9] = rs.getString("nacimiento");
+				 datos[10] = rs.getString("nacionalidad");
+				 datos[11] = rs.getString("calle");
+				 datos[12] = rs.getString("cp");
+				 datos[13] = rs.getString("poblacion");
+				 datos[14] = rs.getString("provincia");
+				 datos[15] = rs.getDate("fecalta");
+				 datos[16] = rs.getString("anioprom");
+				 datos[17] = rs.getString("cursoasign");
+				 datos[18] = rs.getString("comentarios");
+				 datos[19] = rs.getString("tlf");
+				 datos[20] = rs.getString("email");
+			 }
+	            
+		 }catch(Exception e){
+	    	 System.out.println(e);
+		 }
+		
+		return datos;
 		
 	}
 

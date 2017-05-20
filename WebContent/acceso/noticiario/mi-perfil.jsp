@@ -126,7 +126,7 @@
                 <div class="panel-opciones">
                     
                     <h2> Mi Perfil </h2>
-               <form action="${request.contextPath}/Modificaperfilnot" method="POST">
+               <form id="form-mod-perfil-noticiario" action="" method="">
                     <div class="container-fluid">
                         
                             <div class="form-group row">
@@ -187,7 +187,7 @@
                             <div class="form-group row">
                                 <label class="col-md-3 col-xs-12 col-form-label text-xs-left">Contraseña: </label>
                                 <div class="col-md-7 col-xs-12">
-                                    <input class="form-control" id="pass-modificar-gest-perfil" name="pass" type="password" name="pass" value="<% out.print(datos_not[6]); %>" />               
+                                    <input class="form-control" id="pass-modificar-not-perfil" name="pass" type="password" name="pass" value="<% out.print(datos_not[6]); %>" />               
                                 </div>
                                 <div class="col-md-2 col-xs-12">
                                 	<i class="fa fa-eye" id="ver-pass" aria-hidden="true"></i>
@@ -196,7 +196,7 @@
                             <div class="form-group row">
                                 <div class="col-xs-12">
                                     <a href="../principal-noticiario.jsp"><button type="button" class="btn btn-primary">Volver</button></a>
-                                    <button type="submit" class="btn btn-primary">Modificar</button>
+                                    <button type="submit" id="mod-perfil-noticiario" class="btn btn-primary">Modificar</button>
                                 </div>
                             </div>
                        
@@ -214,6 +214,15 @@
         </div>
     </footer>
         
+</div>
+
+<!-- MODAL SUCCESS / ERROR-->
+<div id="modal-success-perfil" title="¡Usuario modificado!" style="display: none">
+	<p> ¡Se ha modificado el usuario correctamente! </p>
+</div>
+
+<div id="modal-error-perfil" title="¡Comprueba los datos!" style="display: none">
+	<p> ¡ERROR! Comprueba que no falta ningún dato. </p>
 </div>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>

@@ -2,6 +2,7 @@ package controller.gestor.regelemento;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -34,7 +35,7 @@ public class Regprofesor extends HttpServlet {
 	private Conexion conexionBD;
 	private String nombre, apellido1, apellido2, nif, nacimiento, nacionalidad, calle, cp, poblacion, provincia, email, tlf, anioprom;
 	private String fecna, fecalta;
-	private String[] cursoimp;
+	private String cursoimp;
 	private boolean existeAlumno, existeProfesor, existeGestor, existeNoticiario;
 	
        
@@ -43,17 +44,19 @@ public class Regprofesor extends HttpServlet {
      */
     public Regprofesor() {
         super();
-        conexionBD = new Conexion();
-        modelo_alumno = new MAlumno(conexionBD.getConexion());
-        modelo_profesor = new MProfesor(conexionBD.getConexion());
-        modelo_gestor = new MGestor(conexionBD.getConexion());
-        modelo_noticiario = new MNoticiero(conexionBD.getConexion());
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+				
+		// Reopen temporal de la BD.
+        conexionBD = new Conexion();
+        modelo_alumno = new MAlumno(conexionBD.getConexion());
+        modelo_profesor = new MProfesor(conexionBD.getConexion());
+        modelo_gestor = new MGestor(conexionBD.getConexion());
+        modelo_noticiario = new MNoticiero(conexionBD.getConexion());
 			
 		hs = request.getSession();
 		
@@ -76,9 +79,9 @@ public class Regprofesor extends HttpServlet {
 				fecalta = request.getParameter("fecalta");
 				email = request.getParameter("email");
 				tlf = request.getParameter("tlf");
-				anioprom = request.getParameter("anio-curso");
-				cursoimp = request.getParameterValues("cursos");
-									
+				anioprom = request.getParameter("aniocurso");
+				cursoimp = request.getParameter("cursos");
+													
 				SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 				Date fecna_date = null;
 				Date fecalta_date = null;
@@ -108,7 +111,6 @@ public class Regprofesor extends HttpServlet {
 					response.setContentType("application/json");
 					response.setCharacterEncoding("UTF-8");
 					response.getWriter().write(existe);
-					return;
 				}else{
 				
 					File dir = new File("WebContent/recursos/profesores/"+nif+"/fotopersonal");
@@ -134,19 +136,26 @@ public class Regprofesor extends HttpServlet {
 														tlf,
 														anioprom,
 														cursoimp);
-					
+				
 					existe = new Gson().toJson("0");
 					response.setContentType("application/json");
 					response.setCharacterEncoding("UTF-8");
 					response.getWriter().write(existe);
-				
 				}
 
 			}catch(Exception e){
 				response.sendRedirect("acceso/principal-gestor.jsp");
 				System.out.println(e);
 			}
-		}		
+		}
+		
+		//¡IMPORTANTE! Cerrar la conexión.
+		try {
+			conexionBD.getConexion().close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 	/**

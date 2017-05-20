@@ -1,6 +1,7 @@
 package controller.gestor.regelemento;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -31,14 +32,16 @@ public class Regcurso extends HttpServlet {
      */
     public Regcurso() {
         super();        
-        conexionBD = new Conexion();
-        modelo_curso = new MCurso(conexionBD.getConexion());
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		// Reopen temporal de la BD.
+        conexionBD = new Conexion();
+        modelo_curso = new MCurso(conexionBD.getConexion());
 		
 		hs = request.getSession();
 		
@@ -60,18 +63,16 @@ public class Regcurso extends HttpServlet {
 					response.setContentType("application/json");
 					response.setCharacterEncoding("UTF-8");
 					response.getWriter().write(existe);					
-					return;
 				}else{
 					
 					modelo_curso.registraCurso(		curso, 
 													anioinicio, 
 													aniofin);
-					
+									
 					existe = new Gson().toJson("0");
 					response.setContentType("application/json");
 					response.setCharacterEncoding("UTF-8");
 					response.getWriter().write(existe);	
-					
 				}
 					
 
@@ -82,6 +83,13 @@ public class Regcurso extends HttpServlet {
 			
 		}
 		
+		//¡IMPORTANTE! Cerrar la conexión.
+		try {
+			conexionBD.getConexion().close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+				
 	}
 
 	/**

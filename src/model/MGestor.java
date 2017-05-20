@@ -8,7 +8,7 @@ import java.util.Date;
 
 public class MGestor {
 	
-	private final Connection conexion;
+	private Connection conexion;
 	
 	public MGestor(Connection conexion){
 		this.conexion = conexion;
@@ -22,7 +22,7 @@ public class MGestor {
      * @return	Devuelve true si la identificación es correcta, de lo contrario devolverá false.
      */
     public boolean checkLogin(String usuario, String password){
-    	
+    	    	
 		String consultaUserPass = "SELECT COUNT(*) AS contador FROM bgacademy.gestor WHERE usuario = ? AND pass = ?;";
 		boolean correcto = false;
 		int contador = 0;
@@ -43,14 +43,16 @@ public class MGestor {
             System.out.println(e);
         }
         
+        
 	        if(contador == 0){
 	        	correcto = false;
 	        }else{
 	        	correcto = true;
 	        }
 	               
+	               
         return correcto;
-		         
+        
     }
 
     
@@ -89,7 +91,7 @@ public class MGestor {
 		 }catch(Exception e){
 	    	 System.out.println(e);
 		 }
-		
+				
 		return datos;
 	}
     
@@ -172,7 +174,7 @@ public class MGestor {
 		 }catch(Exception e){
 	    	 System.out.println(e);
 		 }
-		
+				
 	}
 
 	
@@ -209,7 +211,7 @@ public class MGestor {
 	        }else{
 	        	existe = true;
 	        }
-	               
+	        	               
         return existe;
 	}
 
@@ -240,7 +242,7 @@ public class MGestor {
 		 }catch(Exception e){
 			 System.out.println(e);
 		 }
-		
+		 		
 	}
 
 }

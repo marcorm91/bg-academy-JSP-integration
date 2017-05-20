@@ -1,7 +1,7 @@
 package controller.noticiario.modificaperfil;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import com.google.gson.Gson;
 
 import model.Conexion;
 import model.MNoticiero;
@@ -23,15 +25,12 @@ public class Modificaperfilnot extends HttpServlet {
 	private Conexion conexionBD;
 	private MNoticiero modelo_noticiario;
 	private String nombre, apellido1, apellido2, email, tlf, id, pass;
-	private PrintWriter out;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
     public Modificaperfilnot() {
         super();
-        conexionBD = new Conexion();
-        modelo_noticiario = new MNoticiero(conexionBD.getConexion());
     }
 
 	/**
@@ -39,8 +38,11 @@ public class Modificaperfilnot extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		// Reopen temporal de la BD.
+        conexionBD = new Conexion();
+        modelo_noticiario = new MNoticiero(conexionBD.getConexion());
+		
 		hs = request.getSession();
-		out = response.getWriter();
 		
 		if(hs.getAttribute("log") == null){
 			response.sendRedirect("error.jsp");
@@ -63,11 +65,11 @@ public class Modificaperfilnot extends HttpServlet {
 				// Reactualizamos la session para seguir manejando los datos del user actualizados.
 				datos_not = modelo_noticiario.dameDatosPorID(id);
 				hs.setAttribute("identificacion", datos_not);
-				
-				out.println("<script type=\"text/javascript\">");
-				out.println("alert('¡Usuario modificado con éxito!');");
-				out.println("location='acceso/noticiario/mi-perfil.jsp';");
-				out.println("</script>");
+								
+				String modOK = new Gson().toJson("0");
+				response.setContentType("application/json");
+				response.setCharacterEncoding("UTF-8");
+				response.getWriter().write(modOK);
 				
 			}catch(Exception e){
 				response.sendRedirect("acceso/noticiario/mi-perfil.jsp");
@@ -76,6 +78,13 @@ public class Modificaperfilnot extends HttpServlet {
 						
 		}
 		
+		// ¡IMPORTANTE! Cerrar la conexión BD.
+		try {
+			conexionBD.getConexion().close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
 	}
 
 	/**

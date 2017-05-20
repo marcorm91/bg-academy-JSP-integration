@@ -1,6 +1,7 @@
 package controller.accesoplataforma;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -37,17 +38,19 @@ public class Acceso_plataforma extends HttpServlet {
      */
     public Acceso_plataforma() {
         super();
-        conexionBD = new Conexion();
-        modelo_alumno = new MAlumno(conexionBD.getConexion());
-        modelo_profesor = new MProfesor(conexionBD.getConexion());
-        modelo_gestor = new MGestor(conexionBD.getConexion());
-        modelo_noticiero = new MNoticiero(conexionBD.getConexion());
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		// Reopen temporal de la BD
+		conexionBD = new Conexion();
+        modelo_alumno = new MAlumno(conexionBD.getConexion());
+        modelo_profesor = new MProfesor(conexionBD.getConexion());
+        modelo_gestor = new MGestor(conexionBD.getConexion());
+        modelo_noticiero = new MNoticiero(conexionBD.getConexion());
 		
 		user = request.getParameter("user");
 		pass = request.getParameter("pass");			
@@ -64,6 +67,14 @@ public class Acceso_plataforma extends HttpServlet {
 			//Sesión con los datos de alumno
 			datos_alumn = modelo_alumno.dameDatos(user);
 			hs.setAttribute("identificacion", datos_alumn);
+			
+			//¡IMPORTANTE! Cerrar la conexión.
+			try {
+				conexionBD.getConexion().close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+						
 			response.sendRedirect("acceso/principal-alumno.jsp");
 			return;
 			
@@ -78,6 +89,14 @@ public class Acceso_plataforma extends HttpServlet {
 				//Sesión con los datos de profesor
 				datos_prof = modelo_profesor.dameDatos(user);
 				hs.setAttribute("identificacion", datos_prof);
+				
+				//¡IMPORTANTE! Cerrar la conexión.
+				try {
+					conexionBD.getConexion().close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+							
 				response.sendRedirect("acceso/principal-profesor.jsp");	
 				return;
 				
@@ -92,6 +111,14 @@ public class Acceso_plataforma extends HttpServlet {
 					//Sesión con los datos de gestor
 					datos_gest = modelo_gestor.dameDatos(user);
 					hs.setAttribute("identificacion", datos_gest);
+					
+					//¡IMPORTANTE! Cerrar la conexión.
+					try {
+						conexionBD.getConexion().close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+															
 					response.sendRedirect("acceso/principal-gestor.jsp");
 					return;
 					
@@ -106,16 +133,32 @@ public class Acceso_plataforma extends HttpServlet {
 						//Sesión con los datos de noticiero
 						datos_not = modelo_noticiero.dameDatos(user);
 						hs.setAttribute("identificacion", datos_not);
+						
+						//¡IMPORTANTE! Cerrar la conexión.
+						try {
+							conexionBD.getConexion().close();
+						} catch (SQLException e) {
+							e.printStackTrace();
+						}
+												
 						response.sendRedirect("acceso/principal-noticiario.jsp");
 						return;
 						
 					//Si tras una comprobación previa entre las 4 tablas no se cumple la igualidad entre
 					//user y pass, retornamos a la misma página de acceso (acceso.jsp).
 					}else{
+						
+						//¡IMPORTANTE! Cerrar la conexión.
+						try {
+							conexionBD.getConexion().close();
+						} catch (SQLException e) {
+							e.printStackTrace();
+						}
+						
 						hs.setAttribute("log", "errorLog");
 						response.sendRedirect("acceso.jsp");
 					}
-		
+											
 	}
 
 	/**

@@ -310,10 +310,10 @@ $(document).ready(function() {
     
     // Mostrar contraseña si el usuario lo desea en Mi-perfil
     $("#ver-pass").on("click", function(){
-    	if($("#pass-modificar-gest-perfil").attr("type") === "password"){
-    		$("#pass-modificar-gest-perfil").attr("type", "text");    	
+    	if($("[id*='pass-modificar-']").attr("type") === "password"){
+    		$("[id*='pass-modificar-']").attr("type", "text");    	
     	}else{
-    		$("#pass-modificar-gest-perfil").attr("type", "password");    	
+    		$("[id*='pass-modificar-']").attr("type", "password");    	
     	}
     });
     
@@ -400,7 +400,11 @@ $(document).ready(function() {
     	var email = $("#email-profesor").val();
     	var tlf = $("#tlf-profesor").val();
     	var aniocurso = $("#anio-curso-profesor").val();
-    	var cursos = $("#cursos-profesor").val();
+    	var cursos = []; 
+    	$('#cursos-profesor :selected').each(function(i, selected){ 
+    	  cursos[i] = $(selected).text(); 
+    	});
+    	cursos = cursos.toString();
     	
     	if(nombre == "" || apellido1 == "" || apellido2 == "" || nif == "" || fecna == "" || nacimiento == "" || nacionalidad == "" || calle == "" || cp == "" || poblacion == "" || provincia == "" || fecalta == "" || email == "" || tlf == "" || aniocurso == "" || cursos == ""){
     		$("#modal-error").dialog();
@@ -604,7 +608,114 @@ $(document).ready(function() {
         						        	$(".ui-dialog-titlebar-close", ui.dialog | ui).hide();
         						        	$("#mod-perfil-gestor").css("pointer-events", "none");
         						    	},
-        						closeOnEscape: false,	
+        						closeOnEscape: false,
+        						buttons: {
+        			        		"OK": function() {
+        			        			$("body").css("overflow", "auto");
+        			        			$(this).dialog("close");
+        			        			location.reload();
+        			        		}
+        			    		}        				
+        				});
+        				$("body").css("overflow", "hidden");
+	    			}
+	    		}
+	    	});
+    	
+    	}
+    
+    });
+    
+    
+    /**
+     * Realiza la modificación de perfil de noticiario.
+     */
+    $("#mod-perfil-noticiario").on("click", function(e){
+    	
+    	e.preventDefault();
+    	
+    	var nombre = $("#nombre-modificar-not-perfil").val();
+    	var apellido1 = $("#ape1-modificar-not-perfil").val();
+    	var apellido2 = $("#ape2-modificar-not-perfil").val();
+    	var email = $("#email-modificar-not-perfil").val();
+    	var tlf = $("#tlf-modificar-not-perfil").val();
+    	var pass = $("#pass-modificar-not-perfil").val();
+    	
+    	if(nombre == "" || apellido1 == "" || apellido2 == "" || email == "" || tlf == "" || pass == ""){
+    		$("#modal-error-perfil").dialog();
+    	}else{
+    	    	
+	    	$.ajax({
+	    		type: "POST",
+	    		dataType: "json",
+	    		data: {nombre:nombre, apellido1:apellido1, apellido2:apellido2, email:email, tlf:tlf, pass:pass},
+	    		url: "/Modificaperfilnot",
+	    		success: function(resp){  			
+	    			if(resp == "0"){
+    					$("#form-mod-perfil-noticiario")[0].reset();
+        				$("#modal-success-perfil").dialog({
+        						open: function(event, ui) {
+        						        	$(".ui-dialog-titlebar-close", ui.dialog | ui).hide();
+        						        	$("#mod-perfil-noticiario").css("pointer-events", "none");
+        						    	},
+        						closeOnEscape: false,
+        						buttons: {
+        			        		"OK": function() {
+        			        			$("body").css("overflow", "auto");
+        			        			$(this).dialog("close");
+            			    			location.reload();
+        			        		}
+        			    		}        				
+        				});
+        				$("body").css("overflow", "hidden");
+	    			}
+	    		}
+	    	});
+    	
+    	}
+    
+    });
+    
+    
+    /**
+     * Realiza la modificación de perfil de alumno.
+     */
+    $("#mod-perfil-alumno").on("click", function(e){
+    	
+    	e.preventDefault();
+    	
+    	var nombre = $("#nombre-modificar-alumn-perfil").val();
+    	var apellido1 = $("#ape1-modificar-alumn-perfil").val();
+    	var apellido2 = $("#ape2-modificar-alumn-perfil").val();
+    	var email = $("#email-modificar-alumn-perfil").val();
+    	var poblacion = $("#poblacion-modificar-alumn-perfil").val();
+    	var calle = $("#calle-modificar-alumn-perfil").val();
+    	var cp = $("#cp-modificar-alumn-perfil").val();
+    	var nacido = $("#nacido-modificar-alumn-perfil").val();
+    	var nacionalidad = $("#nacionalidad-modificar-alumn-perfil").val();
+    	var calle = $("#calle-modificar-alumn-perfil").val();
+    	var fecna = $("#fnac-modificar-alumn-perfil").val();
+    	var tlf = $("#tlf-modificar-alumn-perfil").val();
+    	var pass = $("#pass-modificar-alumn-perfil").val();
+    	
+    	if(nombre == "" || apellido1 == "" || apellido2 == "" || email == "" || poblacion == "" || calle == "" || cp == "" || nacido == "" || nacionalidad == "" || calle == "" || fecna == "" || tlf == "" || pass == ""){
+    		$("#modal-error-perfil").dialog();
+    	}else{
+    	    	
+	    	$.ajax({
+	    		type: "POST",
+	    		dataType: "json",
+	    		data: {nombre:nombre, apellido1:apellido1, apellido2:apellido2, email:email, poblacion:poblacion, calle:calle, cp:cp, nacido:nacido, nacionalidad:nacionalidad, calle:calle, fecna:fecna,  tlf:tlf, pass:pass},
+	    		url: "/Modificaperfilalumn",
+	    		success: function(resp){  			
+	    			if(resp == "0"){
+    					$("#form-mod-perfil-alumno")[0].reset();
+        				$("#modal-success-perfil").dialog({
+        						open: function(event, ui) {
+        						        	$(".ui-dialog-titlebar-close", ui.dialog | ui).hide();
+        						        	$("#mod-perfil-alumno").css("pointer-events", "none");
+        						    	},
+        						closeOnEscape: false,
         						buttons: {
         			        		"OK": function() {
         			        			$("body").css("overflow", "auto");

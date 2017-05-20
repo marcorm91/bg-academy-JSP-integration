@@ -32,6 +32,12 @@
 	if(session.getAttribute("log") == null || !datos_alumn[1].equals("A")){  
 		response.sendRedirect("error.jsp");
 	} else{
+		
+		for(int i = 0; i < datos_alumn.length; i++){
+			if(datos_alumn[i] == null){
+				datos_alumn[i] = "";
+			}
+		}
 %>
 
 <!DOCTYPE html>
@@ -142,7 +148,7 @@
                 <div class="panel-opciones">
                     
                     <h2> Mi Perfil </h2>
-                    
+            <form id="form-mod-perfil-alumno" action="" method="">
                     <div class="container-fluid">
                         
                             <div class="form-group row">
@@ -150,97 +156,115 @@
                                     <img src="../../assets/imagenes/foto-de-perfil.jpg" class="img-circle">
                                 </div>
                                 <label class="col-xs-12 resolucion-imagen">Resolución de imagen recomendada: 440x615</label>
-                                <input type="file" id="img-modificar-gest-perfil" class="col-xs-12 text-xs-center">
+                                <input type="file" id="img-modificar-alumn-perfil" class="col-xs-12 text-xs-center">
                             </div>
                         
                             <div class="form-group row">
                                 <label class="col-md-3 col-xs-12 col-form-label text-xs-left">ID de usuario: </label>
                                 <div class="col-md-3 col-xs-12">
-                                    <input class="form-control" type="text" id="id-modificar-alumn-perfil" disabled>
+                                    <input class="form-control" type="text" id="id-modificar-alumn-perfil" value="<% out.print(datos_alumn[0]); %>" disabled>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-md-3 col-xs-12 col-form-label text-xs-left">Fecha de alta: </label>
                                 <div class="col-md-4 col-xs-12">
-                                    <input class="form-control" id="alta-modificar-alumn-perfil" disabled>
+                                	<% 
+	                            		String fechaoriginal = datos_alumn[15].toString(); 
+	                            		String [] formatfecha = fechaoriginal.split("-");
+                            		%>
+                                    <input class="form-control" id="alta-modificar-alumn-perfil" value="<% out.print(formatfecha[2] + "/" + formatfecha[1] + "/" + formatfecha[0]); %>" disabled>
                                 </div>
                             </div>
                         <hr/>
                             <div class="form-group row">
                                 <label class="col-md-3 col-xs-12 col-form-label text-xs-left">Nombre: </label>
                                 <div class="col-md-9 col-xs-12">
-                                    <input class="form-control" id="nombre-modificar-alumn-perfil">
+                                    <input class="form-control" id="nombre-modificar-alumn-perfil" name="nombre" value="<% out.print(datos_alumn[2]); %>">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-md-3 col-xs-12 col-form-label text-xs-left">Apellido 1: </label>
                                 <div class="col-md-9 col-xs-12">
-                                    <input class="form-control" id="ape1-modificar-alumn-perfil">
+                                    <input class="form-control" id="ape1-modificar-alumn-perfil" name="apellido1" value="<% out.print(datos_alumn[3]); %>">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-md-3 col-xs-12 col-form-label text-xs-left">Apellido 2: </label>
                                 <div class="col-md-9 col-xs-12">
-                                    <input class="form-control" id="ape2-modificar-alumn-perfil">
+                                    <input class="form-control" id="ape2-modificar-alumn-perfil" name="apellido2" value="<% out.print(datos_alumn[4]); %>">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-md-3 col-xs-12 col-form-label text-xs-left">E-mail: </label>
                                 <div class="col-md-9 col-xs-12">
-                                    <input class="form-control" id="email-modificar-alumn-perfil">
+                                    <input class="form-control" id="email-modificar-alumn-perfil" name="email" value="<% out.print(datos_alumn[20]); %>">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-md-3 col-xs-12 col-form-label text-xs-left">Población: </label>
                                 <div class="col-md-9 col-xs-12">
-                                    <input class="form-control" id="poblacion-modificar-alumn-perfil">
+                                    <input class="form-control" id="poblacion-modificar-alumn-perfil" name="poblacion" value="<% out.print(datos_alumn[13]); %>">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-md-3 col-xs-12 col-form-label text-xs-left">Calle / Vía / Avda: </label>
                                 <div class="col-md-9 col-xs-12">
-                                    <input class="form-control" id="calle-modificar-alumn-perfil">
+                                    <input class="form-control" id="calle-modificar-alumn-perfil" name="calle" value="<% out.print(datos_alumn[11]); %>">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-md-3 col-xs-12 col-form-label text-xs-left">Código postal: </label>
                                 <div class="col-md-3 col-xs-12">
-                                    <input class="form-control" id="cp-modificar-alumn-perfil">
+                                    <input class="form-control" id="cp-modificar-alumn-perfil" name="cp" value="<% out.print(datos_alumn[12]); %>">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-md-3 col-xs-12 col-form-label text-xs-left">Nacido en: </label>
                                 <div class="col-md-9 col-xs-12">
-                                    <input class="form-control" id="nacido-modificar-alumn-perfil">
+                                    <input class="form-control" id="nacido-modificar-alumn-perfil" name="nacido" value="<% out.print(datos_alumn[9]); %>">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-md-3 col-xs-12 col-form-label text-xs-left">Nacionalidad: </label>
                                 <div class="col-md-6 col-xs-12">
-                                    <input class="form-control" id="nacionalidad-modificar-alumn-perfil">
+                                    <input class="form-control" id="nacionalidad-modificar-alumn-perfil" name="nacionalidad" value="<% out.print(datos_alumn[10]); %>">
                                 </div>
                             </div>
                         
                             <div class="form-group row">
                                 <label class="col-md-3 col-xs-12 col-form-label text-xs-left">F. de nacimiento: </label>
                                 <div class="col-md-4 col-xs-12">
-                                    <input class="form-control" id="fnac-modificar-alumn-perfil">
+                                	<% 
+	                            		String fechaoriginal2 = datos_alumn[8].toString(); 
+	                            		String [] formatfecha2 = fechaoriginal.split("-");
+                            		%>
+                                    <input class="form-control" id="fnac-modificar-alumn-perfil" name="fecna" value="<% out.print(formatfecha2[2] + "/" + formatfecha2[1] + "/" + formatfecha2[0]); %>">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-md-3 col-xs-12 col-form-label text-xs-left">Teléfono: </label>
                                 <div class="col-md-4 col-xs-12">
-                                    <input class="form-control" id="tlf-modificar-alumn-perfil">
+                                    <input class="form-control" id="tlf-modificar-alumn-perfil" name="tlf" value="<% out.print(datos_alumn[19]); %>">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-3 col-xs-12 col-form-label text-xs-left">Contraseña: </label>
+                                <div class="col-md-7 col-xs-12">
+                                    <input class="form-control" id="pass-modificar-alumn-perfil" type="password" name="pass" value="<% out.print(datos_alumn[6]); %>" />               
+                                </div>
+                                <div class="col-md-2 col-xs-12">
+                                	<i class="fa fa-eye" id="ver-pass" aria-hidden="true"></i>
                                 </div>
                             </div>
                             <div class="form-group row btn-enviar">
                                 <div class="col-xs-12">
                                     <button type="button" class="btn btn-primary">Volver</button>
-                                    <button type="button" class="btn btn-primary">Modificar</button>
+                                    <button type="button" id="mod-perfil-alumno" class="btn btn-primary">Modificar</button>
                                 </div>
                             </div>
                        
                     </div> 
+                  </form>
                 </div>
             </div>
     </div>
@@ -253,6 +277,15 @@
         </div>
     </footer>
         
+</div>
+
+<!-- MODAL SUCCESS / ERROR-->
+<div id="modal-success-perfil" title="¡Usuario modificado!" style="display: none">
+	<p> ¡Se ha modificado el usuario correctamente! </p>
+</div>
+
+<div id="modal-error-perfil" title="¡Comprueba los datos!" style="display: none">
+	<p> ¡ERROR! Comprueba que no falta ningún dato. </p>
 </div>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>

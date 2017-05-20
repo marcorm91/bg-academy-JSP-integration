@@ -2,6 +2,7 @@ package controller.gestor.regelemento;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -43,17 +44,19 @@ public class Regalumno extends HttpServlet {
      */
     public Regalumno() {
         super();
-        conexionBD = new Conexion();
-        modelo_alumno = new MAlumno(conexionBD.getConexion());
-        modelo_profesor = new MProfesor(conexionBD.getConexion());
-        modelo_gestor = new MGestor(conexionBD.getConexion());
-        modelo_noticiario = new MNoticiero(conexionBD.getConexion());
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		//Reopen temporal de la BD.
+        conexionBD = new Conexion();
+        modelo_alumno = new MAlumno(conexionBD.getConexion());
+        modelo_profesor = new MProfesor(conexionBD.getConexion());
+        modelo_gestor = new MGestor(conexionBD.getConexion());
+        modelo_noticiario = new MNoticiero(conexionBD.getConexion());
 		
 		hs = request.getSession();
 		
@@ -104,12 +107,11 @@ public class Regalumno extends HttpServlet {
 				String existe = "";
 				
 				// En el caso de que se cumpla uno de los booleanos no se realizará el registro en la BD.
-				if(existeAlumno || existeProfesor || existeGestor || existeNoticiario){
+				if(existeAlumno || existeProfesor || existeGestor || existeNoticiario){					
 					existe = new Gson().toJson("1");
 					response.setContentType("application/json");
 					response.setCharacterEncoding("UTF-8");
 					response.getWriter().write(existe);
-					return;
 				}else{
 				
 					File dir = new File("WebContent/recursos/alumnos/"+nif+"/fotopersonal");
@@ -136,7 +138,7 @@ public class Regalumno extends HttpServlet {
 														anioprom,
 														cursoasign,
 														comentarios);
-					
+										
 					existe = new Gson().toJson("0");
 					response.setContentType("application/json");
 					response.setCharacterEncoding("UTF-8");
@@ -151,7 +153,13 @@ public class Regalumno extends HttpServlet {
 			
 		}
 		
-		
+		//¡IMPORTANTE! Cerrar la conexión.
+		try {
+			conexionBD.getConexion().close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
 	}
 
 	/**

@@ -50,7 +50,8 @@ public class MProfesor {
 	        }else{
 	        	correcto = true;
 	        }
-	               
+	        
+	           
         return correcto;
 		         
     }
@@ -95,6 +96,7 @@ public class MProfesor {
 	    	 System.out.println(e);
 		 }
 		
+		
 		return datos;
     }
 
@@ -120,12 +122,13 @@ public class MProfesor {
      */
     public void registraProfesor(	String nombre, String apellido1, String apellido2, String nif, Date fecna_date,
 									String nacimiento, String nacionalidad, String calle, String cp, String poblacion, String provincia,
-									Date fecalta_date, String email, String tlf, String anioprom, String[] cursoimp) throws IOException {
+									Date fecalta_date, String email, String tlf, String anioprom, String cursoimp) throws IOException {
 	
     	String insertProf = "INSERT INTO bgacademy.profesor (nombre, apellido1, apellido2, usuario, pass, fnac, nif, nacimiento, nacionalidad, tipouser, calle, cp, provincia, poblacion, fecalta, email, tlf, anioprom, asignimp) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
 		  
     	ArrayList<String> lista = new ArrayList<String>();
-    	for(int i = 0; i < cursoimp.length; i++) lista.add(cursoimp[i]);
+    	String [] splitcursos = cursoimp.split(",");
+    	for(int i = 0; i < splitcursos.length; i++) lista.add(splitcursos[i]);
     	
 		 try{
 			 
@@ -159,6 +162,8 @@ public class MProfesor {
 		 }catch(Exception e){
 	    	 System.out.println(e);
 		 }
+		 
+		
     }
 
     /**
@@ -194,7 +199,8 @@ public class MProfesor {
 	        }else{
 	        	existe = true;
 	        }
-	               
+	        
+	      
         return existe;
 	}
 

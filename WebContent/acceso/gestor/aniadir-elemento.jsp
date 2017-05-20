@@ -202,7 +202,7 @@
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Nombre:</label>
                 <div class="col-md-7">
-                    <input class="form-control" type="text" name="nombre-profesor" id="nombre-profesor" required>
+                    <input class="form-control" type="text" name="nombre" id="nombre-profesor" required>
                 </div>
             </div>
             <div class="form-group row">
@@ -297,7 +297,7 @@
                 <label class="col-md-3 col-form-label push-md-1">Año promoción:</label>
                 <div class="col-md-7">
                     <!-- PROMOCIONES CURSOS REGISTRADOS PREVIAMENTE -->
-                    <select class="form-control" name="anio-curso" id="anio-curso-profesor" required>
+                    <select class="form-control" name="aniocurso" id="anio-curso-profesor" required>
                         <option>2011 - 2012</option>
                         <option>2012 - 2013</option>
                         <option>2013 - 2014</option>

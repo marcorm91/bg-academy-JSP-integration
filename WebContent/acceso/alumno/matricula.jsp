@@ -33,6 +33,12 @@
 	if(session.getAttribute("log") == null || !datos_alumn[1].equals("A")){  
 		response.sendRedirect("error.jsp");
 	} else{
+				
+		for(int i = 0; i < datos_alumn.length; i++){
+			if(datos_alumn[i] == null){
+				datos_alumn[i] = "";
+			}
+		}
 %>
 
 <!DOCTYPE html>
@@ -173,7 +179,7 @@
                             </div>
                             <div class="col-xs-12 col-lg-3">
                             	<% 
-                            		String fechaoriginal = datos_alumn[7].toString(); 
+                            		String fechaoriginal = datos_alumn[8].toString(); 
                             		String [] formatfecha = fechaoriginal.split("-");
                             	%>
                                 <span><% out.print(formatfecha[2] + "/" + formatfecha[1] + "/" + formatfecha[0]); %></span>
@@ -251,10 +257,10 @@
                             </div>
                             <div class="col-xs-12 col-lg-3">
                             	<% 
-                            		fechaoriginal = datos_alumn[15].toString(); 
-                            		formatfecha = fechaoriginal.split("-");
+                            		String fechaoriginal2 = datos_alumn[15].toString(); 
+                            		String [] formatfecha2 = fechaoriginal.split("-");
                             	%>
-                                <span><% out.print(formatfecha[2] + "/" + formatfecha[1] + "/" + formatfecha[0]); %></span>
+                                <span><% out.print(formatfecha2[2] + "/" + formatfecha2[1] + "/" + formatfecha2[0]); %></span>
                             </div>
                                                         
                             <div class="col-xs-12 col-lg-3 text-lg-right">

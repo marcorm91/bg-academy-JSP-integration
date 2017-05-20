@@ -1,7 +1,10 @@
-package controller.gestor.modificaperfil;
+package controller.alumno.modificaperfil;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,23 +16,23 @@ import javax.servlet.http.HttpSession;
 import com.google.gson.Gson;
 
 import model.Conexion;
-import model.MGestor;
+import model.MAlumno;
 
 /**
- * Servlet implementation class Miperfil
+ * Servlet implementation class Modificaperfilalumn
  */
-@WebServlet("/Modificarperfilgest")
-public class Modificaperfilgest extends HttpServlet {
+@WebServlet("/Modificaperfilalumn")
+public class Modificaperfilalumn extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession hs;
 	private Conexion conexionBD;
-	private MGestor modelo_gestor;
-	private String nombre, apellido1, apellido2, email, tlf, id, pass;
+	private MAlumno modelo_alumno;
+	private String id, nombre, apellido1, apellido2, email, poblacion, calle, cp, nacido, nacionalidad, fecna, tlf, pass;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Modificaperfilgest() {
+    public Modificaperfilalumn() {
         super();
     }
 
@@ -40,15 +43,15 @@ public class Modificaperfilgest extends HttpServlet {
 		
 		// Reopen temporal de la BD.
         conexionBD = new Conexion();
-        modelo_gestor = new MGestor(conexionBD.getConexion());
-
+        modelo_alumno = new MAlumno(conexionBD.getConexion());
+		
 		hs = request.getSession();
 		
 		if(hs.getAttribute("log") == null){
 			response.sendRedirect("error.jsp");
 		}else{
 			
-			Object[] datos_gest = (Object []) hs.getAttribute("identificacion");
+			Object[] datos_alumn = (Object []) hs.getAttribute("identificacion");
 			
 			try{
 				nombre = request.getParameter("nombre");
@@ -56,23 +59,38 @@ public class Modificaperfilgest extends HttpServlet {
 				apellido2 = request.getParameter("apellido2");
 				email = request.getParameter("email");
 				tlf = request.getParameter("tlf");
+				poblacion = request.getParameter("poblacion");
+				calle = request.getParameter("calle");
+				cp = request.getParameter("cp");
+				nacido = request.getParameter("nacido");
+				nacionalidad = request.getParameter("nacionalidad");
+				fecna = request.getParameter("fecna");
 				pass = request.getParameter("pass");
-				id = datos_gest[0].toString();
-								
+				id = datos_alumn[0].toString();
+				
+				SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+				Date fecna_date = null;
+				
+				try {
+					fecna_date =  sdf.parse(fecna);
+				} catch (ParseException e) {
+					e.printStackTrace();
+				}
+				
 				//Llamamos al modelo para actualizar los datos del usuario con los datos.
-				modelo_gestor.updateGestor(id, nombre, apellido1, apellido2, email, tlf, pass);
+				modelo_alumno.updateAlumno(id, nombre, apellido1, apellido2, email, tlf, poblacion, calle, cp, nacido, nacionalidad, fecna_date, pass);
 				
 				// Reactualizamos la session para seguir manejando los datos del user actualizados.
-				datos_gest = modelo_gestor.dameDatosPorID(id);
-				hs.setAttribute("identificacion", datos_gest);
-							
+				datos_alumn = modelo_alumno.dameDatosPorID(id);
+				hs.setAttribute("identificacion", datos_alumn);
+				
 				String modOK = new Gson().toJson("0");
 				response.setContentType("application/json");
 				response.setCharacterEncoding("UTF-8");
 				response.getWriter().write(modOK);
 				
 			}catch(Exception e){
-				response.sendRedirect("acceso/gestor/mi-perfil.jsp");
+				response.sendRedirect("acceso/noticiario/mi-perfil.jsp");
 				System.out.println(e);
 			}
 			
