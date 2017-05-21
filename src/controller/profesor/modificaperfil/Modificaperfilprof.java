@@ -1,4 +1,4 @@
-package controller.alumno.modificaperfil;
+package controller.profesor.modificaperfil;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -16,23 +16,23 @@ import javax.servlet.http.HttpSession;
 import com.google.gson.Gson;
 
 import model.Conexion;
-import model.MAlumno;
+import model.MProfesor;
 
 /**
- * Servlet implementation class Modificaperfilalumn
+ * Servlet implementation class Modificaperfilprof
  */
-@WebServlet("/Modificaperfilalumn")
-public class Modificaperfilalumn extends HttpServlet {
+@WebServlet("/Modificaperfilprof")
+public class Modificaperfilprof extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private HttpSession hs;
 	private Conexion conexionBD;
-	private MAlumno modelo_alumno;
+	private HttpSession hs;
+	private MProfesor modelo_profesor;
 	private String id, nombre, apellido1, apellido2, email, poblacion, calle, cp, nacido, nacionalidad, fecna, tlf, pass;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Modificaperfilalumn() {
+    public Modificaperfilprof() {
         super();
     }
 
@@ -43,15 +43,15 @@ public class Modificaperfilalumn extends HttpServlet {
 		
 		// Reopen temporal de la BD.
         conexionBD = new Conexion();
-        modelo_alumno = new MAlumno(conexionBD.getConexion());
-		
-		hs = request.getSession();
+        modelo_profesor = new MProfesor(conexionBD.getConexion());
+        
+        hs = request.getSession();
 		
 		if(hs.getAttribute("log") == null){
 			response.sendRedirect("error.jsp");
 		}else{
 			
-			Object[] datos_alumn = (Object []) hs.getAttribute("identificacion");
+			Object[] datos_prof = (Object []) hs.getAttribute("identificacion");
 			
 			try{
 				nombre = request.getParameter("nombre");
@@ -66,7 +66,7 @@ public class Modificaperfilalumn extends HttpServlet {
 				nacionalidad = request.getParameter("nacionalidad");
 				fecna = request.getParameter("fecna");
 				pass = request.getParameter("pass");
-				id = datos_alumn[0].toString();
+				id = datos_prof[0].toString();
 				
 				SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 				Date fecna_date = null;
@@ -78,11 +78,11 @@ public class Modificaperfilalumn extends HttpServlet {
 				}
 				
 				//Llamamos al modelo para actualizar los datos del usuario con los datos.
-				modelo_alumno.updateAlumno(id, nombre, apellido1, apellido2, email, tlf, poblacion, calle, cp, nacido, nacionalidad, fecna_date, pass);
+				modelo_profesor.updateProfesor(id, nombre, apellido1, apellido2, email, tlf, poblacion, calle, cp, nacido, nacionalidad, fecna_date, pass);
 				
 				// Reactualizamos la session para seguir manejando los datos del user actualizados.
-				datos_alumn = modelo_alumno.dameDatosPorID(id);
-				hs.setAttribute("identificacion", datos_alumn);
+				datos_prof = modelo_profesor.dameDatosPorID(id);
+				hs.setAttribute("identificacion", datos_prof);
 			
 				String modOK = new Gson().toJson("0");
 				response.setContentType("application/json");
@@ -90,7 +90,7 @@ public class Modificaperfilalumn extends HttpServlet {
 				response.getWriter().write(modOK);
 				
 			}catch(Exception e){
-				response.sendRedirect("acceso/noticiario/mi-perfil.jsp");
+				response.sendRedirect("acceso/profesor/mi-perfil.jsp");
 				System.out.println(e);
 			}
 			
@@ -102,7 +102,7 @@ public class Modificaperfilalumn extends HttpServlet {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+        	
 	}
 
 	/**

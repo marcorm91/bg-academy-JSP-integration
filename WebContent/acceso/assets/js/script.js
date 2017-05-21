@@ -34,8 +34,8 @@ $(document).ready(function() {
                 
             }            
         
-    $("#fecha-nacimiento-profesor, #fecha-nacimiento-alumno, #fnac-modificar-alumn-perfil").datepicker();
-    $("#fecha-limite-subida-tarea, #fecha-limite-subida-examen").datepicker({minDate:0});
+    $("#fecha-nacimiento-profesor, #fecha-nacimiento-alumno, #fnac-modificar-alumn-perfil, #fnac-modificar-prof-perfil").datepicker({maxDate:0, changeYear: true, yearRange:'-90:+0'});
+    $("#fecha-limite-subida-tarea, #fecha-limite-subida-examen").datepicker({minDate:0, changeYear: true, yearRange:'-90:+0'});
     
     // Cuando boton-collapse que es el botón de menú en dispositivo mobile se abre, no le daremos ninguna funcionalidad
     // a los elementos del body.
@@ -566,7 +566,15 @@ $(document).ready(function() {
 		    				$("#curso").css("background-color", "#fff");
 	    					$("#form-reg-curso")[0].reset();
 	    					$("#modal-aniadir-curso").modal("toggle");
-	        				$("#modal-ok-curso").dialog();
+	        				$("#modal-ok-curso").dialog({
+	        					buttons: {
+        			        		"OK": function() {
+	        			        			$(this).dialog("close");
+	        			        			location.reload();
+        			        			}
+	        					}
+	        				});
+	        				
 	    				}	
 	    			}
 	    		}
@@ -731,6 +739,104 @@ $(document).ready(function() {
     	
     	}
     
+    });
+    
+    
+    /**
+     * Realiza la modificación de perfil de profesor.
+     */
+    $("#mod-perfil-profesor").on("click", function(e){
+    	
+    	e.preventDefault();
+    	
+    	var nombre = $("#nombre-modificar-prof-perfil").val();
+    	var apellido1 = $("#ape1-modificar-prof-perfil").val();
+    	var apellido2 = $("#ape2-modificar-prof-perfil").val();
+    	var email = $("#email-modificar-prof-perfil").val();
+    	var poblacion = $("#poblacion-modificar-prof-perfil").val();
+    	var calle = $("#calle-modificar-prof-perfil").val();
+    	var cp = $("#cp-modificar-prof-perfil").val();
+    	var nacido = $("#nacido-modificar-prof-perfil").val();
+    	var nacionalidad = $("#nacionalidad-modificar-prof-perfil").val();
+    	var calle = $("#calle-modificar-prof-perfil").val();
+    	var fecna = $("#fnac-modificar-prof-perfil").val();
+    	var tlf = $("#tlf-modificar-prof-perfil").val();
+    	var pass = $("#pass-modificar-prof-perfil").val();
+    	
+    	if(nombre == "" || apellido1 == "" || apellido2 == "" || email == "" || poblacion == "" || calle == "" || cp == "" || nacido == "" || nacionalidad == "" || calle == "" || fecna == "" || tlf == "" || pass == ""){
+    		$("#modal-error-perfil").dialog();
+    	}else{
+    	    	
+	    	$.ajax({
+	    		type: "POST",
+	    		dataType: "json",
+	    		data: {nombre:nombre, apellido1:apellido1, apellido2:apellido2, email:email, poblacion:poblacion, calle:calle, cp:cp, nacido:nacido, nacionalidad:nacionalidad, calle:calle, fecna:fecna,  tlf:tlf, pass:pass},
+	    		url: "/Modificaperfilprof",
+	    		success: function(resp){  			
+	    			if(resp == "0"){
+    					$("#form-mod-perfil-prof")[0].reset();
+        				$("#modal-success-perfil").dialog({
+        						open: function(event, ui) {
+        						        	$(".ui-dialog-titlebar-close", ui.dialog | ui).hide();
+        						        	$("#mod-perfil-profesor").css("pointer-events", "none");
+        						    	},
+        						closeOnEscape: false,
+        						buttons: {
+        			        		"OK": function() {
+        			        			$("body").css("overflow", "auto");
+        			        			$(this).dialog("close");
+            			    			location.reload();
+        			        		}
+        			    		}        				
+        				});
+        				$("body").css("overflow", "hidden");
+	    			}
+	    		}
+	    	});
+    	
+    	}
+    
+    });
+    
+    
+    
+    /**
+     * Carga de cursos y años iniciales y finales en la BD curso.
+     */
+    $("#regprofesor").on("click", function(e){
+    	
+    	// Pide por ajax la petición a la base de datos de las fechas iniciales y finales.
+    	// Esta petición volverá con fechas iniciales y finales únicas de la BD.
+     	$.ajax({
+    		type: "POST",
+    		dataType: "json",
+    		url: "/Recogefechas",
+    		async: false,
+    		success: function(resp){  
+    			for(var i = 0; i < resp.length; i++){			
+    				if(resp[i][0] != null || resp[i][1] != null){
+    					$("#anio-curso-profesor").append("<option> " + resp[i][0] + " - " + resp[i][1] + "</option>");
+    				}
+    			}    			
+    		}
+    	});
+     	
+     	// Petición que devolverá todos los cursos existentes en la BD.
+     	// Mismo caso que fechas, devolverá e imprimirá la unicidad de cursos sin que éstos sean repetidos.
+     	$.ajax({
+    		type: "POST",
+    		dataType: "json",
+    		url: "/Recogecursos",
+    		async: false,
+    		success: function(resp){  
+    			for(var i = 0; i < resp.length; i++){			
+    				if(resp[i][0] != null){
+    					$("#cursos-profesor").append("<option> " + resp[i][0] + "</option>");
+    				}
+    			}    			
+    		}
+    	});
+     	    
     });
     
     

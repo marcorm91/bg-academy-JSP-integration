@@ -89,7 +89,8 @@ public class MProfesor {
 				 datos[15] = rs.getString("email");
 				 datos[16] = rs.getString("tlf");
 				 datos[17] = rs.getString("anioprom");
-				 datos[18] = rs.getString("asignimp");				 
+				 datos[18] = rs.getString("asignimp");
+				 datos[19] = rs.getString("nacionalidad");
 			 }
 	            
 		 }catch(Exception e){
@@ -204,6 +205,103 @@ public class MProfesor {
         return existe;
 	}
 
+	
+	/**
+	 * Actualización de datos de profesor.
+	 * @param id
+	 * @param nombre
+	 * @param apellido1
+	 * @param apellido2
+	 * @param email
+	 * @param tlf
+	 * @param poblacion
+	 * @param calle
+	 * @param cp
+	 * @param nacido
+	 * @param nacionalidad
+	 * @param fecna_date
+	 * @param pass
+	 */
+	public void updateProfesor(	String id, String nombre, String apellido1, String apellido2, String email, String tlf,
+								String poblacion, String calle, String cp, String nacido, String nacionalidad, Date fecna,
+								String pass) {
+		
+		String updateUser = "UPDATE bgacademy.profesor SET nombre = ?, apellido1 = ?, apellido2 = ?, email = ?, tlf = ?,  poblacion = ?, calle = ?, cp = ?, nacimiento = ?, nacionalidad = ?, fnac = ?, pass = ? where iduser = ?;";
+		
+		java.sql.Date sqlDate1 = new java.sql.Date(fecna.getTime());
+		
+		 try{
+            PreparedStatement sentencia = conexion.prepareStatement(updateUser);
+            sentencia.setString(1, nombre);
+            sentencia.setString(2, apellido1);
+            sentencia.setString(3, apellido2);
+            sentencia.setString(4, email);
+            sentencia.setString(5, tlf);
+            sentencia.setString(6, poblacion);
+            sentencia.setString(7, calle);
+            sentencia.setString(8, cp);
+            sentencia.setString(9, nacido);
+            sentencia.setString(10, nacionalidad);
+            sentencia.setDate(11, (java.sql.Date) sqlDate1);
+            sentencia.setString(12, pass);
+            sentencia.setInt(13, Integer.valueOf(id));
+            sentencia.executeUpdate();
+		 }catch(Exception e){
+			 System.out.println(e);
+		 }
+		
+		
+	}
+
+	
+	/**
+	 * Devuelve todos los datos del profesor por ID.
+	 * @param id
+	 * @return
+	 */
+	public Object[] dameDatosPorID(String id) {
+		
+		Object datos[] = new Object[22];
+		String selectDatosProf = "SELECT * FROM bgacademy.profesor WHERE iduser = ?";
+		
+		try{
+			 
+			 PreparedStatement sentencia = conexion.prepareStatement(selectDatosProf);
+			 
+		     sentencia.setInt(1, Integer.valueOf(id));
+
+			 ResultSet rs = sentencia.executeQuery();
+	         
+			 while(rs.next()){
+				 datos[0] = rs.getInt("iduser");
+				 datos[1] = rs.getString("tipouser");
+				 datos[2] = rs.getString("nombre");
+				 datos[3] = rs.getString("apellido1");
+				 datos[4] = rs.getString("apellido2");
+				 datos[5] = rs.getString("usuario");
+				 datos[6] = rs.getString("pass");
+				 datos[7] = rs.getDate("fnac");
+				 datos[8] = rs.getString("nif");
+				 datos[9] = rs.getString("nacimiento");
+				 datos[10] = rs.getString("calle");
+				 datos[11] = rs.getString("cp");
+				 datos[12] = rs.getString("provincia");
+				 datos[13] = rs.getString("poblacion");
+				 datos[14] = rs.getDate("fecalta");
+				 datos[15] = rs.getString("email");
+				 datos[16] = rs.getString("tlf");
+				 datos[17] = rs.getString("anioprom");
+				 datos[18] = rs.getString("asignimp");
+				 datos[19] = rs.getString("nacionalidad");
+			 }
+	            
+		 }catch(Exception e){
+	    	 System.out.println(e);
+		 }
+		
+		return datos;
+		
+	}
 
 }
 

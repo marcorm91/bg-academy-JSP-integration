@@ -25,7 +25,7 @@ $(document).ready(function() {
 		url:"assets/includes/pie.html",
 		async: false,
 		success:function(resp){
-			$("#pie_pag").html(html);
+			$("#pie_pag").html(resp);
 		}
 	});
 	

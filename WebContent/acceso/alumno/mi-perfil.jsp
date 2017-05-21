@@ -236,7 +236,7 @@
                                 <div class="col-md-4 col-xs-12">
                                 	<% 
 	                            		String fechaoriginal2 = datos_alumn[8].toString(); 
-	                            		String [] formatfecha2 = fechaoriginal.split("-");
+	                            		String [] formatfecha2 = fechaoriginal2.split("-");
                             		%>
                                     <input class="form-control" id="fnac-modificar-alumn-perfil" name="fecna" value="<% out.print(formatfecha2[2] + "/" + formatfecha2[1] + "/" + formatfecha2[0]); %>">
                                 </div>

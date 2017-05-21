@@ -24,6 +24,7 @@
 	} else{
 %>
 
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -137,7 +138,7 @@
                         <div class="row">
                             <div class="col-md-4 col-xs-12">
                                 <i class="fa fa-briefcase fa-4x" aria-hidden="true" data-toggle="modal" 
-                                   data-target="#modal-aniadir-profesor"></i> <p> Registrar <br/> Profesor </p>
+                                   data-target="#modal-aniadir-profesor" id="regprofesor"></i> <p> Registrar <br/> Profesor </p>
                             </div>
                             <div class="col-md-4 col-xs-12">
                                 <i class="fa fa-graduation-cap fa-4x" aria-hidden="true" data-toggle="modal"
@@ -297,13 +298,7 @@
                 <label class="col-md-3 col-form-label push-md-1">Año promoción:</label>
                 <div class="col-md-7">
                     <!-- PROMOCIONES CURSOS REGISTRADOS PREVIAMENTE -->
-                    <select class="form-control" name="aniocurso" id="anio-curso-profesor" required>
-                        <option>2011 - 2012</option>
-                        <option>2012 - 2013</option>
-                        <option>2013 - 2014</option>
-                        <option>2014 - 2015</option>
-                        <option>2015 - 2016</option>
-                    </select>
+                    <select class="form-control" name="aniocurso" id="anio-curso-profesor" required></select>
                 </div>
             </div>
             <div class="form-group row">
@@ -311,13 +306,13 @@
                 <div class="col-md-7">
                     <!-- CURSOS REGISTRADOS PREVIAMENTE -->
                     <select multiple class="form-control" name="cursos" id="cursos-profesor" required>
-                        <option>[A1] - Nivel Básico - 1er Curso</option>
-                        <option>[A2] - Nivel Básico - 2º Curso</option>
-                        <option>[B1] - Nivel Intermedio - 3er Curso</option>
-                        <option>[B2] - Nivel Avanzado - 4º Curso</option>
-                        <option>[B2] - Nivel Avanzado - 5º Curso</option>
-                        <option>[C1] - Nivel Avanzado - 6º Curso</option>
-                        <option>[C2] - Nivel Avanzado - 7º Curso</option>
+<!--                         <option>[A1] - Nivel Básico - 1er Curso</option> -->
+<!--                         <option>[A2] - Nivel Básico - 2º Curso</option> -->
+<!--                         <option>[B1] - Nivel Intermedio - 3er Curso</option> -->
+<!--                         <option>[B2] - Nivel Avanzado - 4º Curso</option> -->
+<!--                         <option>[B2] - Nivel Avanzado - 5º Curso</option> -->
+<!--                         <option>[C1] - Nivel Avanzado - 6º Curso</option> -->
+<!--                         <option>[C2] - Nivel Avanzado - 7º Curso</option> -->
                     </select>
                 </div>
             </div>

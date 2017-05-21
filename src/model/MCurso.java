@@ -81,4 +81,95 @@ public class MCurso {
 		
 	}
 
+	
+	/**
+	 * Recoge todas las fechas existentes en la BD.
+	 * @return
+	 */
+	public String[][] devuelveFechas() {
+		
+		int cantidad = totalRegistros();
+		String datos[][] = new String[cantidad][2];
+		int i = 0;
+		
+		String selectFechas = "SELECT DISTINCT anioinicio, aniofinal from bgacademy.curso order by anioinicio;";
+		
+		try{
+			 
+			 PreparedStatement sentencia = conexion.prepareStatement(selectFechas);
+			 ResultSet rs = sentencia.executeQuery();
+			 	            
+	            while(rs.next()){
+	                datos[i][0] = rs.getString("anioinicio");
+	                datos[i][1] = rs.getString("aniofinal");  
+	                i++;
+	            }
+	            	            
+		 }catch(Exception e){
+	    	 System.out.println(e);
+	     }
+       
+		return datos;
+		
+	}
+	
+	
+	/**
+	 * Devuelve los cursos registrados en la Base de Datos.
+	 * @return
+	 */
+	public String[][] devuelveCursos() {
+		
+		int cantidad = totalRegistros();
+		String datos[][] = new String[cantidad][1];
+		int i = 0;
+		
+		String selectCurso = "SELECT DISTINCT curso from bgacademy.curso order by curso;";
+		
+		try{
+			 
+			 PreparedStatement sentencia = conexion.prepareStatement(selectCurso);
+			 ResultSet rs = sentencia.executeQuery();
+			 	            
+	            while(rs.next()){
+	                datos[i][0] = rs.getString("curso");
+	                i++;
+	            }
+	            	            
+		 }catch(Exception e){
+	    	 System.out.println(e);
+	     }
+       
+		return datos;
+		
+	}
+
+	
+	/**
+	 * Total de registros en BD.
+	 * @return
+	 */
+	private int totalRegistros() {
+		
+		String total = "select count(*) as contador from bgacademy.curso;";
+		int filas = 0;
+		
+		try{
+			 PreparedStatement sentencia = conexion.prepareStatement(total);
+			 ResultSet rs = sentencia.executeQuery();
+			 
+			 while(rs.next()){
+				filas = rs.getInt("contador");
+			 }
+
+		}catch(Exception e){
+			System.out.println(e);
+		}
+					 
+		return filas;
+		
+	}
+
+	
+
 }
