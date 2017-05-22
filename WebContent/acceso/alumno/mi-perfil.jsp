@@ -258,7 +258,7 @@
                             </div>
                             <div class="form-group row btn-enviar">
                                 <div class="col-xs-12">
-                                    <button type="button" class="btn btn-primary">Volver</button>
+                                    <a href="../principal-alumno.jsp"><button type="button" class="btn btn-primary">Volver</button></a>
                                     <button type="button" id="mod-perfil-alumno" class="btn btn-primary">Modificar</button>
                                 </div>
                             </div>

@@ -801,7 +801,7 @@ $(document).ready(function() {
     
     
     /**
-     * Carga de cursos y años iniciales y finales en la BD curso.
+     * Carga de cursos y años iniciales y finales de la BD curso sobre los campos de profesor.
      */
     $("#regprofesor").on("click", function(e){
     	
@@ -838,6 +838,94 @@ $(document).ready(function() {
     	});
      	    
     });
+    
+    
+    /**
+     * Carga de cursos y años iniciales y finales de la BD curso sobre los campos de alumno.
+     */
+    $("#regalumno").on("click", function(e){
+    	
+    	// Pide por ajax la petición a la base de datos de las fechas iniciales y finales.
+    	// Esta petición volverá con fechas iniciales y finales únicas de la BD.
+     	$.ajax({
+    		type: "POST",
+    		dataType: "json",
+    		url: "/Recogefechas",
+    		async: false,
+    		success: function(resp){  
+    			for(var i = 0; i < resp.length; i++){			
+    				if(resp[i][0] != null || resp[i][1] != null){
+    					$("#anio-curso").append("<option> " + resp[i][0] + " - " + resp[i][1] + "</option>");
+    				}
+    			}    			
+    		}
+    	});
+     	
+     	// Petición que devolverá todos los cursos existentes en la BD.
+     	// Mismo caso que fechas, devolverá e imprimirá la unicidad de cursos sin que éstos sean repetidos.
+     	$.ajax({
+    		type: "POST",
+    		dataType: "json",
+    		url: "/Recogecursos",
+    		async: false,
+    		success: function(resp){  
+    			for(var i = 0; i < resp.length; i++){			
+    				if(resp[i][0] != null){
+    					$("#curso-alumno").append("<option> " + resp[i][0] + "</option>");
+    				}
+    			}    			
+    		}
+    	});
+     	    
+    });
+    
+    
+    
+    /**
+     * Insercción de incidencia en la BD incidencias de alumno.
+     */
+    $("#regincidencia-alumn").on("click", function(e){
+    	
+    	e.preventDefault();
+    	
+    	var alumnincidencia = $("#alumnincidencia").val();
+    	
+    	if(alumnincidencia == ""){
+    		$("#modal-error-incidencia").dialog();
+    	}else{
+    		    		
+    		$.ajax({
+	    		type: "POST",
+	    		dataType: "json",
+	    		data: {alumnincidencia:alumnincidencia},
+	    		url: "/Regincidenciaalumn",
+	    		success: function(resp){  			
+	    			if(resp == "0"){
+    					$("#form-reg-incidencia-alumn")[0].reset();
+        				$("#modal-success-incidencia").dialog({
+        						open: function(event, ui) {
+        						        	$(".ui-dialog-titlebar-close", ui.dialog | ui).hide();
+        						    	},
+        						closeOnEscape: false,
+        						buttons: {
+        			        		"OK": function() {
+        			        			$(this).dialog("close");
+        			        		}
+        			    		}        				
+        				});
+	    			}
+	    		}
+	    	});
+    	
+    	}
+    	
+    });
+    
+    
+    // Reload de la pag tras cerrar el modal alumno o profesor.
+    $('#modal-aniadir-alumno, #modal-aniadir-profesor').on('hidden.bs.modal', function () {
+        location.reload();
+    })
     
     
 });
