@@ -100,7 +100,7 @@
                             </a>
                         </li>
                          <li class="nav-item">
-                            <a class="nav-link" href="./alumno/ver-incidencias.jsp" title="Ir a Ver Incidencias">
+                            <a class="nav-link ver-incidencias-alumn" href="./alumno/ver-incidencias.jsp" title="Ir a Ver Incidencias">
                                 <i class="fa fa-wrench fa-2x" aria-hidden="true"></i>
                                 <span class="hidden-sm-up"> Ir a Ver Incidencias </span>
                             </a>
@@ -172,7 +172,7 @@
                                 <p> Registrar <br/> Incidencia </p>    
                             </div>
                             <div class="col-md-4 col-xs-12">
-                                <a href="./alumno/ver-incidencias.jsp">
+                                <a href="./alumno/ver-incidencias.jsp" class="ver-incidencias-alumn">
                                     <i class="fa fa-wrench fa-4x" aria-hidden="true"></i>
                                 </a>
                                 <p>Mis<br/> Incidencias </p>    

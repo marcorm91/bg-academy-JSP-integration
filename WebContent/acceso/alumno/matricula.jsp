@@ -105,7 +105,7 @@
                             </a>
                         </li>
                          <li class="nav-item">
-                            <a class="nav-link" href="./ver-incidencias.jsp" title="Ir a Ver Incidencias">
+                            <a class="nav-link ver-incidencias-alumn" href="./ver-incidencias.jsp" title="Ir a Ver Incidencias">
                                 <i class="fa fa-wrench fa-2x" aria-hidden="true"></i>
                                 <span class="hidden-sm-up"> Ir a Ver Incidencias </span>
                             </a>

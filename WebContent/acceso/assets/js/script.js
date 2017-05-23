@@ -922,6 +922,66 @@ $(document).ready(function() {
     });
     
     
+    /**
+     * Insercción de incidencia en la BD incidencias de profesor.
+     */
+    $("#regincidencia-prof").on("click", function(e){
+    	
+    	e.preventDefault();
+    	
+    	var profincidencia = $("#profincidencia").val();
+    	
+    	if(profincidencia == ""){
+    		$("#modal-error-incidencia").dialog();
+    	}else{
+    		    		
+    		$.ajax({
+	    		type: "POST",
+	    		dataType: "json",
+	    		data: {profincidencia:profincidencia},
+	    		url: "/Regincidenciaprof",
+	    		success: function(resp){  			
+	    			if(resp == "0"){
+    					$("#form-reg-incidencia-prof")[0].reset();
+        				$("#modal-success-incidencia").dialog({
+        						open: function(event, ui) {
+        						        	$(".ui-dialog-titlebar-close", ui.dialog | ui).hide();
+        						    	},
+        						closeOnEscape: false,
+        						buttons: {
+        			        		"OK": function() {
+        			        			$(this).dialog("close");
+        			        		}
+        			    		}        				
+        				});
+	    			}
+	    		}
+	    	});
+    	
+    	}
+    	
+    });
+    
+    
+    /**
+     * Visualiza por pantalla las incidencias del alumno.
+     */
+    $(".ver-incidencias-alumn").on("click", function(){
+    	
+    		$.ajax({
+	    		type: "POST",
+	    		dataType: "json",
+	    		url: "/Verincidenciasalumn",
+	    		success: function(resp){  			
+
+	    			
+	    			
+	    		}
+	    	});
+
+    });
+    
+    
     // Reload de la pag tras cerrar el modal alumno o profesor.
     $('#modal-aniadir-alumno, #modal-aniadir-profesor').on('hidden.bs.modal', function () {
         location.reload();

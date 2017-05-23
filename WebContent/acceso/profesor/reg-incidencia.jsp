@@ -125,7 +125,8 @@
                 <img src="../../assets/imagenes/logo.png">
                 <h1><a href="../principal-profesor.jsp">Panel Principal</a> / Registrar Incidencia</h1>
                 <hr/>
-                
+            
+            <form id="form-reg-incidencia-prof" action="" method="">
                 <div class="row text-xs-left form-publicacion-art">
                     <div class="row">
                         <div class="col-xs-12 text-xs-center">
@@ -141,7 +142,7 @@
                     
                     <div class="row">
                         <div class="col-xs-12">
-                            <textarea cols="137" rows="8" class="img-fluid"></textarea>
+                            <textarea cols="137" rows="8" id="profincidencia" name="profincidencia" class="img-fluid"></textarea>
                         </div>
                     </div>
                    
@@ -149,10 +150,11 @@
                     <div class="form-group row text-xs-center">
                         <div class="col-xs-12">
                             <a href="../principal-profesor.jsp"><button type="button" class="btn btn-primary">Volver</button></a>
-                            <a href="#"><button type="button" class="btn btn-primary">Registrar incidencia</button></a>
+                            <a ><button type="button" id="regincidencia-prof" class="btn btn-primary">Registrar incidencia</button></a>
                         </div>
                     </div>
                 </div>
+              </form>
             </div>
     </div>
         
@@ -164,6 +166,15 @@
         </div>
     </footer>
         
+</div>
+
+<!-- MODAL SUCCESS / ERROR-->
+<div id="modal-success-incidencia" title="¡Incidencia registrada!" style="display: none">
+	<p> ¡Se ha registrado la incidencia correctamente! </p>
+</div>
+
+<div id="modal-error-incidencia" title="¡Error de incidencia!" style="display: none">
+	<p> ¡ERROR! Debe contener texto la incidencia para poder registrarla. </p>
 </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
