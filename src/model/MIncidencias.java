@@ -106,8 +106,8 @@ public class MIncidencias {
 		while(rs.next()){
 			 datos[i][0] = rs.getInt("idincidencia");
 			 datos[i][1] = rs.getString("incidencia");
-			 datos[i][2] = rs.getString("resolucion");
-			 datos[i][3] = rs.getString("fechaentrada");
+			 datos[i][2] = rs.getString("fechaentrada");
+			 datos[i][3] = rs.getString("resolucion");
 			 i++;
 		 }
 				
@@ -145,6 +145,35 @@ public class MIncidencias {
 					 
 		return filas;
 		
+	}
+
+	
+	/**
+	 * Devuelve el contenido de la incidencia.
+	 * @param id
+	 * @return
+	 */
+	public String dameIncidencia(String id) {
+		
+		String total = "SELECT incidencia FROM bgacademy.incidencias WHERE idincidencia = ?;";
+		String result = null;
+		
+		try{
+			
+			 PreparedStatement sentencia = conexion.prepareStatement(total);	 
+			 sentencia.setInt(1, Integer.parseInt(id));
+			 ResultSet rs = sentencia.executeQuery();
+
+			 while(rs.next()){
+				 result = rs.getString(1);
+			 }
+			 	
+
+		}catch(Exception e){
+			System.out.println(e);
+		}
+					 
+		return result;		
 	}
 	
 }
