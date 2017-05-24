@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.google.gson.Gson;
+
 import model.Conexion;
 import model.MIncidencias;
 
@@ -22,6 +24,8 @@ public class Verincidenciasalumn extends HttpServlet {
 	private HttpSession hs;
 	private MIncidencias modelo_incidencia;
 	private Conexion conexionBD;
+	private Object incidencias[][];
+	private String id;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -47,8 +51,14 @@ public class Verincidenciasalumn extends HttpServlet {
 			
 			Object[] datos_alumn = (Object []) hs.getAttribute("identificacion");
 			
-			
-			
+			id = datos_alumn[0].toString();
+						
+			incidencias = modelo_incidencia.devuelveIncidenciasAlumn(id);
+		
+			String sendIncidencias = new Gson().toJson(incidencias);
+			response.setContentType("application/json");
+			response.setCharacterEncoding("UTF-8");
+			response.getWriter().write(sendIncidencias);
 			
 		}
 					        

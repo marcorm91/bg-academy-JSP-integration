@@ -962,25 +962,7 @@ $(document).ready(function() {
     	
     });
     
-    
-    /**
-     * Visualiza por pantalla las incidencias del alumno.
-     */
-    $(".ver-incidencias-alumn").on("click", function(){
-    	
-    		$.ajax({
-	    		type: "POST",
-	    		dataType: "json",
-	    		url: "/Verincidenciasalumn",
-	    		success: function(resp){  			
 
-	    			
-	    			
-	    		}
-	    	});
-
-    });
-    
     
     // Reload de la pag tras cerrar el modal alumno o profesor.
     $('#modal-aniadir-alumno, #modal-aniadir-profesor').on('hidden.bs.modal', function () {

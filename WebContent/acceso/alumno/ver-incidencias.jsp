@@ -213,6 +213,22 @@
     <script src="../../assets/js/bootstrap.min.js"></script>
     <script src="../../assets/js/jquery-ui.js"></script>
     <script src="../assets/js/script.js"></script>
+    <script>
+	    
+    	$(document).ready(function(){
+	    	$.ajax({
+	    		type: "POST",
+	    		dataType: "json",
+	    		url: "/Verincidenciasalumn",
+	    		success: function(resp){  			
+	    			for(var i = 0; i < resp.length; i++){
+	    				alert(resp[i]);
+	    			}
+	    		}
+	    	});
+	    });
+    	
+    </script>
     
 </body>
 </html>

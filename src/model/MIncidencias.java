@@ -2,6 +2,8 @@ package model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -83,14 +85,66 @@ public class MIncidencias {
 	}
 
 	/**
-	 * Devuelve las incidencias registradas por el usuario (Alumno / Profesor).
+	 * Devuelve las incidencias registradas por el usuario Alumno.
 	 * @param id
 	 * @return
 	 */
-	public String[][] devuelveIncidencias(String id) {
+	public Object[][] devuelveIncidenciasAlumn(String id) {
 		
+		int cantidad = totalRegistrosIncidenciasAlumn(id);
+		Object datos[][] = new Object[cantidad][4];
+		int i = 0;
 		
-		return null;
+		String selectIncidencias = "SELECT idincidencia, incidencia, resolucion, fechaentrada FROM bgacademy.incidencias WHERE idalumno = ?;";
+		
+		try{
+		
+			PreparedStatement sentencia = conexion.prepareStatement(selectIncidencias);
+			sentencia.setInt(1, Integer.parseInt(id));
+			ResultSet rs = sentencia.executeQuery();
+		
+		while(rs.next()){
+			 datos[i][0] = rs.getInt("idincidencia");
+			 datos[i][1] = rs.getString("incidencia");
+			 datos[i][2] = rs.getString("resolucion");
+			 datos[i][3] = rs.getString("fechaentrada");
+			 i++;
+		 }
+				
+		}catch(SQLException e){
+			System.out.println(e);
+		}
+		
+		return datos;
+	}
+
+	
+	/**
+	 * Devuelve el total de incidencias por alumno.
+	 * @param id
+	 * @return
+	 */
+	private int totalRegistrosIncidenciasAlumn(String id) {
+		
+		String total = "select count(*) as contador from bgacademy.incidencias where idalumno = ?;";
+		int filas = 0;
+		
+		try{
+			
+			 PreparedStatement sentencia = conexion.prepareStatement(total);	 
+			 sentencia.setInt(1, Integer.parseInt(id));
+			 ResultSet rs = sentencia.executeQuery();
+
+			 while(rs.next()){
+				filas = rs.getInt("contador");
+			 }
+
+		}catch(Exception e){
+			System.out.println(e);
+		}
+					 
+		return filas;
+		
 	}
 	
 }
