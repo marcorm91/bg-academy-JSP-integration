@@ -1,4 +1,4 @@
-package controller.alumno.verincidencia;
+package controller.profesor.verincidencia;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -18,8 +18,8 @@ import model.MIncidencias;
 /**
  * Servlet implementation class Verincidencia
  */
-@WebServlet("/Verincidencia")
-public class Verincidencia extends HttpServlet {
+@WebServlet("/Verincidencia_p")
+public class Verincidencia_p extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession hs;
 	private MIncidencias modelo_incidencias;
@@ -29,7 +29,7 @@ public class Verincidencia extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Verincidencia() {
+    public Verincidencia_p() {
         super();
     }
 
@@ -60,7 +60,7 @@ public class Verincidencia extends HttpServlet {
 				response.getWriter().write(sendInci);
 				
 			}catch(Exception e){
-				response.sendRedirect("acceso/principal-alumno.jsp");
+				response.sendRedirect("acceso/principal-profesor.jsp");
 				System.out.println(e);
 			}
 			

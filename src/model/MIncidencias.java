@@ -84,6 +84,7 @@ public class MIncidencias {
 		
 	}
 
+	
 	/**
 	 * Devuelve las incidencias registradas por el usuario Alumno.
 	 * @param id
@@ -95,7 +96,7 @@ public class MIncidencias {
 		Object datos[][] = new Object[cantidad][4];
 		int i = 0;
 		
-		String selectIncidencias = "SELECT idincidencia, incidencia, resolucion, fechaentrada FROM bgacademy.incidencias WHERE idalumno = ?;";
+		String selectIncidencias = "SELECT idincidencia, fechasalida, resolucion, fechaentrada FROM bgacademy.incidencias WHERE idalumno = ?;";
 		
 		try{
 		
@@ -105,8 +106,8 @@ public class MIncidencias {
 		
 		while(rs.next()){
 			 datos[i][0] = rs.getInt("idincidencia");
-			 datos[i][1] = rs.getString("incidencia");
-			 datos[i][2] = rs.getString("fechaentrada");
+			 datos[i][1] = rs.getString("fechaentrada");
+			 datos[i][2] = rs.getString("fechasalida");
 			 datos[i][3] = rs.getString("resolucion");
 			 i++;
 		 }
@@ -116,6 +117,72 @@ public class MIncidencias {
 		}
 		
 		return datos;
+	}
+	
+	
+	/**
+	 * Devuelve las incidencias registradas por el usuario Alumno.
+	 * @param id
+	 * @return
+	 */
+	public Object[][] devuelveIncidenciasProf(String id) {
+		
+		int cantidad = totalRegistrosIncidenciasProf(id);
+		Object datos[][] = new Object[cantidad][4];
+		int i = 0;
+		
+		System.out.println(id);
+		
+		String selectIncidencias = "SELECT idincidencia, fechasalida, resolucion, fechaentrada FROM bgacademy.incidencias WHERE idprofesor = ?;";
+		
+		try{
+		
+			PreparedStatement sentencia = conexion.prepareStatement(selectIncidencias);
+			sentencia.setInt(1, Integer.parseInt(id));
+			ResultSet rs = sentencia.executeQuery();
+		
+		while(rs.next()){
+			 datos[i][0] = rs.getInt("idincidencia");
+			 datos[i][1] = rs.getString("fechaentrada");
+			 datos[i][2] = rs.getString("fechasalida");
+			 datos[i][3] = rs.getString("resolucion");
+			 i++;
+		 }
+				
+		}catch(SQLException e){
+			System.out.println(e);
+		}
+		
+		return datos;
+	}
+	
+	
+	/**
+	 * Devuelve el total de filas de incidencias del profesor.
+	 * @param id
+	 * @return
+	 */
+	private int totalRegistrosIncidenciasProf(String id) {
+		
+		String total = "select count(*) as contador from bgacademy.incidencias where idprofesor = ?;";
+		int filas = 0;
+		
+		try{
+			
+			 PreparedStatement sentencia = conexion.prepareStatement(total);	 
+			 sentencia.setInt(1, Integer.parseInt(id));
+			 ResultSet rs = sentencia.executeQuery();
+
+			 while(rs.next()){
+				filas = rs.getInt("contador");
+			 }
+
+		}catch(Exception e){
+			System.out.println(e);
+		}
+					 
+		return filas;
+		
 	}
 
 	
@@ -175,5 +242,7 @@ public class MIncidencias {
 					 
 		return result;		
 	}
+
+	
 	
 }

@@ -138,31 +138,15 @@
                 <table class="table">
                   <thead>
                     <tr>
-                      <th>ID</th>
+                      <th>ID incidencia</th>
                       <th>Ver incidencia</th>
-                      <th>Fecha de incidencia</th>
+                      <th>Fecha y hora de incidencia</th>
+                      <th>Fecha y hora de resolución</th>
                       <th>Resolución</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>1</td>
-                     <td class="tabla-incidencia-ver"><a href="#"><i class="fa fa-bolt text-warning" aria-hidden="true"></i></a></td>
-                     <td>27/04/2017</td>
-                     <td class="tabla-incidencia-resolucion"><i class="fa fa-thumbs-up text-success" aria-hidden="true"></i></td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td class="tabla-incidencia-ver"><a href="#"><i class="fa fa-bolt text-warning" aria-hidden="true"></i></a></td>
-                      <td>27/04/2017</td>
-                      <td class="tabla-incidencia-resolucion"><i class="fa fa-thumbs-up text-success" aria-hidden="true"></i></td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td class="tabla-incidencia-ver"><a href="#"><i class="fa fa-bolt text-warning" aria-hidden="true"></i></a></td>
-                      <td>27/04/2017</td>
-                      <td class="tabla-incidencia-resolucion"><i class="fa fa-thumbs-down text-danger" aria-hidden="true"></i></td>
-                    </tr>
+                   
                   </tbody>
                 </table> 
             </div>
@@ -194,11 +178,84 @@
         
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="modal-incidencia" role="dialog">
+    <div class="modal-dialog modal-lg">
+    
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Incidencia</h4>
+        </div>
+        <div class="modal-body"></div>
+        <div class="modal-footer text-xs-center">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+      
+    </div>
+</div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
     <script src="../../assets/js/jquery-3.1.1.min.js"></script>
     <script src="../../assets/js/bootstrap.min.js"></script>
     <script src="../../assets/js/jquery-ui.js"></script>
     <script src="../assets/js/script.js"></script>
+    <script>
+	    
+    	$(document).ready(function(){
+    		
+    		// Cargamos tras el inicio de la página todas las incidencias realizadas por el usuario.
+	    	$.ajax({
+	    		type: "POST",
+	    		dataType: "json",
+	    		async: false,
+	    		url: "/Verincidenciasprof",
+	    		success: function(resp){  			
+	    			for(var i = 0; i < resp.length; i++){
+	    				$("table tbody").append("<tr>");
+	    					$("table tbody").append("<td>"+resp[i][0]+"</td>");
+	    					$("table tbody").append("<td class='tabla-incidencia-ver'><a href='' data-id="+resp[i][0]+" data-toggle='modal' data-target='#modal-incidencia'><i class='fa fa-bolt text-warning' aria-hidden='true'></i></a></td>");
+	    					$("table tbody").append("<td>"+resp[i][1]+"</td>");
+	    					
+	    					if(resp[i][2] == "" || resp[i][2] == null){
+	    						$("table tbody").append("<td> - </td>");
+	    					}else{
+	    						$("table tbody").append("<td>"+resp[i][2]+"</td>");
+	    					}
+	    					
+	    					if(resp[i][3] == "N"){
+	    						$("table tbody").append("<td class='tabla-incidencia-resolucion'><i class='fa fa-thumbs-down text-danger' aria-hidden='true'></i></td>");
+	    					}else{
+	    						$("table tbody").append("<td class='tabla-incidencia-resolucion'><i class='fa fa-thumbs-up text-success' aria-hidden='true'></i></td>");
+	    					}
+	    				$("table tbody").append("</tr>");
+	    			}
+	    		}
+	    	});
+	    	
+	    	
+	    	// Mostramos la incidencia en un modal.
+	    	$(".tabla-incidencia-ver a").on("click", function() {
+	    		
+	    		$("#modal-incidencia").css("cursor", "default");
+	    		var id = $(this).data("id");
+	    		$.ajax({
+		    		type: "POST",
+		    		dataType: "json",
+		    		data: {id:id},
+		    		url: "/Verincidencia_p",
+		    		success: function(resp){  	
+		    			$("#modal-incidencia .modal-content .modal-body").empty();
+		    			$("#modal-incidencia .modal-content .modal-body").append("<p>"+resp+"</p>");
+		    		}
+	    		});	 
+	    		
+	    	});
+	    	
+    	});
+
+    </script>
     
 </body>
 </html>

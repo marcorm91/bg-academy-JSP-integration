@@ -155,28 +155,12 @@
                       <th>ID incidencia</th>
                       <th>Ver incidencia</th>
                       <th>Fecha y hora de incidencia</th>
+                      <th>Fecha y hora de resolución</th>
                       <th>Resolución</th>
                     </tr>
                   </thead>
                   <tbody>
-<!--                     <tr> -->
-<!--                       <td>1</td> -->
-<!--                      <td class="tabla-incidencia-ver"><a href="#"><i class="fa fa-bolt text-warning" aria-hidden="true"></i></a></td> -->
-<!--                      <td>27/04/2017</td> -->
-<!--                      <td class="tabla-incidencia-resolucion"><i class="fa fa-thumbs-up text-success" aria-hidden="true"></i></td> -->
-<!--                     </tr> -->
-<!--                     <tr> -->
-<!--                       <td>2</td> -->
-<!--                       <td class="tabla-incidencia-ver"><a href="#"><i class="fa fa-bolt text-warning" aria-hidden="true"></i></a></td> -->
-<!--                       <td>27/04/2017</td> -->
-<!--                       <td class="tabla-incidencia-resolucion"><i class="fa fa-thumbs-up text-success" aria-hidden="true"></i></td> -->
-<!--                     </tr> -->
-<!--                     <tr> -->
-<!--                       <td>3</td> -->
-<!--                       <td class="tabla-incidencia-ver"><a href="#"><i class="fa fa-bolt text-warning" aria-hidden="true"></i></a></td> -->
-<!--                       <td>27/04/2017</td> -->
-<!--                       <td class="tabla-incidencia-resolucion"><i class="fa fa-thumbs-down text-danger" aria-hidden="true"></i></td> -->
-<!--                     </tr> -->
+
                   </tbody>
                 </table> 
             </div>
@@ -209,7 +193,7 @@
 </div>
 
 <!-- Modal -->
-  <div class="modal fade" id="modal-incidencia" role="dialog">
+<div class="modal fade" id="modal-incidencia" role="dialog">
     <div class="modal-dialog modal-lg">
     
       <div class="modal-content">
@@ -224,7 +208,7 @@
       </div>
       
     </div>
-  </div>
+</div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
     <script src="../../assets/js/jquery-3.1.1.min.js"></script>
@@ -246,7 +230,14 @@
 	    				$("table tbody").append("<tr>");
 	    					$("table tbody").append("<td>"+resp[i][0]+"</td>");
 	    					$("table tbody").append("<td class='tabla-incidencia-ver'><a href='' data-id="+resp[i][0]+" data-toggle='modal' data-target='#modal-incidencia'><i class='fa fa-bolt text-warning' aria-hidden='true'></i></a></td>");
-	    					$("table tbody").append("<td>"+resp[i][2]+"</td>");
+	    					$("table tbody").append("<td>"+resp[i][1]+"</td>");
+	    					
+	    					if(resp[i][2] == "" || resp[i][2] == null){
+	    						$("table tbody").append("<td> - </td>");
+	    					}else{
+	    						$("table tbody").append("<td>"+resp[i][2]+"</td>");
+	    					}
+	    					
 	    					if(resp[i][3] == "N"){
 	    						$("table tbody").append("<td class='tabla-incidencia-resolucion'><i class='fa fa-thumbs-down text-danger' aria-hidden='true'></i></td>");
 	    					}else{
@@ -267,7 +258,7 @@
 		    		type: "POST",
 		    		dataType: "json",
 		    		data: {id:id},
-		    		url: "/Verincidencia",
+		    		url: "/Verincidencia_a",
 		    		success: function(resp){  	
 		    			$("#modal-incidencia .modal-content .modal-body").empty();
 		    			$("#modal-incidencia .modal-content .modal-body").append("<p>"+resp+"</p>");
