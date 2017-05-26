@@ -45,12 +45,12 @@ public class Verincidenciasalumn extends HttpServlet {
         
         hs = request.getSession();
         
-        if(hs.getAttribute("log") == null){
+        Object[] datos_alumn = (Object []) hs.getAttribute("identificacion");
+        
+        if(hs.getAttribute("log") == null || !datos_alumn[1].equals("A")){
 			response.sendRedirect("error.jsp");
 		}else{
-			
-			Object[] datos_alumn = (Object []) hs.getAttribute("identificacion");
-			
+						
 			id = datos_alumn[0].toString();
 						
 			incidencias = modelo_incidencia.devuelveIncidenciasAlumn(id);

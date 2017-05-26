@@ -175,54 +175,19 @@
         
         <div class="row">
             <div class="col-xs-12">
-                <table class="table">
+                <table class="table" id="prof-table">
                   <thead>
                     <tr>
-                      <th>ID</th>
-                      <th>Nombre</th>
-                      <th>Apellido 1</th>
-                      <th>Apellido 2</th>
-                      <th>NIF/NIE</th>
-                      <th>E-mail</th>
-                      <th>Curso/s asignado/s</th>
+                      <th>ID incidencia</th>
+                      <th>ID profesor</th>
+                      <th>Fecha y hora de incidencia</th>
+                      <th>Fecha y hora de resolución</th>
                       <th>Ver incidencia</th>
                       <th>Resolución</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>Marco</td>
-                      <td>Romero</td>
-                      <td>Martín</td>
-                      <td>43323456W</td>
-                      <td>marco@gmail.com</td>
-                      <td>B1 - Nivel Intermedio, <br/> B2/1 - Nivel Intermedio</td>
-                     <td class="tabla-incidencia-ver"><a href="#"><i class="fa fa-bolt" aria-hidden="true"></i></a></td>
-                     <td class="tabla-incidencia-resolucion"><i class="fa fa-thumbs-up" aria-hidden="true"></i></td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>Antonio</td>
-                      <td>Guzmán</td>
-                      <td>Martínez</td>
-                      <td>32345654A</td>
-                      <td>antonio@gmail.com</td>
-                      <td>A1 - Nivel Básico, <br/> B2/1 - Nivel Intermedio</td>
-                      <td class="tabla-incidencia-ver"><a href="#"><i class="fa fa-bolt" aria-hidden="true"></i></a></td>
-                      <td class="tabla-incidencia-resolucion"><i class="fa fa-thumbs-up" aria-hidden="true"></i></td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td>Adelina</td>
-                      <td>Gutiérrez</td>
-                      <td>López</td>
-                      <td>35656677Z</td>
-                      <td>adelina@gmail.com</td>
-                      <td>C1 - Nivel Avanzado</td>
-                      <td class="tabla-incidencia-ver"><a href="#"><i class="fa fa-bolt" aria-hidden="true"></i></a></td>
-                      <td class="tabla-incidencia-resolucion"><i class="fa fa-thumbs-down" aria-hidden="true"></i></td>
-                    </tr>
+                    
                   </tbody>
                 </table> 
             </div>
@@ -375,6 +340,43 @@
     <script src="../../assets/js/bootstrap.min.js"></script>
     <script src="../../assets/js/jquery-ui.js"></script>
     <script src="../assets/js/script.js"></script>
+    <script>
+    
+    $(document).ready(function(){
+		
+		// Cargamos tras el inicio de la página todas las incidencias realizadas por el usuario (profesor).
+    	$.ajax({
+    		type: "POST",
+    		dataType: "json",
+    		async: false,
+    		url: "/Verincidenciasproftotal",
+    		success: function(resp){  			
+    			for(var i = 0; i < resp.length; i++){
+    				$("#prof-table tbody").append("<tr>");
+    					$("#prof-table tbody").append("<td>"+resp[i][0]+"</td>");
+    					$("#prof-table tbody").append("<td>"+resp[i][1]+"</td>");
+    					$("#prof-table tbody").append("<td>"+resp[i][2]+"</td>");
+    					
+    					if(resp[i][3] == "" || resp[i][3] == null){
+    						$("table tbody").append("<td> <span style='padding-left:80px'> - </span> </td>");
+    					}else{
+    						$("table tbody").append("<td>"+resp[i][3]+"</td>");
+    					}
+    					
+    					$("#prof-table tbody").append("<td class='tabla-incidencia-ver'><a href='' data-id="+resp[i][0]+" data-toggle='modal' data-target='#modal-incidencia'><i class='fa fa-bolt text-warning' aria-hidden='true'></i></a></td>");
+    					if(resp[i][5] == "N"){
+    						$("table tbody").append("<td class='tabla-incidencia-resolucion'><i class='fa fa-thumbs-down text-danger' aria-hidden='true'></i></td>");
+    					}else{
+    						$("table tbody").append("<td class='tabla-incidencia-resolucion'><i class='fa fa-thumbs-up text-success' aria-hidden='true'></i></td>");
+    					}
+    				$("table tbody").append("</tr>");
+    			}
+    		}
+    	});
+		
+    });
+    
+    </script>
     
 </body>
 </html>

@@ -44,7 +44,9 @@ public class Verincidencia_a extends HttpServlet {
         
         hs = request.getSession();
         
-        if(hs.getAttribute("log") == null){
+        Object[] datos_alumn = (Object []) hs.getAttribute("identificacion");
+        
+        if(hs.getAttribute("log") == null || !datos_alumn[1].equals("A")){
 			response.sendRedirect("error.jsp");
 		}else{
 		
