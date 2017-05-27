@@ -47,7 +47,7 @@ public class Verincidenciasprof extends HttpServlet {
         
         Object[] datos_prof = (Object []) hs.getAttribute("identificacion");
         
-        if(hs.getAttribute("log") == null || !datos_prof[1].equals("A")){
+        if(hs.getAttribute("log") == null || !datos_prof[1].equals("P")){
 			response.sendRedirect("error.jsp");
 		}else{
 

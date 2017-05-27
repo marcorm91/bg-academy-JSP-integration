@@ -309,5 +309,68 @@ public class MIncidencias {
 	}
 
 	
+	/**
+	 * Devuelve todas las incidencias de los alumnos de la academia.
+	 * @return
+	 */
+	public Object[][] devuelveIncidenciasAlumn() {
+		
+		int cantidad = totalRegistrosIncidenciasAlumn();
+		String total = "SELECT idincidencia, idalumno, fechaentrada, fechasalida, incidencia, resolucion  FROM bgacademy.incidencias WHERE tipo = ?;";
+		Object datos[][] = new Object[cantidad][6];
+		int i = 0;
+		
+		try{
+			
+			 PreparedStatement sentencia = conexion.prepareStatement(total);	 
+			 sentencia.setString(1, "A");
+			 ResultSet rs = sentencia.executeQuery();
+
+			 while(rs.next()){
+				 datos[i][0] = rs.getInt("idincidencia");
+				 datos[i][1] = rs.getString("idalumno");
+				 datos[i][2] = rs.getString("fechaentrada");
+				 datos[i][3] = rs.getString("fechasalida");
+				 datos[i][4] = rs.getString("incidencia");
+				 datos[i][5] = rs.getString("resolucion");
+				 i++;
+			 }
+			 	
+
+		}catch(Exception e){
+			System.out.println(e);
+		}
+					 
+		return datos;		
+	}
+
+	/**
+	 * Devuelve el total de incidencias de los alumnos.
+	 * @return
+	 */
+	private int totalRegistrosIncidenciasAlumn() {
+		
+		String total = "select count(*) as contador from bgacademy.incidencias where tipo = ?;";
+		int filas = 0;
+		
+		try{
+			
+			 PreparedStatement sentencia = conexion.prepareStatement(total);	 
+			 sentencia.setString(1, "A");
+			 ResultSet rs = sentencia.executeQuery();
+
+			 while(rs.next()){
+				filas = rs.getInt("contador");
+			 }
+
+		}catch(Exception e){
+			System.out.println(e);
+		}
+					 
+		return filas;
+		
+	}
+
+	
 	
 }

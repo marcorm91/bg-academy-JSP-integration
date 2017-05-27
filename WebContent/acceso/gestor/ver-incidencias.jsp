@@ -243,50 +243,19 @@
         
         <div class="row">
             <div class="col-xs-12">
-                <table class="table">
+                <table class="table" id="alumn-table">
                   <thead>
                     <tr>
-                      <th>ID</th>
-                      <th>Nombre</th>
-                      <th>Apellido 1</th>
-                      <th>Apellido 2</th>
-                      <th>E-mail</th>
-                      <th>Curso asignado</th>
+                      <th>ID incidencia</th>
+                      <th>ID alumno</th>
+                      <th>Fecha y hora de incidencia</th>
+                      <th>Fecha y hora de resolución</th>
                       <th>Ver incidencia</th>
                       <th>Resolución</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>Marco</td>
-                      <td>Romero</td>
-                      <td>Martín</td>
-                      <td>marco@gmail.com</td>
-                      <td>B1 - Nivel Intermedio</td>
-                      <td class="tabla-incidencia-ver"><a href="#"><i class="fa fa-bolt" aria-hidden="true"></i></a></td>
-                      <td class="tabla-incidencia-resolucion"><i class="fa fa-thumbs-up" aria-hidden="true"></i></td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>Antonio</td>
-                      <td>Guzmán</td>
-                      <td>Martínez</td>
-                      <td>antonio@gmail.com</td>
-                      <td>A1 - Nivel Básico</td>
-                      <td class="tabla-incidencia-ver"><a href="#"><i class="fa fa-bolt" aria-hidden="true"></i></a></td>
-                      <td class="tabla-incidencia-resolucion"><i class="fa fa-thumbs-up" aria-hidden="true"></i></td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td>Adelina</td>
-                      <td>Gutiérrez</td>
-                      <td>López</td>
-                      <td>adelina@gmail.com</td>
-                      <td>C1 - Nivel Avanzado</td>
-                      <td class="tabla-incidencia-ver"><a href="#"><i class="fa fa-bolt" aria-hidden="true"></i></a></td>
-                      <td class="tabla-incidencia-resolucion"><i class="fa fa-thumbs-down" aria-hidden="true"></i></td>
-                    </tr>
+                    
                   </tbody>
                 </table> 
             </div>
@@ -334,6 +303,25 @@
         
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="modal-incidencia" role="dialog">
+    <div class="modal-dialog modal-lg">
+    
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Incidencia</h4>
+        </div>
+        <div class="modal-body"></div>
+        <div class="modal-footer text-xs-center">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+      
+    </div>
+</div>
+
+<div class="loader" style='display: none;'></div> 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
     <script src="../../assets/js/jquery-3.1.1.min.js"></script>
@@ -343,7 +331,9 @@
     <script>
     
     $(document).ready(function(){
-		
+    	
+    	$(".loader").css("display", "block");
+    			
 		// Cargamos tras el inicio de la página todas las incidencias realizadas por el usuario (profesor).
     	$.ajax({
     		type: "POST",
@@ -358,20 +348,85 @@
     					$("#prof-table tbody").append("<td>"+resp[i][2]+"</td>");
     					
     					if(resp[i][3] == "" || resp[i][3] == null){
-    						$("table tbody").append("<td> <span style='padding-left:80px'> - </span> </td>");
+    						$("#prof-table tbody").append("<td> <span style='padding-left:80px'> - </span> </td>");
     					}else{
-    						$("table tbody").append("<td>"+resp[i][3]+"</td>");
+    						$("#prof-table tbody").append("<td>"+resp[i][3]+"</td>");
     					}
     					
     					$("#prof-table tbody").append("<td class='tabla-incidencia-ver'><a href='' data-id="+resp[i][0]+" data-toggle='modal' data-target='#modal-incidencia'><i class='fa fa-bolt text-warning' aria-hidden='true'></i></a></td>");
     					if(resp[i][5] == "N"){
-    						$("table tbody").append("<td class='tabla-incidencia-resolucion'><i class='fa fa-thumbs-down text-danger' aria-hidden='true'></i></td>");
+    						$("#prof-table tbody").append("<td class='tabla-incidencia-resolucion'><i class='fa fa-thumbs-down text-danger' aria-hidden='true'></i></td>");
     					}else{
-    						$("table tbody").append("<td class='tabla-incidencia-resolucion'><i class='fa fa-thumbs-up text-success' aria-hidden='true'></i></td>");
+    						$("#prof-table tbody").append("<td class='tabla-incidencia-resolucion'><i class='fa fa-thumbs-up text-success' aria-hidden='true'></i></td>");
     					}
-    				$("table tbody").append("</tr>");
+    				$("#prof-table tbody").append("</tr>");
     			}
+    		},
+    		complete: function(){
+    			$(".loader").fadeOut(2000);
     		}
+    		
+    	});
+				
+    	// Cargamos tras el inicio de la página todas las incidencias realizadas por el usuario (alumno).
+    	$.ajax({
+    		type: "POST",
+    		dataType: "json",
+    		async: false,
+    		url: "/Verincidenciasalumntotal",
+    		success: function(resp){  			
+    			for(var i = 0; i < resp.length; i++){
+    				$("#alumn-table tbody").append("<tr>");
+    					$("#alumn-table tbody").append("<td>"+resp[i][0]+"</td>");
+    					$("#alumn-table tbody").append("<td>"+resp[i][1]+"</td>");
+    					$("#alumn-table tbody").append("<td>"+resp[i][2]+"</td>");
+    					
+    					if(resp[i][3] == "" || resp[i][3] == null){
+    						$("#alumn-table tbody").append("<td> <span style='padding-left:80px'> - </span> </td>");
+    					}else{
+    						$("#alumn-table tbody").append("<td>"+resp[i][3]+"</td>");
+    					}
+    					
+    					$("#alumn-table tbody").append("<td class='tabla-incidencia-ver'><a href='' data-id="+resp[i][0]+" data-toggle='modal' data-target='#modal-incidencia'><i class='fa fa-bolt text-warning' aria-hidden='true'></i></a></td>");
+    					if(resp[i][5] == "N"){
+    						$("#alumn-table tbody").append("<td class='tabla-incidencia-resolucion'><i class='fa fa-thumbs-down text-danger' aria-hidden='true'></i></td>");
+    					}else{
+    						$("#alumn-table tbody").append("<td class='tabla-incidencia-resolucion'><i class='fa fa-thumbs-up text-success' aria-hidden='true'></i></td>");
+    					}
+    				$("#alumn-table tbody").append("</tr>");
+    			}
+    		},
+    		complete: function(){
+    			$(".loader").fadeOut(2000);
+    		}
+    	});
+		
+    	// Mostramos la incidencia en un modal.
+    	$(".tabla-incidencia-ver a").on("click", function() {
+    		
+    		$(".loader").css("display", "block");
+    		    		
+    		$("#modal-incidencia").css("cursor", "default");
+    		var id = $(this).data("id");
+    		
+    		$.ajax({
+	    		type: "POST",
+	    		dataType: "json",
+	    		data: {id:id},
+	    		url: "/Verincidencias_individual",
+	    		success: function(resp){  	
+	    			$("#modal-incidencia .modal-content .modal-body").empty();
+	    			if(resp == null || resp == ""){
+	    				$("#modal-incidencia .modal-content .modal-body").append("<p> - </p>");
+	    			}else{
+	    				$("#modal-incidencia .modal-content .modal-body").append("<p>"+resp+"</p>");
+	    			}
+	    		},
+	    		complete: function(){
+	    			$(".loader").fadeOut(1000);
+	    		}
+    		});	 
+    		
     	});
 		
     });

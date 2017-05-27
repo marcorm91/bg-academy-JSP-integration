@@ -1,4 +1,4 @@
-package controller.profesor.verincidencia;
+package controller.gestor.verincidencias;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -16,20 +16,21 @@ import model.Conexion;
 import model.MIncidencias;
 
 /**
- * Servlet implementation class Verincidencia
+ * Servlet implementation class Verincidencias_aindividual
  */
-@WebServlet("/Verincidencia_p")
-public class Verincidencia_p extends HttpServlet {
+@WebServlet("/Verincidencias_individual")
+public class Verincidencias_individual extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession hs;
-	private MIncidencias modelo_incidencias;
+	private MIncidencias modelo_incidencia;
 	private Conexion conexionBD;
-	private String id, incidencia;
+	private String incidencia;
+	private String id;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Verincidencia_p() {
+    public Verincidencias_individual() {
         super();
     }
 
@@ -40,31 +41,24 @@ public class Verincidencia_p extends HttpServlet {
 		
 		// Reopen temporal de la BD.
         conexionBD = new Conexion();
-        modelo_incidencias = new MIncidencias(conexionBD.getConexion());
+        modelo_incidencia = new MIncidencias(conexionBD.getConexion());
         
         hs = request.getSession();
         
-        Object[] datos_prof = (Object []) hs.getAttribute("identificacion");
+        Object[] datos_gestor = (Object []) hs.getAttribute("identificacion");
         
-        if(hs.getAttribute("log") == null || !datos_prof[1].equals("P")){
+        if(hs.getAttribute("log") == null || !datos_gestor[1].equals("G")){
 			response.sendRedirect("error.jsp");
 		}else{
-		
-			try{
-				
-				id = request.getParameter("id");
-				
-				incidencia = modelo_incidencias.dameIncidencia(id);
-				
-				String sendInci = new Gson().toJson(incidencia);
-				response.setContentType("application/json");
-				response.setCharacterEncoding("UTF-8");
-				response.getWriter().write(sendInci);
-				
-			}catch(Exception e){
-				response.sendRedirect("acceso/principal-profesor.jsp");
-				System.out.println(e);
-			}
+							
+			id = request.getParameter("id");
+			
+			incidencia = modelo_incidencia.dameIncidencia(id);
+			
+			String sendInci = new Gson().toJson(incidencia);
+			response.setContentType("application/json");
+			response.setCharacterEncoding("UTF-8");
+			response.getWriter().write(sendInci);
 			
 		}
 					        
@@ -74,6 +68,7 @@ public class Verincidencia_p extends HttpServlet {
   		} catch (SQLException e) {
   			e.printStackTrace();
   		}
+		
 	}
 
 	/**

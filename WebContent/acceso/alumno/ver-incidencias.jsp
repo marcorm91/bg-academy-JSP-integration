@@ -210,6 +210,8 @@
     </div>
 </div>
 
+<div class="loader" style='display: none;'></div> 
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
     <script src="../../assets/js/jquery-3.1.1.min.js"></script>
     <script src="../../assets/js/bootstrap.min.js"></script>
@@ -218,6 +220,8 @@
     <script>
 	    
     	$(document).ready(function(){
+    		
+    		$(".loader").css("display", "block");
     		
     		// Cargamos tras el inicio de la página todas las incidencias realizadas por el usuario.
 	    	$.ajax({
@@ -245,12 +249,17 @@
 	    					}
 	    				$("table tbody").append("</tr>");
 	    			}
+	    		},
+	    		complete: function(){
+	    			$(".loader").fadeOut(2000);
 	    		}
 	    	});
 	    	
 	    	
 	    	// Mostramos la incidencia en un modal.
 	    	$(".tabla-incidencia-ver a").on("click", function() {
+	    		
+	    		$(".loader").css("display", "block");
 	    		
 	    		$("#modal-incidencia").css("cursor", "default");
 	    		var id = $(this).data("id");
@@ -262,6 +271,9 @@
 		    		success: function(resp){  	
 		    			$("#modal-incidencia .modal-content .modal-body").empty();
 		    			$("#modal-incidencia .modal-content .modal-body").append("<p>"+resp+"</p>");
+		    		},
+		    		complete: function(){
+		    			$(".loader").fadeOut(1000);
 		    		}
 	    		});	 
 	    		
