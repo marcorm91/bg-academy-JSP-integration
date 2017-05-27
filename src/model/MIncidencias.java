@@ -130,9 +130,7 @@ public class MIncidencias {
 		int cantidad = totalRegistrosIncidenciasProf(id);
 		Object datos[][] = new Object[cantidad][4];
 		int i = 0;
-		
-		System.out.println(id);
-		
+				
 		String selectIncidencias = "SELECT idincidencia, fechasalida, resolucion, fechaentrada FROM bgacademy.incidencias WHERE idprofesor = ?;";
 		
 		try{

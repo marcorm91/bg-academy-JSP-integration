@@ -619,9 +619,11 @@ $(document).ready(function() {
         						closeOnEscape: false,
         						buttons: {
         			        		"OK": function() {
+        			        			$(".loader").css("display", "block");
         			        			$("body").css("overflow", "auto");
         			        			$(this).dialog("close");
-        			        			location.reload();
+        			        			$(".loader").fadeOut(2000);
+        			        			setTimeout(function(){ location.reload(); }, 2000);
         			        		}
         			    		}        				
         				});
@@ -669,9 +671,11 @@ $(document).ready(function() {
         						closeOnEscape: false,
         						buttons: {
         			        		"OK": function() {
+        			        			$(".loader").css("display", "block");
         			        			$("body").css("overflow", "auto");
         			        			$(this).dialog("close");
-            			    			location.reload();
+        			        			$(".loader").fadeOut(2000);
+        			        			setTimeout(function(){ location.reload(); }, 2000);
         			        		}
         			    		}        				
         				});
@@ -726,14 +730,19 @@ $(document).ready(function() {
         						closeOnEscape: false,
         						buttons: {
         			        		"OK": function() {
+        			        			$(".loader").css("display", "block");
         			        			$("body").css("overflow", "auto");
         			        			$(this).dialog("close");
-            			    			location.reload();
+        			        			$(".loader").fadeOut(2000);
+        			        			setTimeout(function(){ location.reload(); }, 2000);
         			        		}
         			    		}        				
         				});
         				$("body").css("overflow", "hidden");
 	    			}
+	    		}, complete: function(){
+	    			
+	    			
 	    		}
 	    	});
     	
@@ -783,9 +792,11 @@ $(document).ready(function() {
         						closeOnEscape: false,
         						buttons: {
         			        		"OK": function() {
+        			        			$(".loader").css("display", "block");
         			        			$("body").css("overflow", "auto");
         			        			$(this).dialog("close");
-            			    			location.reload();
+        			        			$(".loader").fadeOut(2000);
+        			        			setTimeout(function(){ location.reload(); }, 2000);
         			        		}
         			    		}        				
         				});
