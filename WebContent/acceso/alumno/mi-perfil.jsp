@@ -148,7 +148,7 @@
                 <div class="panel-opciones">
                     
                     <h2> Mi Perfil </h2>
-            <form id="form-mod-perfil-alumno" action="" method="">
+            <form id="form-mod-perfil-alumno">
                     <div class="container-fluid">
                         
                             <div class="form-group row">
