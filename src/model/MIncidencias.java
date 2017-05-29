@@ -162,7 +162,7 @@ public class MIncidencias {
 	 */
 	private int totalRegistrosIncidenciasProf(String id) {
 		
-		String total = "select count(*) as contador from bgacademy.incidencias where idprofesor = ?;";
+		String total = "SELECT COUNT(*) AS contador FROM bgacademy.incidencias WHERE idprofesor = ?;";
 		int filas = 0;
 		
 		try{
@@ -191,7 +191,7 @@ public class MIncidencias {
 	 */
 	private int totalRegistrosIncidenciasAlumn(String id) {
 		
-		String total = "select count(*) as contador from bgacademy.incidencias where idalumno = ?;";
+		String total = "SELECT COUNT(*) AS contador from bgacademy.incidencias WHERE idalumno = ?;";
 		int filas = 0;
 		
 		try{
@@ -249,7 +249,7 @@ public class MIncidencias {
 	public Object[][] devuelveIncidenciasProf() {
 				
 		int cantidad = totalRegistrosIncidenciasProf();
-		String total = "SELECT idincidencia, idprofesor, fechaentrada, fechasalida, incidencia, resolucion  FROM bgacademy.incidencias WHERE tipo = ?;";
+		String total = "SELECT idincidencia, idprofesor, fechaentrada, fechasalida, incidencia, resolucion  FROM bgacademy.incidencias WHERE tipo = ? ORDER BY resolucion, fechaentrada asc;";
 		Object datos[][] = new Object[cantidad][6];
 		int i = 0;
 		
@@ -285,7 +285,7 @@ public class MIncidencias {
 	 */
 	private int totalRegistrosIncidenciasProf() {
 
-		String total = "select count(*) as contador from bgacademy.incidencias where tipo = ?;";
+		String total = "SELECT COUNT(*) AS contador FROM bgacademy.incidencias WHERE tipo = ?;";
 		int filas = 0;
 		
 		try{
@@ -348,7 +348,7 @@ public class MIncidencias {
 	 */
 	private int totalRegistrosIncidenciasAlumn() {
 		
-		String total = "select count(*) as contador from bgacademy.incidencias where tipo = ?;";
+		String total = "SELECT COUNT(*) as contador FROM bgacademy.incidencias WHERE tipo = ?;";
 		int filas = 0;
 		
 		try{
@@ -368,7 +368,54 @@ public class MIncidencias {
 		return filas;
 		
 	}
-
 	
+	
+	/**
+	 * Resolución de incidencia.
+	 * @param id
+	 * @return
+	 */
+	public String updateInci_s(String id) {
+		
+		String updateUser = "UPDATE bgacademy.incidencias SET resolucion = ?, fechasalida = ? WHERE idincidencia = ?;";
+		
+		Calendar cal = Calendar.getInstance();
+	    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+	    String strDate = sdf.format(cal.getTime());
+		
+		try{
+            PreparedStatement sentencia = conexion.prepareStatement(updateUser);
+            sentencia.setString(1, "S");
+            sentencia.setString(2, strDate);
+            sentencia.setInt(3, Integer.parseInt(id));
+            sentencia.executeUpdate();
+		 }catch(Exception e){
+			 System.out.println(e);
+		 }
+		
+		return strDate;
+	}
+
+	/**
+	 * Retorna la resolución de incidencia.
+	 * @param id
+	 * @return
+	 */
+	public void updateInci_n(String id) {
+		
+		String updateUser = "UPDATE bgacademy.incidencias SET resolucion = ?, fechasalida = ? WHERE idincidencia = ?;";
+				
+		try{
+            PreparedStatement sentencia = conexion.prepareStatement(updateUser);
+            sentencia.setString(1, "N");
+            sentencia.setNull(2, java.sql.Types.VARCHAR);
+            sentencia.setInt(3, Integer.parseInt(id));
+            sentencia.executeUpdate();
+		 }catch(Exception e){
+			 System.out.println(e);
+		 }
+				
+	}
+
 	
 }

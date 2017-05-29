@@ -2941,5 +2941,38 @@
 	    0% { transform: rotate(0deg); }
 	    100% { transform: rotate(360deg); }
 	}
+	
+	.dataTables_info{
+	font-weight: bolder;
+	}
+	
+	.tabla-incidencia-resolucion i{
+		cursor: pointer;
+		font-size: 19px;
+	}
+	
+	#subpanel-incidencia-profesor table .tabla-incidencia-ver{
+		padding-left: 0;
+	}
+	
+	#subpanel-incidencia-profesor table .tabla-incidencia-resolucion{
+		padding-left: 0;
+	}
+	
+	#subpanel-incidencia-alumno table .tabla-incidencia-ver{
+		padding-left: 0;
+	}
+	
+	#subpanel-incidencia-alumno table .tabla-incidencia-resolucion{
+		padding-left: 0;
+	}
+	
+	td.tabla-incidencia-ver, td.tabla-incidencia-resolucion{		
+		text-align: center;
+	}
+	
+	#subpanel-incidencia-profesor .btn-atras{
+		margin-top: 1.5em;
+	}
 
 /*# sourceMappingURL=estilos.css.map */

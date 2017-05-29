@@ -33,6 +33,7 @@
     <link rel="stylesheet" href="../../assets/css/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="../../assets/css/jquery-ui.css">
     <link rel="stylesheet" type="text/css" href="../../assets/fonts/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/dataTables.min.css">
 	<link rel="shortcut icon" href="../assets/imagenes/favicon.ico">
     <link rel="stylesheet" href="../assets/css/estilos.css">
 </head>
@@ -159,20 +160,8 @@
     
  <!-- Subpanel incidencias profesor -->
  <div id="subpanel-incidencia-profesor">
-    <div class="container">
-        <div class="row menu-busqueda">
-            <div class="col-md-3 col-xs-12">
-                <div class="input-group">
-                    <span class="input-group-addon"> <i class="fa fa-search fa-1x" aria-hidden="true"></i></span>
-                        <input type="text" class="form-control" placeholder="Palabra clave">
-                </div>
-            </div>
-                        
-            <div class="col-md-2">
-                <button type="button" class="btn btn-primary">Buscar</button>
-            </div>
-        </div>
-        
+    <div class="container-fluid">
+       
         <div class="row">
             <div class="col-xs-12">
                 <table class="table" id="prof-table">
@@ -192,31 +181,7 @@
                 </table> 
             </div>
         </div>
-        
-        <div class="row">
-            <div class="col-xs-12 text-xs-center paginacion-busq">
-                <nav>
-                    <ul class="pagination">
-                        <li class="page-item">
-                          <a class="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                            <span class="sr-only">Anterior</span>
-                          </a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                          <a class="page-link" href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                            <span class="sr-only">Siguiente</span>
-                          </a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-        
+
         <div class="row">
             <div class="col-xs-12 text-xs-center btn-atras">
                  <a href="ver-incidencias.jsp"> <button class="btn btn-primary"> Volver </button> </a>
@@ -227,20 +192,8 @@
     
 <!-- Subpanel incidencias alumno -->
 <div id="subpanel-incidencia-alumno">
-    <div class="container">
-        <div class="row menu-busqueda">
-            <div class="col-md-3 col-xs-12">
-                <div class="input-group">
-                    <span class="input-group-addon"> <i class="fa fa-search fa-1x" aria-hidden="true"></i></span>
-                        <input type="text" class="form-control" placeholder="Palabra clave">
-                </div>
-            </div>
-                    
-            <div class="col-md-2">
-                <button type="button" class="btn btn-primary">Buscar</button>
-            </div>
-        </div>
-        
+    <div class="container-fluid">
+       
         <div class="row">
             <div class="col-xs-12">
                 <table class="table" id="alumn-table">
@@ -258,30 +211,6 @@
                     
                   </tbody>
                 </table> 
-            </div>
-        </div>
-        
-        <div class="row paginacion-busq">
-            <div class="col-xs-12 text-xs-center">
-                <nav>
-                    <ul class="pagination">
-                        <li class="page-item">
-                          <a class="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                            <span class="sr-only">Anterior</span>
-                          </a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                          <a class="page-link" href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                            <span class="sr-only">Siguiente</span>
-                          </a>
-                        </li>
-                    </ul>
-                </nav>
             </div>
         </div>
         
@@ -321,12 +250,17 @@
     </div>
 </div>
 
+<div id="dialog-confirm" title="Validar incidencia" style='display: none'><span> Está a punto de <b>validar</b> una incidencia. <br/>  <b>¿Está seguro?</b> </span></div>
+<div id="dialog-cancel" title="Cancelar incidencia" style='display: none'><span> Está a punto de <b>cancelar</b> una incidencia. <br/>  <b>¿Está seguro?</b> </span></div>
+
 <div class="loader" style='display: none;'></div> 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
     <script src="../../assets/js/jquery-3.1.1.min.js"></script>
     <script src="../../assets/js/bootstrap.min.js"></script>
     <script src="../../assets/js/jquery-ui.js"></script>
+    <script src="../assets/js/dataTables.min.js"></script>
+    <script src="../assets/js/dataTables-bs4.min.js"></script>
     <script src="../assets/js/script.js"></script>
     <script>
     
@@ -340,31 +274,53 @@
     		dataType: "json",
     		async: false,
     		url: "/Verincidenciasproftotal",
-    		success: function(resp){  			
+    		success: function(resp){  
     			for(var i = 0; i < resp.length; i++){
     				$("#prof-table tbody").append("<tr>");
-    					$("#prof-table tbody").append("<td>"+resp[i][0]+"</td>");
-    					$("#prof-table tbody").append("<td>"+resp[i][1]+"</td>");
-    					$("#prof-table tbody").append("<td>"+resp[i][2]+"</td>");
+    					$("#prof-table tbody tr:last-child").append("<td>"+resp[i][0]+"</td>");
+    					$("#prof-table tbody tr:last-child").append("<td>"+resp[i][1]+"</td>");
+    					$("#prof-table tbody tr:last-child").append("<td>"+resp[i][2]+"</td>");
     					
     					if(resp[i][3] == "" || resp[i][3] == null){
-    						$("#prof-table tbody").append("<td> <span style='padding-left:80px'> - </span> </td>");
+    						$("#prof-table tbody tr:last-child").append("<td class='resol-time'> <span style='padding-left:80px'> - </span> </td>");
     					}else{
-    						$("#prof-table tbody").append("<td>"+resp[i][3]+"</td>");
+    						$("#prof-table tbody tr:last-child").append("<td class='resol-time'>"+resp[i][3]+"</td>");
     					}
     					
-    					$("#prof-table tbody").append("<td class='tabla-incidencia-ver'><a href='' data-id="+resp[i][0]+" data-toggle='modal' data-target='#modal-incidencia'><i class='fa fa-bolt text-warning' aria-hidden='true'></i></a></td>");
+    					$("#prof-table tbody tr:last-child").append("<td class='tabla-incidencia-ver'><a href='' data-id="+resp[i][0]+" data-toggle='modal' data-target='#modal-incidencia'><i class='fa fa-bolt text-warning' aria-hidden='true'></i></a></td>");
     					if(resp[i][5] == "N"){
-    						$("#prof-table tbody").append("<td class='tabla-incidencia-resolucion'><i class='fa fa-thumbs-down text-danger' aria-hidden='true'></i></td>");
+    						$("#prof-table tbody tr:last-child").append("<td class='tabla-incidencia-resolucion'><i class='fa fa-thumbs-down text-danger' data-id="+resp[i][0]+" aria-hidden='true'></i></td>");
     					}else{
-    						$("#prof-table tbody").append("<td class='tabla-incidencia-resolucion'><i class='fa fa-thumbs-up text-success' aria-hidden='true'></i></td>");
+    						$("#prof-table tbody tr:last-child").append("<td class='tabla-incidencia-resolucion'><i class='fa fa-thumbs-up text-success' data-id="+resp[i][0]+" aria-hidden='true'></i></td>");
     					}
     				$("#prof-table tbody").append("</tr>");
     			}
+    			
+    			$("#prof-table").DataTable({
+    								 "language":{
+				    		         "lengthMenu":"Mostrar _MENU_ registros por página.",
+				    		         "zeroRecords": "Sin resultados en su búsqueda.",
+				    		               "info": "Hay un total de _MAX_ de incidencias de profesores.",
+				    		               "infoEmpty": "No hay registros aún.",
+				    		               "infoFiltered": "(filtrados de un total de _MAX_ registros)",
+				    		               "search" : "Búsqueda: ",
+				    		               "LoadingRecords": "Cargando ...",
+				    		               "Processing": "Procesando...",
+				    		               "SearchPlaceholder": "Comience a teclear...",
+				    		               "paginate": {
+						    		          "previous": "Anterior",
+						    		          "next": "Siguiente", 
+    		            					}
+    							 }
+    				
+    		    });
+    			
     		},
     		complete: function(){
     			$(".loader").fadeOut(2000);
     		}
+    		
+    		
     		
     	});
 				
@@ -377,24 +333,43 @@
     		success: function(resp){  			
     			for(var i = 0; i < resp.length; i++){
     				$("#alumn-table tbody").append("<tr>");
-    					$("#alumn-table tbody").append("<td>"+resp[i][0]+"</td>");
-    					$("#alumn-table tbody").append("<td>"+resp[i][1]+"</td>");
-    					$("#alumn-table tbody").append("<td>"+resp[i][2]+"</td>");
+    					$("#alumn-table tbody tr:last-child").append("<td>"+resp[i][0]+"</td>");
+    					$("#alumn-table tbody tr:last-child").append("<td>"+resp[i][1]+"</td>");
+    					$("#alumn-table tbody tr:last-child").append("<td>"+resp[i][2]+"</td>");
     					
     					if(resp[i][3] == "" || resp[i][3] == null){
-    						$("#alumn-table tbody").append("<td> <span style='padding-left:80px'> - </span> </td>");
+    						$("#alumn-table tbody tr:last-child").append("<td class='resol-time'> <span style='padding-left:80px'> - </span> </td>");
     					}else{
-    						$("#alumn-table tbody").append("<td>"+resp[i][3]+"</td>");
+    						$("#alumn-table tbody tr:last-child").append("<td class='resol-time'>"+resp[i][3]+"</td>");
     					}
     					
-    					$("#alumn-table tbody").append("<td class='tabla-incidencia-ver'><a href='' data-id="+resp[i][0]+" data-toggle='modal' data-target='#modal-incidencia'><i class='fa fa-bolt text-warning' aria-hidden='true'></i></a></td>");
+    					$("#alumn-table tbody tr:last-child").append("<td class='tabla-incidencia-ver'><a href='' data-id="+resp[i][0]+" data-toggle='modal' data-target='#modal-incidencia'><i class='fa fa-bolt text-warning' aria-hidden='true'></i></a></td>");
     					if(resp[i][5] == "N"){
-    						$("#alumn-table tbody").append("<td class='tabla-incidencia-resolucion'><i class='fa fa-thumbs-down text-danger' aria-hidden='true'></i></td>");
+    						$("#alumn-table tbody tr:last-child").append("<td class='tabla-incidencia-resolucion'><i class='fa fa-thumbs-down text-danger' data-id="+resp[i][0]+" aria-hidden='true'></i></td>");
     					}else{
-    						$("#alumn-table tbody").append("<td class='tabla-incidencia-resolucion'><i class='fa fa-thumbs-up text-success' aria-hidden='true'></i></td>");
+    						$("#alumn-table tbody tr:last-child").append("<td class='tabla-incidencia-resolucion'><i class='fa fa-thumbs-up text-success' data-id="+resp[i][0]+" aria-hidden='true'></i></td>");
     					}
     				$("#alumn-table tbody").append("</tr>");
     			}
+    			
+	    			$("#alumn-table").DataTable({
+						 "language":{
+	   		         "lengthMenu":"Mostrar _MENU_ registros por página.",
+	   		         "zeroRecords": "Sin resultados en su búsqueda.",
+	   		               "info": "Hay un total de _MAX_ incidencias de alumnos.",
+	   		               "infoEmpty": "No hay registros aún.",
+	   		               "infoFiltered": "(filtrados de un total de _MAX_ registros)",
+	   		               "search" : "Búsqueda: ",
+	   		               "LoadingRecords": "Cargando ...",
+	   		               "Processing": "Procesando...",
+	   		               "SearchPlaceholder": "Comience a teclear...",
+	   		               "paginate": {
+			    		          "previous": "Anterior",
+			    		          "next": "Siguiente", 
+	       					}
+					 }
+		
+				});
     		},
     		complete: function(){
     			$(".loader").fadeOut(2000);
@@ -426,6 +401,86 @@
 	    			$(".loader").fadeOut(1000);
 	    		}
     		});	 
+    		
+    	});
+    	
+    	// Mostramos la incidencia en un modal.
+    	$(".tabla-incidencia-resolucion i").on("click", function() {
+    		    		
+    		var padre = $(this);
+    		var id = $(this).data("id");
+    	
+    		if($(this).hasClass("fa-thumbs-down")){
+    		
+			    $("#dialog-confirm").dialog({
+			        resizable: false,
+			        height: "auto",
+			        width: 400,
+			        modal: true,
+			        buttons: {
+			          "Resolver incidencia": function() {
+			          $(this).dialog("close");
+			           
+		    			$.ajax({
+				    		type: "POST",
+				    		dataType: "json",
+				    		data: {id:id},
+				    		url: "/Resolucion_s",
+				    		success: function(resp){ 
+				    			
+				    			$(".loader").css("display", "block");
+				    				 padre.removeClass("fa-thumbs-down text-danger");
+						    		 padre.addClass("fa-thumbs-up text-success");
+						    		 padre.parent().siblings(".resol-time").text(resp);
+				    		},
+				    		complete: function(){
+				    			$(".loader").fadeOut(2000);
+				    		}
+			    		});	 
+		    			
+			          },
+			          Cancel: function() {
+			            $( this ).dialog("close");
+			          }
+			        }
+			      });
+			    
+			    
+    	
+    		}else{
+    			
+    			$("#dialog-cancel").dialog({
+			        resizable: false,
+			        height: "auto",
+			        width: 400,
+			        modal: true,
+			        buttons: {
+			          "Cancelar incidencia": function() {
+			            $(this).dialog( "close" );
+			            
+			            $.ajax({
+				    		type: "POST",
+				    		dataType: "json",
+				    		data: {id:id},
+				    		url: "/Resolucion_n",
+				    		success: function(resp){ 
+				    			$(".loader").css("display", "block");
+				    			 padre.removeClass("fa-thumbs-up text-success");
+					    		 padre.addClass("fa-thumbs-down text-danger");
+					    		 padre.parent().siblings(".resol-time").html("<span style='padding-left:80px'> "+resp+" </span>");
+				    		},
+				    		complete: function(){
+				    			$(".loader").fadeOut(2000);
+				    		}
+			    		});	 
+			            
+			          },
+			          Cancel: function() {
+			            $( this ).dialog("close");
+			          }
+			        }
+			      });
+    		}
     		
     	});
 		

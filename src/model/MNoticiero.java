@@ -136,7 +136,7 @@ public class MNoticiero {
 	 * @return
 	 */
 	public boolean compruebaExistencia(String nif) {
-		String selectNIF = "SELECT COUNT(*) as contador FROM bgacademy.noticiario WHERE nif = ?";
+		String selectNIF = "SELECT COUNT(*) AS contador FROM bgacademy.noticiario WHERE nif = ?";
 		
 		boolean existe = false;
 		int contador = 0;

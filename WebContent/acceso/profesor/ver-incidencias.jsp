@@ -42,6 +42,7 @@
     <link rel="stylesheet" href="../../assets/css/jquery-ui.css">
     <link rel="stylesheet" type="text/css" href="../../assets/fonts/font-awesome/css/font-awesome.min.css">
 	<link rel="shortcut icon" href="../assets/imagenes/favicon.ico">
+	<link rel="stylesheet" type="text/css" href="../assets/css/dataTables.min.css">
     <link rel="stylesheet" href="../assets/css/estilos.css">
 </head>
     
@@ -135,7 +136,7 @@
                     
         <div class="row">
             <div class="col-xs-12">
-                <table class="table">
+                <table class="table" id="prof-table">
                   <thead>
                     <tr>
                       <th>ID incidencia</th>
@@ -202,6 +203,8 @@
     <script src="../../assets/js/jquery-3.1.1.min.js"></script>
     <script src="../../assets/js/bootstrap.min.js"></script>
     <script src="../../assets/js/jquery-ui.js"></script>
+    <script src="../assets/js/dataTables.min.js"></script>
+    <script src="../assets/js/dataTables-bs4.min.js"></script>
     <script src="../assets/js/script.js"></script>
     <script>
 	    
@@ -218,23 +221,44 @@
 	    		success: function(resp){  			
 	    			for(var i = 0; i < resp.length; i++){
 	    				$("table tbody").append("<tr>");
-	    					$("table tbody").append("<td>"+resp[i][0]+"</td>");
-	    					$("table tbody").append("<td class='tabla-incidencia-ver'><a href='' data-id="+resp[i][0]+" data-toggle='modal' data-target='#modal-incidencia'><i class='fa fa-bolt text-warning' aria-hidden='true'></i></a></td>");
-	    					$("table tbody").append("<td>"+resp[i][1]+"</td>");
+	    					$("table tbody tr:last-child").append("<td>"+resp[i][0]+"</td>");
+	    					$("table tbody tr:last-child").append("<td class='tabla-incidencia-ver'><a href='' data-id="+resp[i][0]+" data-toggle='modal' data-target='#modal-incidencia'><i class='fa fa-bolt text-warning' aria-hidden='true'></i></a></td>");
+	    					$("table tbody tr:last-child").append("<td>"+resp[i][1]+"</td>");
 	    					
 	    					if(resp[i][2] == "" || resp[i][2] == null){
-	    						$("table tbody").append("<td> - </td>");
+	    						$("table tbody tr:last-child").append("<td> - </td>");
 	    					}else{
-	    						$("table tbody").append("<td>"+resp[i][2]+"</td>");
+	    						$("table tbody tr:last-child").append("<td>"+resp[i][2]+"</td>");
 	    					}
 	    					
 	    					if(resp[i][3] == "N"){
-	    						$("table tbody").append("<td class='tabla-incidencia-resolucion'><i class='fa fa-thumbs-down text-danger' aria-hidden='true'></i></td>");
+	    						$("table tbody tr:last-child").append("<td class='tabla-incidencia-resolucion'><i class='fa fa-thumbs-down text-danger' aria-hidden='true'></i></td>");
 	    					}else{
-	    						$("table tbody").append("<td class='tabla-incidencia-resolucion'><i class='fa fa-thumbs-up text-success' aria-hidden='true'></i></td>");
+	    						$("table tbody tr:last-child").append("<td class='tabla-incidencia-resolucion'><i class='fa fa-thumbs-up text-success' aria-hidden='true'></i></td>");
 	    					}
 	    				$("table tbody").append("</tr>");
 	    			}
+	    			
+		    			$("#prof-table").DataTable({
+							 "language":{
+		    		         "lengthMenu":"Mostrar _MENU_ registros por página.",
+		    		         "zeroRecords": "Sin resultados en su búsqueda.",
+		    		               "info": "Tienes un total de _MAX_ de incidencias registradas.",
+		    		               "infoEmpty": "Sin registros.",
+		    		               "infoFiltered": "(Filtrados de un total de _MAX_ registros)",
+		    		               "search" : "Búsqueda: ",
+		    		               "LoadingRecords": "Cargando ...",
+		    		               "Processing": "Procesando...",
+		    		               "SearchPlaceholder": "Comience a teclear...",
+		    		               "paginate": {
+				    		          "previous": "Anterior",
+				    		          "next": "Siguiente", 
+	          						}
+						      }
+	    			
+	    				});
+	    			
+	    			
 	    		},complete: function(){
 	    			$(".loader").fadeOut(2000);
 	    		}

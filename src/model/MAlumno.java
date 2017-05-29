@@ -173,7 +173,7 @@ public class MAlumno {
 	 */
 	public boolean compruebaExistencia(String nif) {
 		
-		String selectNIF = "SELECT COUNT(*) as contador FROM bgacademy.alumno WHERE nif = ?";
+		String selectNIF = "SELECT COUNT(*) AS contador FROM bgacademy.alumno WHERE nif = ?";
 		
 		boolean existe = false;
 		int contador = 0;

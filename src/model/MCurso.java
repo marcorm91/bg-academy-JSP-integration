@@ -48,7 +48,7 @@ public class MCurso {
 	 */
 	public boolean compruebaExistencia(String anioinicio, String aniofin, String curso) {
 		
-		String selectAnios = "SELECT COUNT(*) as contador FROM bgacademy.curso WHERE anioinicio = ? and aniofinal = ? and curso = ?";
+		String selectAnios = "SELECT COUNT(*) AS contador FROM bgacademy.curso WHERE anioinicio = ? AND aniofinal = ? AND curso = ?";
 		
 		boolean existe = false;
 		int contador = 0;
@@ -92,7 +92,7 @@ public class MCurso {
 		String datos[][] = new String[cantidad][2];
 		int i = 0;
 		
-		String selectFechas = "SELECT DISTINCT anioinicio, aniofinal from bgacademy.curso order by anioinicio;";
+		String selectFechas = "SELECT DISTINCT anioinicio, aniofinal FROM bgacademy.curso ORDER BY anioinicio;";
 		
 		try{
 			 
@@ -124,7 +124,7 @@ public class MCurso {
 		String datos[][] = new String[cantidad][1];
 		int i = 0;
 		
-		String selectCurso = "SELECT DISTINCT curso from bgacademy.curso order by curso;";
+		String selectCurso = "SELECT DISTINCT curso FROM bgacademy.curso ORDER BY curso;";
 		
 		try{
 			 
@@ -151,7 +151,7 @@ public class MCurso {
 	 */
 	private int totalRegistros() {
 		
-		String total = "select count(*) as contador from bgacademy.curso;";
+		String total = "SELECT COUNT(*) AS contador FROM bgacademy.curso;";
 		int filas = 0;
 		
 		try{
