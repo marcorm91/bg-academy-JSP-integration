@@ -840,6 +840,8 @@ $(document).ready(function() {
      */
     $("#anio-curso-profesor").change("click", function(){
     	
+    	$(".loader").css("display", "block");
+    	
     	var anio = $(this).val();
     	
     	$.ajax({
@@ -855,6 +857,9 @@ $(document).ready(function() {
     					$("#cursos-profesor").append("<option> " + resp[i][0] + "</option>");
     				}
     			}    			
+    		},
+    		complete: function(){
+    			$(".loader").fadeOut(1000);
     		}
     	});
     	
@@ -866,6 +871,8 @@ $(document).ready(function() {
      * Recoge los cursos en función del año de promoción seleccionado para alumnos.
      */
     $("#anio-curso").change("click", function(){
+    	
+    	$(".loader").css("display", "block");
     	
     	var anio = $(this).val();
     	    	
@@ -882,6 +889,9 @@ $(document).ready(function() {
     					$("#curso-alumno").append("<option> " + resp[i][0] + "</option>");
     				}
     			}    			
+    		},
+    		complete: function(){
+    			$(".loader").fadeOut(1000);
     		}
     	});
     	

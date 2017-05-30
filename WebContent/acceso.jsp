@@ -62,12 +62,12 @@
 					<form class="form-horizontal col-xs-12 col-md-12" method="post" action="${pageContext.request.contextPath}/Acceso_plataforma">
 						<div class="form-group">
 							<label for="formGroup">Nombre de usuario: </label>
-								<input class="form-control" type="text" id="inputUser" name="user" placeholder="Introduzca su nombre de usuario" autofocus required>
+								<input class="form-control" type="text" id="inputUser" name="user" maxlength="100" placeholder="Introduzca su nombre de usuario" autofocus required>
 						</div>
 
 						<div class="form-group">
 							<label for="formGroup">Contraseña: </label>
-								<input class="form-control" type="password" id="inputPass" name="pass" placeholder="Introduzca su clave de acceso" required>
+								<input class="form-control" type="password" id="inputPass" maxlength="100" name="pass" placeholder="Introduzca su clave de acceso" required>
 						</div>
 						
 						<% 	if(session.getAttribute("log") != null){  								%>

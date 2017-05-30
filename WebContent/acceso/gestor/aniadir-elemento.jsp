@@ -203,25 +203,25 @@
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Nombre:</label>
                 <div class="col-md-7">
-                    <input class="form-control" type="text" name="nombre" id="nombre-profesor" required>
+                    <input class="form-control" type="text" name="nombre" id="nombre-profesor" maxlength="100" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Apellido 1:</label>
                 <div class="col-md-7">
-                    <input class="form-control" type="text" name="apellido1" id="apellido-1-profesor" required>
+                    <input class="form-control" type="text" name="apellido1" id="apellido-1-profesor" maxlength="100" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Apellido 2:</label>
                 <div class="col-md-7">
-                    <input class="form-control" type="text" name="apellido2" id="apellido-2-profesor" required>
+                    <input class="form-control" type="text" name="apellido2" id="apellido-2-profesor" maxlength="100" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">NIF / NIE:</label>
                 <div class="col-md-4">
-                    <input class="form-control" type="text" name="nif" id="nifnie-profesor" required>
+                    <input class="form-control" type="text" name="nif" id="nifnie-profesor" maxlength="9" required>
                 </div>
             </div>
             <div class="form-group row">
@@ -233,13 +233,13 @@
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Nacido en:</label>
                 <div class="col-md-7">
-                    <input class="form-control" type="text" name="nacimiento" id="nacimiento-profesor" required>
+                    <input class="form-control" type="text" name="nacimiento" id="nacimiento-profesor" maxlength="150" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Nacionalidad:</label>
                 <div class="col-md-7">
-                    <input class="form-control" type="text" name="nacionalidad" id="nacionalidad-profesor" required>
+                    <input class="form-control" type="text" name="nacionalidad" id="nacionalidad-profesor" maxlength="150" required>
                 </div>
             </div>
             <div class="row">
@@ -250,25 +250,25 @@
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Calle:</label>
                 <div class="col-md-7">
-                    <input class="form-control" type="text" name="calle" id="calle-profesor" required>
+                    <input class="form-control" type="text" name="calle" id="calle-profesor" maxlength="150" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Código Postal:</label>
                 <div class="col-md-4">
-                    <input class="form-control" type="text" name="cp" id="cp-profesor" required>
+                    <input class="form-control" type="text" name="cp" id="cp-profesor" maxlength="10" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Población:</label>
                 <div class="col-md-7">
-                    <input class="form-control" type="text" name="poblacion" id="poblacion-profesor" required>
+                    <input class="form-control" type="text" name="poblacion" id="poblacion-profesor" maxlength="150" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Provincia:</label>
                 <div class="col-md-7">
-                    <input class="form-control" type="text" name="provincia" id="provincia-profesor" required>
+                    <input class="form-control" type="text" name="provincia" id="provincia-profesor" maxlength="150" required>
                 </div>
             </div>
             <div class="row">
@@ -285,13 +285,13 @@
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">E-mail:</label>
                 <div class="col-md-7">
-                    <input class="form-control" type="text" name="email" id="email-profesor" required>
+                    <input class="form-control" type="text" name="email" id="email-profesor" maxlength="150" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Teléfono:</label>
                 <div class="col-md-4">
-                    <input class="form-control" type="text" name="tlf" id="tlf-profesor" required>
+                    <input class="form-control" type="text" name="tlf" id="tlf-profesor" maxlength="20" required>
                 </div>
             </div>
             <div class="form-group row">
@@ -345,25 +345,25 @@
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Nombre:</label>
                 <div class="col-md-7">
-                    <input class="form-control" type="text" name="nombrealumno" id="nombre-alumno" required>
+                    <input class="form-control" type="text" name="nombrealumno" id="nombre-alumno" maxlength="100" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Apellido 1:</label>
                 <div class="col-md-7">
-                    <input class="form-control" type="text" name="apellido1" id="apellido-1-alumno" required>
+                    <input class="form-control" type="text" name="apellido1" id="apellido-1-alumno" maxlength="100" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Apellido 2:</label>
                 <div class="col-md-7">
-                    <input class="form-control" type="text" name="apellido2" id="apellido-2-alumno" required>
+                    <input class="form-control" type="text" name="apellido2" id="apellido-2-alumno" maxlength="100" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">NIF / NIE:</label>
                 <div class="col-md-4">
-                    <input class="form-control" type="text" name="nif" id="nifnie-alumno" required>
+                    <input class="form-control" type="text" name="nif" id="nifnie-alumno" maxlength="9" required>
                 </div>
             </div>
             <div class="form-group row">
@@ -375,13 +375,13 @@
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Nacido en:</label>
                 <div class="col-md-7">
-                    <input class="form-control" type="text" name="nacimiento" id="nacimiento-alumno" required>
+                    <input class="form-control" type="text" name="nacimiento" id="nacimiento-alumno"  maxlength="150" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Nacionalidad:</label>
                 <div class="col-md-7">
-                    <input class="form-control" type="text" name="nacionalidad" id="nacionalidad-alumno" required>
+                    <input class="form-control" type="text" name="nacionalidad" id="nacionalidad-alumno"  maxlength="150" required>
                 </div>
             </div>
             <div class="row">
@@ -392,25 +392,25 @@
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Calle:</label>
                 <div class="col-md-7">
-                    <input class="form-control" type="text" name="calle" id="calle-alumno" required>
+                    <input class="form-control" type="text" name="calle" id="calle-alumno"  maxlength="150" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Código Postal:</label>
                 <div class="col-md-7">
-                    <input class="form-control" type="text" name="cp" id="cp-alumno" required>
+                    <input class="form-control" type="text" name="cp" id="cp-alumno"  maxlength="10" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Población:</label>
                 <div class="col-md-7">
-                    <input class="form-control" type="text" name="poblacion" id="poblacion-alumno" required>
+                    <input class="form-control" type="text" name="poblacion" id="poblacion-alumno"  maxlength="150" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Provincia:</label>
                 <div class="col-md-7">
-                    <input class="form-control" type="text" name="provincia" id="provincia-alumno" required>
+                    <input class="form-control" type="text" name="provincia" id="provincia-alumno"  maxlength="150" required>
                 </div>
             </div>
             <div class="row">
@@ -427,13 +427,13 @@
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">E-mail:</label>
                 <div class="col-md-7">
-                    <input class="form-control" type="text" name="email" id="email-alumno" required>
+                    <input class="form-control" type="text" name="email" id="email-alumno"  maxlength="150" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Teléfono:</label>
                 <div class="col-md-4">
-                    <input class="form-control" type="text" name="tlf" id="tlf-alumno" required>
+                    <input class="form-control" type="text" name="tlf" id="tlf-alumno"  maxlength="20" required>
                 </div>
             </div>
             <div class="form-group row">
@@ -456,7 +456,7 @@
             <div class="form-group contenedor-comentarios">
                 <label class="col-md-3 col-form-label push-md-1">Comentarios:</label>
                     <div class="col-md-7">
-                        <textarea class="form-control" name="comentarios" id="comentario-alumno" rows="7" required></textarea>
+                        <textarea class="form-control" name="comentarios" id="comentario-alumno" rows="7"  maxlength="300" required></textarea>
                     </div>
                 </div>
             </div>
@@ -493,25 +493,25 @@
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Nombre:</label>
                 <div class="col-md-7">
-                    <input class="form-control" type="text" name="nombre-noticiario" id="nombre-noticiario" required>
+                    <input class="form-control" type="text" name="nombre-noticiario" id="nombre-noticiario"  maxlength="100" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Apellido 1:</label>
                 <div class="col-md-7">
-                    <input class="form-control" type="text" name="apellido1" id="apellido-1-noticiario" required>
+                    <input class="form-control" type="text" name="apellido1" id="apellido-1-noticiario"  maxlength="100" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Apellido 2:</label>
                 <div class="col-md-7">
-                    <input class="form-control" type="text" name="apellido2" id="apellido-2-noticiario" required>
+                    <input class="form-control" type="text" name="apellido2" id="apellido-2-noticiario"  maxlength="100" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">NIF/NIE:</label>
                 <div class="col-md-7">
-                    <input class="form-control" name="nif" type="text" id="nifnie-noticiario" required>
+                    <input class="form-control" name="nif" type="text" id="nifnie-noticiario"  maxlength="9" required>
                 </div>
             </div>
             <div class="row">
@@ -528,13 +528,13 @@
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">E-mail:</label>
                 <div class="col-md-7">
-                    <input class="form-control" type="text" name="email" id="email-noticiario" required>
+                    <input class="form-control" type="text" name="email" id="email-noticiario"  maxlength="100" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Teléfono:</label>
                 <div class="col-md-4">
-                    <input class="form-control" type="text" name="tlf" id="tlf-noticiario" required>
+                    <input class="form-control" type="text" name="tlf" id="tlf-noticiario"  maxlength="20" required>
                 </div>
             </div>
       </div>
@@ -571,25 +571,25 @@
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Nombre:</label>
                 <div class="col-md-7">
-                    <input class="form-control" name="nombre-gestor" type="text" id="nombre-gestor" required>
+                    <input class="form-control" name="nombre-gestor" type="text" id="nombre-gestor"  maxlength="100" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Apellido 1:</label>
                 <div class="col-md-7">
-                    <input class="form-control" name="apellido1" type="text" id="apellido-1-gestor" required>
+                    <input class="form-control" name="apellido1" type="text" id="apellido-1-gestor"  maxlength="100" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Apellido 2:</label>
                 <div class="col-md-7">
-                    <input class="form-control" name="apellido2" type="text" id="apellido-2-gestor" required>
+                    <input class="form-control" name="apellido2" type="text" id="apellido-2-gestor"  maxlength="100" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">NIF/NIE:</label>
                 <div class="col-md-7">
-                    <input class="form-control" name="nif" type="text" id="nifnie-gestor" required>
+                    <input class="form-control" name="nif" type="text" id="nifnie-gestor"  maxlength="9" required>
                 </div>
             </div>
             <div class="row">
@@ -606,13 +606,13 @@
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">E-mail:</label>
                 <div class="col-md-7">
-                    <input class="form-control" type="text" name="email" id="email-gestor" required>
+                    <input class="form-control" type="text" name="email" id="email-gestor"  maxlength="100" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Teléfono:</label>
                 <div class="col-md-4">
-                    <input class="form-control" type="text" name="tlf" id="tlf-gestor" required>
+                    <input class="form-control" type="text" name="tlf" id="tlf-gestor"  maxlength="20" required>
                 </div>
             </div>
       </div>
@@ -663,13 +663,13 @@
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Año inicio: </label>
                 <div class="col-md-2">
-                    <input class="form-control" name="anioinicio" type="text" id="anio-inicial-curso" required>
+                    <input class="form-control" name="anioinicio" type="number" id="anio-inicial-curso"  value="2000" min="2000" max="2100" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label push-md-1">Año fin: </label>
                 <div class="col-md-2">
-                    <input class="form-control" name="aniofin" type="text" id="anio-fin-curso" required>
+                    <input class="form-control" name="aniofin" type="number" id="anio-fin-curso"  value="2000" min="2000" max="2100" required>
                 </div>
             </div>
       </div>
@@ -703,6 +703,8 @@
 <div id="modal-ok-curso" title="¡Curso registrado!" style="display: none">
 	<p> ¡Se ha registrado el curso correctamente!. </p>
 </div>
+
+<div class="loader" style='display: none;'></div>
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
