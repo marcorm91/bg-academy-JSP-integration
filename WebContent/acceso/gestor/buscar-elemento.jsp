@@ -303,36 +303,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>Marco</td>
-                      <td>Romero</td>
-                      <td>Martín</td>
-                      <td>43323456W</td>
-                      <td>marco@gmail.com</td>
-                      <td>B1 - Nivel Intermedio</td>
-                     <td class="tabla-info"><a href="#"><i class="fa fa-info-circle" aria-hidden="true"></i></a></td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>Antonio</td>
-                      <td>Guzmán</td>
-                      <td>Martínez</td>
-                      <td>32345654A</td>
-                      <td>antonio@gmail.com</td>
-                      <td>A1 - Nivel Básico</td>
-                    <td class="tabla-info"><a href="#"><i class="fa fa-info-circle" aria-hidden="true"></i></a></td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td>Adelina</td>
-                      <td>Gutiérrez</td>
-                      <td>López</td>
-                      <td>35656677Z</td>
-                      <td>adelina@gmail.com</td>
-                      <td>C1 - Nivel Avanzado</td>
-                      <td class="tabla-info"><a href="#"><i class="fa fa-info-circle" aria-hidden="true"></i></a></td>
-                    </tr>
+
                   </tbody>
                 </table> 
             </div>
@@ -400,22 +371,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>Marco</td>
-                      <td>Romero</td>
-                      <td>Martín</td>
-                      <td>marco@gmail.com</td>
-                      <td class="tabla-info"><a href="#"><i class="fa fa-info-circle" aria-hidden="true"></i></a></td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>Antonio</td>
-                      <td>Guzmán</td>
-                      <td>Martínez</td>
-                      <td>antonio@gmail.com</td>
-                      <td class="tabla-info"><a href="#"><i class="fa fa-info-circle" aria-hidden="true"></i></a></td>
-                    </tr>
+
                   </tbody>
                 </table> 
             </div>
@@ -482,20 +438,20 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>2011</td>
-                      <td>2012</td>
-                      <td>[A1] - Nivel Básico - 1er Curso</td>
-                      <td> 12 </td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>2011</td>
-                      <td>2012</td>
-                      <td>[B2] - Nivel Avanzado - 4º Curso</td>
-                      <td> 8 </td>
-                    </tr>
+<!--                     <tr> -->
+<!--                       <td>1</td> -->
+<!--                       <td>2011</td> -->
+<!--                       <td>2012</td> -->
+<!--                       <td>[A1] - Nivel Básico - 1er Curso</td> -->
+<!--                       <td> 12 </td> -->
+<!--                     </tr> -->
+<!--                     <tr> -->
+<!--                       <td>2</td> -->
+<!--                       <td>2011</td> -->
+<!--                       <td>2012</td> -->
+<!--                       <td>[B2] - Nivel Avanzado - 4º Curso</td> -->
+<!--                       <td> 8 </td> -->
+<!--                     </tr> -->
                   </tbody>
                 </table> 
             </div>
@@ -562,22 +518,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>Marco</td>
-                      <td>Romero</td>
-                      <td>Martín</td>
-                      <td>marco@gmail.com</td>
-                      <td class="tabla-info"><a href="#"><i class="fa fa-info-circle" aria-hidden="true"></i></a></td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>Antonio</td>
-                      <td>Guzmán</td>
-                      <td>Martínez</td>
-                      <td>antonio@gmail.com</td>
-                      <td class="tabla-info"><a href="#"><i class="fa fa-info-circle" aria-hidden="true"></i></a></td>
-                    </tr>
+
                   </tbody>
                 </table> 
             </div>
@@ -757,20 +698,20 @@
     <script src="../../assets/js/bootstrap.min.js"></script>
     <script src="../../assets/js/jquery-ui.js"></script>
     <script src="../assets/js/script.js"></script>
-    
     <script>
     	$(document).ready(function(){
     		
+    		// Realiza una búsqueda completa de profesores e imprime en la tabla los resultados.
     		$("#busqueda-profesor").on("click", function(){
-    			
+
     			$(".loader").css("display", "block");
     	    		    	    	
     	    	$.ajax({
     	    		type: "POST",
     	    		dataType: "json",
+    	    		async: false,
     	    		url: "/Proflist",
     	    		success: function(resp){  
-    	    			//$('#prof-table tbody').remove();
     	    			
     	    			for(var i = 0; i < resp.length; i++){
     	    				
@@ -816,9 +757,9 @@
 	        					}
 	        					
 	        					//+ info
-	        					$("#prof-table tbody tr:last-child").append("<td class='tabla-info'><a href='#' data-id="+resp[i][0]+" data-toggle='modal' data-target='#modal-info'><i class='fa fa-info-circle' aria-hidden='true'></i></a></td>");
+	        					$("#prof-table tbody tr:last-child").append("<td class='tabla-info'><a href='' data-id="+resp[i][0]+" data-toggle='modal' data-target='#modal-info'><i class='fa fa-info-circle' aria-hidden='true'></i></a></td>");
 	        				
-	        				$("#prof-table tbody").append("<tr>");
+	        				$("#prof-table tbody").append("</tr>");
     	    			}
     	    			    	    			
     	    		},
@@ -828,6 +769,52 @@
     	    	});
     			
     		});
+    		    		
+    		
+    		//Recoge el data-id del profesor para hacer una consulta más exhaustiva en un modal.
+        	$(document).delegate(".tabla-info a", "click", function(event){
+        		
+        		$("#modal-info").css("cursor", "default");
+        		var id = $(this).data("id");
+        		
+        		$.ajax({
+    	    		type: "POST",
+    	    		dataType: "json",
+    	    		data: {id:id},
+    	    		url: "/Prof_individual",
+    	    		success: function(resp){  	
+    	    			
+    	    			for(var i = 0; i < resp.length; i++){
+    	    				if(resp[i] == null){
+    	    					resp[i] = "";
+    	    				}
+    	    			}
+    	    			
+    	    				$("#id-modal").text(resp[0]);
+    	    				$("#nombre-modal").text(resp[2]);
+    	    				$("#apellido1-modal").text(resp[3]);
+    	    				$("#apellido2-modal").text(resp[4]);
+    	    				$("#usuario-modal").text(resp[5]);
+    	    				$("#fnac-modal").text(resp[7]);
+    	    				$("#nif-modal").text(resp[8]);
+    	    				$("#nacimiento-modal").text(resp[9]);
+    	    				$("#nacionalidad-modal").text(resp[19]);
+    	    				$("#calle-modal").text(resp[10]);
+    	    				$("#cp-modal").text(resp[11]);
+    	    				$("#provincia-modal").text(resp[12]);
+    	    				$("#poblacion-modal").text(resp[13]);
+    	    				$("#fecalta-modal").text(resp[14]);
+    	    				$("#email-modal").text(resp[15]);
+    	    				$("#anioprom-modal").text(resp[17]);
+    	    				$("#asignimp-modal").text(resp[18].substr(1, resp[18].length - 2));
+    	    				    	    			
+    	    		},
+    	    		complete: function(){
+    	    			$(".loader").fadeOut(1000);
+    	    		}
+        		});	 
+        		
+        	});
     		
     	});
     </script>

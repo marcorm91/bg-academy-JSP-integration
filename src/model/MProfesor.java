@@ -261,7 +261,7 @@ public class MProfesor {
 	 */
 	public Object[] dameDatosPorID(String id) {
 		
-		Object datos[] = new Object[22];
+		Object datos[] = new Object[20];
 		String selectDatosProf = "SELECT * FROM bgacademy.profesor WHERE iduser = ?";
 		
 		try{
