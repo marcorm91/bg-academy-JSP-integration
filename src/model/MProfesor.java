@@ -303,5 +303,68 @@ public class MProfesor {
 		
 	}
 
+	
+	/**
+	 * Devuelve una lista completa de profesores registrados en la BD.
+	 * @return
+	 */
+	public Object[][] devuelveProfesores() {
+
+		int cantidad = totalProfesores();
+		Object datos[][] = new Object[cantidad][7];
+		int i = 0;
+		
+		String selectIncidencias = "SELECT iduser, nombre, apellido1, nif, email, anioprom, asignimp FROM bgacademy.profesor;";
+		
+		try{
+		
+			PreparedStatement sentencia = conexion.prepareStatement(selectIncidencias);
+			ResultSet rs = sentencia.executeQuery();
+		
+		while(rs.next()){
+			 datos[i][0] = rs.getInt("iduser");
+			 datos[i][1] = rs.getString("nombre");
+			 datos[i][2] = rs.getString("apellido1");
+			 datos[i][3] = rs.getString("nif");
+			 datos[i][4] = rs.getString("email");
+			 datos[i][5] = rs.getString("anioprom");
+			 datos[i][6] = rs.getString("asignimp");
+			 i++;
+		 }
+				
+		}catch(SQLException e){
+			System.out.println(e);
+		}
+		
+		return datos;
+	}
+
+	
+	/***
+	 * Devuelve el total de profesores registrados en la BD.
+	 * @return
+	 */
+	private int totalProfesores() {
+		
+		String total = "SELECT COUNT(*) AS contador FROM bgacademy.profesor";
+		int filas = 0;
+		
+		try{
+			
+			 PreparedStatement sentencia = conexion.prepareStatement(total);	 
+			 ResultSet rs = sentencia.executeQuery();
+
+			 while(rs.next()){
+				filas = rs.getInt("contador");
+			 }
+
+		}catch(Exception e){
+			System.out.println(e);
+		}
+					 
+		return filas;
+
+	}
+
 }
 

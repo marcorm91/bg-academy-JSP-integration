@@ -185,16 +185,14 @@
  <div class="modal fade" id="modal-aniadir-profesor" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header bg-primary text-white">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
+        <h4 class="modal-title text-xs-center font-weight-bold">Registrar profesor</h4>
       </div>
       <div class="modal-body">
         <div class="container">
-            <div class="row text-xs-center">
-                <h5>REGISTRAR PROFESOR</h5>
-            </div>
             <div class="row">
                 <div class="col-xs-12">
                     <h6> Datos personales </h6>
@@ -327,16 +325,14 @@
  <div class="modal fade" id="modal-aniadir-alumno" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header bg-primary text-white">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
+        <h4 class="modal-title text-xs-center font-weight-bold">Registrar alumno</h4>
       </div>
       <div class="modal-body">
         <div class="container">
-            <div class="row text-xs-center">
-                <h5>REGISTRAR ALUMNO</h5>
-            </div>
             <div class="row">
                 <div class="col-xs-12">
                     <h6> Datos personales </h6>
@@ -475,16 +471,14 @@
  <div class="modal fade" id="modal-aniadir-noticiario" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header bg-primary text-white">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
+        <h4 class="modal-title text-xs-center font-weight-bold">Registrar noticiario</h4>
       </div>
       <div class="modal-body">
         <div class="container">
-            <div class="row text-xs-center">
-                <h5>REGISTRAR NOTICIARIO</h5>
-            </div>
             <div class="row">
                 <div class="col-xs-12">
                     <h6> Datos personales </h6>
@@ -553,16 +547,14 @@
  <div class="modal fade" id="modal-aniadir-gestor" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header bg-primary text-white">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
+        <h4 class="modal-title text-xs-center font-weight-bold">Registrar gestor</h4>
       </div>
       <div class="modal-body">
         <div class="container">
-            <div class="row text-xs-center">
-                <h5>REGISTRAR GESTOR</h5>
-            </div>
             <div class="row">
                 <div class="col-xs-12">
                     <h6> Datos personales </h6>
@@ -631,16 +623,14 @@
  <div class="modal fade" id="modal-aniadir-curso" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header bg-primary text-white">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
+        <h4 class="modal-title text-xs-center font-weight-bold">Registrar curso</h4>
       </div>
       <div class="modal-body">
         <div class="container">
-            <div class="row text-xs-center">
-                <h5>REGISTRAR CURSO</h5>
-            </div>
             <div class="row">
                 <div class="col-xs-12">
                     <h6> Datos curso </h6>

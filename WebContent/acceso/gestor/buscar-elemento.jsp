@@ -203,50 +203,21 @@
         
         <div class="row">
             <div class="col-xs-12">
-                <table class="table">
+                <table class="table" id="prof-table">
                   <thead>
                     <tr>
                       <th>ID</th>
                       <th>Nombre</th>
                       <th>Apellido 1</th>
-                      <th>Apellido 2</th>
                       <th>NIF/NIE</th>
                       <th>E-mail</th>
+                      <th>Año promoción</th>
                       <th>Curso/s asignado/s</th>
                       <th>+ info</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>Marco</td>
-                      <td>Romero</td>
-                      <td>Martín</td>
-                      <td>43323456W</td>
-                      <td>marco@gmail.com</td>
-                      <td>B1 - Nivel Intermedio, <br/> B2/1 - Nivel Intermedio</td>
-                     <td class="tabla-info"><a href="#"><i class="fa fa-info-circle" aria-hidden="true"></i></a></td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>Antonio</td>
-                      <td>Guzmán</td>
-                      <td>Martínez</td>
-                      <td>32345654A</td>
-                      <td>antonio@gmail.com</td>
-                      <td>A1 - Nivel Básico, <br/> B2/1 - Nivel Intermedio</td>
-                    <td class="tabla-info"><a href="#"><i class="fa fa-info-circle" aria-hidden="true"></i></a></td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td>Adelina</td>
-                      <td>Gutiérrez</td>
-                      <td>López</td>
-                      <td>35656677Z</td>
-                      <td>adelina@gmail.com</td>
-                      <td>C1 - Nivel Avanzado</td>
-                      <td class="tabla-info"><a href="#"><i class="fa fa-info-circle" aria-hidden="true"></i></a></td>
-                    </tr>
+                    
                   </tbody>
                 </table> 
             </div>
@@ -656,12 +627,210 @@
         
 </div>
 
+<!-- MODAL PROFESOR -->
+<div class="modal fade" id="modal-info" role="dialog">
+    <div class="modal-dialog modal-lg">
+    
+      <div class="modal-content">
+        <div class="modal-header bg-primary text-white">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title text-xs-center font-weight-bold">+ Info</h4>
+        </div>
+        <div class="modal-body">
+        	<div class="container">
+	        	<div class="form-group row">
+	  				<label class="col-xs-3">ID: </label>
+	  					<div class="col-xs-9">
+	    					<span id="id-modal" class="font-weight-bold"> </span>
+	  					</div>
+				</div>
+				<div class="form-group row">
+	  				<label class="col-xs-3">Nombre:  </label>
+	  					<div class="col-xs-9">
+	    					<span id="nombre-modal" class="font-weight-bold"> </span>
+	  					</div>
+				</div>
+				<div class="form-group row">
+	  				<label class="col-xs-3">Apellido 1:  </label>
+	  					<div class="col-xs-9">
+	    					<span id="apellido1-modal" class="font-weight-bold"> </span>
+	  					</div>
+				</div>
+				<div class="form-group row">
+	  				<label class="col-xs-3">Apellido 2:  </label>
+	  					<div class="col-xs-9">
+	    					<span id="apellido2-modal" class="font-weight-bold"> </span>
+	  					</div>
+				</div>
+				<div class="form-group row">
+	  				<label class="col-xs-3">Nombre de usuario: </label>
+	  					<div class="col-xs-9">
+	    					<span id="usuario-modal" class="font-weight-bold"> </span>
+	  					</div>
+				</div>
+				<div class="form-group row">
+	  				<label class="col-xs-3">Fecha de nacimiento: </label>
+	  					<div class="col-xs-9">
+	    					<span id="fnac-modal" class="font-weight-bold"> </span>
+	  					</div>
+				</div>
+				<div class="form-group row">
+	  				<label class="col-xs-3">NIF: </label>
+	  					<div class="col-xs-9">
+	    					<span id="nif-modal" class="font-weight-bold"> </span>
+	  					</div>
+				</div>
+				<div class="form-group row">
+	  				<label class="col-xs-3">Nacimiento: </label>
+	  					<div class="col-xs-9">
+	    					<span id="nacimiento-modal" class="font-weight-bold"> </span>
+	  					</div>
+				</div>
+				<div class="form-group row">
+	  				<label class="col-xs-3">Nacionalidad: </label>
+	  					<div class="col-xs-9">
+	    					<span id="nacionalidad-modal" class="font-weight-bold"> </span>
+	  					</div>
+				</div>
+				<div class="form-group row">
+	  				<label class="col-xs-3">Calle: </label>
+	  					<div class="col-xs-9">
+	    					<span id="calle-modal" class="font-weight-bold"> </span>
+	  					</div>
+				</div>
+				<div class="form-group row">
+	  				<label class="col-xs-3">Código Postal: </label>
+	  					<div class="col-xs-9">
+	    					<span id="cp-modal" class="font-weight-bold"> </span>
+	  					</div>
+				</div>
+				<div class="form-group row">
+	  				<label class="col-xs-3">Provincia: </label>
+	  					<div class="col-xs-9">
+	    					<span id="provincia-modal" class="font-weight-bold"> </span>
+	  					</div>
+				</div>
+				<div class="form-group row">
+	  				<label class="col-xs-3">Población: </label>
+	  					<div class="col-xs-9">
+	    					<span id="poblacion-modal" class="font-weight-bold"> </span>
+	  					</div>
+				</div>
+				<div class="form-group row">
+	  				<label class="col-xs-3">Fecha de alta: </label>
+	  					<div class="col-xs-9">
+	    					<span id="fecalta-modal" class="font-weight-bold"> </span>
+	  					</div>
+				</div>
+				<div class="form-group row">
+	  				<label class="col-xs-3">E-mail: </label>
+	  					<div class="col-xs-9">
+	    					<span id="email-modal" class="font-weight-bold"> </span>
+	  					</div>
+				</div>
+				<div class="form-group row">
+	  				<label class="col-xs-3">Año promoción: </label>
+	  					<div class="col-xs-9">
+	    					<span id="anioprom-modal" class="font-weight-bold"> </span>
+	  					</div>
+				</div>
+				<div class="form-group row">
+	  				<label class="col-xs-3">Curso/s asignado/s: </label>
+	  					<div class="col-xs-9">
+	    					<span id="asignimp-modal" class="font-weight-bold"> </span>
+	  					</div>
+				</div>
+			</div>
+        </div>
+        <div class="modal-footer text-xs-center">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+      
+    </div>
+</div>
+
+<div class="loader" style='display: none;'></div> 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
     <script src="../../assets/js/jquery-3.1.1.min.js"></script>
     <script src="../../assets/js/bootstrap.min.js"></script>
     <script src="../../assets/js/jquery-ui.js"></script>
     <script src="../assets/js/script.js"></script>
+    
+    <script>
+    	$(document).ready(function(){
+    		
+    		$("#busqueda-profesor").on("click", function(){
+    			
+    			$(".loader").css("display", "block");
+    	    		    	    	
+    	    	$.ajax({
+    	    		type: "POST",
+    	    		dataType: "json",
+    	    		url: "/Proflist",
+    	    		success: function(resp){  
+    	    			//$('#prof-table tbody').remove();
+    	    			
+    	    			for(var i = 0; i < resp.length; i++){
+    	    				
+    	    				var asignimp_format = resp[i][6].substr(1, resp[i][6].length - 1);
+    	    				
+    	    				$("#prof-table tbody").append("<tr>");
+	    	    				
+    	    					//ID
+    	    					$("#prof-table tbody tr:last-child").append("<td>"+resp[i][0]+"</td>");
+	        					
+	    	    				//Nombre
+	    	    				if(resp[i][1].length >= 8){
+	    	    					$("#prof-table tbody tr:last-child").append("<td>"+resp[i][1].substr(0,8)+" ...</td>");
+	    	    				}else{
+	    	    					$("#prof-table tbody tr:last-child").append("<td>"+resp[i][1]+"</td>");
+	    	    				}
+	        					
+	        					//Apellido 1
+	        					if(resp[i][2].length >= 8){
+	        						$("#prof-table tbody tr:last-child").append("<td>"+resp[i][2].substr(0,8)+" ...</td>");
+	        					}else{
+	        						$("#prof-table tbody tr:last-child").append("<td>"+resp[i][2]+"</td>");
+	        					}
+	        					
+	        					//DNI
+	        					$("#prof-table tbody tr:last-child").append("<td>"+resp[i][3]+"</td>");
+	        					
+	        					//Email
+	        					if(resp[i][4].length >= 8){
+	        						$("#prof-table tbody tr:last-child").append("<td>"+resp[i][4].substr(0,8)+" ...</td>");
+	        					}else{
+	        						$("#prof-table tbody tr:last-child").append("<td>"+resp[i][4]+"</td>");
+	        					}
+	        					
+	        					//Año promoción
+	        					$("#prof-table tbody tr:last-child").append("<td>"+resp[i][5]+"</td>");
+	        					
+	        					//Cursos asignados
+	        					if(resp[i][6].length >= 30){
+	        						$("#prof-table tbody tr:last-child").append("<td>"+asignimp_format.substr(0,30)+" ...</td>");
+	        					}else{
+	        						$("#prof-table tbody tr:last-child").append("<td>"+resp[i][6]+"</td>");
+	        					}
+	        					
+	        					//+ info
+	        					$("#prof-table tbody tr:last-child").append("<td class='tabla-info'><a href='#' data-id="+resp[i][0]+" data-toggle='modal' data-target='#modal-info'><i class='fa fa-info-circle' aria-hidden='true'></i></a></td>");
+	        				
+	        				$("#prof-table tbody").append("<tr>");
+    	    			}
+    	    			    	    			
+    	    		},
+    	    		complete: function(){
+    	    			$(".loader").fadeOut(2000);
+    	    		}
+    	    	});
+    			
+    		});
+    		
+    	});
+    </script>
     
 </body>
 </html>

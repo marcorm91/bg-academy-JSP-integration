@@ -3012,5 +3012,11 @@
 		text-decoration: none;
 		color: #fff;
 	}
+	
+    
+    .close {
+    	color: #fff; 
+    	opacity: 1;
+	}
 
 /*# sourceMappingURL=estilos.css.map */
