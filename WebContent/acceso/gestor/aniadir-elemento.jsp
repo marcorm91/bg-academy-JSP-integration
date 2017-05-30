@@ -108,7 +108,7 @@
                         <li class="nav-item hidden-md-down" id="conectadoComo">  
                             <span class="nav-link">
                                 Conectado como 
-                                <span id="quien" title="Ir a Mi Perfil"> <% out.print(datos_gest[2]); %> </span>
+                                <span id="quien" title="Ir a Mi Perfil"> <a href="./mi-perfil.jsp"> <% out.print(datos_gest[2]); %> </a> </span>
                                 <a href="/Logout"> <span id="desconectar">(Desconectar)</span></a>
                             </span>
                         </li>
@@ -121,7 +121,7 @@
             <div class="text-xs-center conectadoMobile">
                 <span class="nav-link hidden-lg-up">
                     Conectado como 
-                    <span id="quien" title="Ir a Mi Perfil"> <% out.print(datos_gest[2]); %> </span>
+                    <span id="quien" title="Ir a Mi Perfil"> <a href="./mi-perfil.jsp"> <% out.print(datos_gest[2]); %> </a> </span>
                     <a href="/Logout"> <span id="desconectar">(Desconectar)</span></a>
                 </span> 
             </div>
@@ -298,7 +298,8 @@
                 <label class="col-md-3 col-form-label push-md-1">Año promoción:</label>
                 <div class="col-md-7">
                     <!-- PROMOCIONES CURSOS REGISTRADOS PREVIAMENTE -->
-                    <select class="form-control" name="aniocurso" id="anio-curso-profesor" required></select>
+                    <select class="form-control" name="aniocurso" id="anio-curso-profesor" required>
+                    <option> - Seleccione promoción - </option></select>
                 </div>
             </div>
             <div class="form-group row">
@@ -440,6 +441,7 @@
                 <div class="col-md-7">
                     <!-- PROMOCIONES CURSOS REGISTRADOS PREVIAMENTE -->
                     <select class="form-control" id="anio-curso" name="aniocurso" required>
+                    <option> - Seleccione promoción - </option>
                     </select>
                 </div>
             </div>

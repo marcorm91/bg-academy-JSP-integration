@@ -115,37 +115,6 @@ public class MCurso {
 	
 	
 	/**
-	 * Devuelve los cursos registrados en la Base de Datos.
-	 * @return
-	 */
-	public String[][] devuelveCursos() {
-		
-		int cantidad = totalRegistros();
-		String datos[][] = new String[cantidad][1];
-		int i = 0;
-		
-		String selectCurso = "SELECT DISTINCT curso FROM bgacademy.curso ORDER BY curso;";
-		
-		try{
-			 
-			 PreparedStatement sentencia = conexion.prepareStatement(selectCurso);
-			 ResultSet rs = sentencia.executeQuery();
-			 	            
-	            while(rs.next()){
-	                datos[i][0] = rs.getString("curso");
-	                i++;
-	            }
-	            	            
-		 }catch(Exception e){
-	    	 System.out.println(e);
-	     }
-       
-		return datos;
-		
-	}
-
-	
-	/**
 	 * Total de registros en BD.
 	 * @return
 	 */
@@ -168,6 +137,43 @@ public class MCurso {
 					 
 		return filas;
 		
+	}
+
+	
+	/**
+	 * Devuelve los cursos en los años correspondientes.
+	 * @param anio1
+	 * @param anio2
+	 * @return
+	 */
+	public String[][] devuelveCursos(String anio1, String anio2) {
+		
+		int cantidad = totalRegistros();
+		String datos[][] = new String[cantidad][3];
+		int i = 0;
+		
+		String selectCurso = "SELECT curso, anioinicio, aniofinal FROM bgacademy.curso WHERE anioinicio = ? AND aniofinal = ?";
+		
+		try{
+			 
+			 PreparedStatement sentencia = conexion.prepareStatement(selectCurso);
+			 sentencia.setString(1, anio1);
+		     sentencia.setString(2, anio2);
+			 
+		     ResultSet rs = sentencia.executeQuery();
+			 	            
+	            while(rs.next()){
+	                datos[i][0] = rs.getString("curso");
+	                datos[i][1] = rs.getString("anioinicio");
+	                datos[i][2] = rs.getString("aniofinal");
+	                i++;
+	            }
+	            	            
+		 }catch(Exception e){
+	    	 System.out.println(e);
+	     }
+		
+		return datos;
 	}
 
 	

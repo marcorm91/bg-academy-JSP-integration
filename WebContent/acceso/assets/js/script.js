@@ -812,7 +812,7 @@ $(document).ready(function() {
     
     
     /**
-     * Carga de cursos y años iniciales y finales de la BD curso sobre los campos de profesor.
+     * Carga de años iniciales y finales de la BD curso sobre los campos de profesor.
      */
     $("#regprofesor").on("click", function(e){
     	
@@ -831,28 +831,66 @@ $(document).ready(function() {
     			}    			
     		}
     	});
-     	
-     	// Petición que devolverá todos los cursos existentes en la BD.
-     	// Mismo caso que fechas, devolverá e imprimirá la unicidad de cursos sin que éstos sean repetidos.
-     	$.ajax({
+     	     	    
+    });
+    
+    
+    /**
+     * Recoge los cursos en función del año de promoción seleccionado para profesores.
+     */
+    $("#anio-curso-profesor").change("click", function(){
+    	
+    	var anio = $(this).val();
+    	
+    	$.ajax({
     		type: "POST",
     		dataType: "json",
-    		url: "/Recogecursos",
-    		async: false,
+    		url: "/Selectorcursos",
+    		data: {anio: anio},
+    		async: true,
     		success: function(resp){  
-    			for(var i = 0; i < resp.length; i++){			
+				$("#cursos-profesor").empty();
+    			for(var i = 0; i < resp.length; i++){	
     				if(resp[i][0] != null){
     					$("#cursos-profesor").append("<option> " + resp[i][0] + "</option>");
     				}
     			}    			
     		}
     	});
-     	    
+    	
+    	
     });
     
     
     /**
-     * Carga de cursos y años iniciales y finales de la BD curso sobre los campos de alumno.
+     * Recoge los cursos en función del año de promoción seleccionado para alumnos.
+     */
+    $("#anio-curso").change("click", function(){
+    	
+    	var anio = $(this).val();
+    	    	
+    	$.ajax({
+    		type: "POST",
+    		dataType: "json",
+    		url: "/Selectorcursos",
+    		data: {anio: anio},
+    		async: true,
+    		success: function(resp){  
+				$("#curso-alumno").empty();
+    			for(var i = 0; i < resp.length; i++){	
+    				if(resp[i][0] != null){
+    					$("#curso-alumno").append("<option> " + resp[i][0] + "</option>");
+    				}
+    			}    			
+    		}
+    	});
+    	
+    	
+    });
+    
+    
+    /**
+     * Carga de años iniciales y finales de la BD curso sobre los campos de alumno.
      */
     $("#regalumno").on("click", function(e){
     	
@@ -871,25 +909,8 @@ $(document).ready(function() {
     			}    			
     		}
     	});
-     	
-     	// Petición que devolverá todos los cursos existentes en la BD.
-     	// Mismo caso que fechas, devolverá e imprimirá la unicidad de cursos sin que éstos sean repetidos.
-     	$.ajax({
-    		type: "POST",
-    		dataType: "json",
-    		url: "/Recogecursos",
-    		async: false,
-    		success: function(resp){  
-    			for(var i = 0; i < resp.length; i++){			
-    				if(resp[i][0] != null){
-    					$("#curso-alumno").append("<option> " + resp[i][0] + "</option>");
-    				}
-    			}    			
-    		}
-    	});
-     	    
+     	     	    
     });
-    
     
     
     /**

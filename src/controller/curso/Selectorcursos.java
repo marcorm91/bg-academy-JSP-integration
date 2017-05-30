@@ -16,20 +16,21 @@ import model.Conexion;
 import model.MCurso;
 
 /**
- * Servlet implementation class Recogecursos
+ * Servlet implementation class Selectorcursos
  */
-@WebServlet("/Recogecursos")
-public class Recogecursos extends HttpServlet {
+@WebServlet("/Selectorcursos")
+public class Selectorcursos extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession hs;
 	private MCurso modelo_curso;
 	private Conexion conexionBD;
 	private String [][] cursos;
+	private String anios;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Recogecursos() {
+    public Selectorcursos() {
         super();
     }
 
@@ -37,7 +38,7 @@ public class Recogecursos extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		
 		// Reopen temporal de la BD.
         conexionBD = new Conexion();
         modelo_curso = new MCurso(conexionBD.getConexion());
@@ -48,10 +49,17 @@ public class Recogecursos extends HttpServlet {
 			response.sendRedirect("error.jsp");
 		}else{
 						
-			try{			
+			try{		
+				
+				anios = request.getParameter("anio");
+				
+				String split_anios[] = anios.split("-");
+				String anio1 = split_anios[0].trim();
+				String anio2 = split_anios[1].trim();
+								
 				//Llamamos al modelo para realizar la consulta sobre las fechas en la BD.
-				cursos = modelo_curso.devuelveCursos();
-							
+				cursos = modelo_curso.devuelveCursos(anio1, anio2);
+						
 				String sendCursos = new Gson().toJson(cursos);
 				response.setContentType("application/json");
 				response.setCharacterEncoding("UTF-8");
@@ -70,7 +78,7 @@ public class Recogecursos extends HttpServlet {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
+		
 	}
 
 	/**

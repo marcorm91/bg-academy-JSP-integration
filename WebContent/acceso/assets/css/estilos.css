@@ -2943,8 +2943,35 @@
 	}
 	
 	.dataTables_info{
-	font-weight: bolder;
+		font-weight: bolder;
+		cursor: default;
 	}
+	
+	.page-item.active .page-link{
+		background-color: #06385a;
+		border-color: #06385a;
+	}
+	
+	.page-item.active .page-link:hover{
+		cursor: pointer;
+		text-decoration: none;
+		background-color: #06385a;
+		border-color: #06385a;
+	}
+	
+	.page-item.active .page-link:focus{
+		cursor: pointer;
+		text-decoration: none;
+		background-color: #06385a;
+		border-color: #06385a;
+	}
+	
+	.page-link:focus, .page-link:hover{
+		text-decoration: none;
+	}
+	
+	#subpanel-incidencia-profesor table, #subpanel-incidencia-alumno table{
+	padding-bottom: 1em;}
 	
 	.tabla-incidencia-resolucion i{
 		cursor: pointer;
@@ -2973,6 +3000,17 @@
 	
 	#subpanel-incidencia-profesor .btn-atras{
 		margin-top: 1.5em;
+	}
+	
+	#quien a{
+		text-decoration: none;
+		color: #fff;
+		font-size: 1em !important;
+	}
+	
+	#quien a:hover{
+		text-decoration: none;
+		color: #fff;
 	}
 
 /*# sourceMappingURL=estilos.css.map */

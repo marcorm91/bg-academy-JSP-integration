@@ -117,7 +117,7 @@
                         <li class="nav-item hidden-md-down" id="conectadoComo">  
                             <span class="nav-link">
                                 Conectado como 
-                                <span id="quien" title="Ir a Mi Perfil"> <% out.print(datos_alumn[2]); %> </span>
+                                <span id="quien" title="Ir a Mi Perfil"> <a href="./mi-perfil.jsp"> <% out.print(datos_alumn[2]); %> </a> </span>
                                 <a href="/Logout"> <span id="desconectar">(Desconectar)</span></a>
                             </span>
                         </li>
