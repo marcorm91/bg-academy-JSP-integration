@@ -13,23 +13,24 @@ import javax.servlet.http.HttpSession;
 import com.google.gson.Gson;
 
 import model.Conexion;
-import model.MProfesor;
+import model.MAlumno;
 
 /**
- * Servlet implementation class Proflist
+ * Servlet implementation class Prof_individual
  */
-@WebServlet("/Proflist")
-public class Proflist extends HttpServlet {
+@WebServlet("/Alumn_individual")
+public class Alumn_individual extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession hs;
-	private MProfesor modelo_profesor;
+	private MAlumno modelo_alumno;
 	private Conexion conexionBD;
-	private Object profesores[][];
+	private Object alumno[];
+	private String id;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Proflist() {
+    public Alumn_individual() {
         super();
     }
 
@@ -40,7 +41,7 @@ public class Proflist extends HttpServlet {
 		
 		// Reopen temporal de la BD.
         conexionBD = new Conexion();
-        modelo_profesor = new MProfesor(conexionBD.getConexion());
+        modelo_alumno = new MAlumno(conexionBD.getConexion());
         
         hs = request.getSession();
         
@@ -49,24 +50,24 @@ public class Proflist extends HttpServlet {
         if(hs.getAttribute("log") == null || !datos_gestor[1].equals("G")){
 			response.sendRedirect("error.jsp");
 		}else{
+							
+			id = request.getParameter("id");
 			
+			alumno = modelo_alumno.dameDatosPorID(id);
 			
-			
-			profesores = modelo_profesor.devuelveProfesores();
-		
-			String sendProfesores = new Gson().toJson(profesores);
+			String sendAlumn = new Gson().toJson(alumno);
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");
-			response.getWriter().write(sendProfesores);
+			response.getWriter().write(sendAlumn);
 			
 		}
-        
+					        
         //¡IMPORTANTE! Cerrar la conexión.
   		try {
   			conexionBD.getConexion().close();
   		} catch (SQLException e) {
   			e.printStackTrace();
-  		}      
+  		}
 		
 	}
 

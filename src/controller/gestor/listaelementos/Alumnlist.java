@@ -13,23 +13,23 @@ import javax.servlet.http.HttpSession;
 import com.google.gson.Gson;
 
 import model.Conexion;
-import model.MProfesor;
+import model.MAlumno;
 
 /**
- * Servlet implementation class Proflist
+ * Servlet implementation class Alumnlist
  */
-@WebServlet("/Proflist")
-public class Proflist extends HttpServlet {
+@WebServlet("/Alumnlist")
+public class Alumnlist extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession hs;
-	private MProfesor modelo_profesor;
+	private MAlumno modelo_alumno;
 	private Conexion conexionBD;
-	private Object profesores[][];
+	private Object alumnos[][];
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Proflist() {
+    public Alumnlist() {
         super();
     }
 
@@ -40,7 +40,7 @@ public class Proflist extends HttpServlet {
 		
 		// Reopen temporal de la BD.
         conexionBD = new Conexion();
-        modelo_profesor = new MProfesor(conexionBD.getConexion());
+        modelo_alumno = new MAlumno(conexionBD.getConexion());
         
         hs = request.getSession();
         
@@ -50,14 +50,12 @@ public class Proflist extends HttpServlet {
 			response.sendRedirect("error.jsp");
 		}else{
 			
-			
-			
-			profesores = modelo_profesor.devuelveProfesores();
+			alumnos = modelo_alumno.devuelveAlumnos();
 		
-			String sendProfesores = new Gson().toJson(profesores);
+			String sendAlumnos = new Gson().toJson(alumnos);
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");
-			response.getWriter().write(sendProfesores);
+			response.getWriter().write(sendAlumnos);
 			
 		}
         

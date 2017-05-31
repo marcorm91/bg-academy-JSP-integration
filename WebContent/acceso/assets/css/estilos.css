@@ -2998,6 +2998,18 @@
 		text-align: center;
 	}
 	
+	#subpanel-busqueda-profesor #prof-table{
+		margin-bottom: 18px !important;
+	}
+	
+	#subpanel-busqueda-noticiario #not-table{
+		margin-bottom: 18px !important;
+	}
+	
+	#subpanel-busqueda-alumno #alumn-table{
+		margin-bottom: 18px !important;
+	}
+	
 	#subpanel-incidencia-profesor .btn-atras{
 		margin-top: 1.5em;
 	}
@@ -3011,6 +3023,18 @@
 	#quien a:hover{
 		text-decoration: none;
 		color: #fff;
+	}
+	
+	.tabla-info-prof i{
+		font-size: 20px !important;
+	}
+	
+	.tabla-info-alumn i{
+		font-size: 20px !important;
+	}
+	
+	.tabla-info-not i{
+		font-size: 20px !important;
 	}
 	
     

@@ -314,11 +314,11 @@ public class MProfesor {
 		Object datos[][] = new Object[cantidad][7];
 		int i = 0;
 		
-		String selectIncidencias = "SELECT iduser, nombre, apellido1, nif, email, anioprom, asignimp FROM bgacademy.profesor;";
+		String selectProfesores = "SELECT iduser, nombre, apellido1, nif, email, anioprom, asignimp FROM bgacademy.profesor;";
 		
 		try{
 		
-			PreparedStatement sentencia = conexion.prepareStatement(selectIncidencias);
+			PreparedStatement sentencia = conexion.prepareStatement(selectProfesores);
 			ResultSet rs = sentencia.executeQuery();
 		
 		while(rs.next()){

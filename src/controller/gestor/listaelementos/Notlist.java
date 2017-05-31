@@ -13,23 +13,23 @@ import javax.servlet.http.HttpSession;
 import com.google.gson.Gson;
 
 import model.Conexion;
-import model.MProfesor;
+import model.MNoticiero;
 
 /**
- * Servlet implementation class Proflist
+ * Servlet implementation class Notlist
  */
-@WebServlet("/Proflist")
-public class Proflist extends HttpServlet {
+@WebServlet("/Notlist")
+public class Notlist extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession hs;
-	private MProfesor modelo_profesor;
+	private MNoticiero modelo_noticiero;
 	private Conexion conexionBD;
-	private Object profesores[][];
+	private Object noticiarios[][];
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Proflist() {
+    public Notlist() {
         super();
     }
 
@@ -40,7 +40,7 @@ public class Proflist extends HttpServlet {
 		
 		// Reopen temporal de la BD.
         conexionBD = new Conexion();
-        modelo_profesor = new MProfesor(conexionBD.getConexion());
+        modelo_noticiero = new MNoticiero(conexionBD.getConexion());
         
         hs = request.getSession();
         
@@ -49,15 +49,13 @@ public class Proflist extends HttpServlet {
         if(hs.getAttribute("log") == null || !datos_gestor[1].equals("G")){
 			response.sendRedirect("error.jsp");
 		}else{
-			
-			
-			
-			profesores = modelo_profesor.devuelveProfesores();
+
+			noticiarios = modelo_noticiero.devuelveNoticiarios();
 		
-			String sendProfesores = new Gson().toJson(profesores);
+			String sendNoticiarios = new Gson().toJson(noticiarios);
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");
-			response.getWriter().write(sendProfesores);
+			response.getWriter().write(sendNoticiarios);
 			
 		}
         

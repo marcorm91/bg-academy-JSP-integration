@@ -238,5 +238,67 @@ public class MNoticiero {
 		return datos;		
 	}
 
+	
+	/**
+	 * Devuelve un listado de noticiarios registrados en la academia.
+	 * @return
+	 */
+	public Object[][] devuelveNoticiarios() {
+		
+		int cantidad = totalNoticiarios();
+		Object datos[][] = new Object[cantidad][5];
+		int i = 0;
+		
+		String selectNoticiarios = "SELECT iduser, nombre, apellido1, apellido2, email FROM bgacademy.noticiario;";
+		
+		try{
+		
+			PreparedStatement sentencia = conexion.prepareStatement(selectNoticiarios);
+			ResultSet rs = sentencia.executeQuery();
+		
+		while(rs.next()){
+			 datos[i][0] = rs.getInt("iduser");
+			 datos[i][1] = rs.getString("nombre");
+			 datos[i][2] = rs.getString("apellido1");
+			 datos[i][3] = rs.getString("apellido2");
+			 datos[i][4] = rs.getString("email");
+			 i++;
+		 }
+				
+		}catch(SQLException e){
+			System.out.println(e);
+		}
+		
+		return datos;
+		
+	}
+	
+	
+	/***
+	 * Devuelve el total de alumnos registrados en la BD.
+	 * @return
+	 */
+	private int totalNoticiarios() {
+		
+		String total = "SELECT COUNT(*) AS contador FROM bgacademy.noticiario";
+		int filas = 0;
+		
+		try{
+			
+			 PreparedStatement sentencia = conexion.prepareStatement(total);	 
+			 ResultSet rs = sentencia.executeQuery();
+
+			 while(rs.next()){
+				filas = rs.getInt("contador");
+			 }
+
+		}catch(Exception e){
+			System.out.println(e);
+		}
+					 
+		return filas;
+
+	}
+
 }
 

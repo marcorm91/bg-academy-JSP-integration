@@ -258,7 +258,7 @@ public class MAlumno {
 	 */
 	public Object[] dameDatosPorID(String id) {
 		
-		Object datos[] = new Object[22];
+		Object datos[] = new Object[21];
 		String selectDatosAlumn = "SELECT * FROM bgacademy.alumno WHERE iduser = ?";
 		
 		try{
@@ -299,6 +299,70 @@ public class MAlumno {
 		
 		return datos;
 		
+	}
+
+	
+	/**
+	 * Devuelve un listado de alumnos registrados en la academia.
+	 * @return
+	 */
+	public Object[][] devuelveAlumnos() {
+		
+		int cantidad = totalAlumnos();
+		Object datos[][] = new Object[cantidad][7];
+		int i = 0;
+		
+		String selectAlumnos = "SELECT iduser, nombre, apellido1, nif, email, anioprom, cursoasign FROM bgacademy.alumno;";
+		
+		try{
+		
+			PreparedStatement sentencia = conexion.prepareStatement(selectAlumnos);
+			ResultSet rs = sentencia.executeQuery();
+		
+		while(rs.next()){
+			 datos[i][0] = rs.getInt("iduser");
+			 datos[i][1] = rs.getString("nombre");
+			 datos[i][2] = rs.getString("apellido1");
+			 datos[i][3] = rs.getString("nif");
+			 datos[i][4] = rs.getString("email");
+			 datos[i][5] = rs.getString("anioprom");
+			 datos[i][6] = rs.getString("cursoasign");
+			 i++;
+		 }
+				
+		}catch(SQLException e){
+			System.out.println(e);
+		}
+		
+		return datos;
+
+	}
+	
+	
+	/***
+	 * Devuelve el total de alumnos registrados en la BD.
+	 * @return
+	 */
+	private int totalAlumnos() {
+		
+		String total = "SELECT COUNT(*) AS contador FROM bgacademy.alumno";
+		int filas = 0;
+		
+		try{
+			
+			 PreparedStatement sentencia = conexion.prepareStatement(total);	 
+			 ResultSet rs = sentencia.executeQuery();
+
+			 while(rs.next()){
+				filas = rs.getInt("contador");
+			 }
+
+		}catch(Exception e){
+			System.out.println(e);
+		}
+					 
+		return filas;
+
 	}
 
 }

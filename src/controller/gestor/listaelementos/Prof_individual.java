@@ -55,10 +55,10 @@ public class Prof_individual extends HttpServlet {
 			
 			profesor = modelo_profesor.dameDatosPorID(id);
 			
-			String sendInci = new Gson().toJson(profesor);
+			String sendProf = new Gson().toJson(profesor);
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");
-			response.getWriter().write(sendInci);
+			response.getWriter().write(sendProf);
 			
 		}
 					        
