@@ -3010,6 +3010,10 @@
 		margin-bottom: 18px !important;
 	}
 	
+	#subpanel-busqueda-gestor #gest-table{
+		margin-bottom: 18px !important;
+	}
+	
 	#subpanel-incidencia-profesor .btn-atras{
 		margin-top: 1.5em;
 	}
@@ -3034,6 +3038,10 @@
 	}
 	
 	.tabla-info-not i{
+		font-size: 20px !important;
+	}
+	
+	.tabla-info-gest i{
 		font-size: 20px !important;
 	}
 	

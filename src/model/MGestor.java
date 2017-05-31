@@ -103,7 +103,7 @@ public class MGestor {
      */
     public Object[] dameDatosPorID(String id) {
 		
-		Object datos[] = new Object[22];
+		Object datos[] = new Object[11];
 		String selectDatosGest = "SELECT * FROM bgacademy.gestor WHERE iduser = ?";
 		
 		try{
@@ -243,6 +243,67 @@ public class MGestor {
 			 System.out.println(e);
 		 }
 		 		
+	}
+
+	
+	/**
+	 * Devuelve un listado de gestores registrados en la academia.
+	 * @return
+	 */
+	public Object[][] devuelveGestores() {
+		
+		int cantidad = totalGestores();
+		Object datos[][] = new Object[cantidad][5];
+		int i = 0;
+		
+		String selectGestores = "SELECT iduser, nombre, apellido1, apellido2, email FROM bgacademy.gestor;";
+		
+		try{
+		
+			PreparedStatement sentencia = conexion.prepareStatement(selectGestores);
+			ResultSet rs = sentencia.executeQuery();
+		
+		while(rs.next()){
+			 datos[i][0] = rs.getInt("iduser");
+			 datos[i][1] = rs.getString("nombre");
+			 datos[i][2] = rs.getString("apellido1");
+			 datos[i][3] = rs.getString("apellido2");
+			 datos[i][4] = rs.getString("email");
+			 i++;
+		 }
+				
+		}catch(SQLException e){
+			System.out.println(e);
+		}
+		
+		return datos;
+				
+	}
+
+	
+	/**
+	 * Devuelve el total de gestores registrados en la academia.
+	 * @return
+	 */
+	private int totalGestores() {
+		
+		String total = "SELECT COUNT(*) AS contador FROM bgacademy.gestor";
+		int filas = 0;
+		
+		try{
+			
+			 PreparedStatement sentencia = conexion.prepareStatement(total);	 
+			 ResultSet rs = sentencia.executeQuery();
+
+			 while(rs.next()){
+				filas = rs.getInt("contador");
+			 }
+
+		}catch(Exception e){
+			System.out.println(e);
+		}
+					 
+		return filas;
 	}
 
 }

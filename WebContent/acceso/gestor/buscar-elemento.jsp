@@ -235,7 +235,40 @@
         </div>
     </div>
 </div>
-    
+        
+<!-- Subpanel curso -->
+<div id="subpanel-busqueda-curso">
+    <div class="container-fluid">
+        
+        <div class="row">
+            <div class="col-xs-12">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Año inicio</th>
+                      <th>Año fin</th>
+                      <th>Curso</th>
+                      <th>Alumnos inscritos</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+
+                  </tbody>
+                </table> 
+            </div>
+        </div>
+        
+       
+        <div class="row">
+            <div class="col-xs-12 text-xs-center btn-atras">
+                 <a href="./buscar-elemento.jsp"> <button class="btn btn-primary"> Volver </button> </a>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
 <!-- Subpanel noticiario -->
 <div id="subpanel-busqueda-noticiario">
     <div class="container-fluid">
@@ -259,7 +292,7 @@
                 </table> 
             </div>
         </div>
-        
+
         <div class="row">
             <div class="col-xs-12 text-xs-center btn-atras">
                  <a href="./buscar-elemento.jsp"> <button class="btn btn-primary"> Volver </button> </a>
@@ -267,93 +300,15 @@
         </div>
     </div>
 </div>
-    
-<!-- Subpanel curso -->
-<div id="subpanel-busqueda-curso">
-    <div class="container">
-        <div class="row menu-busqueda">
-            <div class="col-md-3 col-xs-12">
-                <div class="input-group">
-                    <span class="input-group-addon"> <i class="fa fa-search fa-1x" aria-hidden="true"></i></span>
-                        <input type="text" class="form-control" placeholder="Palabra clave">
-                </div>
-            </div>
-            
-            <div class="col-md-2">
-                <button type="button" class="btn btn-primary">Buscar</button>
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-xs-12">
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th>ID</th>
-                      <th>Año inicio</th>
-                      <th>Año fin</th>
-                      <th>Curso</th>
-                      <th>Alumnos inscritos</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-<!--                     <tr> -->
-<!--                       <td>1</td> -->
-<!--                       <td>2011</td> -->
-<!--                       <td>2012</td> -->
-<!--                       <td>[A1] - Nivel Básico - 1er Curso</td> -->
-<!--                       <td> 12 </td> -->
-<!--                     </tr> -->
-<!--                     <tr> -->
-<!--                       <td>2</td> -->
-<!--                       <td>2011</td> -->
-<!--                       <td>2012</td> -->
-<!--                       <td>[B2] - Nivel Avanzado - 4º Curso</td> -->
-<!--                       <td> 8 </td> -->
-<!--                     </tr> -->
-                  </tbody>
-                </table> 
-            </div>
-        </div>
-        
-        <div class="row paginacion-busq">
-            <div class="col-xs-12 text-xs-center">
-                <nav>
-                    <ul class="pagination">
-                        <li class="page-item">
-                          <a class="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                            <span class="sr-only">Anterior</span>
-                          </a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                          <a class="page-link" href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                            <span class="sr-only">Siguiente</span>
-                          </a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-xs-12 text-xs-center btn-atras">
-                 <a href="./buscar-elemento.jsp"> <button class="btn btn-primary"> Volver </button> </a>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Subpanel noticiario -->
+
+
+<!-- Subpanel gestor -->
 <div id="subpanel-busqueda-gestor">
-    <div class="container">
+    <div class="container-fluid">
         
         <div class="row">
             <div class="col-xs-12">
-                <table class="table">
+                <table class="table" id="gest-table">
                   <thead>
                     <tr>
                       <th>ID</th>
@@ -370,10 +325,7 @@
                 </table> 
             </div>
         </div>
-        
-        
-   
-        
+
         <div class="row">
             <div class="col-xs-12 text-xs-center btn-atras">
                  <a href="./buscar-elemento.jsp"> <button class="btn btn-primary"> Volver </button> </a>
@@ -381,9 +333,7 @@
         </div>
     </div>
 </div>
-    
-    
-        
+  
     <footer>
         <div class="row">
             <div class="col-xs-12 text-xs-center">
@@ -690,6 +640,12 @@
 	  					</div>
 				</div>
 				<div class="form-group row">
+	  				<label class="col-xs-3">Teléfono: </label>
+	  					<div class="col-xs-9">
+	    					<span id="tlf-modal-not" class="font-weight-bold"> </span>
+	  					</div>
+				</div>
+				<div class="form-group row">
 	  				<label class="col-xs-3">Fecha de alta: </label>
 	  					<div class="col-xs-9">
 	    					<span id="fecalta-modal-not" class="font-weight-bold"> </span>
@@ -699,6 +655,82 @@
 	  				<label class="col-xs-3">E-mail: </label>
 	  					<div class="col-xs-9">
 	    					<span id="email-modal-not" class="font-weight-bold"> </span>
+	  					</div>
+				</div>
+			</div>
+        </div>
+        <div class="modal-footer text-xs-center">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+      
+    </div>
+</div>
+
+
+<!-- MODAL GESTOR -->
+<div class="modal fade" id="modal-info-gest" role="dialog">
+    <div class="modal-dialog modal-lg">
+    
+      <div class="modal-content">
+        <div class="modal-header bg-primary text-white">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title text-xs-center font-weight-bold">+ Info</h4>
+        </div>
+        <div class="modal-body">
+        	<div class="container">
+	        	<div class="form-group row">
+	  				<label class="col-xs-3">ID: </label>
+	  					<div class="col-xs-9">
+	    					<span id="id-modal-gest" class="font-weight-bold"> </span>
+	  					</div>
+				</div>
+				<div class="form-group row">
+	  				<label class="col-xs-3">Nombre:  </label>
+	  					<div class="col-xs-9">
+	    					<span id="nombre-modal-gest" class="font-weight-bold"> </span>
+	  					</div>
+				</div>
+				<div class="form-group row">
+	  				<label class="col-xs-3">Apellido 1:  </label>
+	  					<div class="col-xs-9">
+	    					<span id="apellido1-modal-gest" class="font-weight-bold"> </span>
+	  					</div>
+				</div>
+				<div class="form-group row">
+	  				<label class="col-xs-3">Apellido 2:  </label>
+	  					<div class="col-xs-9">
+	    					<span id="apellido2-modal-gest" class="font-weight-bold"> </span>
+	  					</div>
+				</div>
+				<div class="form-group row">
+	  				<label class="col-xs-3">Nombre de usuario: </label>
+	  					<div class="col-xs-9">
+	    					<span id="usuario-modal-gest" class="font-weight-bold"> </span>
+	  					</div>
+				</div>
+				<div class="form-group row">
+	  				<label class="col-xs-3">NIF: </label>
+	  					<div class="col-xs-9">
+	    					<span id="nif-modal-gest" class="font-weight-bold"> </span>
+	  					</div>
+				</div>
+				<div class="form-group row">
+	  				<label class="col-xs-3">Fecha de alta: </label>
+	  					<div class="col-xs-9">
+	    					<span id="fecalta-modal-gest" class="font-weight-bold"> </span>
+	  					</div>
+				</div>
+				<div class="form-group row">
+	  				<label class="col-xs-3">Teléfono: </label>
+	  					<div class="col-xs-9">
+	    					<span id="tlf-modal-gest" class="font-weight-bold"> </span>
+	  					</div>
+				</div>
+				<div class="form-group row">
+	  				<label class="col-xs-3">E-mail: </label>
+	  					<div class="col-xs-9">
+	    					<span id="email-modal-gest" class="font-weight-bold"> </span>
 	  					</div>
 				</div>
 			</div>
@@ -1106,6 +1138,127 @@
     	    				$("#email-modal-not").text(resp[8]);
     	    				$("#tlf-modal-not").text(resp[9]);
     	    				$("#nif-modal-not").text(resp[10]);
+    	    				    	    			
+    	    		},
+    	    		complete: function(){
+    	    			$(".loader").fadeOut(1000);
+    	    		}
+        		});	 
+        		
+        	});
+    		
+			
+    		//** GESTOR **//
+    		
+        	// Realiza una búsqueda completa de gestores e imprime en la tabla los resultados.
+    		$("#busqueda-gestor").on("click", function(){
+
+    			$(".loader").css("display", "block");
+    	    		    	    	
+    	    	$.ajax({
+    	    		type: "POST",
+    	    		dataType: "json",
+    	    		async: false,
+    	    		url: "/Gestlist",
+    	    		success: function(resp){  
+    	    			
+    	    			for(var i = 0; i < resp.length; i++){
+    	    				    	    				
+    	    				$("#gest-table tbody").append("<tr>");
+	    	    				
+    	    					//ID
+    	    					$("#gest-table tbody tr:last-child").append("<td>"+resp[i][0]+"</td>");
+	        					
+	    	    				//Nombre
+	    	    				if(resp[i][1].length >= 20){
+	    	    					$("#gest-table tbody tr:last-child").append("<td>"+resp[i][1].substr(0,20)+" ...</td>");
+	    	    				}else{
+	    	    					$("#gest-table tbody tr:last-child").append("<td>"+resp[i][1]+"</td>");
+	    	    				}
+	        					
+	        					//Apellido 1
+	        					if(resp[i][2].length >= 20){
+	        						$("#gest-table tbody tr:last-child").append("<td>"+resp[i][2].substr(0,20)+" ...</td>");
+	        					}else{
+	        						$("#gest-table tbody tr:last-child").append("<td>"+resp[i][2]+"</td>");
+	        					}
+	        					
+	        					//Apellido 2
+	        					if(resp[i][3].length >= 20){
+	        						$("#gest-table tbody tr:last-child").append("<td>"+resp[i][3].substr(0,20)+" ...</td>");
+	        					}else{
+	        						$("#gest-table tbody tr:last-child").append("<td>"+resp[i][3]+"</td>");
+	        					}
+	        					
+	        					//Email
+	        					if(resp[i][4].length >= 20){
+	        						$("#gest-table tbody tr:last-child").append("<td>"+resp[i][4].substr(0, 20)+" ...</td>");
+	        					}else{
+	        						$("#gest-table tbody tr:last-child").append("<td>"+resp[i][4]+"</td>");
+	        					}
+	        					        					
+	        					//+ info
+	        					$("#gest-table tbody tr:last-child").append("<td class='tabla-info-gest text-xs-center'><a href='' data-id="+resp[i][0]+" data-toggle='modal' data-target='#modal-info-gest'><i class='fa fa-info-circle' aria-hidden='true'></i></a></td>");
+	        				
+	        				$("#gest-table tbody").append("</tr>");
+    	    			}   
+    	    			
+    	    			$("#gest-table").DataTable({
+							 "language":{
+		    		         "lengthMenu":"Mostrar _MENU_ registros por página.",
+		    		         "zeroRecords": "Sin resultados en su búsqueda.",
+		    		               "info": "Hay un total de _MAX_ de gestores.",
+		    		               "infoEmpty": "No hay registros aún.",
+		    		               "infoFiltered": "(filtrados de un total de _MAX_ registros)",
+		    		               "search" : "Búsqueda: ",
+		    		               "LoadingRecords": "Cargando ...",
+		    		               "Processing": "Procesando...",
+		    		               "SearchPlaceholder": "Comience a teclear...",
+		    		               "paginate": {
+				    		          "previous": "Anterior",
+				    		          "next": "Siguiente", 
+	            					}
+						 	}
+			
+	    				});
+    	    			
+    	    		},
+    	    		complete: function(){
+    	    			$(".loader").fadeOut(2000);
+    	    		}
+    	    	});
+    	    	
+    		});
+    		    		
+    		
+    		//Recoge el data-id del gestor para hacer una consulta más exhaustiva en un modal.
+        	$(document).delegate(".tabla-info-gest a", "click", function(event){
+        		
+        		$("#modal-info-gest").css("cursor", "default");
+        		var id = $(this).data("id");
+        		
+        		$.ajax({
+    	    		type: "POST",
+    	    		dataType: "json",
+    	    		data: {id:id},
+    	    		url: "/Gest_individual",
+    	    		success: function(resp){  	
+    	    			
+    	    			for(var i = 0; i < resp.length; i++){
+    	    				if(resp[i] == null){
+    	    					resp[i] = "";
+    	    				}
+    	    			}
+    	    			
+    	    				$("#id-modal-gest").text(resp[0]);
+    	    				$("#nombre-modal-gest").text(resp[2]);
+    	    				$("#apellido1-modal-gest").text(resp[3]);
+    	    				$("#apellido2-modal-gest").text(resp[4]);
+    	    				$("#usuario-modal-gest").text(resp[5]);
+    	    				$("#fecalta-modal-gest").text(resp[7]);
+    	    				$("#email-modal-gest").text(resp[8]);
+    	    				$("#tlf-modal-gest").text(resp[10]);
+    	    				$("#nif-modal-gest").text(resp[9]);
     	    				    	    			
     	    		},
     	    		complete: function(){
