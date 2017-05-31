@@ -238,17 +238,16 @@
         
 <!-- Subpanel curso -->
 <div id="subpanel-busqueda-curso">
-    <div class="container-fluid">
+    <div class="container">
         
         <div class="row">
             <div class="col-xs-12">
-                <table class="table">
+                <table class="table" id="curso-table">
                   <thead>
                     <tr>
                       <th>ID</th>
-                      <th>Año inicio</th>
-                      <th>Año fin</th>
                       <th>Curso</th>
+                      <th>Año inicio - fin</th>
                       <th>Alumnos inscritos</th>
                     </tr>
                   </thead>
@@ -259,7 +258,6 @@
             </div>
         </div>
         
-       
         <div class="row">
             <div class="col-xs-12 text-xs-center btn-atras">
                  <a href="./buscar-elemento.jsp"> <button class="btn btn-primary"> Volver </button> </a>
@@ -1267,6 +1265,67 @@
         		});	 
         		
         	});
+    		
+			
+    		//** CURSO **//
+    		
+        	// Realiza una búsqueda completa de cursos e imprime en la tabla los resultados.
+    		$("#busqueda-curso").on("click", function(){
+
+    			$(".loader").css("display", "block");
+    	    		    	    	
+    	    	$.ajax({
+    	    		type: "POST",
+    	    		dataType: "json",
+    	    		async: false,
+    	    		url: "/Cursoslist",
+    	    		success: function(resp){  
+    	    			
+    	    			for(var i = 0; i < resp.length; i++){
+    	    				    	    				
+    	    				$("#curso-table tbody").append("<tr>");
+	    	    				
+    	    					//ID
+    	    					$("#curso-table tbody tr:last-child").append("<td>"+resp[i][0]+"</td>");
+	        					
+	    	    				//Curso
+	    	    				$("#curso-table tbody tr:last-child").append("<td>"+resp[i][1]+"</td>");
+	        					
+	        					//Año inicio
+	        					$("#curso-table tbody tr:last-child").append("<td>"+resp[i][2]+" - "+resp[i][3]+"</td>");
+	        					
+	        					//Alumnos matriculados
+	        					$("#curso-table tbody tr:last-child").append("<td>"+resp[i][4]+"</td>");
+	        					       					        				
+	        				$("#curso-table tbody").append("</tr>");
+    	    			}   
+    	    			
+    	    			$("#curso-table").DataTable({
+							 "language":{
+		    		         "lengthMenu":"Mostrar _MENU_ registros por página.",
+		    		         "zeroRecords": "Sin resultados en su búsqueda.",
+		    		               "info": "Hay un total de _MAX_ de cursos.",
+		    		               "infoEmpty": "No hay registros aún.",
+		    		               "infoFiltered": "(filtrados de un total de _MAX_ registros)",
+		    		               "search" : "Búsqueda: ",
+		    		               "LoadingRecords": "Cargando ...",
+		    		               "Processing": "Procesando...",
+		    		               "SearchPlaceholder": "Comience a teclear...",
+		    		               "paginate": {
+				    		          "previous": "Anterior",
+				    		          "next": "Siguiente", 
+	            					}
+						 	}
+			
+	    				});
+    	    			
+    	    		},
+    	    		complete: function(){
+    	    			$(".loader").fadeOut(2000);
+    	    		}
+    	    	});
+    	    	
+    		});
     		
     	});
     </script>

@@ -125,12 +125,12 @@ public class MAlumno {
 	 */
 	public void registraAlumno(	String nombre, String apellido1, String apellido2, String nif, Date fecna_date,
 								String nacimiento, String nacionalidad, String calle, String cp, String poblacion, String provincia,
-								Date fecalta_date, String email, String tlf, String anioprom, String cursoasign, String comentarios) {
+								Date fecalta_date, String email, String tlf, String anioprom, String cursoasign, String comentarios, String idcurso) {
 		
-		String insertAlumn = "INSERT INTO bgacademy.alumno (nombre, apellido1, apellido2, usuario, pass, fnac, nif, nacimiento, nacionalidad, tipouser, calle, cp, provincia, poblacion, fecalta, email, tlf, anioprom, cursoasign, comentarios) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
+		String insertAlumn = "INSERT INTO bgacademy.alumno (nombre, apellido1, apellido2, usuario, pass, fnac, nif, nacimiento, nacionalidad, tipouser, calle, cp, provincia, poblacion, fecalta, email, tlf, anioprom, cursoasign, comentarios, idcurso) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
 	
 		try{
-			 
+						 
 			 PreparedStatement sentencia = conexion.prepareStatement(insertAlumn);
 			 
 			 java.sql.Date sqlDate1 = new java.sql.Date(fecna_date.getTime());
@@ -156,6 +156,7 @@ public class MAlumno {
 				 sentencia.setString(18, anioprom);
 				 sentencia.setString(19, cursoasign);
 				 sentencia.setString(20, comentarios);
+				 sentencia.setInt(21, Integer.valueOf(idcurso));
 
 				 sentencia.executeUpdate();
 				 

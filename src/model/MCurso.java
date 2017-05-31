@@ -149,10 +149,10 @@ public class MCurso {
 	public String[][] devuelveCursos(String anio1, String anio2) {
 		
 		int cantidad = totalRegistros();
-		String datos[][] = new String[cantidad][3];
+		String datos[][] = new String[cantidad][4];
 		int i = 0;
 		
-		String selectCurso = "SELECT curso, anioinicio, aniofinal FROM bgacademy.curso WHERE anioinicio = ? AND aniofinal = ?";
+		String selectCurso = "SELECT curso, anioinicio, aniofinal, idcurso FROM bgacademy.curso WHERE anioinicio = ? AND aniofinal = ?";
 		
 		try{
 			 
@@ -166,6 +166,7 @@ public class MCurso {
 	                datos[i][0] = rs.getString("curso");
 	                datos[i][1] = rs.getString("anioinicio");
 	                datos[i][2] = rs.getString("aniofinal");
+	                datos[i][3] = rs.getString("idcurso");
 	                i++;
 	            }
 	            	            
@@ -177,5 +178,65 @@ public class MCurso {
 	}
 
 	
+	/**
+	 * Devuelve un listado de cursos registrados en la academia.
+	 * @return
+	 */
+	public Object[][] devuelveCursos() {
+		
+		int cantidad = totalCursos();
+		Object datos[][] = new Object[cantidad][5];
+		int i = 0;
+		
+		String selectCursos = "SELECT idcurso, curso, anioinicio, aniofinal, (SELECT COUNT(idcurso) FROM bgacademy.alumno WHERE bgacademy.curso.idcurso = bgacademy.alumno.idcurso) AS cont FROM bgacademy.curso;";
+		
+		try{
+		
+			PreparedStatement sentencia = conexion.prepareStatement(selectCursos);
+			ResultSet rs = sentencia.executeQuery();
+		
+		while(rs.next()){
+			 datos[i][0] = rs.getInt("idcurso");
+			 datos[i][1] = rs.getString("curso");
+			 datos[i][2] = rs.getString("anioinicio");
+			 datos[i][3] = rs.getString("aniofinal");
+			 datos[i][4] = rs.getString("cont");
+			 i++;
+		 }
+				
+		}catch(SQLException e){
+			System.out.println(e);
+		}
+		
+		return datos;
+		
+	}
+	
+	
+	/***
+	 * Devuelve el total de cursos registrados en la BD.
+	 * @return
+	 */
+	private int totalCursos() {
+		
+		String total = "SELECT COUNT(*) AS contador FROM bgacademy.curso";
+		int filas = 0;
+		
+		try{
+			
+			 PreparedStatement sentencia = conexion.prepareStatement(total);	 
+			 ResultSet rs = sentencia.executeQuery();
+
+			 while(rs.next()){
+				filas = rs.getInt("contador");
+			 }
+
+		}catch(Exception e){
+			System.out.println(e);
+		}
+					 
+		return filas;
+
+	}
 
 }

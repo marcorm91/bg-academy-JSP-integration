@@ -37,6 +37,7 @@ public class Regalumno extends HttpServlet {
 	private Conexion conexionBD;
 	private String nombre, apellido1, apellido2, nif, nacimiento, nacionalidad, calle, cp, poblacion, provincia, email, tlf, anioprom, cursoasign, comentarios;
 	private String fecna, fecalta;
+	private String idcurso;
 	private boolean existeAlumno, existeProfesor, existeGestor, existeNoticiario;
        
     /**
@@ -82,6 +83,7 @@ public class Regalumno extends HttpServlet {
 				anioprom = request.getParameter("aniocurso");
 				cursoasign = request.getParameter("curso");
 				comentarios = request.getParameter("comentarios");
+				idcurso = request.getParameter("idcurso");
 									
 				SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 				Date fecna_date = null;
@@ -137,7 +139,8 @@ public class Regalumno extends HttpServlet {
 														tlf,
 														anioprom,
 														cursoasign,
-														comentarios);
+														comentarios,
+														idcurso);
 										
 					existe = new Gson().toJson("0");
 					response.setContentType("application/json");

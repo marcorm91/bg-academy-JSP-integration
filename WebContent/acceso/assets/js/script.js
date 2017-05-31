@@ -344,6 +344,7 @@ $(document).ready(function() {
     	var tlf = $("#tlf-alumno").val();
     	var aniocurso = $("#anio-curso").val();
     	var curso = $("#curso-alumno").val();
+    	var idcurso = $("#curso-alumno option:selected").data("id");
     	var comentarios = $("#comentario-alumno").val();
     	
     	if(nombre == "" || apellido1 == "" || apellido2 == "" || nif == "" || fecna == "" || nacimiento == "" || nacionalidad == "" || calle == "" || cp == "" || poblacion == "" || provincia == "" || fecalta == "" || email == "" || tlf == "" || aniocurso == "" || curso == "" || comentarios == ""){
@@ -353,7 +354,7 @@ $(document).ready(function() {
 	    	$.ajax({
 	    		type: "POST",
 	    		dataType: "json",
-	    		data: {nombre:nombre, apellido1:apellido1, apellido2: apellido2, nif:nif, fecna:fecna, nacimiento:nacimiento, nacionalidad:nacionalidad, calle:calle, cp:cp, poblacion:poblacion, provincia:provincia, fecalta:fecalta, email:email, tlf:tlf, aniocurso:aniocurso, curso:curso, comentarios:comentarios},
+	    		data: {nombre:nombre, apellido1:apellido1, apellido2: apellido2, nif:nif, fecna:fecna, nacimiento:nacimiento, nacionalidad:nacionalidad, calle:calle, cp:cp, poblacion:poblacion, provincia:provincia, fecalta:fecalta, email:email, tlf:tlf, aniocurso:aniocurso, curso:curso, comentarios:comentarios, idcurso:idcurso},
 	    		url: "/Regalumno",
 	    		success: function(resp){
 	    			    			
@@ -884,7 +885,7 @@ $(document).ready(function() {
 				$("#curso-alumno").empty();
     			for(var i = 0; i < resp.length; i++){	
     				if(resp[i][0] != null){
-    					$("#curso-alumno").append("<option> " + resp[i][0] + "</option>");
+    					$("#curso-alumno").append("<option data-id="+resp[i][3]+"> " + resp[i][0] + "</option>");
     				}
     			}    			
     		},
