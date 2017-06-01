@@ -34,6 +34,7 @@
     <link rel="stylesheet" href="../../assets/css/jquery-ui.css">
     <link rel="stylesheet" type="text/css" href="../../assets/fonts/font-awesome/css/font-awesome.min.css">
 	<link rel="shortcut icon" href="../assets/imagenes/favicon.ico">
+	<link rel="stylesheet" type="text/css" href="../assets/css/dataTables.min.css">
     <link rel="stylesheet" href="../assets/css/estilos.css">
 </head>
     
@@ -167,115 +168,34 @@
             </div>
     </div>
     
- <!------- SUBPANELES DE BÚSQUEDA ------->
+ <!------- SUBPANELES DE ELIMINACIÓN ------->
     
  <!-- Subpanel profesor -->
  <div id="subpanel-eliminar-profesor">
-    <div class="container">
-        <div class="row menu-busqueda">
-            <div class="col-md-3 col-xs-12">
-                <div class="input-group">
-                    <span class="input-group-addon"> <i class="fa fa-search fa-1x" aria-hidden="true"></i></span>
-                        <input type="text" class="form-control" placeholder="Palabra clave">
-                </div>
-            </div>
-            
-            <div class="col-md-3 col-xs-12">
-                <div class="input-group">
-                    <span class="input-group-addon"> <i class="fa fa-list fa-1x" aria-hidden="true"></i></span>
-                       <select class="form-control">
-                            <option>- Seleccione curso -</option>
-                            <option value="a1">A1 - Nivel Básico</option>
-                            <option value="s2">A2 - Nivel Básico</option>
-                            <option value="b1">B1 - Nivel Intermedio</option>
-                            <option value="b2-1">B2/1 - Nivel Avanzado</option>
-                            <option value="b2-2">B2/2 - Nivel Avanzado</option>
-                            <option value="c1">C1 - Nivel Avanzado</option>
-                            <option value="c2">C2 - Nivel Avanzado</option>
-                       </select>
-                </div>
-            </div>
-            
-            <div class="col-md-2">
-                <button type="button" class="btn btn-primary">Buscar</button>
-            </div>
-        </div>
+    <div class="container-fluid">
         
         <div class="row">
             <div class="col-xs-12">
-                <table class="table">
+                <table class="table" id="prof-table">
                   <thead>
                     <tr>
                       <th>ID</th>
                       <th>Nombre</th>
                       <th>Apellido 1</th>
-                      <th>Apellido 2</th>
                       <th>NIF/NIE</th>
                       <th>E-mail</th>
+                      <th>Año promoción</th>
                       <th>Curso/s asignado/s</th>
                       <th>Eliminar</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>Marco</td>
-                      <td>Romero</td>
-                      <td>Martín</td>
-                      <td>43323456W</td>
-                      <td>marco@gmail.com</td>
-                      <td>B1 - Nivel Intermedio, <br/> B2/1 - Nivel Intermedio</td>
-                     <td class="tabla-info"><a href="#"><i class="fa fa-trash text-danger" aria-hidden="true"></i></a></td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>Antonio</td>
-                      <td>Guzmán</td>
-                      <td>Martínez</td>
-                      <td>32345654A</td>
-                      <td>antonio@gmail.com</td>
-                      <td>A1 - Nivel Básico, <br/> B2/1 - Nivel Intermedio</td>
-                    <td class="tabla-info"><a href="#"><i class="fa fa-trash text-danger" aria-hidden="true"></i></a></td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td>Adelina</td>
-                      <td>Gutiérrez</td>
-                      <td>López</td>
-                      <td>35656677Z</td>
-                      <td>adelina@gmail.com</td>
-                      <td>C1 - Nivel Avanzado</td>
-                      <td class="tabla-info"><a href="#"><i class="fa fa-trash text-danger" aria-hidden="true"></i></a></td>
-                    </tr>
+                   
                   </tbody>
                 </table> 
             </div>
         </div>
-        
-        <div class="row">
-            <div class="col-xs-12 text-xs-center paginacion-busq">
-                <nav>
-                    <ul class="pagination">
-                        <li class="page-item">
-                          <a class="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                            <span class="sr-only">Anterior</span>
-                          </a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                          <a class="page-link" href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                            <span class="sr-only">Siguiente</span>
-                          </a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-        
+                
         <div class="row">
             <div class="col-xs-12 text-xs-center btn-atras">
                  <a href="eliminar-elemento.jsp"> <button class="btn btn-primary"> Volver </button> </a>
@@ -286,108 +206,27 @@
     
 <!-- Subpanel alumno -->
 <div id="subpanel-eliminar-alumno">
-    <div class="container">
-        <div class="row menu-busqueda">
-            <div class="col-md-3 col-xs-12">
-                <div class="input-group">
-                    <span class="input-group-addon"> <i class="fa fa-search fa-1x" aria-hidden="true"></i></span>
-                        <input type="text" class="form-control" placeholder="Palabra clave">
-                </div>
-            </div>
-            
-            <div class="col-md-3 col-xs-12">
-                <div class="input-group">
-                    <span class="input-group-addon"> <i class="fa fa-list fa-1x" aria-hidden="true"></i></span>
-                       <select class="form-control">
-                            <option>- Seleccione curso -</option>
-                            <option value="a1">A1 - Nivel Básico</option>
-                            <option value="s2">A2 - Nivel Básico</option>
-                            <option value="b1">B1 - Nivel Intermedio</option>
-                            <option value="b2-1">B2/1 - Nivel Avanzado</option>
-                            <option value="b2-2">B2/2 - Nivel Avanzado</option>
-                            <option value="c1">C1 - Nivel Avanzado</option>
-                            <option value="c2">C2 - Nivel Avanzado</option>
-                       </select>
-                </div>
-            </div>
-            
-            <div class="col-md-2">
-                <button type="button" class="btn btn-primary">Buscar</button>
-            </div>
-        </div>
+    <div class="container-fluid">
         
         <div class="row">
             <div class="col-xs-12">
-                <table class="table">
+                <table class="table" id="alumn-table">
                   <thead>
                     <tr>
                       <th>ID</th>
                       <th>Nombre</th>
                       <th>Apellido 1</th>
-                      <th>Apellido 2</th>
                       <th>NIF/NIE</th>
-                      <th>E-mail</th>
+                      <th>E-Mail</th>
+                      <th>Año promoción</th>
                       <th>Curso asignado</th>
                       <th>Eliminar</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>Marco</td>
-                      <td>Romero</td>
-                      <td>Martín</td>
-                      <td>43323456W</td>
-                      <td>marco@gmail.com</td>
-                      <td>B1 - Nivel Intermedio</td>
-                     <td class="tabla-info"><a href="#"><i class="fa fa-trash text-danger" aria-hidden="true"></i></a></td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>Antonio</td>
-                      <td>Guzmán</td>
-                      <td>Martínez</td>
-                      <td>32345654A</td>
-                      <td>antonio@gmail.com</td>
-                      <td>A1 - Nivel Básico</td>
-                    <td class="tabla-info"><a href="#"><i class="fa fa-trash text-danger" aria-hidden="true"></i></a></td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td>Adelina</td>
-                      <td>Gutiérrez</td>
-                      <td>López</td>
-                      <td>35656677Z</td>
-                      <td>adelina@gmail.com</td>
-                      <td>C1 - Nivel Avanzado</td>
-                      <td class="tabla-info"><a href="#"><i class="fa fa-trash text-danger" aria-hidden="true"></i></a></td>
-                    </tr>
+                   
                   </tbody>
                 </table> 
-            </div>
-        </div>
-        
-        <div class="row paginacion-busq">
-            <div class="col-xs-12 text-xs-center">
-                <nav>
-                    <ul class="pagination">
-                        <li class="page-item">
-                          <a class="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                            <span class="sr-only">Anterior</span>
-                          </a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                          <a class="page-link" href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                            <span class="sr-only">Siguiente</span>
-                          </a>
-                        </li>
-                    </ul>
-                </nav>
             </div>
         </div>
         
@@ -646,9 +485,7 @@
         </div>
     </div>
 </div>
-    
-    
-        
+   
     <footer>
         <div class="row">
             <div class="col-xs-12 text-xs-center">
@@ -659,11 +496,264 @@
         
 </div>
 
+<!-- DELETE MODAL -->
+<div id="dialog-confirm" title="Eliminar elemento" style="display:none">
+	 <p>
+	 	¿Está seguro que quiere <b>eliminar</b> este elemento? <br/> Puede confirmar sus datos en el panel Listar.
+	 </p>
+</div>
+
+<div id="dialog-confirm-ok" title="Eliminación correcta" style="display:none;">
+	<p>
+		El elemento ha sido eliminado correctamente.
+	</p>
+</div>
+
+<div id="dialog-confirm-nook" title="Eliminación incorrecta" style="display:none;">
+	<p>
+		El elemento NO ha sido eliminado correctamente.
+	</p>
+</div>
+
+<div class="loader" style='display: none;'></div> 
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
     <script src="../../assets/js/jquery-3.1.1.min.js"></script>
     <script src="../../assets/js/bootstrap.min.js"></script>
     <script src="../../assets/js/jquery-ui.js"></script>
+    <script src="../assets/js/dataTables.min.js"></script>
+    <script src="../assets/js/dataTables-bs4.min.js"></script>
     <script src="../assets/js/script.js"></script>
+    <script>
+    	$(document).ready(function(){
+    		
+    		//** PROFESOR **//
+    		
+    		// Realiza una búsqueda completa de profesores e imprime en la tabla los resultados.
+    		$("#eliminar-profesor").on("click", function(){
+
+    			$(".loader").css("display", "block");
+    	    		    	    	
+    	    	$.ajax({
+    	    		type: "POST",
+    	    		dataType: "json",
+    	    		async: false,
+    	    		url: "/Proflist",
+    	    		success: function(resp){  
+    	    			
+    	    			for(var i = 0; i < resp.length; i++){
+    	    				
+    	    				var asignimp_format = resp[i][6].substr(1, resp[i][6].length - 1);
+    	    				
+    	    				$("#prof-table tbody").append("<tr>");
+	    	    				
+    	    					//ID
+    	    					$("#prof-table tbody tr:last-child").append("<td>"+resp[i][0]+"</td>");
+	        					
+	    	    				//Nombre
+	    	    				if(resp[i][1].length >= 8){
+	    	    					$("#prof-table tbody tr:last-child").append("<td>"+resp[i][1].substr(0,8)+" ...</td>");
+	    	    				}else{
+	    	    					$("#prof-table tbody tr:last-child").append("<td>"+resp[i][1]+"</td>");
+	    	    				}
+	        					
+	        					//Apellido 1
+	        					if(resp[i][2].length >= 8){
+	        						$("#prof-table tbody tr:last-child").append("<td>"+resp[i][2].substr(0,8)+" ...</td>");
+	        					}else{
+	        						$("#prof-table tbody tr:last-child").append("<td>"+resp[i][2]+"</td>");
+	        					}
+	        					
+	        					//DNI
+	        					$("#prof-table tbody tr:last-child").append("<td>"+resp[i][3]+"</td>");
+	        					
+	        					//Email
+	        					if(resp[i][4].length >= 8){
+	        						$("#prof-table tbody tr:last-child").append("<td>"+resp[i][4].substr(0,8)+" ...</td>");
+	        					}else{
+	        						$("#prof-table tbody tr:last-child").append("<td>"+resp[i][4]+"</td>");
+	        					}
+	        					
+	        					//Año promoción
+	        					$("#prof-table tbody tr:last-child").append("<td>"+resp[i][5]+"</td>");
+	        					
+	        					//Cursos asignados
+	        					if(resp[i][6].length >= 30){
+	        						$("#prof-table tbody tr:last-child").append("<td>"+asignimp_format.substr(0,30)+" ...</td>");
+	        					}else{
+	        						$("#prof-table tbody tr:last-child").append("<td>"+resp[i][6]+"</td>");
+	        					}
+	        					
+	        					//Prof delete
+	        					$("#prof-table tbody tr:last-child").append("<td class='tabla-info-prof text-xs-center'><a href='' data-id="+resp[i][0]+"><i class='fa fa-trash text-danger' aria-hidden='true'></i></a></td>");
+	        				
+	        				$("#prof-table tbody").append("</tr>");
+    	    			}
+    	    			
+    	    			$("#prof-table").DataTable({
+							 "language":{
+		    		         "lengthMenu":"Mostrar _MENU_ registros por página.",
+		    		         "zeroRecords": "Sin resultados en su búsqueda.",
+		    		               "info": "Hay un total de _MAX_ de profesores.",
+		    		               "infoEmpty": "No hay registros aún.",
+		    		               "infoFiltered": "(filtrados de un total de _MAX_ registros)",
+		    		               "search" : "Búsqueda: ",
+		    		               "LoadingRecords": "Cargando ...",
+		    		               "Processing": "Procesando...",
+		    		               "SearchPlaceholder": "Comience a teclear...",
+		    		               "paginate": {
+				    		          "previous": "Anterior",
+				    		          "next": "Siguiente", 
+	            					}
+						 	}
+			
+	    				});
+    	    			    	    			
+    	    		},
+    	    		complete: function(){
+    	    			$(".loader").fadeOut(2000);
+    	    		}
+    	    	});
+    			
+    		});
+    		    		
+    		
+    		//Recoge el data-id del profesor para hacer la eliminación del elemento.
+        	$(document).delegate(".tabla-info-prof a", "click", function(event){
+        		
+        		event.preventDefault();
+        		
+        		$("#dialog-confirm").css("cursor", "default");
+	        	var id = $(this).data("id");
+	        	var padre = $(this);
+
+	        	$("#dialog-confirm").dialog({
+        	        resizable: false,
+        	        height: "auto",
+        	        width: 400,
+        	        modal: true,
+        	        buttons: {
+        	          Cancelar: function() {
+        	            $( this ).dialog( "close" );
+        	          },
+        	          "Eliminar": function() {
+        	        	  $.ajax({
+        	    	    		type: "POST",
+        	    	    		dataType: "json",
+        	    	    		data: {id:id},
+        	    	    		url: "/Delprofesor",
+        	    	    		success: function(resp){  	
+        	    	    			
+        	    	    			if(resp > 0){
+        	    	    				$("#dialog-confirm-ok").dialog();
+        	    	    				padre.parent().parent().remove();
+        	    	    			}else{
+        	    	    				$("#dialog-confirm-nook").dialog();
+        	    	    			}
+        	         	    	    			
+        	    	    		}        	    	    		        	    	    		
+        	        	  });
+        	          	  $( this ).dialog( "close" );        	        	  
+        	          }
+        	        
+        	        }
+        	    
+        		});
+	        	
+        	});
+    		
+    		
+			//** ALUMNO **//
+    		
+    		// Realiza una búsqueda completa de profesores e imprime en la tabla los resultados.
+    		$("#eliminar-alumno").on("click", function(){
+
+    			$(".loader").css("display", "block");
+    	    		    	    	
+    	    	$.ajax({
+    	    		type: "POST",
+    	    		dataType: "json",
+    	    		async: false,
+    	    		url: "/Alumnlist",
+    	    		success: function(resp){  
+    	    			
+    	    			for(var i = 0; i < resp.length; i++){
+    	    			    	    				
+    	    				$("#alumn-table tbody").append("<tr>");
+	    	    				
+    	    					//ID
+    	    					$("#alumn-table tbody tr:last-child").append("<td>"+resp[i][0]+"</td>");
+	        					
+	    	    				//Nombre
+	    	    				if(resp[i][1].length >= 8){
+	    	    					$("#alumn-table tbody tr:last-child").append("<td>"+resp[i][1].substr(0,8)+" ...</td>");
+	    	    				}else{
+	    	    					$("#alumn-table tbody tr:last-child").append("<td>"+resp[i][1]+"</td>");
+	    	    				}
+	        					
+	        					//Apellido 1
+	        					if(resp[i][2].length >= 8){
+	        						$("#alumn-table tbody tr:last-child").append("<td>"+resp[i][2].substr(0,8)+" ...</td>");
+	        					}else{
+	        						$("#alumn-table tbody tr:last-child").append("<td>"+resp[i][2]+"</td>");
+	        					}
+	        					
+	        					//DNI
+	        					$("#alumn-table tbody tr:last-child").append("<td>"+resp[i][3]+"</td>");
+	        					
+	        					//Email
+	        					if(resp[i][4].length >= 8){
+	        						$("#alumn-table tbody tr:last-child").append("<td>"+resp[i][4].substr(0,8)+" ...</td>");
+	        					}else{
+	        						$("#alumn-table tbody tr:last-child").append("<td>"+resp[i][4]+"</td>");
+	        					}
+	        					
+	        					//Año promoción
+	        					$("#alumn-table tbody tr:last-child").append("<td>"+resp[i][5]+"</td>");
+	        					
+	        					//Cursos asignados
+	        					if(resp[i][6].length >= 30){
+	        						$("#alumn-table tbody tr:last-child").append("<td>"+resp[i][6].substr(0,30)+" ...</td>");
+	        					}else{
+	        						$("#alumn-table tbody tr:last-child").append("<td>"+resp[i][6]+"</td>");
+	        					}
+	        					
+	        					//Alumn delete
+	        					$("#alumn-table tbody tr:last-child").append("<td class='tabla-info-alumn text-xs-center'><a href='' data-id="+resp[i][0]+"><i class='fa fa-trash text-danger' aria-hidden='true'></i></a></td>");
+	        				
+	        				$("#alumn-table tbody").append("</tr>");
+    	    			}
+    	    			
+    	    			$("#alumn-table").DataTable({
+							 "language":{
+		    		         "lengthMenu":"Mostrar _MENU_ registros por página.",
+		    		         "zeroRecords": "Sin resultados en su búsqueda.",
+		    		               "info": "Hay un total de _MAX_ de alumnos.",
+		    		               "infoEmpty": "No hay registros aún.",
+		    		               "infoFiltered": "(filtrados de un total de _MAX_ registros)",
+		    		               "search" : "Búsqueda: ",
+		    		               "LoadingRecords": "Cargando ...",
+		    		               "Processing": "Procesando...",
+		    		               "SearchPlaceholder": "Comience a teclear...",
+		    		               "paginate": {
+				    		          "previous": "Anterior",
+				    		          "next": "Siguiente", 
+	            					}
+						 	}
+			
+	    				});
+    	    			    	    			
+    	    		},
+    	    		complete: function(){
+    	    			$(".loader").fadeOut(2000);
+    	    		}
+    	    	});
+    			
+    		});
+
+    	});
+    </script>
     
 </body>
 </html>

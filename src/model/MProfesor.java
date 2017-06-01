@@ -366,5 +366,30 @@ public class MProfesor {
 
 	}
 
+	
+	/**
+	 * Elimina el profesor seleccionado de la base de datos.
+	 * @param id
+	 * @return
+	 */
+	public int eliminaProfesor(String id) {
+		
+		String delProf = "DELETE FROM bgacademy.profesor WHERE iduser = ?";
+		int delrows = 0;
+		
+		 try{
+			 
+			 PreparedStatement sentencia = conexion.prepareStatement(delProf);	
+			 sentencia.setInt(1, Integer.valueOf(id));
+				 
+			 delrows = sentencia.executeUpdate();
+				 
+		 }catch(Exception e){
+	    	 System.out.println(e);
+		 }
+		
+		return delrows;
+	}
+
 }
 

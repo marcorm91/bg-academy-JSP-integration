@@ -2999,19 +2999,23 @@
 	}
 	
 	#subpanel-busqueda-profesor #prof-table{
-		margin-bottom: 18px !important;
+		margin-bottom: 20px !important;
 	}
 	
 	#subpanel-busqueda-noticiario #not-table{
-		margin-bottom: 18px !important;
+		margin-bottom: 20px !important;
 	}
 	
 	#subpanel-busqueda-alumno #alumn-table{
-		margin-bottom: 18px !important;
+		margin-bottom: 20px !important;
 	}
 	
 	#subpanel-busqueda-gestor #gest-table{
-		margin-bottom: 18px !important;
+		margin-bottom: 20px !important;
+	}
+	
+	#subpanel-busqueda-gestor #gest-table{
+		margin-bottom: 20px !important;
 	}
 	
 	#subpanel-incidencia-profesor .btn-atras{
