@@ -306,5 +306,31 @@ public class MGestor {
 		return filas;
 	}
 
+	
+	/**
+	 * Elimina el gestor seleccionado de la base de datos.
+	 * @param id
+	 * @return
+	 */
+	public int eliminarGestor(String id) {
+		
+		String delGest = "DELETE FROM bgacademy.gestor WHERE iduser = ?";
+		int delrows = 0;
+		
+		 try{
+			 
+			 PreparedStatement sentencia = conexion.prepareStatement(delGest);	
+			 sentencia.setInt(1, Integer.valueOf(id));
+				 
+			 delrows = sentencia.executeUpdate();
+				 
+		 }catch(Exception e){
+	    	 System.out.println(e);
+		 }
+		
+		return delrows;
+		
+	}
+
 }
 

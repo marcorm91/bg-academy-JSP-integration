@@ -239,4 +239,29 @@ public class MCurso {
 
 	}
 
+	/**
+	 * Elimina el curso seleccionado de la base de datos.
+	 * @param id
+	 * @return
+	 */
+	public int eliminaCurso(String id) {
+		
+		String delCurso = "DELETE FROM bgacademy.curso WHERE idcurso = ?";
+		int delrows = 0;
+		
+		 try{
+			 
+			 PreparedStatement sentencia = conexion.prepareStatement(delCurso);	
+			 sentencia.setInt(1, Integer.valueOf(id));
+				 
+			 delrows = sentencia.executeUpdate();
+				 
+		 }catch(Exception e){
+	    	 System.out.println(e);
+		 }
+		
+		return delrows;
+		
+	}
+
 }

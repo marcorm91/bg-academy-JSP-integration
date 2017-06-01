@@ -366,6 +366,32 @@ public class MAlumno {
 
 	}
 
+	
+	/**
+	 * Elimina un alumno de la base de datos.
+	 * @param id
+	 * @return
+	 */
+	public int eliminaAlumno(String id) {
+		
+		
+		String delAlumn = "DELETE FROM bgacademy.alumno WHERE iduser = ?";
+		int delrows = 0;
+		
+		 try{
+			 
+			 PreparedStatement sentencia = conexion.prepareStatement(delAlumn);	
+			 sentencia.setInt(1, Integer.valueOf(id));
+				 
+			 delrows = sentencia.executeUpdate();
+				 
+		 }catch(Exception e){
+	    	 System.out.println(e);
+		 }
+		
+		return delrows;
+	}
+
 }
 
 	

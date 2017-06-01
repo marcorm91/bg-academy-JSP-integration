@@ -300,5 +300,31 @@ public class MNoticiero {
 
 	}
 
+	/**
+	 * Elimina el noticiario seleccionado de la base de datos.
+	 * @param id
+	 * @return
+	 */
+	public int eliminaNoticiario(String id) {
+		
+		String delNot = "DELETE FROM bgacademy.noticiario WHERE iduser = ?";
+		int delrows = 0;
+		
+		 try{
+			 
+			 PreparedStatement sentencia = conexion.prepareStatement(delNot);	
+			 sentencia.setInt(1, Integer.valueOf(id));
+				 
+			 delrows = sentencia.executeUpdate();
+				 
+		 }catch(Exception e){
+	    	 System.out.println(e);
+		 }
+		
+		return delrows;
+	
+	}
+		
+
 }
 
