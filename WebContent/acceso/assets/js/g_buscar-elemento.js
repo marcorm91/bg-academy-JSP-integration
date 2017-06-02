@@ -115,7 +115,7 @@ $(document).ready(function(){
     				$("#apellido1-modal-prof").text(resp[3]);
     				$("#apellido2-modal-prof").text(resp[4]);
     				$("#usuario-modal-prof").text(resp[5]);
-    				$("#fnac-modal-prof").text(resp[7]);
+    				$("#fnac-modal-prof").text($.datepicker.formatDate('dd/mm/yy', new Date(resp[7])));
     				$("#nif-modal-prof").text(resp[8]);
     				$("#nacimiento-modal-prof").text(resp[9]);
     				$("#nacionalidad-modal-prof").text(resp[19]);
@@ -123,7 +123,7 @@ $(document).ready(function(){
     				$("#cp-modal-prof").text(resp[11]);
     				$("#provincia-modal-prof").text(resp[12]);
     				$("#poblacion-modal-prof").text(resp[13]);
-    				$("#fecalta-modal-prof").text(resp[14]);
+    				$("#fecalta-modal-prof").text($.datepicker.formatDate('dd/mm/yy', new Date(resp[14])));
     				$("#email-modal-prof").text(resp[15]);
     				$("#anioprom-modal-prof").text(resp[17]);
     				$("#asignimp-modal-prof").text(resp[18].substr(1, resp[18].length - 2));
@@ -250,7 +250,7 @@ $(document).ready(function(){
     				$("#apellido1-modal-alumn").text(resp[3]);
     				$("#apellido2-modal-alumn").text(resp[4]);
     				$("#usuario-modal-alumn").text(resp[5]);
-    				$("#fnac-modal-alumn").text(resp[8]);
+    				$("#fnac-modal-alumn").text($.datepicker.formatDate('dd/mm/yy', new Date(resp[8])));
     				$("#nif-modal-alumn").text(resp[7]);
     				$("#nacimiento-modal-alumn").text(resp[9]);
     				$("#nacionalidad-modal-alumn").text(resp[10]);
@@ -258,7 +258,7 @@ $(document).ready(function(){
     				$("#cp-modal-alumn").text(resp[12]);
     				$("#provincia-modal-alumn").text(resp[14]);
     				$("#poblacion-modal-alumn").text(resp[13]);
-    				$("#fecalta-modal-alumn").text(resp[15]);
+    				$("#fecalta-modal-alumn").text($.datepicker.formatDate('dd/mm/yy', new Date(resp[15])));
     				$("#email-modal-alumn").text(resp[20]);
     				$("#anioprom-modal-alumn").text(resp[16]);
     				$("#asignimp-modal-alumn").text(resp[17]);
@@ -379,7 +379,7 @@ $(document).ready(function(){
     				$("#apellido1-modal-not").text(resp[3]);
     				$("#apellido2-modal-not").text(resp[4]);
     				$("#usuario-modal-not").text(resp[5]);
-    				$("#fecalta-modal-not").text(resp[7]);
+    				$("#fecalta-modal-not").text($.datepicker.formatDate('dd/mm/yy', new Date(resp[7])));
     				$("#email-modal-not").text(resp[8]);
     				$("#tlf-modal-not").text(resp[9]);
     				$("#nif-modal-not").text(resp[10]);
@@ -500,7 +500,7 @@ $(document).ready(function(){
     				$("#apellido1-modal-gest").text(resp[3]);
     				$("#apellido2-modal-gest").text(resp[4]);
     				$("#usuario-modal-gest").text(resp[5]);
-    				$("#fecalta-modal-gest").text(resp[7]);
+    				$("#fecalta-modal-gest").text($.datepicker.formatDate('dd/mm/yy', new Date(resp[7])));
     				$("#email-modal-gest").text(resp[8]);
     				$("#tlf-modal-gest").text(resp[10]);
     				$("#nif-modal-gest").text(resp[9]);
