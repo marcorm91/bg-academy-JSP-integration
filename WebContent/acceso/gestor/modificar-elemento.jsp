@@ -617,85 +617,85 @@
 				<div class="form-group row">
 	  				<label class="col-xs-3">Nombre:  </label>
 	  					<div class="col-xs-9">
-	    					<input id="nombre-modal-prof" class="font-weight-bold form-control"> </input>
+	    					<input id="nombre-modal-prof" class="font-weight-bold form-control" required>
 	  					</div>
 				</div>
 				<div class="form-group row">
 	  				<label class="col-xs-3">Apellido 1:  </label>
 	  					<div class="col-xs-9">
-	    					<input id="apellido1-modal-prof" class="font-weight-bold form-control"> </input>
+	    					<input id="apellido1-modal-prof" class="font-weight-bold form-control" required>
 	  					</div>
 				</div>
 				<div class="form-group row">
 	  				<label class="col-xs-3">Apellido 2:  </label>
 	  					<div class="col-xs-9">
-	    					<input id="apellido2-modal-prof" class="font-weight-bold form-control"> </input>
+	    					<input id="apellido2-modal-prof" class="font-weight-bold form-control" required>
 	  					</div>
 				</div>
 				<div class="form-group row">
 	  				<label class="col-xs-3">Nombre de usuario: </label>
 	  					<div class="col-xs-9">
-	    					<input id="usuario-modal-prof" class="font-weight-bold form-control"> </input>
+	    					<input id="usuario-modal-prof" class="font-weight-bold form-control" required>
 	  					</div>
 				</div>
 				<div class="form-group row">
 	  				<label class="col-xs-3">Teléfono: </label>
 	  					<div class="col-xs-9">
-	    					<input id="tlf-modal-prof" class="font-weight-bold form-control"> </input>
+	    					<input id="tlf-modal-prof" class="font-weight-bold form-control" required>
 	  					</div>
 				</div>
 				<div class="form-group row">
 	  				<label class="col-xs-3">Fecha de nacimiento: </label>
 	  					<div class="col-xs-9">
-	    					<input id="fnac-modal-prof" class="font-weight-bold form-control" readonly> </input>
+	    					<input id="fnac-modal-prof" class="font-weight-bold form-control" readonly required>
 	  					</div>
 				</div>
 				<div class="form-group row">
 	  				<label class="col-xs-3">NIF: </label>
 	  					<div class="col-xs-9">
-	    					<input id="nif-modal-prof" class="font-weight-bold form-control"> </input>
+	    					<input id="nif-modal-prof" class="font-weight-bold form-control" required>
 	  					</div>
 				</div>
 				<div class="form-group row">
 	  				<label class="col-xs-3">Nacimiento: </label>
 	  					<div class="col-xs-9">
-	    					<input id="nacimiento-modal-prof" class="font-weight-bold form-control"> </input>
+	    					<input id="nacimiento-modal-prof" class="font-weight-bold form-control" required>
 	  					</div>
 				</div>
 				<div class="form-group row">
 	  				<label class="col-xs-3">Nacionalidad: </label>
 	  					<div class="col-xs-9">
-	    					<input id="nacionalidad-modal-prof" class="font-weight-bold form-control"> </input>
+	    					<input id="nacionalidad-modal-prof" class="font-weight-bold form-control" required>
 	  					</div>
 				</div>
 				<div class="form-group row">
 	  				<label class="col-xs-3">Calle: </label>
 	  					<div class="col-xs-9">
-	    					<input id="calle-modal-prof" class="font-weight-bold form-control"> </input>
+	    					<input id="calle-modal-prof" class="font-weight-bold form-control" required>
 	  					</div>
 				</div>
 				<div class="form-group row">
 	  				<label class="col-xs-3">Código Postal: </label>
 	  					<div class="col-xs-9">
-	    					<input id="cp-modal-prof" class="font-weight-bold form-control"> </input>
+	    					<input id="cp-modal-prof" class="font-weight-bold form-control" required>
 	  					</div>
 				</div>
 				<div class="form-group row">
 	  				<label class="col-xs-3">Provincia: </label>
 	  					<div class="col-xs-9">
-	    					<input id="provincia-modal-prof" class="font-weight-bold form-control"> </input>
+	    					<input id="provincia-modal-prof" class="font-weight-bold form-control" required>
 	  					</div>
 				</div>
 				<div class="form-group row">
 	  				<label class="col-xs-3">Población: </label>
 	  					<div class="col-xs-9">
-	    					<input id="poblacion-modal-prof" class="font-weight-bold form-control"> </input>
+	    					<input id="poblacion-modal-prof" class="font-weight-bold form-control" required>
 	  					</div>
 				</div>
 				<div class="form-group row">
 	  				<label class="col-xs-3">E-mail: </label>
 	  					<div class="col-xs-9">
-	    					<input id="email-modal-prof" class="font-weight-bold form-control"> </input>
+	    					<input id="email-modal-prof" class="font-weight-bold form-control" required>
 	  					</div>
 				</div>
 				
@@ -703,21 +703,20 @@
         </div>
         <div class="modal-footer text-xs-center">
           <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-primary" id="btn-mod-prof" data-dismiss="modal">Modificar </button>
+          <button type="button" class="btn btn-primary" id="btn-mod-prof">Modificar </button>
         </div>
       </div>
       
     </div>
 </div>
 
-
 <!-- MODAL SUCCESS / ERROR-->
 <div id="modal-success-perfil" title="¡Usuario modificado!" style="display: none">
-	<p> ¡Se ha modificado el usuario correctamente! <br/> Actualiza la pantalla para ver los cambios efectuados.</p>
+	<div class="text-xs-center"><b>¡Se ha modificado el usuario correctamente!</b> <br/><br/> Actualiza la pantalla para ver los cambios efectuados.</div>
 </div>
 
 <div id="modal-error-perfil" title="¡Comprueba los datos!" style="display: none">
-	<p> ¡ERROR! Comprueba que no falta ningún dato. </p>
+	<div class="text-xs-center"><b>¡ERROR!</b> <br/><br/> Comprueba que no falta ningún dato. </div>
 </div>
 
 <div class="loader" style='display: none;'></div>
@@ -767,14 +766,14 @@
         					$("#prof-table tbody tr:last-child").append("<td>"+resp[i][0]+"</td>");
         					
     	    				//Nombre
-    	    				if(resp[i][1].length >= 8){
+    	    				if(resp[i][1].length > 8){
     	    					$("#prof-table tbody tr:last-child").append("<td>"+resp[i][1].substr(0,8)+" ...</td>");
     	    				}else{
     	    					$("#prof-table tbody tr:last-child").append("<td>"+resp[i][1]+"</td>");
     	    				}
         					
         					//Apellido 1
-        					if(resp[i][2].length >= 8){
+        					if(resp[i][2].length > 8){
         						$("#prof-table tbody tr:last-child").append("<td>"+resp[i][2].substr(0,8)+" ...</td>");
         					}else{
         						$("#prof-table tbody tr:last-child").append("<td>"+resp[i][2]+"</td>");
@@ -784,7 +783,7 @@
         					$("#prof-table tbody tr:last-child").append("<td>"+resp[i][3]+"</td>");
         					
         					//Email
-        					if(resp[i][4].length >= 8){
+        					if(resp[i][4].length > 8){
         						$("#prof-table tbody tr:last-child").append("<td>"+resp[i][4].substr(0,8)+" ...</td>");
         					}else{
         						$("#prof-table tbody tr:last-child").append("<td>"+resp[i][4]+"</td>");
@@ -794,7 +793,7 @@
         					$("#prof-table tbody tr:last-child").append("<td>"+resp[i][5]+"</td>");
         					
         					//Cursos asignados
-        					if(resp[i][6].length >= 30){
+        					if(resp[i][6].length > 30){
         						$("#prof-table tbody tr:last-child").append("<td>"+asignimp_format.substr(0,30)+" ...</td>");
         					}else{
         						$("#prof-table tbody tr:last-child").append("<td>"+resp[i][6]+"</td>");
@@ -901,7 +900,7 @@
 			var email = $("#email-modal-prof").val();
 									
 			if(fnac == "" || nombre == "" || apellido1 == "" || apellido2 == "" || usuario == "" || nif == "" || nacimiento == "" || nacionalidad == "" || calle == "" || cp == "" || provincia == "" || poblacion == "" || email == ""){
-	    		$("#modal-error-perfil").dialog();
+				$("#modal-error-perfil").dialog();
 	    	}else{
 	    		
 	    		$.ajax({
@@ -912,7 +911,8 @@
 		    		success: function(resp){  			
 		    			if(resp == "0"){
 	    					$("#modal-error-perfil").dialog();
-		    			}else{		    				
+		    			}else{	
+		    				$("#modal-info-prof").modal("toggle");
 		    				$("#modal-success-perfil").dialog();
 		    			}
 		    		}
@@ -945,14 +945,14 @@
         					$("#alumn-table tbody tr:last-child").append("<td>"+resp[i][0]+"</td>");
         					
     	    				//Nombre
-    	    				if(resp[i][1].length >= 8){
+    	    				if(resp[i][1].length > 8){
     	    					$("#alumn-table tbody tr:last-child").append("<td>"+resp[i][1].substr(0,8)+" ...</td>");
     	    				}else{
     	    					$("#alumn-table tbody tr:last-child").append("<td>"+resp[i][1]+"</td>");
     	    				}
         					
         					//Apellido 1
-        					if(resp[i][2].length >= 8){
+        					if(resp[i][2].length > 8){
         						$("#alumn-table tbody tr:last-child").append("<td>"+resp[i][2].substr(0,8)+" ...</td>");
         					}else{
         						$("#alumn-table tbody tr:last-child").append("<td>"+resp[i][2]+"</td>");
@@ -962,7 +962,7 @@
         					$("#alumn-table tbody tr:last-child").append("<td>"+resp[i][3]+"</td>");
         					
         					//Email
-        					if(resp[i][4].length >= 8){
+        					if(resp[i][4].length > 8){
         						$("#alumn-table tbody tr:last-child").append("<td>"+resp[i][4].substr(0,8)+" ...</td>");
         					}else{
         						$("#alumn-table tbody tr:last-child").append("<td>"+resp[i][4]+"</td>");
@@ -972,7 +972,7 @@
         					$("#alumn-table tbody tr:last-child").append("<td>"+resp[i][5]+"</td>");
         					
         					//Curso asignado
-        					if(resp[i][6].length >= 30){
+        					if(resp[i][6].length > 30){
         						$("#alumn-table tbody tr:last-child").append("<td>"+resp[i][6].substr(0,30)+" ...</td>");
         					}else{
         						$("#prof-table tbody tr:last-child").append("<td>"+resp[i][6]+"</td>");

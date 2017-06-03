@@ -679,19 +679,19 @@
 </div>
 
 <div id="modal-error" title="¡Comprueba los datos!" style="display: none">
-	<p> ¡ERROR! Comprueba que no falta ningún dato. </p>
+	<p> <b>¡ERROR!</b> Comprueba que no falta ningún dato. </p>
 </div>
 
 <div id="modal-existe" title="¡Usuario existente!" style="display: none">
-	<p> ¡ERROR! Ese usuario ya fue registrado en la Base de Datos. </p>
+	<p> <b>¡ERROR!</b> Ese usuario ya fue registrado en la Base de Datos. </p>
 </div>
 
 <div id="modal-existe-curso" title="¡Curso existente!" style="display: none">
-	<p> ¡ERROR! Ese curso, año fin e inicio ya fue registrado en la Base de Datos. </p>
+	<p> <b>¡ERROR!</b> Ese curso, año fin e inicio ya fue registrado en la Base de Datos. </p>
 </div>
 
 <div id="modal-ok-curso" title="¡Curso registrado!" style="display: none">
-	<p> ¡Se ha registrado el curso correctamente!. </p>
+	<p> ¡Se ha registrado el curso correctamente! </p>
 </div>
 
 <div class="loader" style='display: none;'></div>
