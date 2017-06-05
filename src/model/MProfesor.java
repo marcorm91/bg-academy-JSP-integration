@@ -441,7 +441,5 @@ public class MProfesor {
 		return rowsAfectadas;
 	}
 
-	
-
 }
 

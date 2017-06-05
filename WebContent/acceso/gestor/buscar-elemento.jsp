@@ -345,6 +345,7 @@
 </div>
 
 <!-- MODAL PROFESOR -->
+<form id="modal-form-prof" action="/PDF_prof_gest" method="POST">
 <div class="modal fade" id="modal-info-prof" role="dialog">
     <div class="modal-dialog modal-lg">
     
@@ -359,6 +360,7 @@
 	  				<label class="col-xs-3">ID: </label>
 	  					<div class="col-xs-9">
 	    					<span id="id-modal-prof" class="font-weight-bold"> </span>
+	    					<input type="hidden" id="id-prof-hidden" name="id" value="">
 	  					</div>
 				</div>
 				<div class="form-group row">
@@ -424,7 +426,7 @@
 				<div class="form-group row">
 	  				<label class="col-xs-3">Provincia: </label>
 	  					<div class="col-xs-9">
-	    					<span id="provincia-modal-prof" class="font-weight-bold"> </span>
+	    					<span id="provincia-modal-prof"class="font-weight-bold"> </span>
 	  					</div>
 				</div>
 				<div class="form-group row">
@@ -462,7 +464,9 @@
 					<div class="col-xs-12 text-xs-center">
 						<div class="tooltip tooltip--smaug" data-type="smaug" style='opacity: 1;'>
 							<div class="tooltip__trigger" role="tooltip" aria-describedby="info-smaug">
-								<span class="tooltip__trigger-text"><i class="fa fa-file-pdf-o fa-3x text-danger" aria-hidden="true"></i></span>
+								<a id="down-pdf-prof-gest">
+									<span class="tooltip__trigger-text"><i class="fa fa-file-pdf-o fa-3x text-danger" aria-hidden="true"></i></span>
+								</a>
 							</div>
 							<div class="tooltip__base" style="bottom:1em !important">
 								<svg class="tooltip__shape" width="100%" height="100%" viewBox="0 0 400 300">
@@ -473,6 +477,7 @@
 						</div>
 					</div>
 				</div>
+		
 				
 			</div>
         </div>
@@ -483,6 +488,7 @@
       
     </div>
 </div>
+</form>
 
 
 <!-- MODAL ALUMNO -->

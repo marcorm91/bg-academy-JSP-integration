@@ -101,6 +101,7 @@ $(document).ready(function(){
     		type: "POST",
     		dataType: "json",
     		data: {id:id},
+    		async: false,
     		url: "/Prof_individual",
     		success: function(resp){  	
     			
@@ -111,6 +112,7 @@ $(document).ready(function(){
     			}
     			
     				$("#id-modal-prof").text(resp[0]);
+    				$("#id-prof-hidden").val(resp[0]);
     				$("#nombre-modal-prof").text(resp[2]);
     				$("#apellido1-modal-prof").text(resp[3]);
     				$("#apellido2-modal-prof").text(resp[4]);
@@ -127,6 +129,7 @@ $(document).ready(function(){
     				$("#email-modal-prof").text(resp[15]);
     				$("#anioprom-modal-prof").text(resp[17]);
     				$("#asignimp-modal-prof").text(resp[18].substr(1, resp[18].length - 2));
+    				$("#down-pdf-prof-gest").attr("data-id-pdf", resp[0]);
     				    	    			
     		},
     		complete: function(){
@@ -134,6 +137,13 @@ $(document).ready(function(){
     		}
 		});	 
 		
+	});
+	
+	
+	// Envía los datos del profesor a visualizar/descargar por PDF.
+	$("#down-pdf-prof-gest").on("click", function(event){
+		event.preventDefault();
+		$("#modal-form-prof").submit();
 	});
 	
 	
@@ -262,6 +272,7 @@ $(document).ready(function(){
     				$("#email-modal-alumn").text(resp[20]);
     				$("#anioprom-modal-alumn").text(resp[16]);
     				$("#asignimp-modal-alumn").text(resp[17]);
+    				
     				    	    			
     		},
     		complete: function(){
