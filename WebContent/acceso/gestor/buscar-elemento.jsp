@@ -35,6 +35,8 @@
     <link rel="stylesheet" type="text/css" href="../../assets/fonts/font-awesome/css/font-awesome.min.css">
 	<link rel="shortcut icon" href="../assets/imagenes/favicon.ico">
 	<link rel="stylesheet" type="text/css" href="../assets/css/dataTables.min.css">
+	<link rel="stylesheet" type="text/css" href="../assets/css/tooltip/normalize.css" />
+	<link rel="stylesheet" type="text/css" href="../assets/css/tooltip/component.css" />
     <link rel="stylesheet" href="../assets/css/estilos.css">
 </head>
     
@@ -455,6 +457,23 @@
 	    					<span id="asignimp-modal-prof" class="font-weight-bold"> </span>
 	  					</div>
 				</div>
+				
+				<div class="row">
+					<div class="col-xs-12 text-xs-center">
+						<div class="tooltip tooltip--smaug" data-type="smaug" style='opacity: 1;'>
+							<div class="tooltip__trigger" role="tooltip" aria-describedby="info-smaug">
+								<span class="tooltip__trigger-text"><i class="fa fa-file-pdf-o fa-3x text-danger" aria-hidden="true"></i></span>
+							</div>
+							<div class="tooltip__base" style="bottom:1em !important">
+								<svg class="tooltip__shape" width="100%" height="100%" viewBox="0 0 400 300">
+									<path d="M 314,100 C 313,100 312,100 311,100 L 89.5,100 C 55.9,100 29.1,121 29.1,150 29.1,178 53.1,201 89.5,201 L 184,201 200,223 217,201 311,201 C 344,201 371,178 371,150 371,122 346,99 314,100 Z"/>
+								</svg>
+								<div class="tooltip__content text-white font-weight-bold text-xs-center">DESCARGAR INFORMACIÓN EN PDF</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
 			</div>
         </div>
         <div class="modal-footer text-xs-center">
@@ -579,6 +598,23 @@
 	    					<span id="asignimp-modal-alumn" class="font-weight-bold"> </span>
 	  					</div>
 				</div>
+				
+				<div class="row">
+					<div class="col-xs-12 text-xs-center">
+						<div class="tooltip tooltip--smaug" data-type="smaug" style='opacity: 1;'>
+							<div class="tooltip__trigger" role="tooltip" aria-describedby="info-smaug">
+								<span class="tooltip__trigger-text"><i class="fa fa-file-pdf-o fa-3x text-danger" aria-hidden="true"></i></span>
+							</div>
+							<div class="tooltip__base" style="bottom:1em !important">
+								<svg class="tooltip__shape" width="100%" height="100%" viewBox="0 0 400 300">
+									<path d="M 314,100 C 313,100 312,100 311,100 L 89.5,100 C 55.9,100 29.1,121 29.1,150 29.1,178 53.1,201 89.5,201 L 184,201 200,223 217,201 311,201 C 344,201 371,178 371,150 371,122 346,99 314,100 Z"/>
+								</svg>
+								<div class="tooltip__content text-white font-weight-bold text-xs-center">DESCARGAR INFORMACIÓN EN PDF</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
 			</div>
         </div>
         <div class="modal-footer text-xs-center">
@@ -655,6 +691,23 @@
 	    					<span id="email-modal-not" class="font-weight-bold"> </span>
 	  					</div>
 				</div>
+				
+				<div class="row">
+					<div class="col-xs-12 text-xs-center">
+						<div class="tooltip tooltip--smaug" data-type="smaug" style='opacity: 1;'>
+							<div class="tooltip__trigger" role="tooltip" aria-describedby="info-smaug">
+								<span class="tooltip__trigger-text"><i class="fa fa-file-pdf-o fa-3x text-danger" aria-hidden="true"></i></span>
+							</div>
+							<div class="tooltip__base" style="bottom:1em !important">
+								<svg class="tooltip__shape" width="100%" height="100%" viewBox="0 0 400 300">
+									<path d="M 314,100 C 313,100 312,100 311,100 L 89.5,100 C 55.9,100 29.1,121 29.1,150 29.1,178 53.1,201 89.5,201 L 184,201 200,223 217,201 311,201 C 344,201 371,178 371,150 371,122 346,99 314,100 Z"/>
+								</svg>
+								<div class="tooltip__content text-white font-weight-bold text-xs-center">DESCARGAR INFORMACIÓN EN PDF</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
 			</div>
         </div>
         <div class="modal-footer text-xs-center">
@@ -731,6 +784,23 @@
 	    					<span id="email-modal-gest" class="font-weight-bold"> </span>
 	  					</div>
 				</div>
+				
+				<div class="row">
+					<div class="col-xs-12 text-xs-center">
+						<div class="tooltip tooltip--smaug" data-type="smaug" style='opacity: 1;'>
+							<div class="tooltip__trigger" role="tooltip" aria-describedby="info-smaug">
+								<span class="tooltip__trigger-text"><i class="fa fa-file-pdf-o fa-3x text-danger" aria-hidden="true"></i></span>
+							</div>
+							<div class="tooltip__base" style="bottom:1em !important">
+								<svg class="tooltip__shape" width="100%" height="100%" viewBox="0 0 400 300">
+									<path d="M 314,100 C 313,100 312,100 311,100 L 89.5,100 C 55.9,100 29.1,121 29.1,150 29.1,178 53.1,201 89.5,201 L 184,201 200,223 217,201 311,201 C 344,201 371,178 371,150 371,122 346,99 314,100 Z"/>
+								</svg>
+								<div class="tooltip__content text-white font-weight-bold text-xs-center">DESCARGAR INFORMACIÓN EN PDF</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
 			</div>
         </div>
         <div class="modal-footer text-xs-center">
@@ -749,6 +819,9 @@
     <script src="../../assets/js/jquery-ui.js"></script>
     <script src="../assets/js/dataTables.min.js"></script>
     <script src="../assets/js/dataTables-bs4.min.js"></script>
+    <script src="../assets/js/tooltip/anime.min.js"></script>
+	<script src="../assets/js/tooltip/charming.min.js"></script>
+	<script src="../assets/js/tooltip/main.js"></script>
     <script src="../assets/js/script.js"></script>
     <script src="../assets/js/g_buscar-elemento.js"></script>
     

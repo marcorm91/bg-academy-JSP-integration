@@ -181,7 +181,7 @@
  <!------- MODALES ------->
     
  <!-- REGISTRAR PROFESOR -->
- <form id="form-reg-profesor" action="" method="">
+ <form id="form-reg-profesor">
  <div class="modal fade" id="modal-aniadir-profesor" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
@@ -321,7 +321,7 @@
     
     
  <!-- REGISTRAR ALUMNO -->
- <form id="form-reg-alumno"  action="" method="">
+ <form id="form-reg-alumno">
  <div class="modal fade" id="modal-aniadir-alumno" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
@@ -467,7 +467,7 @@
 </form>
     
 <!-- REGISTRAR NOTICIARIO -->
-<form id="form-reg-noticiario" action="" method="">
+<form id="form-reg-noticiario">
  <div class="modal fade" id="modal-aniadir-noticiario" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
@@ -543,7 +543,7 @@
 </form>
 
 <!-- REGISTRAR GESTOR -->
-<form id="form-reg-gestor" action="" method="">
+<form id="form-reg-gestor">
  <div class="modal fade" id="modal-aniadir-gestor" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
@@ -619,7 +619,7 @@
 </form>
     
 <!-- REGISTRAR CURSO -->
-<form id="form-reg-curso" action="" method="">
+<form id="form-reg-curso">
  <div class="modal fade" id="modal-aniadir-curso" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
@@ -697,7 +697,7 @@
 <div class="loader" style='display: none;'></div>
 
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"></script>
     <script src="../../assets/js/jquery-3.1.1.min.js"></script>
     <script src="../../assets/js/bootstrap.min.js"></script>
     <script src="../../assets/js/jquery-ui.js"></script>    

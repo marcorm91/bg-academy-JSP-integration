@@ -51,6 +51,8 @@
     <link rel="stylesheet" href="../../assets/css/jquery-ui.css">
     <link rel="stylesheet" type="text/css" href="../../assets/fonts/font-awesome/css/font-awesome.min.css">
 	<link rel="shortcut icon" href="../assets/imagenes/favicon.ico">
+	<link rel="stylesheet" type="text/css" href="../assets/css/tooltip/normalize.css" />
+	<link rel="stylesheet" type="text/css" href="../assets/css/tooltip/component.css" />
     <link rel="stylesheet" href="../assets/css/estilos.css">
 </head>
 
@@ -305,14 +307,24 @@
                         </div>
                     
                         <!-- Novena fila -->
-	                        <div class="row text-xs-center pdf">                           
-	                            <div class="col-xs-12">
-	                            	<a href="/PDFAlumn">
-	                                <i class="fa fa-file-pdf-o text-danger" aria-hidden="true"></i>
-	                                <p class="text-danger">Descargar en PDF</p>
-	                                </a>
-	                            </div>
-	                        </div>
+                        <div class="row">
+							<div class="col-xs-12 text-xs-center">
+								<div class="tooltip tooltip--smaug" data-type="smaug" style='opacity: 1;'>
+									<div class="tooltip__trigger" role="tooltip" aria-describedby="info-smaug">
+										<a href="/PDFAlumn">
+											<span class="tooltip__trigger-text"><i class="fa fa-file-pdf-o text-danger" aria-hidden="true"></i></span>
+										</a>
+									</div>
+									<div class="tooltip__base" style="bottom:5em !important;">
+										<svg class="tooltip__shape" width="100%" height="100%" viewBox="0 0 400 300">
+											<path d="M 32.1,42.7 54.5,257 185,257 193,269 200,282 207,269 214,257 342,257 368,23.9 Z"/>
+										</svg>
+										<div class="tooltip__content text-white font-weight-bold text-xs-center">¡PUEDES DESCARGAR E IMPRIMIR TODA TU INFORMACIÓN EN PDF!</div>
+									</div>
+								</div>
+							</div>
+						</div>
+	                        
                         
                     
                         <!-- Décima fila -->
@@ -340,6 +352,9 @@
     <script src="../../assets/js/jquery-3.1.1.min.js"></script>
     <script src="../../assets/js/bootstrap.min.js"></script>
     <script src="../../assets/js/jquery-ui.js"></script>
+    <script src="../assets/js/tooltip/anime.min.js"></script>
+	<script src="../assets/js/tooltip/charming.min.js"></script>
+	<script src="../assets/js/tooltip/main.js"></script>
     <script src="../assets/js/script.js"></script>
 </body>
 </html>

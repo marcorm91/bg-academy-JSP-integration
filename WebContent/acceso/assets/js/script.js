@@ -168,15 +168,7 @@ $(document).ready(function() {
                                                "/ Modificar alumno </h1>");
         $("#subpanel-modificar-alumno").slideToggle();
     });
-    
-    $("#modificar-curso").on("click", function(){     
-        $(".panel-opciones").slideToggle();
-        $(".panel-principal > h1").replaceWith("<h1><a href='../principal-gestor.jsp'>Panel Principal</a> "+
-                                               "/ <a href='./modificar-elemento.jsp'> Modificar Elemento </a>"+
-                                               "/ Modificar curso </h1>");
-        $("#subpanel-modificar-curso").slideToggle();
-    });
-    
+        
     $("#modificar-noticiario").on("click", function(){     
         $(".panel-opciones").slideToggle();
         $(".panel-principal > h1").replaceWith("<h1><a href='../principal-gestor.jsp'>Panel Principal</a> "+
@@ -189,7 +181,7 @@ $(document).ready(function() {
         $(".panel-opciones").slideToggle();
         $(".panel-principal > h1").replaceWith("<h1><a href='../principal-gestor.jsp'>Panel Principal</a> "+
                                                "/ <a href='./modificar-elemento.jsp'> Modificar Elemento </a>"+
-                                               "/ Eliminar gestor </h1>");
+                                               "/ Modificar gestor </h1>");
         $("#subpanel-modificar-gestor").slideToggle();
     });
 

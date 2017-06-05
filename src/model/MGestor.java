@@ -332,5 +332,42 @@ public class MGestor {
 		
 	}
 
+	
+	/**
+	 * Modifica el perfil del gestor desde el usuario GESTOR.
+	 * @param id
+	 * @param nombre
+	 * @param apellido1
+	 * @param apellido2
+	 * @param usuario
+	 * @param tlf
+	 * @param nif
+	 * @param email
+	 * @return
+	 */
+	public int updateGestor(String id, String nombre, String apellido1, String apellido2, String usuario, String tlf,
+							String nif, String email) {
+		
+		String updateUser = "UPDATE bgacademy.gestor SET nombre = ?, apellido1 = ?, apellido2 = ?, email = ?, tlf = ?,  nif = ? where iduser = ?;";
+		int rowsAfectadas = 0;
+		
+		 try{
+            PreparedStatement sentencia = conexion.prepareStatement(updateUser);
+            sentencia.setString(1, nombre);
+            sentencia.setString(2, apellido1);
+            sentencia.setString(3, apellido2);
+            sentencia.setString(4, email);
+            sentencia.setString(5, tlf);
+            sentencia.setString(6, nif);
+            sentencia.setInt(7, Integer.valueOf(id));
+            rowsAfectadas =  sentencia.executeUpdate();
+		 }catch(Exception e){
+			 System.out.println(e);
+		 }
+		
+		return rowsAfectadas;
+		
+	}
+
 }
 
