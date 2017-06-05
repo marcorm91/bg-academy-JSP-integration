@@ -1,8 +1,7 @@
-package controller.pdfgenerator;
+package controller.pdfgenerator.alumno;
 
 import java.io.IOException;
 import java.io.OutputStream;
-import java.sql.SQLException;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
@@ -26,26 +25,18 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfWriter;
 
-import model.Conexion;
-import model.MProfesor;
-
 /**
- * Servlet implementation class PDF_prof_gest
+ * Servlet implementation class PDFAlumn
  */
-@WebServlet("/PDF_prof_gest")
-public class PDF_prof_gest extends HttpServlet {
+@WebServlet("/PDFAlumn.pdf")
+public class PDFAlumn extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession hs;
-	private String id;
-    private Conexion conexionBD;
-	private MProfesor modelo_profesor;  
-	private Object[] datos_prof;
-	
-	
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PDF_prof_gest() {
+    public PDFAlumn() {
         super(); 
     }
 
@@ -54,28 +45,17 @@ public class PDF_prof_gest extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		// Reopen temporal de la BD.
-        conexionBD = new Conexion();
-        modelo_profesor = new MProfesor(conexionBD.getConexion());
-		
 		OutputStream out = response.getOutputStream();
 		hs = request.getSession();
 		
-		Object[] datos_gestor = (Object []) hs.getAttribute("identificacion");
-		
-		if(hs.getAttribute("identificacion") == null  || !datos_gestor[1].equals("G")){  
+		if(hs.getAttribute("identificacion") == null){  
 			response.sendRedirect("error.jsp");
 		}else{
-			
-								
+		
 			try{
-								
-				id = request.getParameter("id");
 				
+				Object[] datos_alumn = (Object []) request.getSession().getAttribute("identificacion");
 				
-				
-				datos_prof = modelo_profesor.dameDatosPorID(id);
-								
 				try{
 					
 					Document documento = new Document();
@@ -96,7 +76,7 @@ public class PDF_prof_gest extends HttpServlet {
 					par.add(new Phrase(Chunk.NEWLINE));
 					Font titulo = new Font(Font.FontFamily.UNDEFINED, 11, Font.BOLD | Font.NORMAL, BaseColor.BLACK);
 					par.setAlignment(Element.ALIGN_CENTER);
-					par.add(new Phrase("DATOS DE MATRÍCULA", titulo));
+					par.add(new Phrase("DATOS DE MI MATRÍCULA", titulo));
 					
 					par.add(new Phrase(Chunk.NEWLINE));
 					par.add(new Phrase(Chunk.NEWLINE));
@@ -119,7 +99,7 @@ public class PDF_prof_gest extends HttpServlet {
 					par2.add(Chunk.TABBING);
 					new Chunk();
 					par2.add(Chunk.TABBING);
-					par2.add(new Phrase(datos_prof[2].toString(), datos));
+					par2.add(new Phrase(datos_alumn[2].toString(), datos));
 					
 					par2.add(new Phrase(Chunk.NEWLINE));
 					
@@ -128,14 +108,14 @@ public class PDF_prof_gest extends HttpServlet {
 					par2.add(Chunk.TABBING);
 					new Chunk();
 					par2.add(Chunk.TABBING);
-					par2.add(new Phrase(datos_prof[3].toString() +" "+ datos_prof[4].toString(), datos));
+					par2.add(new Phrase(datos_alumn[3].toString() +" "+ datos_alumn[4].toString(), datos));
 					
 					par2.add(new Phrase(Chunk.NEWLINE));
 					
 					par2.add(new Phrase("Fecha de nacimiento: ", datos));
 					new Chunk();
 					par2.add(Chunk.TABBING);
-					par2.add(new Phrase(datos_prof[7].toString(), datos));
+					par2.add(new Phrase(datos_alumn[8].toString(), datos));
 					
 					par2.add(new Phrase(Chunk.NEWLINE));
 					
@@ -143,21 +123,21 @@ public class PDF_prof_gest extends HttpServlet {
 					new Chunk();
 					par2.add(Chunk.TABBING);
 					par2.add(Chunk.TABBING);
-					par2.add(new Phrase(datos_prof[8].toString(), datos));
+					par2.add(new Phrase(datos_alumn[7].toString(), datos));
 					
 					par2.add(new Phrase(Chunk.NEWLINE));
 					
 					par2.add(new Phrase("Nacido en: ", datos));
 					par2.add(Chunk.TABBING);
 					par2.add(Chunk.TABBING);
-					par2.add(new Phrase(datos_prof[9].toString(), datos));
+					par2.add(new Phrase(datos_alumn[9].toString(), datos));
 					
 					par2.add(new Phrase(Chunk.NEWLINE));
 					
 					par2.add(new Phrase("Nacionalidad: ", datos));
 					par2.add(Chunk.TABBING);
 					par2.add(Chunk.TABBING);
-					par2.add(new Phrase(datos_prof[19].toString(), datos));
+					par2.add(new Phrase(datos_alumn[10].toString(), datos));
 					
 					par2.add(new Phrase(Chunk.NEWLINE));
 					par2.add(new Phrase(Chunk.NEWLINE));
@@ -177,28 +157,28 @@ public class PDF_prof_gest extends HttpServlet {
 					
 					par3.add(new Phrase("Calle / Vía / Avda.: ", datos));
 					par3.add(Chunk.TABBING);
-					par3.add(new Phrase(datos_prof[10].toString(), datos));
+					par3.add(new Phrase(datos_alumn[11].toString(), datos));
 					
 					par3.add(new Phrase(Chunk.NEWLINE));
 					
 					par3.add(new Phrase("Código Postal: ", datos));
 					par3.add(Chunk.TABBING);
 					par3.add(Chunk.TABBING);
-					par3.add(new Phrase(datos_prof[11].toString(), datos));
+					par3.add(new Phrase(datos_alumn[12].toString(), datos));
 					
 					par3.add(new Phrase(Chunk.NEWLINE));
 					
 					par3.add(new Phrase("Población: ", datos));
 					par3.add(Chunk.TABBING);
 					par3.add(Chunk.TABBING);
-					par3.add(new Phrase(datos_prof[13].toString(), datos));
+					par3.add(new Phrase(datos_alumn[13].toString(), datos));
 					
 					par3.add(new Phrase(Chunk.NEWLINE));
 					
 					par3.add(new Phrase("Provincia: ", datos));
 					par3.add(Chunk.TABBING);
 					par3.add(Chunk.TABBING);
-					par3.add(new Phrase(datos_prof[12].toString(), datos));
+					par3.add(new Phrase(datos_alumn[14].toString(), datos));
 					
 					par3.add(new Phrase(Chunk.NEWLINE));
 					par3.add(new Phrase(Chunk.NEWLINE));
@@ -216,18 +196,10 @@ public class PDF_prof_gest extends HttpServlet {
 					par4.add(new Phrase(Chunk.NEWLINE));
 					par4.add(new Phrase(Chunk.NEWLINE));
 					
-					par4.add(new Phrase("ID: ", datos));
-					par4.add(Chunk.TABBING);
-					par4.add(Chunk.TABBING);
-					par4.add(Chunk.TABBING);
-					par4.add(new Phrase(datos_prof[0].toString(), datos));
-					
-					par4.add(new Phrase(Chunk.NEWLINE));
-					
 					par4.add(new Phrase("Fecha de alta: ", datos));
 					par4.add(Chunk.TABBING);
 					par4.add(Chunk.TABBING);
-					par4.add(new Phrase(datos_prof[14].toString(), datos));
+					par4.add(new Phrase(datos_alumn[15].toString(), datos));
 					
 					par4.add(new Phrase(Chunk.NEWLINE));
 					
@@ -235,82 +207,57 @@ public class PDF_prof_gest extends HttpServlet {
 					par4.add(Chunk.TABBING);
 					par4.add(Chunk.TABBING);
 					par4.add(Chunk.TABBING);
-					par4.add(new Phrase(datos_prof[15].toString(), datos));
+					par4.add(new Phrase(datos_alumn[20].toString(), datos));
 					
 					par4.add(new Phrase(Chunk.NEWLINE));
 					
 					par4.add(new Phrase("Tlf. de contacto: ", datos));
 					par4.add(Chunk.TABBING);
 					par4.add(Chunk.TABBING);
-					par4.add(new Phrase(datos_prof[16].toString(), datos));
+					par4.add(new Phrase(datos_alumn[19].toString(), datos));
 					
 					par4.add(new Phrase(Chunk.NEWLINE));
 					
 					par4.add(new Phrase("Año promoción: ", datos));
 					par4.add(Chunk.TABBING);
 					par4.add(Chunk.TABBING);
-					par4.add(new Phrase(datos_prof[17].toString(), datos));
+					par4.add(new Phrase(datos_alumn[16].toString(), datos));
 					
 					par4.add(new Phrase(Chunk.NEWLINE));
 					
-					par4.add(new Phrase("Curso/s asignado/s: ", datos));
+					par4.add(new Phrase("Curso: ", datos));
 					par4.add(Chunk.TABBING);
-					par4.add(new Phrase(datos_prof[18].toString(), datos));
+					par4.add(Chunk.TABBING);
+					par4.add(Chunk.TABBING);
+					par4.add(new Phrase(datos_alumn[17].toString(), datos));
 					
+					par4.add(new Phrase(Chunk.NEWLINE));
+					par4.add(new Phrase(Chunk.NEWLINE));
+					par4.add(new Phrase(Chunk.NEWLINE));
 					par4.add(new Phrase(Chunk.NEWLINE));
 					par4.add(new Phrase(Chunk.NEWLINE));
 					par4.add(new Phrase(Chunk.NEWLINE));
 					
 					documento.add(par4);
 					
-					// DATOS DE ACCESO
+					// DESPEDIDA
 					Paragraph par5 = new Paragraph();
-					par5.setAlignment(Element.ALIGN_JUSTIFIED);
+					par5.setAlignment(Element.ALIGN_CENTER);
 					
-					Font s4 = new Font(Font.FontFamily.UNDEFINED, 10, Font.BOLD | Font.NORMAL, new BaseColor(28, 35, 124));
-					par5.add(new Phrase("DATOS DE ACCESO", s4));
+					String fecha = ZonedDateTime.now ( ZoneId.of ( "Europe/Madrid" ) ).format ( DateTimeFormatter.ofLocalizedDate ( FormatStyle.FULL ).withLocale ( new Locale ( "es" , "ES" ) ) );
+					Font s4 = new Font(Font.FontFamily.UNDEFINED, 10, Font.BOLD | Font.NORMAL, BaseColor.BLACK);
+					par5.add(new Phrase("El Puerto de Santa María a "+fecha, s4));
 					
-					par5.add(new Phrase(Chunk.NEWLINE));
-					par5.add(new Phrase(Chunk.NEWLINE));
-					
-					par5.add(new Phrase("Usuario: ", datos));
-					par5.add(Chunk.TABBING);
-					par5.add(Chunk.TABBING);
-					par5.add(new Phrase(datos_prof[5].toString(), datos));
-					par5.add(new Phrase(Chunk.NEWLINE));
-					
-					par5.add(new Phrase("Contraseña: ", datos));
-					par5.add(Chunk.TABBING);
-					par5.add(Chunk.TABBING);
-					par5.add(new Phrase(datos_prof[6].toString(), datos));
-					
-					// ------ FIN DATOS ------ //
-					
-					par5.add(new Phrase(Chunk.NEWLINE));
-					par5.add(new Phrase(Chunk.NEWLINE));
 					par5.add(new Phrase(Chunk.NEWLINE));
 					par5.add(new Phrase(Chunk.NEWLINE));
 					
 					documento.add(par5);
 					
-					// DESPEDIDA
-					Paragraph par6 = new Paragraph();
-					par6.setAlignment(Element.ALIGN_CENTER);
-					
-					String fecha = ZonedDateTime.now ( ZoneId.of ( "Europe/Madrid" ) ).format ( DateTimeFormatter.ofLocalizedDate ( FormatStyle.FULL ).withLocale ( new Locale ( "es" , "ES" ) ) );
-					Font s5 = new Font(Font.FontFamily.UNDEFINED, 10, Font.BOLD | Font.NORMAL, BaseColor.BLACK);
-					par6.add(new Phrase("El Puerto de Santa María a "+fecha, s5));
-					
-					par6.add(new Phrase(Chunk.NEWLINE));
-					par6.add(new Phrase(Chunk.NEWLINE));
-					
-					documento.add(par6);
-					
 					// LOGOTIPO FINAL
 					String rutaImagen2 = "assets/imagenes/icono.png";
 					String absoluteDiskPath2 = getServletContext().getRealPath(rutaImagen2);
 					Image imagenDesp = Image.getInstance(absoluteDiskPath2);
-					imagenDesp.scalePercent(25f);
+					imagenDesp.scalePercent(35f);
 					imagenDesp.setAlignment(Image.MIDDLE);
 					
 					documento.add(imagenDesp);
@@ -328,12 +275,7 @@ public class PDF_prof_gest extends HttpServlet {
 		
 		}
 		
-		//¡IMPORTANTE! Cerrar la conexión.
-		try {
-			conexionBD.getConexion().close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		
 	}
 
 	/**

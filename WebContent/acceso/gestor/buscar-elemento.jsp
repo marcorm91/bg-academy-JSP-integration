@@ -345,8 +345,8 @@
 </div>
 
 <!-- MODAL PROFESOR -->
-<form id="modal-form-prof" action="/PDF_prof_gest" method="POST">
-<div class="modal fade" id="modal-info-prof" role="dialog">
+<form id="modal-form-prof" action="/PDF_prof_gest.pdf" method="POST">
+  <div class="modal fade" id="modal-info-prof" role="dialog">
     <div class="modal-dialog modal-lg">
     
       <div class="modal-content">
@@ -487,12 +487,13 @@
       </div>
       
     </div>
-</div>
+  </div>
 </form>
 
 
 <!-- MODAL ALUMNO -->
-<div class="modal fade" id="modal-info-alumn" role="dialog">
+<form id="modal-form-alumn" action="/PDF_alumn_gest.pdf" method="POST">
+  <div class="modal fade" id="modal-info-alumn" role="dialog">
     <div class="modal-dialog modal-lg">
     
       <div class="modal-content">
@@ -506,6 +507,7 @@
 	  				<label class="col-xs-3">ID: </label>
 	  					<div class="col-xs-9">
 	    					<span id="id-modal-alumn" class="font-weight-bold"> </span>
+	    					<input type="hidden" id="id-alumn-hidden" name="id" value="">
 	  					</div>
 				</div>
 				<div class="form-group row">
@@ -609,7 +611,9 @@
 					<div class="col-xs-12 text-xs-center">
 						<div class="tooltip tooltip--smaug" data-type="smaug" style='opacity: 1;'>
 							<div class="tooltip__trigger" role="tooltip" aria-describedby="info-smaug">
-								<span class="tooltip__trigger-text"><i class="fa fa-file-pdf-o fa-3x text-danger" aria-hidden="true"></i></span>
+								<a id="down-pdf-alumn-gest">
+									<span class="tooltip__trigger-text"><i class="fa fa-file-pdf-o fa-3x text-danger" aria-hidden="true"></i></span>
+								</a>
 							</div>
 							<div class="tooltip__base" style="bottom:1em !important">
 								<svg class="tooltip__shape" width="100%" height="100%" viewBox="0 0 400 300">
@@ -629,11 +633,13 @@
       </div>
       
     </div>
-</div>
+  </div>
+</form>
 
 
 <!-- MODAL NOTICIARIO -->
-<div class="modal fade" id="modal-info-not" role="dialog">
+<form id="modal-form-not" action="/PDF_not_gest.pdf" method="POST">
+  <div class="modal fade" id="modal-info-not" role="dialog">
     <div class="modal-dialog modal-lg">
     
       <div class="modal-content">
@@ -647,6 +653,7 @@
 	  				<label class="col-xs-3">ID: </label>
 	  					<div class="col-xs-9">
 	    					<span id="id-modal-not" class="font-weight-bold"> </span>
+	    					<input type="hidden" id="id-not-hidden" name="id" value="">
 	  					</div>
 				</div>
 				<div class="form-group row">
@@ -702,7 +709,9 @@
 					<div class="col-xs-12 text-xs-center">
 						<div class="tooltip tooltip--smaug" data-type="smaug" style='opacity: 1;'>
 							<div class="tooltip__trigger" role="tooltip" aria-describedby="info-smaug">
-								<span class="tooltip__trigger-text"><i class="fa fa-file-pdf-o fa-3x text-danger" aria-hidden="true"></i></span>
+								<a id="down-pdf-not-gest">
+									<span class="tooltip__trigger-text"><i class="fa fa-file-pdf-o fa-3x text-danger" aria-hidden="true"></i></span>
+								</a>
 							</div>
 							<div class="tooltip__base" style="bottom:1em !important">
 								<svg class="tooltip__shape" width="100%" height="100%" viewBox="0 0 400 300">
@@ -722,11 +731,13 @@
       </div>
       
     </div>
-</div>
+  </div>
+</form>
 
 
 <!-- MODAL GESTOR -->
-<div class="modal fade" id="modal-info-gest" role="dialog">
+<form id="modal-form-gest" action="/PDF_gest_gest.pdf" method="POST">
+  <div class="modal fade" id="modal-info-gest" role="dialog">
     <div class="modal-dialog modal-lg">
     
       <div class="modal-content">
@@ -740,6 +751,7 @@
 	  				<label class="col-xs-3">ID: </label>
 	  					<div class="col-xs-9">
 	    					<span id="id-modal-gest" class="font-weight-bold"> </span>
+	    					<input type="hidden" id="id-gest-hidden" name="id" value="">
 	  					</div>
 				</div>
 				<div class="form-group row">
@@ -795,7 +807,9 @@
 					<div class="col-xs-12 text-xs-center">
 						<div class="tooltip tooltip--smaug" data-type="smaug" style='opacity: 1;'>
 							<div class="tooltip__trigger" role="tooltip" aria-describedby="info-smaug">
-								<span class="tooltip__trigger-text"><i class="fa fa-file-pdf-o fa-3x text-danger" aria-hidden="true"></i></span>
+								<a id="down-pdf-gest-gest">
+									<span class="tooltip__trigger-text"><i class="fa fa-file-pdf-o fa-3x text-danger" aria-hidden="true"></i></span>
+								</a>
 							</div>
 							<div class="tooltip__base" style="bottom:1em !important">
 								<svg class="tooltip__shape" width="100%" height="100%" viewBox="0 0 400 300">
@@ -815,7 +829,8 @@
       </div>
       
     </div>
-</div>
+  </div>
+</form>
 
 <div class="loader" style='display: none;'></div> 
 

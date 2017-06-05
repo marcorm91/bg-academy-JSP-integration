@@ -311,11 +311,11 @@
 							<div class="col-xs-12 text-xs-center">
 								<div class="tooltip tooltip--smaug" data-type="smaug" style='opacity: 1;'>
 									<div class="tooltip__trigger" role="tooltip" aria-describedby="info-smaug">
-										<a href="/PDFAlumn">
+										<a href="/PDFAlumn.pdf">
 											<span class="tooltip__trigger-text"><i class="fa fa-file-pdf-o text-danger" aria-hidden="true"></i></span>
 										</a>
 									</div>
-									<div class="tooltip__base" style="bottom:5em !important;">
+									<div class="tooltip__base" style="bottom:6em !important;">
 										<svg class="tooltip__shape" width="100%" height="100%" viewBox="0 0 400 300">
 											<path d="M 32.1,42.7 54.5,257 185,257 193,269 200,282 207,269 214,257 342,257 368,23.9 Z"/>
 										</svg>
