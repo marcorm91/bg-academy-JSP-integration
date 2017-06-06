@@ -2,6 +2,7 @@ package model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -52,10 +53,67 @@ public class MNoticias {
 		return insertRows;
 		
 	}
+
+
 	
+	public Object[][] dameNoticias() {
+		
+		int cantidad = totalRegistrosNoticias();
+		String total = "SELECT bgacademy.noticias.idnoticia AS idnoticia, bgacademy.noticias.titular AS titular, bgacademy.noticias.imagen AS rutaImg,"
+					 + " bgacademy.noticias.contenido AS contenido, bgacademy.noticiario.nombre AS autor, bgacademy.noticias.fpubl AS fechapublicacion "
+					 + " FROM bgacademy.noticias INNER JOIN bgacademy.noticiario ON bgacademy.noticias.iduser = bgacademy.noticiario.iduser;";
+		Object datos[][] = new Object[cantidad][6];
+		int i = 0;
+		
+		try{
+			
+			 PreparedStatement sentencia = conexion.prepareStatement(total);	 
+			 ResultSet rs = sentencia.executeQuery();
+
+			 while(rs.next()){
+				 datos[i][0] = rs.getInt("idnoticia");
+				 datos[i][1] = rs.getString("titular");
+				 datos[i][2] = rs.getString("rutaImg");
+				 datos[i][3] = rs.getString("contenido");
+				 datos[i][4] = rs.getString("autor");
+				 datos[i][5] = rs.getString("fechapublicacion");
+				 i++;
+			 }
+			 	
+
+		}catch(Exception e){
+			System.out.println(e);
+		}
+		
+		
+		return datos;
+	}
 	
-	
-	
+	/**
+	 * Devuelve el total de noticias existente en la BD.
+	 * @return
+	 */
+	private int totalRegistrosNoticias() {
+
+		String total = "SELECT COUNT(*) AS contador FROM bgacademy.noticias;";
+		int filas = 0;
+		
+		try{
+			
+			 PreparedStatement sentencia = conexion.prepareStatement(total);	 
+			 ResultSet rs = sentencia.executeQuery();
+
+			 while(rs.next()){
+				filas = rs.getInt("contador");
+			 }
+
+		}catch(Exception e){
+			System.out.println(e);
+		}
+					 
+		return filas;
+		
+	}
 	
 	
 }

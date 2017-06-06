@@ -381,6 +381,29 @@
     <script src="../assets/js/dataTables-bs4.min.js"></script>
     <script src="../assets/js/script.js"></script>
     <script src="../assets/js/g_eliminar-elemento.js"></script>
+    
+    <script>
+    
+	    $(document).ready(function(){
+	    	
+	    	// Captura el número de incidencias por resolver entre alumnos y profesores. 
+	    	$.ajax({
+	    		type: "POST",
+	    		dataType: "json",
+	    		url: "/Incidencias_sinresolver",    		
+	    		success: function(resp){ 
+	    			if(resp == "0"){
+	    				$(".bola").css("display", "none");
+	    			}else{
+	    				$(".bola").css("display", "block");
+	    				$(".bola #num-incidencias").text(resp);
+	    			}
+	    		}
+	    	});
+	    	
+	    });
+    
+    </script>
       
 </body>
 </html>

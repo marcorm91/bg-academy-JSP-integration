@@ -206,11 +206,33 @@
 
 <div class="loader" style='display: none;'></div>
                 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"></script>
     <script src="${request.contextPath}/assets/js/jquery-3.1.1.min.js"></script>
     <script src="${request.contextPath}/assets/js/bootstrap.min.js"></script>
     <script src="${request.contextPath}/assets/js/jquery-ui.js"></script>
     <script src="${request.contextPath}/acceso/assets/js/script.js"></script>
+    
+    <script>
+    
+	    $(document).ready(function(){
+	    	
+	    	// Captura el número de incidencias por resolver entre alumnos y profesores. 
+	    	$.ajax({
+	    		type: "POST",
+	    		dataType: "json",
+	    		url: "/Incidencias_sinresolver",    		
+	    		success: function(resp){ 
+	    			if(resp == "0"){
+	    				$(".bola").css("display", "none");
+	    			}else{
+	    				$(".bola").css("display", "block");
+	    				$(".bola #num-incidencias").text(resp);
+	    			}
+	    		}
+	    	});
+	    });
+	    	    
+    </script>
     
 </body>
 </html>

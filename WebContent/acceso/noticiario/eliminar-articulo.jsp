@@ -34,6 +34,7 @@
     <link rel="stylesheet" href="../../assets/css/jquery-ui.css">
     <link rel="stylesheet" type="text/css" href="../../assets/fonts/font-awesome/css/font-awesome.min.css">
 	<link rel="shortcut icon" href="../assets/imagenes/favicon.ico">
+	<link rel="stylesheet" type="text/css" href="../assets/css/dataTables.min.css">
     <link rel="stylesheet" href="../assets/css/estilos.css">
 </head>
     
@@ -118,88 +119,33 @@
                 <h1><a href="../principal-gestor.jsp">Panel Principal</a> / Eliminar artículo</h1>
                 <hr/>
                 
-                <div class="panel-opciones">
-                    
-                        <div class="menu-busqueda">
-                            <div class="col-md-3 col-xs-12">
-                                <div class="input-group">
-                                    <span class="input-group-addon"> <i class="fa fa-search fa-1x" aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control" placeholder="Palabra clave">
-                                </div>
-                            </div>
-                    
-                            <div class="col-md-1">
-                                <button type="button" class="btn btn-primary">Buscar</button>
-                            </div>
-                        </div>
-                                        
+                <div class="row">
+                	<div class="col-xs-12">
                             <div class="text-xs-left">
-                                <table class="table">
+                                <table class="table" id="art-table">
                                   <thead>
                                     <tr>
                                       <th>ID</th>
-                                      <th>Título</th>
-                                      <th>Fecha de publicación</th>
+                                      <th>Fecha</th>
+                                      <th>Titular</th>
                                       <th>Autor</th>
                                       <th>Eliminar</th>
                                     </tr>
                                   </thead>
                                   <tbody>
-                                    <tr>
-                                      <td>1</td>
-                                      <td>Aprender inglés gratis</td>
-                                      <td>14/02/17</td>
-                                      <td>Marco Romero</td>
-                                      <td class="tabla-eli"><a href="#"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                      <td>2</td>
-                                      <td>Aprender inglés con dibujos animados </td>
-                                      <td>08/02/17</td>
-                                      <td>Marco Romero</td>
-                                      <td class="tabla-eli"><a href="#"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                      <td>3</td>
-                                      <td>Nuevas ofertas, nuevas oportunidades</td>
-                                      <td>06/02/17</td>
-                                      <td>Marco Romero</td>
-                                      <td class="tabla-eli"><a href="#"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
-                                    </tr>
+                                    
                                   </tbody>
                                 </table> 
                             </div>
+	                    </div>
+	              </div>
         
-                        <div class="row">
-                            <div class="col-xs-12 text-xs-center paginacion-busq">
-                                <nav>
-                                    <ul class="pagination">
-                                        <li class="page-item">
-                                          <a class="page-link" href="#" aria-label="Previous">
-                                            <span aria-hidden="true">&laquo;</span>
-                                            <span class="sr-only">Anterior</span>
-                                          </a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item">
-                                          <a class="page-link" href="#" aria-label="Next">
-                                            <span aria-hidden="true">&raquo;</span>
-                                            <span class="sr-only">Siguiente</span>
-                                          </a>
-                                        </li>
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-xs-12 text-xs-center btn-atras">
-                                <a href="../principal-noticiario.jsp"> <button class="btn btn-primary"> Volver </button> </a>
-                            </div>
-                        </div>
-                </div>
+                  <div class="row">
+                      <div class="col-xs-12 text-xs-center btn-atras">
+                          <a href="../principal-noticiario.jsp"> <button class="btn btn-primary"> Volver </button> </a>
+                      </div>
+                  </div>
+               
             </div>
         </div> 
            
@@ -210,15 +156,101 @@
             </div>
         </div>
     </footer>
+
         
 </div>
 
+<div class="loader" style='display: none;'></div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"></script>
     <script src="../../assets/js/jquery-3.1.1.min.js"></script>
     <script src="../../assets/js/bootstrap.min.js"></script>
     <script src="../../assets/js/jquery-ui.js"></script>
+    <script src="../assets/js/dataTables.min.js"></script>
+    <script src="../assets/js/dataTables-bs4.min.js"></script>
     <script src="../assets/js/script.js"></script>
+    
+    <script>
+    
+    $(document).ready(function(){
+    	
+    		$(".loader").css("display", "block");
+        		    	    	
+        	$.ajax({
+        		type: "POST",
+        		dataType: "json",
+        		async: false,
+        		url: "/Ver_noticias",
+        		success: function(resp){  
+        			
+        			for(var i = 0; i < resp.length; i++){
+        				for(var j = 0; j < 7; j++){
+        					if(resp[i][j] == null){
+            					resp[i][j] = "";
+            				}
+        				}
+        			}
+        			
+        			for(var i = 0; i < resp.length; i++){
+        				        				
+        				$("#art-table tbody").append("<tr>");
+    	    				
+        					//ID
+        					$("#art-table tbody tr:last-child").append("<td>"+resp[i][0]+"</td>");
+        					
+        					//Fecha de publicación
+        					$("#art-table tbody tr:last-child").append("<td>"+resp[i][5]+"</td>");
+        					
+        					//Título
+    	    				if(resp[i][1].length > 15){
+    	    					$("#art-table tbody tr:last-child").append("<td>"+resp[i][1].substr(0,15)+" ...</td>");
+    	    				}else{
+    	    					$("#art-table tbody tr:last-child").append("<td>"+resp[i][1]+"</td>");
+    	    				}
+        					
+        					//Autor
+        					if(resp[i][4].length > 10){
+        						$("#art-table tbody tr:last-child").append("<td>"+resp[i][4].substr(0,10)+" ...</td>");
+        					}else{
+        						$("#art-table tbody tr:last-child").append("<td>"+resp[i][4]+"</td>");
+        					}
+        					        					
+        					//delete Not
+        					$("#art-table tbody tr:last-child").append("<td class='tabla-eli text-xs-center' style='padding-left:0;'><a href='' data-id="+resp[i][0]+"><i class='fa fa-trash' aria-hidden='true'></i></a></td>");
+        				
+        				$("#art-table tbody").append("</tr>");
+        			}
+        			
+        			$("#art-table").DataTable({
+    					 "language":{
+        		         "lengthMenu":"Mostrar _MENU_ registros por página.",
+        		         "zeroRecords": "Sin resultados en su búsqueda.",
+        		               "info": "Hay un total de _MAX_ de artículos.",
+        		               "infoEmpty": "No hay registros aún.",
+        		               "infoFiltered": "(filtrados de un total de _MAX_ registros)",
+        		               "search" : "Búsqueda: ",
+        		               "LoadingRecords": "Cargando ...",
+        		               "Processing": "Procesando...",
+        		               "SearchPlaceholder": "Comience a teclear...",
+        		               "paginate": {
+    		    		          "previous": "Anterior",
+    		    		          "next": "Siguiente", 
+            					}
+    				 	}
+    	
+    				});
+        			    	    			
+        		},
+        		complete: function(){
+        			$(".loader").fadeOut(2000);
+        		}
+        	});
+    		
+
+    	    		
+    });
+    	
+    </script>
     
 </body>
 </html>

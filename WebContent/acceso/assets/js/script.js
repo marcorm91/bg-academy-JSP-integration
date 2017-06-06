@@ -1,20 +1,5 @@
 $(document).ready(function() {
-		
-	// Captura el número de incidencias por resolver entre alumnos y profesores. 
-	$.ajax({
-		type: "POST",
-		dataType: "json",
-		url: "/Incidencias_sinresolver",    		
-		success: function(resp){ 
-			if(resp == "0"){
-				$(".bola").css("display", "none");
-			}else{
-				$(".bola").css("display", "block");
-				$(".bola #num-incidencias").text(resp);
-			}
-		}
-	});
-	    
+			    
     // Capturamos el año actual para adaptarlo al copyright del footer.
     $("#fechaActual").append((new Date).getFullYear());
     

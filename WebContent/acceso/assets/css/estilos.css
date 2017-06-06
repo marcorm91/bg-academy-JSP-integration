@@ -3018,6 +3018,14 @@
 		margin-bottom: 20px !important;
 	}
 	
+	#art-table{
+		margin-bottom: 20px !important;
+	}
+	
+	#art-table th{
+		text-align: center;
+	}
+		
 	#subpanel-incidencia-profesor .btn-atras{
 		margin-top: 1.5em;
 	}
