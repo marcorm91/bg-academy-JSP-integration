@@ -82,6 +82,9 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                        	<div class="bola hidden-xs-down" style="display: none;">
+                        		<span id="num-incidencias"></span>
+                        	</div>
                             <a class="nav-link" href="./ver-incidencias.jsp" title="Ir a Ver Incidencias de Profesores y Alumnos">
                                 <i class="fa fa-commenting fa-2x" aria-hidden="true"></i>
                                 <span class="hidden-sm-up"> Ir a Ver Incidencias de Profesores y Alumnos </span>

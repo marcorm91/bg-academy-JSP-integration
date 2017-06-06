@@ -418,4 +418,31 @@ public class MIncidencias {
 	}
 
 	
+	/**
+	 * Devuelve el total de incidencias sin resolver.
+	 * @return
+	 */
+	public int totalIncidencias() {
+		
+		String total = "SELECT COUNT(*) as contador FROM bgacademy.incidencias WHERE resolucion = ?;";
+		int filas = 0;
+		
+		try{
+			
+			 PreparedStatement sentencia = conexion.prepareStatement(total);	 
+			 sentencia.setString(1, "N");
+			 ResultSet rs = sentencia.executeQuery();
+
+			 while(rs.next()){
+				filas = rs.getInt("contador");
+			 }
+
+		}catch(Exception e){
+			System.out.println(e);
+		}
+					 
+		return filas;
+		
+	}
+
 }

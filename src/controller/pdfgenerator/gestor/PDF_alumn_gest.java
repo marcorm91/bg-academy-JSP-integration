@@ -66,8 +66,7 @@ public class PDF_alumn_gest extends HttpServlet {
 		if(hs.getAttribute("identificacion") == null  || !datos_gestor[1].equals("G")){  
 			response.sendRedirect("error.jsp");
 		}else{
-			
-								
+							
 			try{
 								
 				id = request.getParameter("id");

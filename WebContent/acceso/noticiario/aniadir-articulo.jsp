@@ -126,14 +126,6 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-6 col-md-2">
-                            <b>ID de publicación:</b>
-                        </div>
-                        <div class="col-xs-4 col-md-4">
-                            <input type="text" disabled size="4">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-6 col-md-2">
                             <b>Fecha de publicación:</b>
                         </div>
                         <div class="col-xs-4 col-md-4">
@@ -145,7 +137,7 @@
                             <b>* Titular:</b>
                         </div>
                         <div class="col-xs-12 col-md-10">
-                             <input type="text" placeholder="Ponle un titular..." size="43" class="img-fluid" required>
+                             <input type="text" placeholder="Ponle un titular..." size="43" class="img-fluid form-control" id="tit-noticia">
                         </div>
                     </div>
                     <div class="row">
@@ -153,7 +145,8 @@
                             <b>Imagen de noticia:</b>
                         </div>
                         <div class="col-xs-12 col-md-7">
-                             <input type="file" class="img-fluid">
+                             <input type="file" class="img-fluid" id="img-noticia" multiple="multiple" accept="image/x-png,image/gif,image/jpeg">
+                             <div id="filenames" style="display:none;"></div>
                         </div>
                     </div>
                     <div class="row">
@@ -161,13 +154,13 @@
                             <b>* Texto:</b>
                         </div>
                         <div class="col-xs-12 col-md-10">
-                            <textarea cols="75" rows="10" placeholder="Redacta tu noticia..." class="img-fluid" required></textarea>
+                            <textarea cols="75" rows="10" placeholder="Redacta tu noticia..." class="img-fluid form-control" id="contenido-noticia"></textarea>
                         </div>
                     </div>
                     <div class="form-group row text-xs-center">
                         <div class="col-xs-12">
                             <a href="../principal-noticiario.jsp"><button type="button" class="btn btn-primary">Volver</button></a>
-                            <button type="button" class="btn btn-primary">Registrar artículo</button>
+                            <button type="button" class="btn btn-primary" id="btn-reg-articulo">Registrar artículo</button>
                         </div>
                     </div>
                 </div>
@@ -185,11 +178,21 @@
         
 </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
+<!-- MODAL SUCCESS / ERROR-->
+<div id="modal-success" title="¡Artículo registrado!" style="display: none">
+	<p> ¡Se ha registrado el artículo correctamente! </p>
+</div>
+
+<div id="modal-error" title="¡Error!" style="display: none">
+	<div class="text-xs-center"><b>¡ERROR!</b> </div> <br/>Hubo un problema al registrar el artículo. <br/> Comprueba que no falta ningún campo por rellenar.
+</div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"></script>
     <script src="../../assets/js/jquery-3.1.1.min.js"></script>
     <script src="../../assets/js/bootstrap.min.js"></script>
     <script src="../../assets/js/jquery-ui.js"></script>
     <script src="../assets/js/script.js"></script>
+    <script src="../assets/js/n_reg-articulo.js"></script>
     
 </body>
 </html>

@@ -3058,5 +3058,24 @@
 	#fnac-modal-prof{
 		background-color: #fff;
 	}
+	
+	.bola{
+		width: 25px;
+		height: 25px;
+		position: absolute;
+		background-color: orange;
+		top: 7px;
+		right: 86px;
+		left: 24.2em;
+		border-radius: 16px;
+		text-align: center;
+		font-weight: bolder;
+	}
+	
+	.bola #num-incidencias{
+		font-size: 14px;
+		margin-left: -1px;
+		cursor: default;
+	}
 
 /*# sourceMappingURL=estilos.css.map */

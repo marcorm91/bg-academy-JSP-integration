@@ -163,10 +163,18 @@ $(".tabla-incidencia-resolucion i").on("click", function() {
 		    		url: "/Resolucion_s",
 		    		success: function(resp){ 
 		    			
-		    			$(".loader").css("display", "block");
-		    				 padre.removeClass("fa-thumbs-down text-danger");
-				    		 padre.addClass("fa-thumbs-up text-success");
-				    		 padre.parent().siblings(".resol-time").text(resp);
+			    			numincidencias = $(".bola #num-incidencias").text();
+			    			
+			    			if(numincidencias == "0"){
+			    				$(".bola").css("display", "none");
+			    			}else{
+			    				$(".bola #num-incidencias").text(parseInt(numincidencias) - 1);
+			    			}
+			    			
+		    				$(".loader").css("display", "block");
+		    				padre.removeClass("fa-thumbs-down text-danger");
+				    		padre.addClass("fa-thumbs-up text-success");
+				    		padre.parent().siblings(".resol-time").text(resp);
 		    		},
 		    		complete: function(){
 		    			$(".loader").fadeOut(2000);
@@ -199,6 +207,15 @@ $(".tabla-incidencia-resolucion i").on("click", function() {
 		    		data: {id:id},
 		    		url: "/Resolucion_n",
 		    		success: function(resp){ 
+		    			
+		    			numincidencias = $(".bola #num-incidencias").text();
+		    			
+		    			if(numincidencias == "0"){
+		    				$(".bola").css("display", "none");
+		    			}else{
+		    				$(".bola #num-incidencias").text(parseInt(numincidencias) + 1);
+		    			}
+		    			
 		    			$(".loader").css("display", "block");
 		    			 padre.removeClass("fa-thumbs-up text-success");
 			    		 padre.addClass("fa-thumbs-down text-danger");
