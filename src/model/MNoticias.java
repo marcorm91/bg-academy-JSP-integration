@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-
 public class MNoticias {
 	
 	private final Connection conexion;
@@ -112,6 +111,106 @@ public class MNoticias {
 		}
 					 
 		return filas;
+		
+	}
+
+
+	/**
+	 * Elimina un artículo de la BD.
+	 * @param id
+	 * @return
+	 */
+	public int eliminaNoticia(String id) {
+		
+		String deleteNot = "DELETE FROM bgacademy.noticias WHERE idnoticia = ?";
+		
+		int deleteRow = 0;
+			        
+		try{
+			 
+			 PreparedStatement sentencia = conexion.prepareStatement(deleteNot);
+			 
+			 	 sentencia.setInt(1, Integer.valueOf(id));
+				  
+				 deleteRow = sentencia.executeUpdate();
+				 
+		 }catch(Exception e){
+	    	 System.out.println(e);
+		 }			
+		
+		return deleteRow;
+	}
+
+
+	/**
+	 * Recoge la noticia por ID.
+	 * @param id
+	 * @return
+	 */
+	public Object[] dameDatosPorID(String id) {
+		
+		Object datos[] = new Object[8];
+		String selectNot = " SELECT bgacademy.noticias.idnoticia AS idnoticia, bgacademy.noticias.titular AS titular, bgacademy.noticias.imagen AS rutaImg,"
+				 	     + " bgacademy.noticias.contenido AS contenido, bgacademy.noticiario.nombre AS autor, bgacademy.noticias.fpubl AS fechapublicacion,  "
+				 	     + " bgacademy.noticias.edicionautor AS edicionautor, bgacademy.noticias.fechaedicion AS fechaedicion"
+				 	     + " FROM bgacademy.noticias INNER JOIN bgacademy.noticiario ON bgacademy.noticias.iduser = bgacademy.noticiario.iduser WHERE idnoticia = ?;";
+			
+		try{
+			 
+			 PreparedStatement sentencia = conexion.prepareStatement(selectNot);
+			 
+		     sentencia.setInt(1, Integer.valueOf(id));
+
+			 ResultSet rs = sentencia.executeQuery();
+	         
+			 while(rs.next()){
+				 datos[0] = rs.getInt("idnoticia");
+				 datos[1] = rs.getString("titular");
+				 datos[2] = rs.getString("rutaImg");
+				 datos[3] = rs.getString("contenido");
+				 datos[4] = rs.getString("autor");
+				 datos[5] = rs.getString("fechapublicacion");
+				 datos[6] = rs.getString("edicionautor");
+				 datos[7] = rs.getString("fechaedicion");
+			 }
+	            
+		 }catch(Exception e){
+	    	 System.out.println(e);
+		 }
+		
+		return datos;
+
+	}
+	
+
+
+	/**
+	 * Actualización de noticia.
+	 * @param id
+	 * @param titular
+	 * @param contenido
+	 * @param edicionautor
+	 * @param strDate
+	 * @return
+	 */
+	public int updateNoticia(String id, String titular, String contenido, String edicionautor, String fechaedicion) {
+		
+		String updateNot = "UPDATE bgacademy.noticias SET titular = ?, contenido = ?, edicionautor = ?, fechaedicion = ? WHERE idnoticia = ?;";
+		int updateRows = 0;
+		
+		 try{
+            PreparedStatement sentencia = conexion.prepareStatement(updateNot);
+            sentencia.setString(1, titular);
+            sentencia.setString(2, contenido);
+            sentencia.setString(3, edicionautor);
+            sentencia.setString(4, fechaedicion);
+            sentencia.setInt(5, Integer.valueOf(id));
+            updateRows = sentencia.executeUpdate();
+		 }catch(Exception e){
+			 System.out.println(e);
+		 }
+		 
+		 return updateRows;
 		
 	}
 	

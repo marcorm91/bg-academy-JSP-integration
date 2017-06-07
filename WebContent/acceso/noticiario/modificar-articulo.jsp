@@ -34,6 +34,7 @@
     <link rel="stylesheet" href="../../assets/css/jquery-ui.css">
     <link rel="stylesheet" type="text/css" href="../../assets/fonts/font-awesome/css/font-awesome.min.css">
 	<link rel="shortcut icon" href="../assets/imagenes/favicon.ico">
+	<link rel="stylesheet" type="text/css" href="../assets/css/dataTables.min.css">
     <link rel="stylesheet" href="../assets/css/estilos.css">
 </head>
     
@@ -117,89 +118,31 @@
                 <img src="../../assets/imagenes/logo.png">
                 <h1><a href="../principal-gestor.jsp">Panel Principal</a> / Modificar artículo</h1>
                 <hr/>
-                
-                <div class="panel-opciones">
+                                                                            
+                        <div class="text-xs-left">
+                            <table class="table" id="art-table">
+                              <thead>
+                                <tr>
+                                  <th>ID</th>
+                                  <th>Fecha</th>
+                                  <th>Titular</th>
+                                  <th>Autor</th>
+                                  <th>Modificar</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                
+                              </tbody>
+                            </table> 
+                        </div>
+    
                     
-                        <div class="menu-busqueda">
-                            <div class="col-md-3 col-xs-12">
-                                <div class="input-group">
-                                    <span class="input-group-addon"> <i class="fa fa-search fa-1x" aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control" placeholder="Palabra clave">
-                                </div>
-                            </div>
-                    
-                            <div class="col-md-1">
-                                <button type="button" class="btn btn-primary">Buscar</button>
-                            </div>
+                    <div class="row">
+                        <div class="col-xs-12 text-xs-center btn-atras">
+                            <a href="../principal-noticiario.jsp"> <button class="btn btn-primary"> Volver </button> </a>
                         </div>
-                                        
-                            <div class="text-xs-left">
-                                <table class="table">
-                                  <thead>
-                                    <tr>
-                                      <th>ID</th>
-                                      <th>Título</th>
-                                      <th>Fecha de publicación</th>
-                                      <th>Autor</th>
-                                      <th>Modificar</th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                    <tr>
-                                      <td>1</td>
-                                      <td>Aprender inglés gratis</td>
-                                      <td>14/02/17</td>
-                                      <td>Marco Romero</td>
-                                      <td class="tabla-mod"><a href="#"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                      <td>2</td>
-                                      <td>Aprender inglés con dibujos animados </td>
-                                      <td>08/02/17</td>
-                                      <td>Marco Romero</td>
-                                      <td class="tabla-mod"><a href="#"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                      <td>3</td>
-                                      <td>Nuevas ofertas, nuevas oportunidades</td>
-                                      <td>06/02/17</td>
-                                      <td>Marco Romero</td>
-                                      <td class="tabla-mod"><a href="#"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
-                                    </tr>
-                                  </tbody>
-                                </table> 
-                            </div>
-        
-                        <div class="row">
-                            <div class="col-xs-12 text-xs-center paginacion-busq">
-                                <nav>
-                                    <ul class="pagination">
-                                        <li class="page-item">
-                                          <a class="page-link" href="#" aria-label="Previous">
-                                            <span aria-hidden="true">&laquo;</span>
-                                            <span class="sr-only">Anterior</span>
-                                          </a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item">
-                                          <a class="page-link" href="#" aria-label="Next">
-                                            <span aria-hidden="true">&raquo;</span>
-                                            <span class="sr-only">Siguiente</span>
-                                          </a>
-                                        </li>
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-xs-12 text-xs-center btn-atras">
-                                <a href="../principal-noticiario.jsp"> <button class="btn btn-primary"> Volver </button> </a>
-                            </div>
-                        </div>
-                </div>
+                    </div>
+          
             </div>
         </div> 
            
@@ -213,11 +156,94 @@
         
 </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
+<!-- MODAL NOTICIA -->
+<div class="modal fade" id="modal-info-art" role="dialog">
+    <div class="modal-dialog modal-lg">
+    
+      <div class="modal-content">
+        <div class="modal-header bg-primary text-white">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title text-xs-center font-weight-bold">Modificar contenido</h4>
+        </div>
+        <div class="modal-body">
+        	<div class="container">
+	        	<div class="form-group row">
+	  				<label class="col-xs-3">ID: </label>
+	  					<div class="col-xs-9">
+	    					<span id="id-modal-art" class="font-weight-bold"> </span>
+	  					</div>
+				</div>
+				<div class="form-group row">
+	  				<label class="col-xs-3">Fecha de publicación: </label>
+	  					<div class="col-xs-9">
+	    					<span id="fpubl-modal-art" class="font-weight-bold"> </span>
+	  					</div>
+				</div>
+				<div class="form-group row">
+	  				<label class="col-xs-3">Última edición: </label>
+	  					<div class="col-xs-9">
+	    					<span id="edicion-modal-art" class="font-weight-bold"> </span>
+	  					</div>
+				</div>
+				<div class="form-group row">
+	  				<label class="col-xs-3">Autor:  </label>
+	  					<div class="col-xs-9">
+	    					<span id="autor-modal-art" class="font-weight-bold"> </span>
+	  					</div>
+				</div>
+				<div class="form-group row">
+	  				<label class="col-xs-3">Última edición por: </label>
+	  					<div class="col-xs-9">
+	    					<span id="edicionautor-modal-art" class="font-weight-bold"> </span>
+	  					</div>
+				</div>
+				<div class="form-group row">
+	  				<label class="col-xs-3">Titular:  </label>
+	  					<div class="col-xs-9">
+	    					<input id="titular-modal-art" class="form-control" required>
+	  					</div>
+				</div>
+				<div class="form-group row">
+	  				<label class="col-xs-3">Contenido:  </label>
+	  					<div class="col-xs-9">
+	    					<textarea cols="75" rows="10" class="img-fluid form-control" id="contenido-modal-art"></textarea>
+	  					</div>
+				</div>
+				<div class="form-group row">
+	  				<label class="col-xs-3">Imagen: </label>
+	  					<div class="col-xs-9">
+	    					<img src="../../assets/imagenes/titular2.png" class="img-fluid">
+	  					</div>
+				</div>
+			</div>
+        </div>
+        <div class="modal-footer text-xs-center">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary" id="btn-mod-art">Modificar </button>
+        </div>
+      </div>
+    </div>
+</div>
+
+<!-- MODAL SUCCESS / ERROR-->
+<div id="modal-success-art" title="¡Artículo modificado!" style="display: none">
+	<div class="text-xs-center"><b>¡Se ha modificado el artículo correctamente!</b> <br/><br/> Actualiza la pantalla para ver los cambios efectuados.</div>
+</div>
+
+<div id="modal-error-art" title="¡Comprueba los datos!" style="display: none">
+	<div class="text-xs-center"><b>¡ERROR!</b> <br/><br/> Comprueba que no falta ningún dato. </div>
+</div>
+
+<div class="loader" style='display: none;'></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"></script>
     <script src="../../assets/js/jquery-3.1.1.min.js"></script>
     <script src="../../assets/js/bootstrap.min.js"></script>
     <script src="../../assets/js/jquery-ui.js"></script>
+    <script src="../assets/js/dataTables.min.js"></script>
+    <script src="../assets/js/dataTables-bs4.min.js"></script>
     <script src="../assets/js/script.js"></script>
+    <script src="../assets/js/n_modifica-articulo.js"></script>
     
 </body>
 </html>
