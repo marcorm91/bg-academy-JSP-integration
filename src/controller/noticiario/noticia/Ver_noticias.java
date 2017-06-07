@@ -8,7 +8,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 
@@ -23,7 +22,6 @@ public class Ver_noticias extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private Conexion conexionBD;
 	private MNoticias modelo_noticias;
-	private HttpSession hs;
 	private Object noticias[][];
        
     /**
@@ -40,16 +38,8 @@ public class Ver_noticias extends HttpServlet {
 		
 		// Reopen temporal de la BD.
         conexionBD = new Conexion();
-        modelo_noticias = new MNoticias(conexionBD.getConexion());
-        
-        hs = request.getSession();
-        
-        Object[] datos_not = (Object []) hs.getAttribute("identificacion");
-        
-        if(hs.getAttribute("identificacion") == null  || !datos_not[1].equals("N")){  
-			response.sendRedirect("error.jsp");
-		}else{
-			
+        modelo_noticias = new MNoticias(conexionBD.getConexion());  
+       
 			noticias = modelo_noticias.dameNoticias();
 			
 			String sendRegs = new Gson().toJson(noticias);
@@ -57,8 +47,6 @@ public class Ver_noticias extends HttpServlet {
 			response.setCharacterEncoding("UTF-8");
 			response.getWriter().write(sendRegs);
 						
-		}
-        
         //¡IMPORTANTE! Cerrar la conexión.
   		try {
   			conexionBD.getConexion().close();

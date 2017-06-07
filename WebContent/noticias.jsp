@@ -56,57 +56,17 @@
 					<div class="contenido_cont_academia">
 						
 						<div class="cont_noticia_principal col-xs-12">
-							<h2> Aprender inglés gratis </h2>
-							<h3> 14/02/17 por Marco Romero </h3>
-							<img src="assets/imagenes/titular1.png" class="img-fluid">
-							<p> ¡Ya no tienes excusa! Estudiar inglés está al alcance de tus manos y en todos los niveles que desees. Hay una gran variedad de opciones en la web, desde plataformas educativas con material complementario y de muy buena calidad,  hasta canales de Youtube con vídeos explicativos y tutoriales; y lo mejor: son totalmente gratis.
-							</p>
-							<button type="button" class="btn btn-primary">Leer Más</button>
+<!-- 							<h2> Aprender inglés gratis </h2> -->
+<!-- 							<h3> 14/02/17 por Marco Romero </h3> -->
+<!-- 							<img src="assets/imagenes/titular1.png" class="img-fluid"> -->
+<!-- 							<p> ¡Ya no tienes excusa! Estudiar inglés está al alcance de tus manos y en todos los niveles que desees. Hay una gran variedad de opciones en la web, desde plataformas educativas con material complementario y de muy buena calidad,  hasta canales de Youtube con vídeos explicativos y tutoriales; y lo mejor: son totalmente gratis. -->
+<!-- 							</p> -->
+<!-- 							<button type="button" class="btn btn-primary">Leer Más</button> -->
 						</div>	
 
 						<hr>	
 
-						<div class="row">
-
-							<div class="cont_noticias_antiguas col-xs-12 col-md-6">
-								<h2> Aprender inglés con dibujos animados </h2>
-								<h3> 08/02/17 por Marco Romero </h3>
-								<img src="assets/imagenes/titular2.png" class="img-fluid">
-								<p> No te puedes perder esta divertida recopilación de recursos, juegos y videos para aprender inglés con Peppa Pig. ¡Es gratis!
-								</p>
-								<button type="button" class="btn btn-primary btn-sm">Leer Más</button>
-							</div>
-
-							<div class="cont_noticias_antiguas col-xs-12 col-md-6">
-								<h2> Nuevas ofertas, nuevas oportunidades </h2>
-								<h3> 06/02/17 por Marco Romero </h3>
-								<img src="assets/imagenes/titular3.png" class="img-fluid">
-								<p> Convencidos de la trascendental importancia del inglés para el futuro de los estudiantes chilenos, se busca fortalecer todavía más los actuales programas de aprendizaje.
-								</p>
-								<button type="button" class="btn btn-primary btn-sm">Leer Más</button>
-							</div>
-
-						</div>
-
-						<div class="row">
-
-							<div class="cont_noticias_antiguas col-xs-12 col-md-6">
-								<h2> Nunca es tarde para aprender inglés </h2>
-								<h3> 30/01/17 por Marco Romero </h3>
-								<img src="assets/imagenes/titular4.png" class="img-fluid">
-								<p> Si alguien tiene ilusión por hacer algo la edad no debe ser nunca un impedimento, ¡al contrario! los años te dan la experiencia de saber lo que a uno le va bien o mal. 
-								</p>
-								<button type="button" class="btn btn-primary btn-sm">Leer Más</button>
-							</div>
-
-							<div class="cont_noticias_antiguas col-xs-12 col-md-6">
-								<h2> Actividades Infantiles Lúdicas para niños</h2>
-								<h3> 20/01/17 por Marco Romero </h3>
-								<img src="assets/imagenes/titular5.png" class="img-fluid">
-								<p> En esta entrada nos centramos en cómo ayudar a sus hijos a tener más confianza en sí mismos al comunicarse en inglés y ofrecemos consejos útiles para ayudarles. 
-								</p>
-								<button type="button" class="btn btn-primary btn-sm">Leer Más</button>
-							</div>
+						<div class="row fila">
 
 						</div>
 
@@ -164,18 +124,105 @@
 
 	<!-- Pie de página -->
 	<div id="pie_pag"></div>
+	
+<div class="loader" style='display: none;'></div>
 
 	<!-- jQuery -->
 	<script type="text/javascript" src="assets/js/jquery-3.1.1.min.js"></script>
 	<!-- Tether -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"></script>
 	<!-- Bootstrap -->
 	<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
 	<!-- jQuery UI -->
 	<script type="text/javascript" src="assets/js/jquery-ui.js"></script>
 	<!-- Script personal -->
 	<script type="text/javascript" src="assets/js/script.js"></script>
-	<iframe src="youtube.com" hidden/>
+	
+	<script>
+	
+		$(document).ready(function(){
+		
+			$(".loader").css("display", "block");
+			
+			$.ajax({
+				type: "POST",
+				dataType: "json",
+				async: false,
+				url: "/Ver_noticias",
+				success: function(resp){  
+					
+					for(var i = 0; i < resp.length; i++){
+						for(var j = 0; j < 7; j++){
+							if(resp[i][j] == null){
+		    					resp[i][j] = "";
+		    				}
+						}
+					}
+					
+					// Titular de la noticia
+					if(resp[0][1].length > 50){
+						$(".contenido_cont_academia .cont_noticia_principal").append($("<h2>"+resp[0][1].substring(0, 50)+" ...</h2>"));
+					}else{
+						$(".contenido_cont_academia .cont_noticia_principal").append($("<h2>"+resp[0][1]+"</h2>"));
+					}
+					
+					// Fecha y autor de publicación
+					$(".contenido_cont_academia .cont_noticia_principal").append($("<h3>"+resp[0][5]+" por "+resp[0][4]+"</h3>"));
+					
+					// Imagen de noticia
+					$(".contenido_cont_academia .cont_noticia_principal").append($("<img src='assets/imagenes/sin-imagen.jpg' class='img-fluid'>"));
+					
+					// Contenido de la noticia
+					if(resp[0][3].length > 100 ){
+						$(".contenido_cont_academia .cont_noticia_principal").append($("<p>"+resp[0][3].substring(0, 250)+" [...] </p>"));
+					}else{
+						$(".contenido_cont_academia .cont_noticia_principal").append($("<p>"+resp[0][3]+"</p>"));
+					}
+
+					$(".contenido_cont_academia .cont_noticia_principal").append($("<button type='button' data-id="+resp[0][0]+" class='btn btn-primary'>Leer Más</button>"));
+
+
+					// Noticias más antiguas 	
+					for(var i = 1; i < 5; i++){
+						 
+						$(".contenido_cont_academia .fila").append($("<div class='cont_noticias_antiguas col-xs-12 col-md-6'>"));
+						
+							// Titular de la noticia
+							if(resp[i][1].length > 20){
+								$(".contenido_cont_academia .fila .cont_noticias_antiguas:last-child").append($("<h2>"+resp[i][1].substring(0, 20)+" ...</h2>"));
+							}else{
+								$(".contenido_cont_academia .fila .cont_noticias_antiguas:last-child").append($("<h2>"+resp[i][1]+"</h2>"));
+							}
+							
+							// Fecha y autor de publicación
+							$(".contenido_cont_academia .fila .cont_noticias_antiguas:last-child").append($("<h3>"+resp[i][5]+" por "+resp[i][4]+"</h3>"));
+						
+							// Imagen de noticia
+							$(".contenido_cont_academia .fila .cont_noticias_antiguas:last-child").append($("<img src='assets/imagenes/sin-imagen.jpg' style='margin-left:0;' class='img-fluid'>"));
+						
+							// Contenido de la noticia
+							if(resp[i][3].length > 100 ){
+								$(".contenido_cont_academia .fila .cont_noticias_antiguas:last-child").append($("<p style='padding-right: 1em;'>"+resp[i][3].substring(0, 100)+" [...] </p>"));
+							}else{
+								$(".contenido_cont_academia .fila .cont_noticias_antiguas:last-child").append($("<p style='padding-right: 1em;'>"+resp[i][3]+"</p>"));
+							}
+							
+							// Botón Leer Más
+							$(".contenido_cont_academia .fila .cont_noticias_antiguas:last-child").append($("<button type='button' data-id="+resp[i][0]+" class='btn btn-primary btn-sm'>Leer Más</button> "));					
+						
+						$(".contenido_cont_academia .fila").append($("</div>"));
+						
+					}
+										    	    			
+				},
+				complete: function(){
+					$(".loader").fadeOut(2000);
+				}
+			});
+			
+		});
+			
+	</script>
 
 </body>
 </html>

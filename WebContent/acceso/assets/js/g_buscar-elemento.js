@@ -24,14 +24,14 @@ $(document).ready(function(){
     					$("#prof-table tbody tr:last-child").append("<td>"+resp[i][0]+"</td>");
     					
 	    				//Nombre
-	    				if(resp[i][1].length >= 8){
+	    				if(resp[i][1].length > 8){
 	    					$("#prof-table tbody tr:last-child").append("<td>"+resp[i][1].substr(0,8)+" ...</td>");
 	    				}else{
 	    					$("#prof-table tbody tr:last-child").append("<td>"+resp[i][1]+"</td>");
 	    				}
     					
     					//Apellido 1
-    					if(resp[i][2].length >= 8){
+    					if(resp[i][2].length > 8){
     						$("#prof-table tbody tr:last-child").append("<td>"+resp[i][2].substr(0,8)+" ...</td>");
     					}else{
     						$("#prof-table tbody tr:last-child").append("<td>"+resp[i][2]+"</td>");
@@ -41,7 +41,7 @@ $(document).ready(function(){
     					$("#prof-table tbody tr:last-child").append("<td>"+resp[i][3]+"</td>");
     					
     					//Email
-    					if(resp[i][4].length >= 8){
+    					if(resp[i][4].length > 8){
     						$("#prof-table tbody tr:last-child").append("<td>"+resp[i][4].substr(0,8)+" ...</td>");
     					}else{
     						$("#prof-table tbody tr:last-child").append("<td>"+resp[i][4]+"</td>");
@@ -51,7 +51,7 @@ $(document).ready(function(){
     					$("#prof-table tbody tr:last-child").append("<td>"+resp[i][5]+"</td>");
     					
     					//Cursos asignados
-    					if(resp[i][6].length >= 30){
+    					if(resp[i][6].length > 30){
     						$("#prof-table tbody tr:last-child").append("<td>"+asignimp_format.substr(0,30)+" ...</td>");
     					}else{
     						$("#prof-table tbody tr:last-child").append("<td>"+resp[i][6]+"</td>");
