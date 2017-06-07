@@ -2,6 +2,7 @@ package controller.noticiario.noticia;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -55,14 +56,20 @@ public class Registra_noticia extends HttpServlet {
 			rutaImg = request.getParameter("imagen");
 						
 			int rowsInsert = 0;
-				idnot = datos_not[0].toString();
+			idnot = datos_not[0].toString();
+			
+			long time = new Date().getTime();
+			String time_str = String.valueOf(time).substring(0, 7);
+			
+			rutaImg =  time_str+"_"+rutaImg;
 			
 			rowsInsert = modelo_noticias.registraNoticia(idnot, titular, contenido, rutaImg);
+			
 			
 			String sendRegs = new Gson().toJson(rowsInsert);
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");
-			response.getWriter().write(sendRegs);
+			response.getWriter().write(sendRegs);			
 						
 		}
         

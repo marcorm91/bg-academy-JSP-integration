@@ -142,12 +142,14 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-12 col-md-2">
-                            <b>Imagen de noticia:</b>
+                            <b>* Imagen de noticia:</b>
                         </div>
-                        <div class="col-xs-12 col-md-7">
-                             <input type="file" class="img-fluid" id="img-noticia" multiple="multiple" accept="image/x-png,image/gif,image/jpeg">
-                             <div id="filenames" style="display:none;"></div>
-                        </div>
+                        <form enctype="multipart/form-data">
+	                        <div class="col-xs-12 col-md-7">
+	                             <input type="file" class="img-fluid" id="img-noticia" accept="image/x-png,image/gif,image/jpeg">
+	                             <div id="filenames" style="display:none;"></div>
+	                        </div>
+                        </form>
                     </div>
                     <div class="row">
                         <div class="col-xs-12 col-md-2">
@@ -164,6 +166,7 @@
                         </div>
                     </div>
                 </div>
+         
 
             </div>
     </div>

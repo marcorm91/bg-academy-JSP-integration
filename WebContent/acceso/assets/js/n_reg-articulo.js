@@ -19,10 +19,12 @@
 	    });
 	    
 	}
+	
+	
 
 	// Acción tras Registrar artículo en BD.
 	$("#btn-reg-articulo").on("click", function(){
-
+		
 		var titnoticia = $("#tit-noticia").val();
 		var contenido = $("#contenido-noticia").val();
 		var imagen = $("#filenames > input").val();
@@ -30,11 +32,25 @@
 		if(titnoticia == "" || contenido == "" || imagen == "" || imagen == null){
 			$("#modal-error").dialog();
 		}else{
-		
+			
+     		var formData = new FormData();
+     		formData.append('image', $("input[type=file]")[0].files[0]);
+			    		
+ 			$.ajax({
+ 			    type: "POST",
+ 			    url: "/Subir_img",
+ 	            cache: false,
+ 	            async: false,
+ 	            processData: false,
+	            contentType: false,
+ 			    data: formData
+ 			});
+ 			
     		// Registra el POST en la BD.
     		$.ajax({
     			type: "POST",
     			dataType: "json",
+    			async: false,
     			data: {titnoticia: titnoticia, contenido: contenido, imagen:imagen},
     			url: "/Registra_noticia",    		
     			success: function(resp){ 
@@ -51,6 +67,8 @@
     				
     			}
     		});
+    		
+
 		
 		}
 		
