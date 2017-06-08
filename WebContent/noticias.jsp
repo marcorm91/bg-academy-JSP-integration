@@ -14,6 +14,8 @@
 </head>
 <body>
 
+	<div class="complete-body"></div>
+
 	<!-- Contenedor principal de index.html -->
 	<div class="container">
 		
@@ -125,7 +127,7 @@
 	<!-- Pie de página -->
 	<div id="pie_pag"></div>
 	
-<div class="loader" style='display: none;'></div>
+	<div class="loader" style='display: none;'></div>
 
 	<!-- jQuery -->
 	<script type="text/javascript" src="assets/js/jquery-3.1.1.min.js"></script>
@@ -141,9 +143,7 @@
 	<script>
 	
 		$(document).ready(function(){
-		
-			$(".loader").css("display", "block");
-			
+					
 			$.ajax({
 				type: "POST",
 				dataType: "json",
@@ -213,10 +213,8 @@
 							
 					}
 										    	    			
-				},
-				complete: function(){
-					$(".loader").fadeOut(2000);
 				}
+			
 			});
 			
 		});

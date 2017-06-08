@@ -44,12 +44,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Principal Alumno - Big Ben Academy</title>
     <link rel="stylesheet" href="${request.contextPath}/assets/css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="${request.contextPath}/assets/css/jquery-ui.css">
     <link rel="stylesheet" type="text/css" href="${request.contextPath}/assets/fonts/font-awesome/css/font-awesome.min.css">
 	<link rel="shortcut icon" href="${request.contextPath}/assets/imagenes/favicon.ico">
     <link rel="stylesheet" href="${request.contextPath}/acceso/assets/css/estilos.css">
 </head>
 
 <body>
+
+<div class="complete-body" style="display:none;"></div>
     
 <div id="bg-academy-principal-alumn">
 
@@ -211,11 +214,27 @@
         
 </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
+<div id="md-welcome" title="¡Bienvenido!" style='display: none;'>	
+	<div class="text-xs-center font-weight-bold">¡Bienvenido a la plataforma de Big Ben Academy!</div>
+	<hr/>
+	<p> Hola <% out.print(datos_alumn[2]); %>, </p>
+	<p> Ante todo, <span class="text-danger">Big Ben Academy</span>
+		te quiere dar la bienvenida como nuevo miembro que eres.
+	</p>
+	<p> Estamos encantado de que pertenezcas a nuestra academia, y desde ya, tienes a tu disposición
+		esta plataforma con la que podrás interactuar el resto del curso. </p>
+	<p> Te aconsejamos que antes de empezar, utilices la <a class="text-primary" href="./alumno/ayuda.jsp" target="_blank">Ayuda</a> de la academia. </p>
+	<p> <em>Good luck my friend!</em> </p>
+	<div class="text-xs-center font-weight-bold"><br/><em>Big Ben Academy</em><br/><br/></div>
+</div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"></script>
     <script src="${request.contextPath}/assets/js/jquery-3.1.1.min.js"></script>
     <script src="${request.contextPath}/assets/js/bootstrap.min.js"></script>
     <script src="${request.contextPath}/assets/js/jquery-ui.js"></script>
     <script src="${request.contextPath}/acceso/assets/js/script.js"></script>
+    <script src="${request.contextPath}/acceso/assets/js/a_principal.js"></script>
+    
 </body>
 </html>
 

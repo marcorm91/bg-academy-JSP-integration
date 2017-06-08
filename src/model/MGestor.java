@@ -150,7 +150,7 @@ public class MGestor {
 	public void registraGestor(	String nombre, String apellido1, String apellido2, String nif,
 								Date fecalta_date, String email, String tlf) {
 		
-		String insertGestor = "INSERT INTO bgacademy.gestor (nombre, apellido1, apellido2, usuario, pass, nif, tipouser, fecalta, email, tlf) VALUES (?,?,?,?,?,?,?,?,?,?);";
+		String insertGestor = "INSERT INTO bgacademy.gestor (nombre, apellido1, apellido2, usuario, pass, nif, tipouser, fecalta, email, tlf, activo) VALUES (?,?,?,?,?,?,?,?,?,?,?);";
 		
 		try{
 			 
@@ -168,6 +168,7 @@ public class MGestor {
 				 sentencia.setDate(8, (java.sql.Date) sqlDate1);		
 				 sentencia.setString(9, email);
 				 sentencia.setString(10, tlf);
+				 sentencia.setString(11, "N");
 				 
 				 sentencia.executeUpdate();
 				 
@@ -377,7 +378,7 @@ public class MGestor {
 	 */
 	public String dameNif(String id) {
 		
-		String selectNIF = "SELECT nif FROM bgacademy.gestor where iduser = ?;";
+		 String selectNIF = "SELECT nif FROM bgacademy.gestor where iduser = ?;";
 		 String nif = null;
 		
 		 try{
@@ -397,6 +398,53 @@ public class MGestor {
 		 
 		 return nif;
 		 
+	}
+
+	/**
+	 * Devuelve el valor de la columna activo.
+	 * @param id
+	 * @return
+	 */
+	public String compruebaActivo(String id) {
+		
+		 String selectActivo = "SELECT activo FROM bgacademy.gestor where iduser = ?;";
+		 String activo = null;
+		
+		 try{
+	        	
+           PreparedStatement sentencia = conexion.prepareStatement(selectActivo);
+           sentencia.setInt(1, Integer.valueOf(id));
+           
+           ResultSet rs = sentencia.executeQuery();
+           
+           while(rs.next()){
+        	  activo = rs.getString("activo");
+           }
+	            
+       }catch(SQLException e){
+           System.out.println(e);
+       }
+		 
+		 return activo;
+		
+	}
+
+	/**
+	 * Cambia el valor de la columna activo.
+	 */
+	public void setActivo(String id) {
+		
+		String updateUser = "UPDATE bgacademy.gestor SET activo = ? WHERE iduser = ?;";
+		
+		 try{
+            PreparedStatement sentencia = conexion.prepareStatement(updateUser);
+            sentencia.setString(1,"S");
+            sentencia.setInt(2, Integer.valueOf(id));
+            sentencia.executeUpdate();
+		 }catch(Exception e){
+			 System.out.println(e);
+		 }
+		
 	}
 
 }

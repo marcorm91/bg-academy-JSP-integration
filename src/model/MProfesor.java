@@ -125,7 +125,7 @@ public class MProfesor {
 									String nacimiento, String nacionalidad, String calle, String cp, String poblacion, String provincia,
 									Date fecalta_date, String email, String tlf, String anioprom, String cursoimp) throws IOException {
 	
-    	String insertProf = "INSERT INTO bgacademy.profesor (nombre, apellido1, apellido2, usuario, pass, fnac, nif, nacimiento, nacionalidad, tipouser, calle, cp, provincia, poblacion, fecalta, email, tlf, anioprom, asignimp) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
+    	String insertProf = "INSERT INTO bgacademy.profesor (nombre, apellido1, apellido2, usuario, pass, fnac, nif, nacimiento, nacionalidad, tipouser, calle, cp, provincia, poblacion, fecalta, email, tlf, anioprom, asignimp, activo) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
 		  
     	ArrayList<String> lista = new ArrayList<String>();
     	String [] splitcursos = cursoimp.split(",");
@@ -157,6 +157,7 @@ public class MProfesor {
 				 sentencia.setString(17, tlf);
 				 sentencia.setString(18, anioprom);
 				 sentencia.setString(19, lista.toString());
+				 sentencia.setString(20, "N");
 
 				 sentencia.executeUpdate();
 				 
@@ -470,7 +471,55 @@ public class MProfesor {
 		 return nif;
 		
 	}
+	
+	
+	/**
+	 * Devuelve el valor de la columna activo.
+	 * @param id
+	 * @return
+	 */
+	public String compruebaActivo(String id) {
+		
+		 String selectActivo = "SELECT activo FROM bgacademy.profesor where iduser = ?;";
+		 String activo = null;
+		
+		 try{
+	        	
+           PreparedStatement sentencia = conexion.prepareStatement(selectActivo);
+           sentencia.setInt(1, Integer.valueOf(id));
+           
+           ResultSet rs = sentencia.executeQuery();
+           
+           while(rs.next()){
+        	  activo = rs.getString("activo");
+           }
+	            
+       }catch(SQLException e){
+           System.out.println(e);
+       }
+		 
+		 return activo;
+		
+	}
 
+	
+	/**
+	 * Cambia el valor de la columna activo.
+	 */
+	public void setActivo(String id) {
+		
+		String updateUser = "UPDATE bgacademy.profesor SET activo = ? WHERE iduser = ?;";
+		
+		 try{
+            PreparedStatement sentencia = conexion.prepareStatement(updateUser);
+            sentencia.setString(1,"S");
+            sentencia.setInt(2, Integer.valueOf(id));
+            sentencia.executeUpdate();
+		 }catch(Exception e){
+			 System.out.println(e);
+		 }
+		
+	}
 
 }
 

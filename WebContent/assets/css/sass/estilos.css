@@ -674,5 +674,17 @@ body {
 	    0% { transform: rotate(0deg); }
 	    100% { transform: rotate(360deg); }
 	}
+	
+	.complete-body{
+		width: 100%;
+		height: 100%;
+		background-color: dimgrey;
+		position: absolute;
+		z-index: 99;
+		overflow: auto;
+		position: fixed;
+		opacity: 0.5;
+	}
+	
 
 /*# sourceMappingURL=estilos.css.map */

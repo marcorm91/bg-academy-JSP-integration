@@ -102,7 +102,7 @@ public class MNoticiero {
 	public void registraNoticiario(	String nombre, String apellido1, String apellido2, String nif, Date fecalta_date,
 									String email, String tlf) {
 		
-		String insertNot = "INSERT INTO bgacademy.noticiario (nombre, apellido1, apellido2, usuario, pass, nif, tipouser, fecalta, email, tlf) VALUES (?,?,?,?,?,?,?,?,?,?);";
+		String insertNot = "INSERT INTO bgacademy.noticiario (nombre, apellido1, apellido2, usuario, pass, nif, tipouser, fecalta, email, tlf, activo) VALUES (?,?,?,?,?,?,?,?,?,?,?);";
 		
 		try{
 			 
@@ -120,6 +120,7 @@ public class MNoticiero {
 				 sentencia.setDate(8, (java.sql.Date) sqlDate1);		
 				 sentencia.setString(9, email);
 				 sentencia.setString(10, tlf);
+				 sentencia.setString(11, "N");
 				 
 				 sentencia.executeUpdate();
 				 
@@ -390,6 +391,55 @@ public class MNoticiero {
 		 
 		 return nif;
 		 
+	}
+	
+	
+	/**
+	 * Devuelve el valor de la columna activo.
+	 * @param id
+	 * @return
+	 */
+	public String compruebaActivo(String id) {
+		
+		 String selectActivo = "SELECT activo FROM bgacademy.noticiario where iduser = ?;";
+		 String activo = null;
+		
+		 try{
+	        	
+           PreparedStatement sentencia = conexion.prepareStatement(selectActivo);
+           sentencia.setInt(1, Integer.valueOf(id));
+           
+           ResultSet rs = sentencia.executeQuery();
+           
+           while(rs.next()){
+        	  activo = rs.getString("activo");
+           }
+	            
+       }catch(SQLException e){
+           System.out.println(e);
+       }
+		 
+		 return activo;
+		
+	}
+
+	
+	/**
+	 * Cambia el valor de la columna activo.
+	 */
+	public void setActivo(String id) {
+		
+		String updateUser = "UPDATE bgacademy.noticiario SET activo = ? WHERE iduser = ?;";
+		
+		 try{
+            PreparedStatement sentencia = conexion.prepareStatement(updateUser);
+            sentencia.setString(1,"S");
+            sentencia.setInt(2, Integer.valueOf(id));
+            sentencia.executeUpdate();
+		 }catch(Exception e){
+			 System.out.println(e);
+		 }
+		
 	}
 
 }

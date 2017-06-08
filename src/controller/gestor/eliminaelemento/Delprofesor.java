@@ -54,12 +54,12 @@ public class Delprofesor extends HttpServlet {
 							
 			id = request.getParameter("id");
 			
-			// Recoge el NIF del alumno.
+			// Recoge el NIF del profesor.
 			nif = modelo_profesor.dameNif(id);
 
 			File directorio = new File("WebContent/recursos/profesores/"+nif);
 			
-			//Método que elimina el directorio completo del alumno.
+			//Método que elimina el directorio completo del profesor.
 			eliminaDirectorio(directorio);
 			
 			resultado = modelo_profesor.eliminaProfesor(id);

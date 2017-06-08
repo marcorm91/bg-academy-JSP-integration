@@ -13,6 +13,8 @@
 </head>
 <body>
 
+	<div class="complete-body"></div>
+
 	<!-- Contenedor principal de index.html -->
 	<div class="container">
 		
@@ -118,11 +120,13 @@
 
 	<!-- Pie de página -->
 	<div id="pie_pag"></div>
+	
+	<div class="loader" style='display: none;'></div>
 
 	<!-- jQuery -->
 	<script type="text/javascript" src="assets/js/jquery-3.1.1.min.js"></script>
 	<!-- Tether -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"></script>
 	<!-- Bootstrap -->
 	<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
 	<!-- Script personal -->
@@ -133,7 +137,6 @@
 	<script type='text/javascript'>function init_map(){var myOptions = {zoom:16,center:new google.maps.LatLng(36.593027,-6.240047600000025),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(36.593027,-6.240047600000025)});infowindow = new google.maps.InfoWindow({content:'<strong>Big Ben Academy</strong><br>Calle Rafael Alberti, número 0<br>11500 El Puerto de Santa María<br>'});google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);
 	</script>
 
-	<iframe src="youtube.com" hidden/>
 
 </body>
 </html>

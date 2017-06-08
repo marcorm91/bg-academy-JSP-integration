@@ -1,5 +1,5 @@
 $(document).ready(function() {
-
+	
 	// En primer lugar vamos a cargar los contenidos estáticos de la web.
 	// Para ello, decidí poner como estático la cabecera, el menú y el pie.
 	$.ajax({
@@ -7,6 +7,7 @@ $(document).ready(function() {
 		url:"assets/includes/cabecera.html",
 		async: false,
 		success:function(resp){
+			$(".loader").css("display", "block");
 			$("#cabecera").html(resp);
 		}
 	});
@@ -26,8 +27,15 @@ $(document).ready(function() {
 		async: false,
 		success:function(resp){
 			$("#pie_pag").html(resp);
+		},
+		complete: function(){
+			$(".complete-body").fadeOut(3000);
+			$(".loader").fadeOut(3000);
 		}
+		
 	});
+	
+	
 	
 	// Sección de ventanas modales de la web en ofertas.html.  
 	// Para ello, ocultamos todas las ventanas tras la carga de la página.
