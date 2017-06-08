@@ -686,5 +686,27 @@ body {
 		opacity: 0.5;
 	}
 	
+	#contenedorAcceso > div {
+		left: 0px;
+		margin: auto;
+		position: absolute;
+		right: 0px;
+		top: 45%;
+		transform: translate(0%, -50%);
+		webkit-transform: translate(0%, -50%);
+		z-index: 0;
+	}
+	
+	#atrasError{
+		box-sizing: border-box;
+		left: 0px;
+		margin: auto;
+		position: absolute;
+		right: 0px;
+		margin-top: 25px;
+		transform: translate(0%, -50%);
+		webkit-transform: translate(0%, -50%);
+		z-index: 0;
+	}
 
 /*# sourceMappingURL=estilos.css.map */
