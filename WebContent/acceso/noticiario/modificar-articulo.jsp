@@ -212,7 +212,7 @@
 				<div class="form-group row">
 	  				<label class="col-xs-3">Imagen: </label>
 	  					<div class="col-xs-9">
-	    					<img src="../../assets/imagenes/titular2.png" class="img-fluid">
+	    					<img id="img-modal-art" class="img-fluid">
 	  					</div>
 				</div>
 			</div>

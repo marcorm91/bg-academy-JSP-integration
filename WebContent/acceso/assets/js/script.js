@@ -994,12 +994,6 @@ $(document).ready(function() {
     	}
     	
     });
-    
-
-    // Reload de la pag tras cerrar el modal alumno o profesor.
-    $('#modal-aniadir-alumno, #modal-aniadir-profesor').on('hidden.bs.modal', function () {
-    	setTimeout(function(){ location.reload(); }, 2000);
-    })
-    
+       
     
 });

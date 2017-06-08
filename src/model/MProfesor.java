@@ -440,6 +440,37 @@ public class MProfesor {
 		
 		return rowsAfectadas;
 	}
+	
+	
+	/**
+	 * Recoge el NIF del profesor.
+	 * @param id
+	 * @return
+	 */
+	public String dameNif(String id) {
+		
+		 String selectNIF = "SELECT nif FROM bgacademy.profesor where iduser = ?;";
+		 String nif = null;
+		
+		 try{
+	        	
+            PreparedStatement sentencia = conexion.prepareStatement(selectNIF);
+            sentencia.setInt(1, Integer.valueOf(id));
+            
+            ResultSet rs = sentencia.executeQuery();
+            
+            while(rs.next()){
+            	nif = rs.getString("nif");
+            }
+	            
+        }catch(SQLException e){
+            System.out.println(e);
+        }
+		 
+		 return nif;
+		
+	}
+
 
 }
 

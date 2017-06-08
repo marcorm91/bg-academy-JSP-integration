@@ -109,6 +109,8 @@ $(document).ready(function(){
    				}else{
    					$("#edicionautor-modal-art").text(resp[6]);
    				}
+   				
+   				$("#img-modal-art").attr("src", "../../recursos/imgnoticias/"+resp[2]+"");
     				
     		},
     		complete: function(){

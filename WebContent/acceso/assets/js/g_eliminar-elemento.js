@@ -562,7 +562,7 @@ $(document).ready(function(){
     					$("#curso-table tbody tr:last-child").append("<td>"+resp[i][4]+"</td>");
     					
     					//curso delete
-    					$("#curso-table tbody tr:last-child").append("<td class='tabla-info-gest text-xs-center'><a href='' data-id="+resp[i][0]+"><i class='fa fa-trash text-danger' aria-hidden='true'></i></a></td>");
+    					$("#curso-table tbody tr:last-child").append("<td class='tabla-info-curso text-xs-center'><a href='' data-id="+resp[i][0]+"><i class='fa fa-trash text-danger' aria-hidden='true' style='font-size:20px;'></i></a></td>");
 				
 					       					        				
 					$("#curso-table tbody").append("</tr>");
@@ -597,8 +597,8 @@ $(document).ready(function(){
 	});
 	
 	
-	//Recoge el data-id del alumno para hacer la eliminación del elemento.
-	$(document).delegate(".tabla-info-gest a", "click", function(event){
+	//Recoge el data-id del curso para hacer la eliminación del elemento.
+	$(document).delegate(".tabla-info-curso a", "click", function(event){
 		
 		event.preventDefault();
 		

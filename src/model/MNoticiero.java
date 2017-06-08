@@ -361,7 +361,36 @@ public class MNoticiero {
 		return rowsAfectadas;
 		
 	}
+	
+	
+	/**
+	 * Recoge el NIF del noticiaroi.
+	 * @param id
+	 * @return
+	 */
+	public String dameNif(String id) {
 		
+		String selectNIF = "SELECT nif FROM bgacademy.noticiario where iduser = ?;";
+		 String nif = null;
+		
+		 try{
+	        	
+           PreparedStatement sentencia = conexion.prepareStatement(selectNIF);
+           sentencia.setInt(1, Integer.valueOf(id));
+           
+           ResultSet rs = sentencia.executeQuery();
+           
+           while(rs.next()){
+           	nif = rs.getString("nif");
+           }
+	            
+       }catch(SQLException e){
+           System.out.println(e);
+       }
+		 
+		 return nif;
+		 
+	}
 
 }
 

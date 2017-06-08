@@ -369,5 +369,35 @@ public class MGestor {
 		
 	}
 
+	
+	/**
+	 * Recoge el NIF del gestor.
+	 * @param id
+	 * @return
+	 */
+	public String dameNif(String id) {
+		
+		String selectNIF = "SELECT nif FROM bgacademy.gestor where iduser = ?;";
+		 String nif = null;
+		
+		 try{
+	        	
+           PreparedStatement sentencia = conexion.prepareStatement(selectNIF);
+           sentencia.setInt(1, Integer.valueOf(id));
+           
+           ResultSet rs = sentencia.executeQuery();
+           
+           while(rs.next()){
+           	nif = rs.getString("nif");
+           }
+	            
+       }catch(SQLException e){
+           System.out.println(e);
+       }
+		 
+		 return nif;
+		 
+	}
+
 }
 
