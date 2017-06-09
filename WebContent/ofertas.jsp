@@ -123,87 +123,7 @@
 		<div class="col-lg-4 col-xs-12 menuLateral_ultimasNoticias">
 			<h5> Últimas Noticias </h5>
 				<div id="celdaMensajes">
-					
-					<div> 
-						<a href="#" title="Ir a Noticia 1">
-							<i class="fa fa-bookmark fa-1px" aria-hidden="true"></i>
-							Aprender inglés gratis
-						</a>
-						<span> 14/02/2017 </span>
-					</div>
 
-					<div> 
-						<a href="#" title="Ir a Noticia 2">
-							<i class="fa fa-bookmark fa-1px" aria-hidden="true"></i>
-							Aprender inglés con dibujos animados
-						</a>
-						<span> 08/02/2017 </span>
-					</div>
-
-					<div> 
-						<a href="#" title="Ir a Noticia 3">
-							<i class="fa fa-bookmark fa-1px" aria-hidden="true"></i>
-							Nuevas ofertas, nuevas oportunidades
-						</a>
-						<span> 06/02/2017 </span>
-					</div>
-
-					<div> 
-						<a href="#" title="Ir a Noticia 4">
-							<i class="fa fa-bookmark fa-1px" aria-hidden="true"></i>
-							Nunca es tarde para aprender inglés
-						</a>
-						<span> 30/01/2017 </span>
-					</div>
-
-					<div> 
-						<a href="#" title="Ir a Noticia 5">
-							<i class="fa fa-bookmark fa-1px" aria-hidden="true"></i>
-							Actividades Infantiles Lúdicas
-						</a>
-						<span> 20/01/2017 </span>
-					</div>
-
-					<div> 
-						<a href="#" title="Ir a Noticia 6">
-							<i class="fa fa-bookmark fa-1px" aria-hidden="true"></i>
-							Aprender inglés escuchando música
-						</a>
-						<span> 14/01/2017 </span>
-					</div>
-
-					<div> 
-						<a href="#" title="Ir a Noticia 7">
-							<i class="fa fa-bookmark fa-1px" aria-hidden="true"></i>
-							Consejos para aprobar 'listening'
-						</a>
-						<span> 10/01/2017 </span>
-					</div>
-
-					<div> 
-						<a href="#" title="Ir a Noticia 8">
-							<i class="fa fa-bookmark fa-1px" aria-hidden="true"></i>
-							Consejos para aprobar 'reading'
-						</a>
-						<span> 08/01/2017 </span>
-					</div>
-
-					<div> 
-						<a href="#" title="Ir a Noticia 9">
-							<i class="fa fa-bookmark fa-1px" aria-hidden="true"></i>
-							Importancia de aprender inglés
-						</a>
-						<span> 20/12/2016 </span>
-					</div>
-
-					<div> 
-						<a href="#" title="Ir a Noticia 10">
-							<i class="fa fa-bookmark fa-1px" aria-hidden="true"></i>
-							Consigue un 10 en el 'writing'
-						</a>
-						<span> 17/12/2016 </span>
-					</div>
-	
 				</div>
 		</div> <!-- Fin contenedor últimas noticias -->
 
@@ -611,6 +531,51 @@
 	</div>
 	
 	<div class="loader" style='display: none;'></div>
+	
+<div class="modal fade" id="modal-not" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-primary text-white">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 text-xs-center">
+                    <img id="img-modal-not" src="" class="img-fluid"/>
+                </div>
+            </div>
+            <div class="row">    
+                <div class="col-xs-12">
+                    <h2 class="text-primary" id="tit-modal-not"></h2>
+                </div>
+            </div>
+            <div class="row">
+            	<div class="col-xs-12" id="autor-original">
+            		<label><span class="font-weight-bold">Fecha publicación y autor: </span> <span id="fpubl-mod-not"></span> por <span id="autor-mod-not"></span></label>
+            		
+            	</div>
+            </div>
+             <div class="row">
+            	<div class="col-xs-12 ultima-edicion">
+            		<label><span class="font-weight-bold">Última edición por: </span><span id="autored-mod-not"></span> el <span id="fpubled-mod-not"></span></label>
+            	</div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 text-justify contenido-noticia">
+                	<p id="cont-mod-not"> </p>
+                </div>
+            </div>
+      </div>
+      <div class="modal-footer text-xs-center">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+ </div>  
+</div>
 
 	<!-- jQuery -->
 	<script type="text/javascript" src="assets/js/jquery-3.1.1.min.js"></script>
@@ -622,6 +587,7 @@
 	<script type="text/javascript" src="assets/js/jquery-ui.js"></script>
 	<!-- Script personal -->
 	<script type="text/javascript" src="assets/js/script.js"></script>
+	<script type="text/javascript" src="assets/js/index.js"></script>
 
 </body>
 </html>

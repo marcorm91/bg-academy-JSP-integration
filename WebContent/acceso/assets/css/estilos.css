@@ -3096,5 +3096,11 @@
 		position: fixed;
 		opacity: 0.5;
 	}
+	
+	@media (max-width: 991px){
+		#quien a{
+		color: #000;
+		font-weigth: bolder;}
+	}
 
 /*# sourceMappingURL=estilos.css.map */

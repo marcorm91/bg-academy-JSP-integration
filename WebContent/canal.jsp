@@ -68,24 +68,24 @@
 							<div class="col-xs-12">
 								<h1> Subidos recientemente </h1>
 								
-								<iframe class="img-fluid" src="https://www.youtube.com/embed/zaa0r2WbmYo" frameborder="0" allowfullscreen></iframe>
+								<iframe class="img-fluid" src="https://www.youtube.com/embed/zaa0r2WbmYo"></iframe>
 
-								<iframe class="img-fluid" src="https://www.youtube.com/embed/rCvAvG-43eE" frameborder="0" allowfullscreen></iframe>
+								<iframe class="img-fluid" src="https://www.youtube.com/embed/rCvAvG-43eE"></iframe>
 
-								<iframe class="img-fluid" src="https://www.youtube.com/embed/vf861z0MuMc" frameborder="0" allowfullscreen></iframe>
+								<iframe class="img-fluid" src="https://www.youtube.com/embed/vf861z0MuMc"></iframe>
 
-								<iframe class="img-fluid" src="https://www.youtube.com/embed/fPTKESyRZs0" frameborder="0" allowfullscreen></iframe>
+								<iframe class="img-fluid" src="https://www.youtube.com/embed/fPTKESyRZs0"></iframe>
 
 							</div>
 							
 							<div class="col-xs-12">
 								<h1> Vídeos más antiguos </h1>
 								
-								<iframe class="img-fluid" width="200" height="150" src="https://www.youtube.com/embed/GCYAGoYJOc4" frameborder="0" allowfullscreen></iframe>
+								<iframe class="img-fluid" width="200" height="150" src="https://www.youtube.com/embed/GCYAGoYJOc4"></iframe>
 
-								<iframe class="img-fluid" width="200" height="150" src="https://www.youtube.com/embed/bGnrmvcXpyU" frameborder="0" allowfullscreen></iframe>
+								<iframe class="img-fluid" width="200" height="150" src="https://www.youtube.com/embed/bGnrmvcXpyU"></iframe>
 
-								<iframe class="img-fluid" width="200" height="150" src="https://www.youtube.com/embed/J8MaIO_xkV4" frameborder="0" allowfullscreen></iframe>
+								<iframe class="img-fluid" width="200" height="150" src="https://www.youtube.com/embed/J8MaIO_xkV4"></iframe>
 
 							</div>
 						</div>

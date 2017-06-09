@@ -49,16 +49,16 @@ public class Modifica_noticia extends HttpServlet {
         
         hs = request.getSession();
         
-        Object[] datos_gestor = (Object []) hs.getAttribute("identificacion");
+        Object[] datos_noticiario = (Object []) hs.getAttribute("identificacion");
         
-        if(hs.getAttribute("log") == null || !datos_gestor[1].equals("N")){
+        if(hs.getAttribute("log") == null || !datos_noticiario[1].equals("N")){
 			response.sendRedirect("error.jsp");
 		}else{
 								
 			id = request.getParameter("id");
 			titular = request.getParameter("titular");
 			contenido = request.getParameter("contenido");
-			edicionautor = datos_gestor[2].toString();
+			edicionautor = datos_noticiario[2].toString();
 			
 			Calendar cal = Calendar.getInstance();
 		    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");

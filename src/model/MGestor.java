@@ -63,7 +63,7 @@ public class MGestor {
      */
     public Object[] dameDatos(String user) {
 		
-		Object datos[] = new Object[22];
+		Object datos[] = new Object[12];
 		String selectDatosGest = "SELECT * FROM bgacademy.gestor WHERE usuario = ?";
 		
 		try{
@@ -86,6 +86,7 @@ public class MGestor {
 				 datos[8] = rs.getString("email");
 				 datos[9] = rs.getString("nif");
 				 datos[10] = rs.getString("tlf");
+				 datos[11] = rs.getString("imagen");
 			 }
 	            
 		 }catch(Exception e){
@@ -103,7 +104,7 @@ public class MGestor {
      */
     public Object[] dameDatosPorID(String id) {
 		
-		Object datos[] = new Object[11];
+		Object datos[] = new Object[12];
 		String selectDatosGest = "SELECT * FROM bgacademy.gestor WHERE iduser = ?";
 		
 		try{
@@ -126,6 +127,7 @@ public class MGestor {
 				 datos[8] = rs.getString("email");
 				 datos[9] = rs.getString("nif");
 				 datos[10] = rs.getString("tlf");
+				 datos[11] = rs.getString("imagen");
 			 }
 	            
 		 }catch(Exception e){
@@ -346,10 +348,10 @@ public class MGestor {
 	 * @param email
 	 * @return
 	 */
-	public int updateGestor(String id, String nombre, String apellido1, String apellido2, String usuario, String tlf,
-							String nif, String email) {
+	public int updateGestor(String id, String nombre, String apellido1, String apellido2, String email, String tlf,
+							String nif, String img) {
 		
-		String updateUser = "UPDATE bgacademy.gestor SET nombre = ?, apellido1 = ?, apellido2 = ?, email = ?, tlf = ?,  nif = ? where iduser = ?;";
+		String updateUser = "UPDATE bgacademy.gestor SET nombre = ?, apellido1 = ?, apellido2 = ?, email = ?, tlf = ?,  nif = ?, imagen = ? where iduser = ?;";
 		int rowsAfectadas = 0;
 		
 		 try{
@@ -360,7 +362,8 @@ public class MGestor {
             sentencia.setString(4, email);
             sentencia.setString(5, tlf);
             sentencia.setString(6, nif);
-            sentencia.setInt(7, Integer.valueOf(id));
+            sentencia.setString(7, img);
+            sentencia.setInt(8, Integer.valueOf(id));
             rowsAfectadas =  sentencia.executeUpdate();
 		 }catch(Exception e){
 			 System.out.println(e);

@@ -12,6 +12,7 @@
 // 	datos[8] = "email";
 // 	datos[9] = "nif";
 // 	datos[10] = "tlf";
+//	datos[11] = "imagen";
 %>
 
 <% Object[] datos_gest = (Object []) session.getAttribute("identificacion"); %>
@@ -142,15 +143,20 @@
                 <div class="panel-opciones">
                     
                     <h2> Mi Perfil </h2>
-               <form id="form-mod-perfil-gestor" action="" method="">
+               <form id="form-mod-perfil-gestor">
                     <div class="container-fluid">
                         
                             <div class="form-group row">
                                 <div class="col-xs-12 imagen-perfil">
-                                    <img src="../../assets/imagenes/foto-de-perfil.jpg" class="img-circle">
+                                	<% if (datos_gest[11] != null && !datos_gest[11].toString().equalsIgnoreCase("")) { %>
+                                    	<img src="../../recursos/gestor/<%= datos_gest[5].toString() %>/fotopersonal/<%= datos_gest[11].toString() %>" class="img-circle">
+                                    <% }else{ %>
+                                    	<img src="../../assets/imagenes/sin-imagen.jpg" class="img-circle">
+                                    <% } %>
                                 </div>
                                 <label class="col-xs-12 resolucion-imagen">Resolución de imagen recomendada: 440x615</label>
-                                <input type="file" id="img-modificar-gest-perfil" class="col-xs-12 text-xs-center">
+                                <input type="file" class="col-xs-12 text-xs-center" id="img-modificar-gest-perfil" accept="image/x-png,image/gif,image/jpeg">
+	                            <div id="filenames" style="display:none;"></div>
                             </div>
                         
                             <div class="form-group row">
@@ -242,7 +248,7 @@
 
 <div class="loader" style='display: none;'></div> 
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"></script>
     <script src="../../assets/js/jquery-3.1.1.min.js"></script>
     <script src="../../assets/js/bootstrap.min.js"></script>
     <script src="../../assets/js/jquery-ui.js"></script>
@@ -251,6 +257,26 @@
     <script>
     
 	    $(document).ready(function(){
+
+	    	// Crear un input oculto para pasar el nombre del fichero a la BD.
+	    	document.getElementById('img-modificar-gest-perfil').onchange = uploadOnChange;	   
+	    	
+	    	function uploadOnChange() { 
+	    	    
+	    		var filenames = this.files;
+	    	    $("#filenames").empty();                 
+	    	                           
+	    	    var filesArray = [];
+	    	    
+	    	    Array.prototype.push.apply(filesArray, filenames); 
+	    	                           
+	    	    filesArray.forEach(function(item){
+	    	       $('<input/>', {
+	    				value: item.name
+	    	       }).appendTo("#filenames");
+	    	    });
+	    	    
+	    	}
 	    	
 	    	// Captura el número de incidencias por resolver entre alumnos y profesores. 
 	    	$.ajax({

@@ -65,7 +65,6 @@ public class Registra_noticia extends HttpServlet {
 			
 			rowsInsert = modelo_noticias.registraNoticia(idnot, titular, contenido, rutaImg);
 			
-			
 			String sendRegs = new Gson().toJson(rowsInsert);
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");

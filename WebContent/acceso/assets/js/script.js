@@ -591,15 +591,29 @@ $(document).ready(function() {
     	var email = $("#email-modificar-gest-perfil").val();
     	var tlf = $("#tlf-modificar-gest-perfil").val();
     	var pass = $("#pass-modificar-gest-perfil").val();
+    	var imagen = $("#filenames > input").val();
     	
     	if(nombre == "" || apellido1 == "" || apellido2 == "" || email == "" || tlf == "" || pass == ""){
     		$("#modal-error-perfil").dialog();
     	}else{
+    		
+    		var formData = new FormData();
+     		formData.append('image', $("input[type=file]")[0].files[0]);
+     		
+     		$.ajax({
+ 			    type: "POST",
+ 			    url: "/Subir_img_gest",
+ 	            cache: false,
+ 	            async: false,
+ 	            processData: false,
+	            contentType: false,
+ 			    data: formData
+ 			});
     	    	
 	    	$.ajax({
 	    		type: "POST",
 	    		dataType: "json",
-	    		data: {nombre:nombre, apellido1:apellido1, apellido2:apellido2, email:email, tlf:tlf, pass:pass},
+	    		data: {nombre:nombre, apellido1:apellido1, apellido2:apellido2, email:email, tlf:tlf, pass:pass, imagen:imagen},
 	    		url: "/Modificarperfilgest",
 	    		success: function(resp){  			
 	    			if(resp == "0"){
