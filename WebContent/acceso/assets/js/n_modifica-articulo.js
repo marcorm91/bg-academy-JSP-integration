@@ -111,6 +111,7 @@ $(document).ready(function(){
    				}
    				
    				$("#img-modal-art").attr("src", "../../recursos/imgnoticias/"+resp[2]+"");
+   				
     				
     		},
     		complete: function(){

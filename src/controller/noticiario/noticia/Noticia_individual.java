@@ -8,7 +8,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 
@@ -21,7 +20,6 @@ import model.MNoticias;
 @WebServlet("/Noticia_individual")
 public class Noticia_individual extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private HttpSession hs;
 	private MNoticias modelo_noticias;
 	private Conexion conexionBD;
 	private Object noticia[];
@@ -42,15 +40,8 @@ public class Noticia_individual extends HttpServlet {
 		// Reopen temporal de la BD.
         conexionBD = new Conexion();
         modelo_noticias = new MNoticias(conexionBD.getConexion());
-        
-        hs = request.getSession();
-        
-        Object[] datos_gestor = (Object []) hs.getAttribute("identificacion");
-        
-        if(hs.getAttribute("log") == null || !datos_gestor[1].equals("N")){
-			response.sendRedirect("error.jsp");
-		}else{
-							
+                
+        			
 			id = request.getParameter("id");
 			
 			noticia = modelo_noticias.dameDatosPorID(id);
@@ -60,7 +51,7 @@ public class Noticia_individual extends HttpServlet {
 			response.setCharacterEncoding("UTF-8");
 			response.getWriter().write(sendNot);
 			
-		}
+
 					        
         //¡IMPORTANTE! Cerrar la conexión.
   		try {

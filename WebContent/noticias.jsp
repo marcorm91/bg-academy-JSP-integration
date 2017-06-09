@@ -57,19 +57,14 @@
 			
 					<div class="contenido_cont_academia">
 						
+						<!-- NOTICIA PRINCIPAL -->
 						<div class="cont_noticia_principal col-xs-12">
-<!-- 							<h2> Aprender inglés gratis </h2> -->
-<!-- 							<h3> 14/02/17 por Marco Romero </h3> -->
-<!-- 							<img src="assets/imagenes/titular1.png" class="img-fluid"> -->
-<!-- 							<p> ¡Ya no tienes excusa! Estudiar inglés está al alcance de tus manos y en todos los niveles que desees. Hay una gran variedad de opciones en la web, desde plataformas educativas con material complementario y de muy buena calidad,  hasta canales de Youtube con vídeos explicativos y tutoriales; y lo mejor: son totalmente gratis. -->
-<!-- 							</p> -->
-<!-- 							<button type="button" class="btn btn-primary">Leer Más</button> -->
 						</div>	
 
 						<hr>	
 
+						<!--  NOTICIAS ANTIGUAS -->
 						<div class="row fila">
-
 						</div>
 
 						<div class="row btn-sm" id="paginacion">
@@ -128,6 +123,51 @@
 	<div id="pie_pag"></div>
 	
 	<div class="loader" style='display: none;'></div>
+	
+<div class="modal fade" id="modal-not" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-primary text-white">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 text-xs-center">
+                    <img id="img-modal-not" src="" class="img-fluid"/>
+                </div>
+            </div>
+            <div class="row">    
+                <div class="col-xs-12">
+                    <h2 class="text-primary" id="tit-modal-not"></h2>
+                </div>
+            </div>
+            <div class="row">
+            	<div class="col-xs-12" id="autor-original">
+            		<label><span class="font-weight-bold">Fecha publicación y autor: </span> <span id="fpubl-mod-not"></span> por <span id="autor-mod-not"></span></label>
+            		
+            	</div>
+            </div>
+             <div class="row">
+            	<div class="col-xs-12 ultima-edicion">
+            		<label><span class="font-weight-bold">Última edición por: </span><span id="autored-mod-not"></span> el <span id="fpubled-mod-not"></span></label>
+            	</div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 text-justify contenido-noticia">
+                	<p id="cont-mod-not"> </p>
+                </div>
+            </div>
+      </div>
+      <div class="modal-footer text-xs-center">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+ </div>  
+</div>
 
 	<!-- jQuery -->
 	<script type="text/javascript" src="assets/js/jquery-3.1.1.min.js"></script>
@@ -139,87 +179,7 @@
 	<script type="text/javascript" src="assets/js/jquery-ui.js"></script>
 	<!-- Script personal -->
 	<script type="text/javascript" src="assets/js/script.js"></script>
-	
-	<script>
-	
-		$(document).ready(function(){
-					
-			$.ajax({
-				type: "POST",
-				dataType: "json",
-				async: false,
-				url: "/Ver_noticias",
-				success: function(resp){  
-										
-					if(resp.length > 0){
-					
-						// Titular de la noticia
-						if(resp[0][1].length > 50){
-							$(".contenido_cont_academia .cont_noticia_principal").append($("<h2>"+resp[0][1].substring(0, 50)+" ...</h2>"));
-						}else{
-							$(".contenido_cont_academia .cont_noticia_principal").append($("<h2>"+resp[0][1]+"</h2>"));
-						}
-						
-						// Fecha y autor de publicación
-						$(".contenido_cont_academia .cont_noticia_principal").append($("<h3>"+resp[0][5]+" por "+resp[0][4]+"</h3>"));
-						
-						// Imagen de noticia
-						$(".contenido_cont_academia .cont_noticia_principal").append($("<img src='recursos/imgnoticias/"+resp[0][2]+"' class='img-fluid'>"));
-						
-						// Contenido de la noticia
-						if(resp[0][3].length > 100 ){
-							$(".contenido_cont_academia .cont_noticia_principal").append($("<p>"+resp[0][3].substring(0, 250)+" [...] </p>"));
-						}else{
-							$(".contenido_cont_academia .cont_noticia_principal").append($("<p>"+resp[0][3]+"</p>"));
-						}
-	
-						$(".contenido_cont_academia .cont_noticia_principal").append($("<button type='button' data-id="+resp[0][0]+" class='btn btn-primary'>Leer Más</button>"));
-						
-					}
-										
-					if(resp.length > 1){
-	
-						// Noticias más antiguas 	
-						for(var i = 1; i < resp.length; i++){
-														 
-							$(".contenido_cont_academia .fila").append($("<div class='cont_noticias_antiguas col-xs-12 col-md-6'>"));
-													
-								// Titular de la noticia
-								if(resp[i][1].length > 50){
-									$(".contenido_cont_academia .fila .cont_noticias_antiguas:last-child").append($("<h2>"+resp[i][1].substring(0, 50)+" ...</h2>"));
-								}else{
-									$(".contenido_cont_academia .fila .cont_noticias_antiguas:last-child").append($("<h2>"+resp[i][1]+"</h2>"));
-								}
-								
-								// Fecha y autor de publicación
-								$(".contenido_cont_academia .fila .cont_noticias_antiguas:last-child").append($("<h3>"+resp[i][5]+" por "+resp[i][4]+"</h3>"));
-							
-								// Imagen de noticia
-								$(".contenido_cont_academia .fila .cont_noticias_antiguas:last-child").append($("<img src='recursos/imgnoticias/"+resp[i][2]+"' style='margin-left:0;' class='img-fluid'>"));
-							
-								// Contenido de la noticia
-								if(resp[i][3].length > 100 ){
-									$(".contenido_cont_academia .fila .cont_noticias_antiguas:last-child").append($("<p style='padding-right: 1em;'>"+resp[i][3].substring(0, 100)+" [...] </p>"));
-								}else{
-									$(".contenido_cont_academia .fila .cont_noticias_antiguas:last-child").append($("<p style='padding-right: 1em;'>"+resp[i][3]+"</p>"));
-								}
-								
-								// Botón Leer Más
-								$(".contenido_cont_academia .fila .cont_noticias_antiguas:last-child").append($("<button type='button' data-id="+resp[i][0]+" class='btn btn-primary btn-sm'>Leer Más</button> "));					
-							
-							$(".contenido_cont_academia .fila").append($("</div>"));
-							
-						}
-							
-					}
-										    	    			
-				}
-			
-			});
-			
-		});
-			
-	</script>
+	<script type="text/javascript" src="assets/js/noticiario.js"></script>
 
 </body>
 </html>

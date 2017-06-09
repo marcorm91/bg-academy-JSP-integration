@@ -686,7 +686,7 @@ body {
 		opacity: 0.5;
 	}
 	
-	#contenedorAcceso > div {
+	#contenedorAcceso > .contenedorError {
 		left: 0px;
 		margin: auto;
 		position: absolute;
@@ -707,6 +707,22 @@ body {
 		transform: translate(0%, -50%);
 		webkit-transform: translate(0%, -50%);
 		z-index: 0;
+	}
+	
+	#modal-not img{
+		width: 500px;
+	}
+	
+	#modal-not h2{
+		margin: 20px 0;
+	}
+	
+	#modal-not .ultima-edicion{
+		margin-bottom: 20px;
+	}
+	
+	#modal-not .contenido-noticia{
+		margin-bottom: 20px;
 	}
 
 /*# sourceMappingURL=estilos.css.map */
