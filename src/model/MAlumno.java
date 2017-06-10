@@ -94,6 +94,7 @@ public class MAlumno {
 				 datos[18] = rs.getString("comentarios");
 				 datos[19] = rs.getString("tlf");
 				 datos[20] = rs.getString("email");
+				 datos[21] = rs.getString("imagen");
 			 }
 	            
 		 }catch(Exception e){
@@ -224,9 +225,9 @@ public class MAlumno {
 	 * @param pass
 	 */
 	public void updateAlumno(	String id, String nombre, String apellido1, String apellido2, String email, String tlf,
-								String poblacion, String calle, String cp, String nacimiento, String nacionalidad, Date fnac, String pass) {
+								String poblacion, String calle, String cp, String nacimiento, String nacionalidad, Date fnac, String pass, String imagen) {
 		
-		String updateUser = "UPDATE bgacademy.alumno SET nombre = ?, apellido1 = ?, apellido2 = ?, email = ?, tlf = ?,  poblacion = ?, calle = ?, cp = ?, nacimiento = ?, nacionalidad = ?, fnac = ?, pass = ? where iduser = ?;";
+		String updateUser = "UPDATE bgacademy.alumno SET nombre = ?, apellido1 = ?, apellido2 = ?, email = ?, tlf = ?,  poblacion = ?, calle = ?, cp = ?, nacimiento = ?, nacionalidad = ?, fnac = ?, pass = ?, imagen = ? where iduser = ?;";
 		
 		java.sql.Date sqlDate1 = new java.sql.Date(fnac.getTime());
 		
@@ -244,7 +245,8 @@ public class MAlumno {
             sentencia.setString(10, nacionalidad);
             sentencia.setDate(11, (java.sql.Date) sqlDate1);
             sentencia.setString(12, pass);
-            sentencia.setInt(13, Integer.valueOf(id));
+            sentencia.setString(13, imagen);
+            sentencia.setInt(14, Integer.valueOf(id));
             sentencia.executeUpdate();
 		 }catch(Exception e){
 			 System.out.println(e);
@@ -260,7 +262,7 @@ public class MAlumno {
 	 */
 	public Object[] dameDatosPorID(String id) {
 		
-		Object datos[] = new Object[21];
+		Object datos[] = new Object[22];
 		String selectDatosAlumn = "SELECT * FROM bgacademy.alumno WHERE iduser = ?";
 		
 		try{
@@ -293,6 +295,7 @@ public class MAlumno {
 				 datos[18] = rs.getString("comentarios");
 				 datos[19] = rs.getString("tlf");
 				 datos[20] = rs.getString("email");
+				 datos[21] = rs.getString("imagen");
 			 }
 	            
 		 }catch(Exception e){
@@ -518,6 +521,53 @@ public class MAlumno {
             PreparedStatement sentencia = conexion.prepareStatement(updateUser);
             sentencia.setString(1,"S");
             sentencia.setInt(2, Integer.valueOf(id));
+            sentencia.executeUpdate();
+		 }catch(Exception e){
+			 System.out.println(e);
+		 }
+		
+	}
+
+	
+	/**
+	 * Actualización del alumno sin pasar por parámetro la imagen.
+	 * @param id
+	 * @param nombre
+	 * @param apellido1
+	 * @param apellido2
+	 * @param email
+	 * @param tlf
+	 * @param poblacion
+	 * @param calle
+	 * @param cp
+	 * @param nacido
+	 * @param nacionalidad
+	 * @param fecna_date
+	 * @param pass
+	 */
+	public void updateAlumno(	String id, String nombre, String apellido1, String apellido2, String email, String tlf,
+								String poblacion, String calle, String cp, String nacido, String nacionalidad, Date fecna_date,
+								String pass) {
+		
+		String updateUser = "UPDATE bgacademy.alumno SET nombre = ?, apellido1 = ?, apellido2 = ?, email = ?, tlf = ?,  poblacion = ?, calle = ?, cp = ?, nacimiento = ?, nacionalidad = ?, fnac = ?, pass = ? where iduser = ?;";
+		
+		java.sql.Date sqlDate1 = new java.sql.Date(fecna_date.getTime());
+		
+		 try{
+            PreparedStatement sentencia = conexion.prepareStatement(updateUser);
+            sentencia.setString(1, nombre);
+            sentencia.setString(2, apellido1);
+            sentencia.setString(3, apellido2);
+            sentencia.setString(4, email);
+            sentencia.setString(5, tlf);
+            sentencia.setString(6, poblacion);
+            sentencia.setString(7, calle);
+            sentencia.setString(8, cp);
+            sentencia.setString(9, nacido);
+            sentencia.setString(10, nacionalidad);
+            sentencia.setDate(11, (java.sql.Date) sqlDate1);
+            sentencia.setString(12, pass);
+            sentencia.setInt(13, Integer.valueOf(id));
             sentencia.executeUpdate();
 		 }catch(Exception e){
 			 System.out.println(e);

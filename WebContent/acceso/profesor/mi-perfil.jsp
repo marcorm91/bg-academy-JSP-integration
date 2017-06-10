@@ -22,6 +22,7 @@
 // 	 datos[17] = "anioprom";
 // 	 datos[18] = "asignimp";
 //	 datos[19] = "nacionalidad";
+//	 datos[20] = "imagen";
 %>
 
 <% Object[] datos_prof = (Object []) session.getAttribute("identificacion"); %>
@@ -135,15 +136,20 @@
                 <div class="panel-opciones">
                     
                     <h2> Mi Perfil </h2>
-              <form id="form-mod-perfil-prof" action="" method="">
+              <form id="form-mod-perfil-prof">
                     <div class="container-fluid">
                         
                             <div class="form-group row">
                                 <div class="col-xs-12 imagen-perfil">
-                                    <img src="../../assets/imagenes/foto-de-perfil.jpg" class="img-circle">
+                                    <% if (datos_prof[20] != null && !datos_prof[20].toString().equalsIgnoreCase("")) { %>
+                                    	<img src="../../recursos/profesores/<%= datos_prof[5].toString() %>/fotopersonal/<%= datos_prof[20].toString() %>" class="img-circle">
+                                    <% }else{ %>
+                                    	<img src="../../assets/imagenes/sin-imagen.jpg" class="img-circle">
+                                    <% } %>
                                 </div>
                                 <label class="col-xs-12 resolucion-imagen">Resolución de imagen recomendada: 440x615</label>
-                                <input type="file" id="img-modificar-prof-perfil" class="col-xs-12 text-xs-center">
+                                <input type="file" class="col-xs-12 text-xs-center" id="img-modificar-prof-perfil" accept="image/x-png,image/gif,image/jpeg" style="margin-bottom:25px;">
+	                            <div id="filenames" style="display:none;"></div>
                             </div>
                         
                             <div class="form-group row">
@@ -277,11 +283,35 @@
 
 <div class="loader" style='display: none;'></div>
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"></script>
     <script src="../../assets/js/jquery-3.1.1.min.js"></script>
     <script src="../../assets/js/bootstrap.min.js"></script>
     <script src="../../assets/js/jquery-ui.js"></script>
     <script src="../assets/js/script.js"></script>
+    
+    <script>
+    
+ // Crear un input oculto para pasar el nombre del fichero a la BD.
+	document.getElementById('img-modificar-prof-perfil').onchange = uploadOnChange;	   
+	
+	function uploadOnChange() { 
+	    
+		var filenames = this.files;
+	    $("#filenames").empty();                 
+	                           
+	    var filesArray = [];
+	    
+	    Array.prototype.push.apply(filesArray, filenames); 
+	                           
+	    filesArray.forEach(function(item){
+	       $('<input/>', {
+				value: item.name
+	       }).appendTo("#filenames");
+	    });
+	    
+	}
+    
+    </script>
     
 </body>
 </html>

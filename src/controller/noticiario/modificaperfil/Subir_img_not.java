@@ -1,4 +1,4 @@
-package controller.alumno.modificaperfil;
+package controller.noticiario.modificaperfil;
 
 import java.io.File;
 import java.io.IOException;
@@ -19,17 +19,17 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 /**
- * Servlet implementation class Subir_img_alumn
+ * Servlet implementation class Subir_img_not
  */
-@WebServlet("/Subir_img_alumn")
-public class Subir_img_alumn extends HttpServlet {
+@WebServlet("/Subir_img_not")
+public class Subir_img_not extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession hs;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Subir_img_alumn() {
+    public Subir_img_not() {
         super();
         
     }
@@ -39,17 +39,17 @@ public class Subir_img_alumn extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-request.setCharacterEncoding("UTF-8");
+		request.setCharacterEncoding("UTF-8");
 		
 		hs = request.getSession();
 		
-		Object[] datos_alumn = (Object []) hs.getAttribute("identificacion");
+		Object[] datos_not = (Object []) hs.getAttribute("identificacion");
         
-        if(hs.getAttribute("log") == null || !datos_alumn[1].equals("A")){
+        if(hs.getAttribute("log") == null || !datos_not[1].equals("N")){
 			response.sendRedirect("error.jsp");
 		}else{
 			
-			String nif = datos_alumn[5].toString();
+			String nif = datos_not[5].toString();
 			
 			try{
 				
@@ -67,7 +67,7 @@ request.setCharacterEncoding("UTF-8");
 						
 					   String fich = time_str+"_"+uploaded.getName();
 					   
-					  File dir = new File("WebContent/recursos/alumnos/"+nif+"/fotopersonal");
+					  File dir = new File("WebContent/recursos/noticiario/"+nif+"/fotopersonal");
 					  
 					  File[] filelist = dir.listFiles();
 					  
@@ -83,7 +83,7 @@ request.setCharacterEncoding("UTF-8");
 					  // Identificamos la ruta completa del usuario para hacer la subida, y cuando la tengamos
 					  // insertamos en la BD, en la tabla ficheros, un registro con el nombre de usuario, el tipo
 					  // de fichero que es (público o privado) y la ruta absoluta del mismo.
-				      File fichero = new File("WebContent/recursos/alumnos/"+nif+"/fotopersonal", fich);
+				      File fichero = new File("WebContent/recursos/noticiario/"+nif+"/fotopersonal", fich);
 				      				       
 				      if(!fichero.isDirectory()){
 					      try {
@@ -102,7 +102,7 @@ request.setCharacterEncoding("UTF-8");
 				}
 		
 		}
-        
+		
 	}
 
 	

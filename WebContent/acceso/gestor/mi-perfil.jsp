@@ -155,7 +155,7 @@
                                     <% } %>
                                 </div>
                                 <label class="col-xs-12 resolucion-imagen">Resolución de imagen recomendada: 440x615</label>
-                                <input type="file" class="col-xs-12 text-xs-center" id="img-modificar-gest-perfil" accept="image/x-png,image/gif,image/jpeg">
+                                <input type="file" class="col-xs-12 text-xs-center" id="img-modificar-gest-perfil" accept="image/x-png,image/gif,image/jpeg" style="margin-bottom:25px;">
 	                            <div id="filenames" style="display:none;"></div>
                             </div>
                         

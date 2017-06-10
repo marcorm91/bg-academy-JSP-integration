@@ -27,7 +27,7 @@ public class Modificaperfilalumn extends HttpServlet {
 	private HttpSession hs;
 	private Conexion conexionBD;
 	private MAlumno modelo_alumno;
-	private String id, nombre, apellido1, apellido2, email, poblacion, calle, cp, nacido, nacionalidad, fecna, tlf, pass;
+	private String id, nombre, apellido1, apellido2, email, poblacion, calle, cp, nacido, nacionalidad, fecna, tlf, pass, img;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -66,6 +66,7 @@ public class Modificaperfilalumn extends HttpServlet {
 				nacionalidad = request.getParameter("nacionalidad");
 				fecna = request.getParameter("fecna");
 				pass = request.getParameter("pass");
+				img = request.getParameter("imagen");
 				id = datos_alumn[0].toString();
 				
 				SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -77,8 +78,20 @@ public class Modificaperfilalumn extends HttpServlet {
 					e.printStackTrace();
 				}
 				
-				//Llamamos al modelo para actualizar los datos del usuario con los datos.
-				modelo_alumno.updateAlumno(id, nombre, apellido1, apellido2, email, tlf, poblacion, calle, cp, nacido, nacionalidad, fecna_date, pass);
+				long time = new Date().getTime();
+				String time_str = String.valueOf(time).substring(0, 7);
+				
+				// Si lo recibido no es nulo, le aplicamos la regla del time delante de img.
+				if(img != null){
+					img =  time_str+"_"+img;
+				}
+				
+				if(img != null){
+					//Llamamos al modelo para actualizar los datos del usuario con los datos.
+					modelo_alumno.updateAlumno(id, nombre, apellido1, apellido2, email, tlf, poblacion, calle, cp, nacido, nacionalidad, fecna_date, pass, img);
+				}else{
+					modelo_alumno.updateAlumno(id, nombre, apellido1, apellido2, email, tlf, poblacion, calle, cp, nacido, nacionalidad, fecna_date, pass);
+				}
 				
 				// Reactualizamos la session para seguir manejando los datos del user actualizados.
 				datos_alumn = modelo_alumno.dameDatosPorID(id);

@@ -23,6 +23,7 @@
 // 		 datos[18] = "comentarios";
 // 		 datos[19] = "tlf";
 // 		 datos[20] = "email";
+//		 datos[21] = "imagen";
 %>
 
 <% Object[] datos_alumn = (Object []) session.getAttribute("identificacion"); %>
@@ -153,10 +154,15 @@
                         
                             <div class="form-group row">
                                 <div class="col-xs-12 imagen-perfil">
-                                    <img src="../../assets/imagenes/foto-de-perfil.jpg" class="img-circle">
+                                    <% if (datos_alumn[21] != null && !datos_alumn[21].toString().equalsIgnoreCase("")) { %>
+                                    	<img src="../../recursos/alumnos/<%= datos_alumn[5].toString() %>/fotopersonal/<%= datos_alumn[21].toString() %>" class="img-circle">
+                                    <% }else{ %>
+                                    	<img src="../../assets/imagenes/sin-imagen.jpg" class="img-circle">
+                                    <% } %>
                                 </div>
                                 <label class="col-xs-12 resolucion-imagen">Resolución de imagen recomendada: 440x615</label>
-                                <input type="file" id="img-modificar-alumn-perfil" class="col-xs-12 text-xs-center">
+                                <input type="file" class="col-xs-12 text-xs-center" id="img-modificar-alumn-perfil" accept="image/x-png,image/gif,image/jpeg" style="margin-bottom:25px;">
+	                            <div id="filenames" style="display:none;"></div>
                             </div>
                         
                             <div class="form-group row">
@@ -295,6 +301,30 @@
     <script src="../../assets/js/bootstrap.min.js"></script>
     <script src="../../assets/js/jquery-ui.js"></script>
     <script src="../assets/js/script.js"></script>
+    
+    <script>
+    
+ 	// Crear un input oculto para pasar el nombre del fichero a la BD.
+	document.getElementById('img-modificar-alumn-perfil').onchange = uploadOnChange;	   
+	
+	function uploadOnChange() { 
+	    
+		var filenames = this.files;
+	    $("#filenames").empty();                 
+	                           
+	    var filesArray = [];
+	    
+	    Array.prototype.push.apply(filesArray, filenames); 
+	                           
+	    filesArray.forEach(function(item){
+	       $('<input/>', {
+				value: item.name
+	       }).appendTo("#filenames");
+	    });
+	    
+	}
+    
+    </script>
     
 </body>
 </html>

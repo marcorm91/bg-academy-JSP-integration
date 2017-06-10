@@ -59,7 +59,7 @@ public class MProfesor {
     
     public Object[] dameDatos(String user) {
 		
-		Object datos[] = new Object[22];
+		Object datos[] = new Object[21];
 		String selectDatosProf = "SELECT * FROM bgacademy.profesor WHERE usuario = ?";
 		
 		try{
@@ -91,6 +91,7 @@ public class MProfesor {
 				 datos[17] = rs.getString("anioprom");
 				 datos[18] = rs.getString("asignimp");
 				 datos[19] = rs.getString("nacionalidad");
+				 datos[20] = rs.getString("imagen");
 			 }
 	            
 		 }catch(Exception e){
@@ -225,9 +226,9 @@ public class MProfesor {
 	 */
 	public void updateProfesor(	String id, String nombre, String apellido1, String apellido2, String email, String tlf,
 								String poblacion, String calle, String cp, String nacido, String nacionalidad, Date fecna,
-								String pass) {
+								String pass, String img) {
 		
-		String updateUser = "UPDATE bgacademy.profesor SET nombre = ?, apellido1 = ?, apellido2 = ?, email = ?, tlf = ?,  poblacion = ?, calle = ?, cp = ?, nacimiento = ?, nacionalidad = ?, fnac = ?, pass = ? where iduser = ?;";
+		String updateUser = "UPDATE bgacademy.profesor SET nombre = ?, apellido1 = ?, apellido2 = ?, email = ?, tlf = ?,  poblacion = ?, calle = ?, cp = ?, nacimiento = ?, nacionalidad = ?, fnac = ?, pass = ?, imagen = ? where iduser = ?;";
 		
 		java.sql.Date sqlDate1 = new java.sql.Date(fecna.getTime());
 		
@@ -245,13 +246,13 @@ public class MProfesor {
             sentencia.setString(10, nacionalidad);
             sentencia.setDate(11, (java.sql.Date) sqlDate1);
             sentencia.setString(12, pass);
-            sentencia.setInt(13, Integer.valueOf(id));
+            sentencia.setString(13, img);
+            sentencia.setInt(14, Integer.valueOf(id));
             sentencia.executeUpdate();
 		 }catch(Exception e){
 			 System.out.println(e);
 		 }
-		
-		
+	
 	}
 
 	
@@ -262,7 +263,7 @@ public class MProfesor {
 	 */
 	public Object[] dameDatosPorID(String id) {
 		
-		Object datos[] = new Object[20];
+		Object datos[] = new Object[21];
 		String selectDatosProf = "SELECT * FROM bgacademy.profesor WHERE iduser = ?";
 		
 		try{
@@ -294,6 +295,7 @@ public class MProfesor {
 				 datos[17] = rs.getString("anioprom");
 				 datos[18] = rs.getString("asignimp");
 				 datos[19] = rs.getString("nacionalidad");
+				 datos[20] = rs.getString("imagen");
 			 }
 	            
 		 }catch(Exception e){
@@ -410,9 +412,9 @@ public class MProfesor {
 	 * @param email
 	 * @return
 	 */
-	public int updateProfesor(String id, String nombre, String apellido1, String apellido2, String usuario,  String tlf,
-			String nif, String nacimiento, Date fecna, String nacionalidad, String calle, String cp, String provincia,
-			String poblacion, String email) {
+	public int updateProfesor(  String id, String nombre, String apellido1, String apellido2, String usuario,  String tlf,
+								String nif, String nacimiento, Date fecna, String nacionalidad, String calle, String cp, String provincia,
+								String poblacion, String email) {
 				
 		String updateUser = "UPDATE bgacademy.profesor SET nombre = ?, apellido1 = ?, apellido2 = ?, email = ?, tlf = ?,  poblacion = ?, calle = ?, cp = ?, nacimiento = ?, nacionalidad = ?, fnac = ?, nif = ?, provincia = ? where iduser = ?;";
 		int rowsAfectadas = 0;
@@ -514,6 +516,53 @@ public class MProfesor {
             PreparedStatement sentencia = conexion.prepareStatement(updateUser);
             sentencia.setString(1,"S");
             sentencia.setInt(2, Integer.valueOf(id));
+            sentencia.executeUpdate();
+		 }catch(Exception e){
+			 System.out.println(e);
+		 }
+		
+	}
+
+	
+	/**
+	 * Actualización del perfil de profesor sin pasar como parámetro la imagen.
+	 * @param id
+	 * @param nombre
+	 * @param apellido1
+	 * @param apellido2
+	 * @param email
+	 * @param tlf
+	 * @param poblacion
+	 * @param calle
+	 * @param cp
+	 * @param nacido
+	 * @param nacionalidad
+	 * @param fecna_date
+	 * @param pass
+	 */
+	public void updateProfesor( String id, String nombre, String apellido1, String apellido2, String email, String tlf,
+								String poblacion, String calle, String cp, String nacido, String nacionalidad, Date fecna_date,
+								String pass) {
+		
+		String updateUser = "UPDATE bgacademy.profesor SET nombre = ?, apellido1 = ?, apellido2 = ?, email = ?, tlf = ?,  poblacion = ?, calle = ?, cp = ?, nacimiento = ?, nacionalidad = ?, fnac = ?, pass = ? where iduser = ?;";
+		
+		java.sql.Date sqlDate1 = new java.sql.Date(fecna_date.getTime());
+		
+		 try{
+            PreparedStatement sentencia = conexion.prepareStatement(updateUser);
+            sentencia.setString(1, nombre);
+            sentencia.setString(2, apellido1);
+            sentencia.setString(3, apellido2);
+            sentencia.setString(4, email);
+            sentencia.setString(5, tlf);
+            sentencia.setString(6, poblacion);
+            sentencia.setString(7, calle);
+            sentencia.setString(8, cp);
+            sentencia.setString(9, nacido);
+            sentencia.setString(10, nacionalidad);
+            sentencia.setDate(11, (java.sql.Date) sqlDate1);
+            sentencia.setString(12, pass);
+            sentencia.setInt(13, Integer.valueOf(id));
             sentencia.executeUpdate();
 		 }catch(Exception e){
 			 System.out.println(e);

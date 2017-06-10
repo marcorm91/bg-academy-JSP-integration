@@ -600,15 +600,19 @@ $(document).ready(function() {
     		var formData = new FormData();
      		formData.append('image', $("input[type=file]")[0].files[0]);
      		
-     		$.ajax({
- 			    type: "POST",
- 			    url: "/Subir_img_gest",
- 	            cache: false,
- 	            async: false,
- 	            processData: false,
-	            contentType: false,
- 			    data: formData
- 			});
+     		if($("#filenames > input").length > 0){
+     		
+	     		$.ajax({
+	 			    type: "POST",
+	 			    url: "/Subir_img_gest",
+	 	            cache: false,
+	 	            async: false,
+	 	            processData: false,
+		            contentType: false,
+	 			    data: formData
+	 			});
+     		
+     		}
     	    	
 	    	$.ajax({
 	    		type: "POST",
@@ -657,15 +661,33 @@ $(document).ready(function() {
     	var email = $("#email-modificar-not-perfil").val();
     	var tlf = $("#tlf-modificar-not-perfil").val();
     	var pass = $("#pass-modificar-not-perfil").val();
+    	var imagen = $("#filenames > input").val();
     	
     	if(nombre == "" || apellido1 == "" || apellido2 == "" || email == "" || tlf == "" || pass == ""){
     		$("#modal-error-perfil").dialog();
     	}else{
+    		
+    		var formData = new FormData();
+     		formData.append('image', $("input[type=file]")[0].files[0]);
+     		
+     		if($("#filenames > input").length > 0){
+     		
+	     		$.ajax({
+	 			    type: "POST",
+	 			    url: "/Subir_img_not",
+	 	            cache: false,
+	 	            async: false,
+	 	            processData: false,
+		            contentType: false,
+	 			    data: formData
+	 			});
+     		
+     		}
     	    	
 	    	$.ajax({
 	    		type: "POST",
 	    		dataType: "json",
-	    		data: {nombre:nombre, apellido1:apellido1, apellido2:apellido2, email:email, tlf:tlf, pass:pass},
+	    		data: {nombre:nombre, apellido1:apellido1, apellido2:apellido2, email:email, tlf:tlf, pass:pass, imagen:imagen},
 	    		url: "/Modificaperfilnot",
 	    		success: function(resp){  			
 	    			if(resp == "0"){
@@ -716,15 +738,33 @@ $(document).ready(function() {
     	var fecna = $("#fnac-modificar-alumn-perfil").val();
     	var tlf = $("#tlf-modificar-alumn-perfil").val();
     	var pass = $("#pass-modificar-alumn-perfil").val();
+    	var imagen = $("#filenames > input").val();
     	
     	if(nombre == "" || apellido1 == "" || apellido2 == "" || email == "" || poblacion == "" || calle == "" || cp == "" || nacido == "" || nacionalidad == "" || calle == "" || fecna == "" || tlf == "" || pass == ""){
     		$("#modal-error-perfil").dialog();
     	}else{
+    		
+    		var formData = new FormData();
+     		formData.append('image', $("input[type=file]")[0].files[0]);
+     		
+     		if($("#filenames > input").length > 0){
+     		
+	     		$.ajax({
+	 			    type: "POST",
+	 			    url: "/Subir_img_alumn",
+	 	            cache: false,
+	 	            async: false,
+	 	            processData: false,
+		            contentType: false,
+	 			    data: formData
+	 			});
+	     		
+     		}
     	    	
 	    	$.ajax({
 	    		type: "POST",
 	    		dataType: "json",
-	    		data: {nombre:nombre, apellido1:apellido1, apellido2:apellido2, email:email, poblacion:poblacion, calle:calle, cp:cp, nacido:nacido, nacionalidad:nacionalidad, calle:calle, fecna:fecna,  tlf:tlf, pass:pass},
+	    		data: {nombre:nombre, apellido1:apellido1, apellido2:apellido2, email:email, poblacion:poblacion, calle:calle, cp:cp, nacido:nacido, nacionalidad:nacionalidad, calle:calle, fecna:fecna,  tlf:tlf, pass:pass, imagen:imagen},
 	    		url: "/Modificaperfilalumn",
 	    		success: function(resp){  			
 	    			if(resp == "0"){
@@ -776,15 +816,33 @@ $(document).ready(function() {
     	var fecna = $("#fnac-modificar-prof-perfil").val();
     	var tlf = $("#tlf-modificar-prof-perfil").val();
     	var pass = $("#pass-modificar-prof-perfil").val();
+    	var imagen = $("#filenames > input").val();
     	
     	if(nombre == "" || apellido1 == "" || apellido2 == "" || email == "" || poblacion == "" || calle == "" || cp == "" || nacido == "" || nacionalidad == "" || calle == "" || fecna == "" || tlf == "" || pass == ""){
     		$("#modal-error-perfil").dialog();
     	}else{
+    		
+    		var formData = new FormData();
+     		formData.append('image', $("input[type=file]")[0].files[0]);
+     		
+     		if($("#filenames > input").length > 0){
+     		
+	     		$.ajax({
+	 			    type: "POST",
+	 			    url: "/Subir_img_prof",
+	 	            cache: false,
+	 	            async: false,
+	 	            processData: false,
+		            contentType: false,
+	 			    data: formData
+	 			});
+	     		
+     		}
     	    	
 	    	$.ajax({
 	    		type: "POST",
 	    		dataType: "json",
-	    		data: {nombre:nombre, apellido1:apellido1, apellido2:apellido2, email:email, poblacion:poblacion, calle:calle, cp:cp, nacido:nacido, nacionalidad:nacionalidad, calle:calle, fecna:fecna,  tlf:tlf, pass:pass},
+	    		data: {nombre:nombre, apellido1:apellido1, apellido2:apellido2, email:email, poblacion:poblacion, calle:calle, cp:cp, nacido:nacido, nacionalidad:nacionalidad, calle:calle, fecna:fecna,  tlf:tlf, pass:pass, imagen:imagen},
 	    		url: "/Modificaperfilprof",
 	    		success: function(resp){  			
 	    			if(resp == "0"){

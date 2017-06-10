@@ -2,6 +2,7 @@ package controller.noticiario.modificaperfil;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,7 +25,7 @@ public class Modificaperfilnot extends HttpServlet {
 	private HttpSession hs;
 	private Conexion conexionBD;
 	private MNoticiero modelo_noticiario;
-	private String nombre, apellido1, apellido2, email, tlf, id, pass;
+	private String nombre, apellido1, apellido2, email, tlf, id, pass, img;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -57,10 +58,23 @@ public class Modificaperfilnot extends HttpServlet {
 				email = request.getParameter("email");
 				tlf = request.getParameter("tlf");
 				pass = request.getParameter("pass");
+				img = request.getParameter("imagen");
 				id = datos_not[0].toString();
-								
-				//Llamamos al modelo para actualizar los datos del usuario con los datos.
-				modelo_noticiario.updateNoticiario(id, nombre, apellido1, apellido2, email, tlf, pass);
+				
+				long time = new Date().getTime();
+				String time_str = String.valueOf(time).substring(0, 7);
+				
+				// Si lo recibido no es nulo, le aplicamos la regla del time delante de img.
+				if(img != null){
+					img =  time_str+"_"+img;
+				}
+					
+				if(img != null){
+					//Llamamos al modelo para actualizar los datos del usuario con los datos.
+					modelo_noticiario.updateNoticiario_img(id, nombre, apellido1, apellido2, email, tlf, pass, img);
+				}else{
+					modelo_noticiario.updateNoticiario(id, nombre, apellido1, apellido2, email, tlf, pass);
+				}
 				
 				// Reactualizamos la session para seguir manejando los datos del user actualizados.
 				datos_not = modelo_noticiario.dameDatosPorID(id);

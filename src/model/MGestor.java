@@ -219,7 +219,7 @@ public class MGestor {
 	}
 
 	/**
-	 * Actualización del usuario profesor.
+	 * Actualización del usuario gestor.
 	 * @param id
 	 * @param nombre
 	 * @param apellido1
@@ -350,7 +350,7 @@ public class MGestor {
 	 */
 	public int updateGestor(String id, String nombre, String apellido1, String apellido2, String email, String tlf,
 							String nif, String img) {
-		
+				
 		String updateUser = "UPDATE bgacademy.gestor SET nombre = ?, apellido1 = ?, apellido2 = ?, email = ?, tlf = ?,  nif = ?, imagen = ? where iduser = ?;";
 		int rowsAfectadas = 0;
 		

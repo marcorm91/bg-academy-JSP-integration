@@ -60,14 +60,22 @@ public class Modificaperfilgest extends HttpServlet {
 				pass = request.getParameter("pass");
 				img = request.getParameter("imagen");
 				id = datos_gest[0].toString();
-				
+								
 				long time = new Date().getTime();
 				String time_str = String.valueOf(time).substring(0, 7);
 				
-				img =  time_str+"_"+img;
-								
-				//Llamamos al modelo para actualizar los datos del usuario con los datos.
-				modelo_gestor.updateGestor(id, nombre, apellido1, apellido2, email, tlf, pass, img);
+				// Si lo recibido no es nulo, le aplicamos la regla del time delante de img.
+				if(img != null){
+					img =  time_str+"_"+img;
+				}
+				
+				if(img != null){
+					//Llamamos al modelo para actualizar los datos del usuario con los datos.
+					modelo_gestor.updateGestor(id, nombre, apellido1, apellido2, email, tlf, pass, img);
+				}else{
+					modelo_gestor.updateGestor(id, nombre, apellido1, apellido2, email, tlf, pass);
+				}
+				
 				
 				// Reactualizamos la session para seguir manejando los datos del user actualizados.
 				datos_gest = modelo_gestor.dameDatosPorID(id);

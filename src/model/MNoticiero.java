@@ -56,7 +56,7 @@ public class MNoticiero {
     
     public Object[] dameDatos(String user) {
 		
-		Object datos[] = new Object[11];
+		Object datos[] = new Object[12];
 		String selectDatosNot = "SELECT * FROM bgacademy.noticiario WHERE usuario = ?";
 		
 		try{
@@ -79,6 +79,7 @@ public class MNoticiero {
 				 datos[8] = rs.getString("email");
 				 datos[9] = rs.getString("tlf");
 				 datos[10] = rs.getString("nif");
+				 datos[11] = rs.getString("imagen");
 			 }
 	            
 		 }catch(Exception e){
@@ -167,6 +168,7 @@ public class MNoticiero {
         return existe;
 	}
 
+	
 	/**
 	 * Realiza el update del usuario noticiario.
 	 * @param id
@@ -197,6 +199,38 @@ public class MNoticiero {
 		 }
 		 
 	}
+	
+	/**
+	 * Realiza el update del usuario noticiario.
+	 * @param id
+	 * @param nombre
+	 * @param apellido1
+	 * @param apellido2
+	 * @param email
+	 * @param tlf
+	 * @param pass
+	 */
+	public void updateNoticiario_img(	String id, String nombre, String apellido1, String apellido2, String email, String tlf,
+										String pass, String img) {
+	
+		String updateUser = "UPDATE bgacademy.noticiario SET nombre = ?, apellido1 = ?, apellido2 = ?, email = ?, tlf = ?, pass = ?, imagen = ? where iduser = ?;";
+		
+		 try{
+            PreparedStatement sentencia = conexion.prepareStatement(updateUser);
+            sentencia.setString(1, nombre);
+            sentencia.setString(2, apellido1);
+            sentencia.setString(3, apellido2);
+            sentencia.setString(4, email);
+            sentencia.setString(5, tlf);
+            sentencia.setString(6, pass);
+            sentencia.setString(7, img);
+            sentencia.setInt(8, Integer.valueOf(id));
+            sentencia.executeUpdate();
+		 }catch(Exception e){
+			 System.out.println(e);
+		 }
+		 
+	}
 
 	
 	/**
@@ -206,7 +240,7 @@ public class MNoticiero {
 	 */
 	public Object[] dameDatosPorID(String id) {
 		
-		Object datos[] = new Object[11];
+		Object datos[] = new Object[12];
 		String selectDatosNot = "SELECT * FROM bgacademy.noticiario WHERE iduser = ?";
 		
 		try{
@@ -229,6 +263,7 @@ public class MNoticiero {
 				 datos[8] = rs.getString("email");
 				 datos[9] = rs.getString("tlf");
 				 datos[10] = rs.getString("nif");
+				 datos[11] = rs.getString("imagen");
 			 }
 	            
 		 }catch(Exception e){
@@ -441,6 +476,7 @@ public class MNoticiero {
 		 }
 		
 	}
+	
 
 }
 
