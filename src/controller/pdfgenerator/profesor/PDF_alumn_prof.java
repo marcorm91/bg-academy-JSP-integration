@@ -1,4 +1,4 @@
-package controller.pdfgenerator.gestor;
+package controller.pdfgenerator.profesor;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -30,10 +30,10 @@ import model.Conexion;
 import model.MAlumno;
 
 /**
- * Servlet implementation class PDF_alumn_gest
+ * Servlet implementation class PDF_alumn_prof
  */
-@WebServlet("/PDF_alumn_gest.pdf")
-public class PDF_alumn_gest extends HttpServlet {
+@WebServlet("/PDF_alumn_prof.pdf")
+public class PDF_alumn_prof extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession hs;
 	private String id;
@@ -45,7 +45,7 @@ public class PDF_alumn_gest extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PDF_alumn_gest() {
+    public PDF_alumn_prof() {
         super(); 
     }
 
@@ -61,9 +61,9 @@ public class PDF_alumn_gest extends HttpServlet {
 		OutputStream out = response.getOutputStream();
 		hs = request.getSession();
 		
-		Object[] datos_gestor = (Object []) hs.getAttribute("identificacion");
+		Object[] datos_prof = (Object []) hs.getAttribute("identificacion");
 		
-		if(hs.getAttribute("identificacion") == null  && !datos_gestor[1].equals("G")){  
+		if(hs.getAttribute("identificacion") == null  && !datos_prof[1].equals("P")){  
 			response.sendRedirect("error.jsp");
 		}else{
 							
@@ -267,47 +267,27 @@ public class PDF_alumn_gest extends HttpServlet {
 					par4.add(new Phrase(Chunk.NEWLINE));
 					
 					documento.add(par4);
-					
-					// DATOS DE ACCESO
-					Paragraph par5 = new Paragraph();
-					par5.setAlignment(Element.ALIGN_JUSTIFIED);
-					
-					Font s4 = new Font(Font.FontFamily.UNDEFINED, 10, Font.BOLD | Font.NORMAL, new BaseColor(28, 35, 124));
-					par5.add(new Phrase("DATOS DE ACCESO", s4));
-					
-					par5.add(new Phrase(Chunk.NEWLINE));
-					par5.add(new Phrase(Chunk.NEWLINE));
-					
-					par5.add(new Phrase("Usuario: ", datos));
-					par5.add(Chunk.TABBING);
-					par5.add(Chunk.TABBING);
-					par5.add(new Phrase(datos_alumn[5].toString(), datos));
-					par5.add(new Phrase(Chunk.NEWLINE));
-					
-					par5.add(new Phrase("Contraseña: ", datos));
-					par5.add(Chunk.TABBING);
-					par5.add(Chunk.TABBING);
-					par5.add(new Phrase(datos_alumn[6].toString(), datos));
-										
-					Font s5 = new Font(Font.FontFamily.UNDEFINED, 7, Font.BOLD | Font.ITALIC, new BaseColor(255, 0, 0));
-					par5.add(new Phrase("   (Si es tu primer acceso recuerda cambiar la contraseña por tu seguridad. "
-									  + "Puedes cambiarla en 'Mi Perfil')", s5));
-					
+
 					// ------ FIN DATOS ------ //
-					
-					par5.add(new Phrase(Chunk.NEWLINE));
-					par5.add(new Phrase(Chunk.NEWLINE));
-					par5.add(new Phrase(Chunk.NEWLINE));
-					
-					documento.add(par5);
 					
 					// DESPEDIDA
 					Paragraph par6 = new Paragraph();
 					par6.setAlignment(Element.ALIGN_CENTER);
 					
+					par6.add(new Phrase(Chunk.NEWLINE));
+					
+					Font s6 = new Font(Font.FontFamily.UNDEFINED, 8, Font.BOLD | Font.NORMAL, BaseColor.BLACK);
+					
+					String profesor = "Datos extraídos por " + datos_prof[2].toString() + " con NIF/NIE " + datos_prof[8].toString();
+					par6.add(new Phrase(profesor, s6));
+					
+					par6.add(new Phrase(Chunk.NEWLINE));
+					par6.add(new Phrase(Chunk.NEWLINE));
+					
+					Font s7 = new Font(Font.FontFamily.UNDEFINED, 10, Font.BOLD | Font.NORMAL, BaseColor.BLACK);
+					
 					String fecha = ZonedDateTime.now ( ZoneId.of ( "Europe/Madrid" ) ).format ( DateTimeFormatter.ofLocalizedDate ( FormatStyle.FULL ).withLocale ( new Locale ( "es" , "ES" ) ) );
-					Font s6 = new Font(Font.FontFamily.UNDEFINED, 10, Font.BOLD | Font.NORMAL, BaseColor.BLACK);
-					par6.add(new Phrase("El Puerto de Santa María a "+fecha, s6));
+					par6.add(new Phrase("El Puerto de Santa María a "+fecha, s7));
 					
 					par6.add(new Phrase(Chunk.NEWLINE));
 					par6.add(new Phrase(Chunk.NEWLINE));

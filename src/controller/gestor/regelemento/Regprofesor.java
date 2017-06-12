@@ -36,6 +36,7 @@ public class Regprofesor extends HttpServlet {
 	private String nombre, apellido1, apellido2, nif, nacimiento, nacionalidad, calle, cp, poblacion, provincia, email, tlf, anioprom;
 	private String fecna, fecalta;
 	private String cursoimp;
+	private String idcursos;
 	private boolean existeAlumno, existeProfesor, existeGestor, existeNoticiario;
 	
        
@@ -81,6 +82,8 @@ public class Regprofesor extends HttpServlet {
 				tlf = request.getParameter("tlf");
 				anioprom = request.getParameter("aniocurso");
 				cursoimp = request.getParameter("cursos");
+				idcursos = request.getParameter("idcursos");
+				
 													
 				SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 				Date fecna_date = null;
@@ -135,7 +138,8 @@ public class Regprofesor extends HttpServlet {
 														email,
 														tlf,
 														anioprom,
-														cursoimp);
+														cursoimp,
+														idcursos);
 				
 					existe = new Gson().toJson("0");
 					response.setContentType("application/json");

@@ -59,7 +59,7 @@ public class MProfesor {
     
     public Object[] dameDatos(String user) {
 		
-		Object datos[] = new Object[21];
+		Object datos[] = new Object[22];
 		String selectDatosProf = "SELECT * FROM bgacademy.profesor WHERE usuario = ?";
 		
 		try{
@@ -92,6 +92,7 @@ public class MProfesor {
 				 datos[18] = rs.getString("asignimp");
 				 datos[19] = rs.getString("nacionalidad");
 				 datos[20] = rs.getString("imagen");
+			     datos[21] = rs.getString("idcursos");
 			 }
 	            
 		 }catch(Exception e){
@@ -124,13 +125,17 @@ public class MProfesor {
      */
     public void registraProfesor(	String nombre, String apellido1, String apellido2, String nif, Date fecna_date,
 									String nacimiento, String nacionalidad, String calle, String cp, String poblacion, String provincia,
-									Date fecalta_date, String email, String tlf, String anioprom, String cursoimp) throws IOException {
-	
-    	String insertProf = "INSERT INTO bgacademy.profesor (nombre, apellido1, apellido2, usuario, pass, fnac, nif, nacimiento, nacionalidad, tipouser, calle, cp, provincia, poblacion, fecalta, email, tlf, anioprom, asignimp, activo) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
+									Date fecalta_date, String email, String tlf, String anioprom, String cursoimp, String idcursos) throws IOException {
+    		
+    	String insertProf = "INSERT INTO bgacademy.profesor (nombre, apellido1, apellido2, usuario, pass, fnac, nif, nacimiento, nacionalidad, tipouser, calle, cp, provincia, poblacion, fecalta, email, tlf, anioprom, asignimp, activo, idcursos) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
 		  
     	ArrayList<String> lista = new ArrayList<String>();
     	String [] splitcursos = cursoimp.split(",");
     	for(int i = 0; i < splitcursos.length; i++) lista.add(splitcursos[i]);
+    	
+    	ArrayList<String> lista_ids = new ArrayList<String>();
+    	String [] splitids = idcursos.split(",");
+    	for(int i = 0; i < splitids.length; i++) lista_ids.add(splitids[i]);
     	
 		 try{
 			 
@@ -159,6 +164,7 @@ public class MProfesor {
 				 sentencia.setString(18, anioprom);
 				 sentencia.setString(19, lista.toString());
 				 sentencia.setString(20, "N");
+				 sentencia.setString(21, lista_ids.toString());
 
 				 sentencia.executeUpdate();
 				 
@@ -296,6 +302,7 @@ public class MProfesor {
 				 datos[18] = rs.getString("asignimp");
 				 datos[19] = rs.getString("nacionalidad");
 				 datos[20] = rs.getString("imagen");
+				 datos[21] = rs.getString("idcursos");
 			 }
 	            
 		 }catch(Exception e){

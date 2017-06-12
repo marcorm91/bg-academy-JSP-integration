@@ -575,7 +575,78 @@ public class MAlumno {
 		
 	}
 
-}
+	
+	/**
+	 * Devuelve los alumnos pertenecientes al año de promoción y curso impartido por el profesor.
+	 * @param anioprom_prof
+	 * @param cursosasign_prof
+	 * @return
+	 */
+	public Object[][] alumnosPorCurso(String anioprom_prof, String cursosasign_prof) {
+				
+		int cantidad = totalAlumnosPorCurso(anioprom_prof, cursosasign_prof);
+		Object datos[][] = new Object[cantidad][8];
+		int i = 0;
+		
+		String selectAlumnos = "SELECT iduser, nombre, apellido1, apellido2, nif, email, anioprom, cursoasign FROM bgacademy.alumno "
+							 + "WHERE anioprom = ? AND idcurso IN ("+cursosasign_prof+");";
+		
+		try{
+		
+			PreparedStatement sentencia = conexion.prepareStatement(selectAlumnos);
+			sentencia.setString(1, anioprom_prof);
+			ResultSet rs = sentencia.executeQuery();
+		
+		while(rs.next()){
+			 datos[i][0] = rs.getInt("iduser");
+			 datos[i][1] = rs.getString("nombre");
+			 datos[i][2] = rs.getString("apellido1");
+			 datos[i][3] = rs.getString("apellido2");
+			 datos[i][4] = rs.getString("nif");
+			 datos[i][5] = rs.getString("email");
+			 datos[i][6] = rs.getString("anioprom");
+			 datos[i][7] = rs.getString("cursoasign");
+			 i++;
+		 }
+				
+		}catch(SQLException e){
+			System.out.println(e);
+		}
+		
+		return datos;
+		
+	}
 
 	
+	/**
+	 * Devuelve el total de alumnos pertenecientes a un curso y año de promoción determinado.
+	 * @param cursosasign_prof 
+	 * @param anioprom_prof 
+	 * @return
+	 */
+	private int totalAlumnosPorCurso(String anioprom_prof, String cursosasign_prof) {
+	
+		String totalAlumnos = "SELECT COUNT(*) AS contador FROM bgacademy.alumno "
+				 			 + "WHERE anioprom = ? AND idcurso IN ("+cursosasign_prof+");";
+		
+		int filas = 0;
+		
+		try{
+			
+			 PreparedStatement sentencia = conexion.prepareStatement(totalAlumnos);	 
+			 sentencia.setString(1, anioprom_prof);
+			 ResultSet rs = sentencia.executeQuery();
 
+			 while(rs.next()){
+				filas = rs.getInt("contador");
+			 }
+
+		}catch(Exception e){
+			System.out.println(e);
+		}
+					 
+		return filas;
+
+	}
+
+}

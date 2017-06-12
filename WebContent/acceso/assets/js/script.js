@@ -393,11 +393,19 @@ $(document).ready(function() {
     	var email = $("#email-profesor").val();
     	var tlf = $("#tlf-profesor").val();
     	var aniocurso = $("#anio-curso-profesor").val();
+    	
     	var cursos = []; 
     	$('#cursos-profesor :selected').each(function(i, selected){ 
     	  cursos[i] = $(selected).text(); 
     	});
     	cursos = cursos.toString();
+    	
+    	var idcursos = [];
+    	$('#cursos-profesor :selected').each(function(i, selected){ 
+      	  idcursos[i] = $(selected).attr("data-id");
+      	});
+    	idcursos = idcursos.toString();
+    	
     	
     	if(nombre == "" || apellido1 == "" || apellido2 == "" || nif == "" || fecna == "" || nacimiento == "" || nacionalidad == "" || calle == "" || cp == "" || poblacion == "" || provincia == "" || fecalta == "" || email == "" || tlf == "" || aniocurso == "" || cursos == ""){
     		$("#modal-error").dialog();
@@ -406,7 +414,7 @@ $(document).ready(function() {
 	    	$.ajax({
 	    		type: "POST",
 	    		dataType: "json",
-	    		data: {nombre:nombre, apellido1:apellido1, apellido2: apellido2, nif:nif, fecna:fecna, nacimiento:nacimiento, nacionalidad:nacionalidad, calle:calle, cp:cp, poblacion:poblacion, provincia:provincia, fecalta:fecalta, email:email, tlf:tlf, aniocurso:aniocurso, cursos:cursos},
+	    		data: {nombre:nombre, apellido1:apellido1, apellido2: apellido2, nif:nif, fecna:fecna, nacimiento:nacimiento, nacionalidad:nacionalidad, calle:calle, cp:cp, poblacion:poblacion, provincia:provincia, fecalta:fecalta, email:email, tlf:tlf, aniocurso:aniocurso, cursos:cursos, idcursos:idcursos},
 	    		url: "/Regprofesor",
 	    		success: function(resp){
 	    			    			
@@ -917,7 +925,7 @@ $(document).ready(function() {
 				$("#cursos-profesor").empty();
     			for(var i = 0; i < resp.length; i++){	
     				if(resp[i][0] != null){
-    					$("#cursos-profesor").append("<option> " + resp[i][0] + "</option>");
+    					$("#cursos-profesor").append("<option data-id="+resp[i][3]+"> " + resp[i][0] + "</option>");
     				}
     			}    			
     		},

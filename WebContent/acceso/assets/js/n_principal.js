@@ -2,10 +2,10 @@ $(document).ready(function(){
     	
     	$.ajax({
 			type: "POST",
-		dataType: "json",
-		async: false,
-		url: "/Activo_noticiario",
-		success: function(resp){  
+			dataType: "json",
+			async: false,
+			url: "/Activo_noticiario",
+			success: function(resp){  
 			
 			if(resp == "N"){
 				

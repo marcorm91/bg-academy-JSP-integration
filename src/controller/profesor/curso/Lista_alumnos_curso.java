@@ -1,4 +1,4 @@
-package controller.gestor.listaelementos;
+package controller.profesor.curso;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -16,21 +16,21 @@ import model.Conexion;
 import model.MAlumno;
 
 /**
- * Servlet implementation class Prof_individual
+ * Servlet implementation class Lista_alumnos_curso
  */
-@WebServlet("/Alumn_individual")
-public class Alumn_individual extends HttpServlet {
+@WebServlet("/Lista_alumnos_curso")
+public class Lista_alumnos_curso extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession hs;
 	private MAlumno modelo_alumno;
 	private Conexion conexionBD;
-	private Object alumno[];
-	private String id;
+	private Object alumnos[][];
+	private String anioprom_prof, cursosasign_prof;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Alumn_individual() {
+    public Lista_alumnos_curso() {
         super();
     }
 
@@ -45,30 +45,33 @@ public class Alumn_individual extends HttpServlet {
         
         hs = request.getSession();
         
-        Object[] datos_usu = (Object []) hs.getAttribute("identificacion");
-                
-        if(hs.getAttribute("log") == null && !datos_usu[1].equals("G") || !datos_usu[1].equals("P")){
+        Object[] datos_profesor = (Object []) hs.getAttribute("identificacion");
+        
+        if(hs.getAttribute("log") == null || !datos_profesor[1].equals("P")){
 			response.sendRedirect("error.jsp");
 		}else{
-							
-			id = request.getParameter("id");
 			
-			alumno = modelo_alumno.dameDatosPorID(id);
+			anioprom_prof = datos_profesor[17].toString();
+			cursosasign_prof = datos_profesor[21].toString();
 			
-			String sendAlumn = new Gson().toJson(alumno);
+			cursosasign_prof = cursosasign_prof.substring(1, cursosasign_prof.length()-1);
+			
+			alumnos = modelo_alumno.alumnosPorCurso(anioprom_prof, cursosasign_prof);
+			
+			String sendAlumnos = new Gson().toJson(alumnos);
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");
-			response.getWriter().write(sendAlumn);
+			response.getWriter().write(sendAlumnos);
 			
 		}
-					        
+        
         //¡IMPORTANTE! Cerrar la conexión.
   		try {
   			conexionBD.getConexion().close();
   		} catch (SQLException e) {
   			e.printStackTrace();
-  		}
-		
+  		}     
+
 	}
 
 	/**
