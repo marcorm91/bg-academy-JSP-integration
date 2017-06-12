@@ -247,13 +247,26 @@
     
      <div class="container">
         <div class="row">
-            <div class="col-xs-5">
+            <div class="col-xs-6 card-header" style="margin-left: 15px; border-bottom: 0; margin-bottom: 15px;">
                   <div class="form-group">
                     <label class="font-weight-bold">Seleccione el curso donde desee abrir una tarea:</label>
-                        <select class="form-control">
-                            <option>A1 - Nivel Básico</option>
-                            <option>C2 - Nivel Avanzado</option>
-                        </select>
+                         <div class="form-group row">
+                <label class="col-md-5 col-form-label">* Año promoción:</label>
+                <div class="col-md-7">
+                    <!-- PROMOCIONES CURSOS REGISTRADOS PREVIAMENTE -->
+                    <select class="form-control" id="anio-curso-prof">
+                    <option> - Seleccione promoción - </option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-4 col-form-label">* Selección de curso:</label>
+                <div class="col-md-8">
+                    <!-- CURSOS REGISTRADOS PREVIAMENTE -->
+                    <select class="form-control" id="curso-tarea">
+                    </select>
+                </div>
+            </div>
                   </div>
             </div>
          </div>
@@ -269,7 +282,7 @@
             <div class="col-xs-8">
                   <div class="form-group">
                     <label class="font-weight-bold">Título de la actividad:</label>
-                        <input class="form-control" type="text">
+                        <input class="form-control" type="text" id="tit-tarea">
                   </div>
             </div>
          </div>
@@ -277,7 +290,7 @@
             <div class="col-xs-8">
                   <div class="form-group">
                     <label class="font-weight-bold">Detalles de la actividad:</label>
-                        <textarea class="form-control" rows="6"> </textarea>
+                        <textarea class="form-control" rows="6" id="detalle-tarea"> </textarea>
                   </div>
             </div>
          </div>
@@ -285,7 +298,7 @@
         
      <div class="col-xs-12 text-xs-center btn-atras">
          <a href="./cursos.jsp"> <button class="btn btn-primary"> Volver </button> </a>
-         <a href="#" id="reg-tarea"> <button class="btn btn-primary"> Registrar Tarea </button> </a>
+         <a href="#" id="reg-tarea"> <button class="btn btn-primary" id="reg-tarea"> Registrar Tarea </button> </a>
      </div>
    
 </div>
@@ -792,6 +805,15 @@
 
 <div class="loader" style='display: none;'></div> 
 
+<!-- MODAL SUCCESS / ERROR-->
+<div id="modal-success-tarea" title="¡Usuario registrado!" style="display: none">
+	<p> ¡Se ha registrado la tarea correctamente! </p>
+</div>
+
+<div id="modal-error-tarea" title="¡Error de registro tarea!" style="display: none">
+	<p> <b>¡ERROR!</b> Comprueba que no falta ningún dato por rellenar. </p>
+</div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"></script>
     <script src="../../assets/js/jquery-3.1.1.min.js"></script>
     <script src="../../assets/js/bootstrap.min.js"></script>
@@ -807,6 +829,8 @@
     <script>
     
     $(document).ready(function(){
+    	
+    	//**** LISTAR ALUMNOS ****//
     	
     		// Carga una lista de alumnos pertenecientes al mismo curso que está asignado el profesor.
     		$("#profesor-list-alumnos").on("click", function(e){
@@ -958,7 +982,99 @@
     			event.preventDefault();
     			$("#modal-form-alumn").submit();
     		});
-    	
+    		
+    		
+       	//**** REGISTRAR TAREA ****//
+       	
+	    /**
+	     * Recoge los cursos en función del año de promoción.
+	     */
+	    $("#anio-curso-prof").change("click", function(e){
+	        	
+	    	$(".loader").css("display", "block");
+	    	
+	    	var anio = $(this).val();
+	    	    	
+	    	$.ajax({
+	    		type: "POST",
+	    		dataType: "json",
+	    		url: "/Recoge_cursos",
+	    		data: {anio: anio},
+	    		async: true,
+	    		success: function(resp){  
+					$("#curso-tarea").empty();
+	    			for(var i = 0; i < resp.length; i++){	
+	    				if(resp[i] != null || resp[i] != ""){
+	    					$("#curso-tarea").append("<option> " + resp[i] + "</option>");
+	    				}
+	     			}    			
+	    		},
+	    		complete: function(){
+	    			$(".loader").fadeOut(1000);
+	    		}
+	    	});
+	    	
+	    });
+    
+       	
+	    /**
+	     * Carga de años iniciales y finales de la BD curso sobre los campos de profesor.
+	     */
+	    $("#profesor-tareas").on("click", function(e){
+	    	
+	     	$.ajax({
+	    		type: "POST",
+	    		dataType: "json",
+	    		url: "/Recoge_anio",
+	    		async: false,
+	    		success: function(resp){  
+	  				if(resp != null){
+	  					$("#anio-curso-prof").append("<option> " + resp + "</option>");
+	  				}			
+	    		}
+	    	});
+	     	     	    
+	    });
+	    
+	    
+	    // Registra la tarea.
+	    $("#reg-tarea").on("click", function(e){
+	    	
+	    	e.preventDefault();
+	    	
+	    	var anioprom = $("#anio-curso-prof").val();
+	    	var cursoasign = $("#curso-tarea").val();
+  	    	var feclimite = $("#fecha-limite-subida-tarea").val();
+  	    	var tittarea = $("#tit-tarea").val();
+ 	    	var detalletarea = $("#detalle-tarea").val();
+	    	
+			if(anioprom == "- Seleccione promoción -" ||  cursoasign == "" || feclimite == "" || tittarea == "" || detalletarea == ""){
+				$("#modal-error-tarea").dialog();
+			}else{
+				
+				$.ajax({
+		    		type: "POST",
+		    		dataType: "json",
+		    		url: "/Reg_tarea",
+		    		data: {anioprom: anioprom, cursoasign: cursoasign, feclimite:feclimite, tittarea: tittarea, detalletarea: detalletarea},
+		    		success: function(resp){  
+						
+		    			
+		    			
+		    		},
+		    		complete: function(){
+		    			$(".loader").fadeOut(1000);
+		    		}
+		    	});
+				
+			}
+	    		    	
+	    	
+	    });
+
+	    
+	    
+	   
     });
        
     </script>

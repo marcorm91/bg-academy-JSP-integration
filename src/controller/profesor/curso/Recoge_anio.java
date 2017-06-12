@@ -1,4 +1,4 @@
-package controller.curso;
+package controller.profesor.curso;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -13,23 +13,23 @@ import javax.servlet.http.HttpSession;
 import com.google.gson.Gson;
 
 import model.Conexion;
-import model.MCurso;
+import model.MProfesor;
 
 /**
- * Servlet implementation class Recogefechas
+ * Servlet implementation class Recoge_anio
  */
-@WebServlet("/Recogefechas")
-public class Recogefechas extends HttpServlet {
+@WebServlet("/Recoge_anio")
+public class Recoge_anio extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession hs;
-	private MCurso modelo_curso;
+	private MProfesor modelo_profesor;
 	private Conexion conexionBD;
-	private String [][] fechas;
+	private String anio, id;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Recogefechas() {
+    public Recoge_anio() {
         super();
     }
 
@@ -40,19 +40,24 @@ public class Recogefechas extends HttpServlet {
 		
 		// Reopen temporal de la BD.
         conexionBD = new Conexion();
-        modelo_curso = new MCurso(conexionBD.getConexion());
+        modelo_profesor = new MProfesor(conexionBD.getConexion());
         
         hs = request.getSession();
         
-        if(hs.getAttribute("log") == null){
+        Object[] datos_profesor = (Object []) hs.getAttribute("identificacion");
+        
+        if(hs.getAttribute("log") == null || !datos_profesor[1].equals("P")){
 			response.sendRedirect("error.jsp");
 		}else{
 						
-			try{			
+			try{
+				
+				id = datos_profesor[0].toString();
+				
 				//Llamamos al modelo para realizar la consulta sobre las fechas en la BD.
-				fechas = modelo_curso.devuelveFechas();
-							
-				String sendFechas = new Gson().toJson(fechas);
+				anio = modelo_profesor.devuelveFechas(id);
+											
+				String sendFechas = new Gson().toJson(anio);
 				response.setContentType("application/json");
 				response.setCharacterEncoding("UTF-8");
 				response.getWriter().write(sendFechas);
@@ -63,14 +68,15 @@ public class Recogefechas extends HttpServlet {
 			}
 			
 		}
+        
+        
+        //¡IMPORTANTE! Cerrar la conexión.
+  		try {
+  			conexionBD.getConexion().close();
+  		} catch (SQLException e) {
+  			e.printStackTrace();
+  		} 
 		
-		//¡IMPORTANTE! Cerrar la conexión.
-		try {
-			conexionBD.getConexion().close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
 	}
 
 	/**

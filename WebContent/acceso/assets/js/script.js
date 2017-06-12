@@ -35,7 +35,7 @@ $(document).ready(function() {
             }            
         
     $("#fecha-nacimiento-profesor, #fecha-nacimiento-alumno, #fnac-modificar-alumn-perfil, #fnac-modificar-prof-perfil").datepicker({maxDate:0, changeYear: true, yearRange:'-90:+0'});
-    $("#fecha-limite-subida-tarea, #fecha-limite-subida-examen").datepicker({minDate:0, changeYear: true, yearRange:'-90:+0'});
+    $("#fecha-limite-subida-tarea, #fecha-limite-subida-examen").datepicker({minDate:0, changeYear: true, yearRange:'0:+10'});
     
     // Cuando boton-collapse que es el botón de menú en dispositivo mobile se abre, no le daremos ninguna funcionalidad
     // a los elementos del body.

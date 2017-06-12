@@ -86,7 +86,7 @@ public class Modificaperfilnot extends HttpServlet {
 				response.getWriter().write(modOK);
 				
 			}catch(Exception e){
-				response.sendRedirect("acceso/noticiario/mi-perfil.jsp");
+				response.sendRedirect("acceso/profesor/principal-profesor.jsp");
 				System.out.println(e);
 			}
 						

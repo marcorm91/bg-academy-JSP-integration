@@ -66,7 +66,7 @@ public class Selectorcursos extends HttpServlet {
 				response.getWriter().write(sendCursos);
 								
 			}catch(Exception e){
-				response.sendRedirect("acceso/noticiario/mi-perfil.jsp");
+				response.sendRedirect("error.jsp");
 				System.out.println(e);
 			}
 			

@@ -577,5 +577,65 @@ public class MProfesor {
 		
 	}
 
+	
+	/**
+	 * Devuelve el año de promoción al que está asignado el profesor.
+	 * @param id
+	 * @return
+	 */
+	public String devuelveFechas(String id) {
+		
+		String selectAnio = "SELECT anioprom FROM bgacademy.profesor where iduser = ?;";
+		String anio = null;
+		
+		 try{
+	        	
+	          PreparedStatement sentencia = conexion.prepareStatement(selectAnio);
+	          sentencia.setInt(1, Integer.valueOf(id));
+	          
+	          ResultSet rs = sentencia.executeQuery();
+	          
+	          while(rs.next()){
+	        	  anio = rs.getString("anioprom");
+	          }
+	            
+	      }catch(SQLException e){
+	          System.out.println(e);
+	      }
+		 
+	   return anio;
+	
+	}
+
+	
+	/**
+	 * Devuelve los cursos 
+	 * @param id
+	 * @return
+	 */
+	public String devuelveCursos(String id) {
+	
+		String selectCursos = "SELECT asignimp FROM bgacademy.profesor where iduser = ?;";
+		String cursos = null;
+		
+		 try{
+	        	
+	          PreparedStatement sentencia = conexion.prepareStatement(selectCursos);
+	          sentencia.setInt(1, Integer.valueOf(id));
+	          
+	          ResultSet rs = sentencia.executeQuery();
+	          
+	          while(rs.next()){
+	        	  cursos = rs.getString("asignimp");
+	          }
+	            
+	      }catch(SQLException e){
+	          System.out.println(e);
+	      }
+		 
+	   return cursos;
+		
+	}
+
 }
 
