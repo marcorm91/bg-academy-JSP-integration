@@ -19,22 +19,21 @@ import model.Conexion;
 import model.MActividades;
 
 /**
- * Servlet implementation class Reg_tarea
+ * Servlet implementation class Reg_examen
  */
-@WebServlet("/Reg_tarea")
-public class Reg_tarea extends HttpServlet {
+@WebServlet("/Reg_examen")
+public class Reg_examen extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private Conexion conexionBD;
 	private MActividades modelo_actividades;
 	private HttpSession hs;
-	private String anioprom, cursoasign, tittarea, detalletarea;
+	private String anioprom, cursoasign, titexamen, detalleexamen;
 	private String feclimite;
-	
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Reg_tarea() {
+    public Reg_examen() {
         super();
     }
 
@@ -58,8 +57,8 @@ public class Reg_tarea extends HttpServlet {
 			anioprom = request.getParameter("anioprom");
 			cursoasign = request.getParameter("cursoasign");
 			feclimite = request.getParameter("feclimite");
-			tittarea = request.getParameter("tittarea");
-			detalletarea = request.getParameter("detalletarea");
+			titexamen = request.getParameter("titexamen");
+			detalleexamen = request.getParameter("detalleexamen");
 			
 			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 			Date feclimite_parse = null;
@@ -72,7 +71,7 @@ public class Reg_tarea extends HttpServlet {
 			
 			int rowsInsert = 0;
 						
-			rowsInsert = modelo_actividades.registraTarea(tittarea, detalletarea, feclimite_parse, anioprom, cursoasign);
+			rowsInsert = modelo_actividades.registraExamen(titexamen, detalleexamen, feclimite_parse, anioprom, cursoasign);
 
 			String sendRegs = new Gson().toJson(rowsInsert);
 			response.setContentType("application/json");
@@ -87,7 +86,7 @@ public class Reg_tarea extends HttpServlet {
   		} catch (SQLException e) {
   			e.printStackTrace();
   		}
-        
+		
 	}
 
 	/**

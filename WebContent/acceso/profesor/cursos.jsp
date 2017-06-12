@@ -251,22 +251,22 @@
                   <div class="form-group">
                     <label class="font-weight-bold">Seleccione el curso donde desee abrir una tarea:</label>
                          <div class="form-group row">
-                <label class="col-md-5 col-form-label">* Año promoción:</label>
-                <div class="col-md-7">
-                    <!-- PROMOCIONES CURSOS REGISTRADOS PREVIAMENTE -->
-                    <select class="form-control" id="anio-curso-prof">
-                    <option> - Seleccione promoción - </option>
-                    </select>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label class="col-md-4 col-form-label">* Selección de curso:</label>
-                <div class="col-md-8">
-                    <!-- CURSOS REGISTRADOS PREVIAMENTE -->
-                    <select class="form-control" id="curso-tarea">
-                    </select>
-                </div>
-            </div>
+                			<label class="col-md-5 col-form-label">* Año promoción:</label>
+			                <div class="col-md-7">
+			                    <!-- PROMOCIONES CURSOS REGISTRADOS PREVIAMENTE -->
+			                    <select class="form-control" id="anio-curso-prof-tarea">
+			                    	<option> - Seleccione promoción - </option>
+			                    </select>
+			                </div>
+            			</div>
+			            <div class="form-group row">
+			                <label class="col-md-4 col-form-label">* Selección de curso:</label>
+			                <div class="col-md-8">
+			                    <!-- CURSOS REGISTRADOS PREVIAMENTE -->
+			                    <select class="form-control" id="curso-tarea">
+			                    </select>
+			                </div>
+			            </div>
                   </div>
             </div>
          </div>
@@ -309,13 +309,26 @@
     
       <div class="container">
         <div class="row">
-            <div class="col-xs-5">
+           <div class="col-xs-6 card-header" style="margin-left: 15px; border-bottom: 0; margin-bottom: 15px;">
                   <div class="form-group">
                     <label class="font-weight-bold">Seleccione el curso donde desee abrir un examen:</label>
-                        <select class="form-control">
-                            <option>A1 - Nivel Básico</option>
-                            <option>C2 - Nivel Avanzado</option>
-                        </select>
+                         <div class="form-group row">
+                			<label class="col-md-5 col-form-label">* Año promoción:</label>
+			                <div class="col-md-7">
+			                    <!-- PROMOCIONES CURSOS REGISTRADOS PREVIAMENTE -->
+			                    <select class="form-control" id="anio-curso-prof-examen">
+			                    	<option> - Seleccione promoción - </option>
+			                    </select>
+			                </div>
+            			</div>
+			            <div class="form-group row">
+			                <label class="col-md-4 col-form-label">* Selección de curso:</label>
+			                <div class="col-md-8">
+			                    <!-- CURSOS REGISTRADOS PREVIAMENTE -->
+			                    <select class="form-control" id="curso-examen">
+			                    </select>
+			                </div>
+			            </div>
                   </div>
             </div>
          </div>
@@ -331,7 +344,7 @@
             <div class="col-xs-8">
                   <div class="form-group">
                     <label class="font-weight-bold">Título de la actividad:</label>
-                        <input class="form-control" type="text">
+                        <input class="form-control" type="text" id="tit-examen">
                   </div>
             </div>
          </div>
@@ -339,7 +352,7 @@
             <div class="col-xs-8">
                   <div class="form-group">
                     <label class="font-weight-bold">Detalles de la actividad:</label>
-                        <textarea class="form-control" rows="6"> </textarea>
+                        <textarea class="form-control" rows="6" id="detalleexamen"> </textarea>
                   </div>
             </div>
          </div>
@@ -806,11 +819,19 @@
 <div class="loader" style='display: none;'></div> 
 
 <!-- MODAL SUCCESS / ERROR-->
-<div id="modal-success-tarea" title="¡Usuario registrado!" style="display: none">
+<div id="modal-success-tarea" title="¡Tarea registrada!" style="display: none">
 	<p> ¡Se ha registrado la tarea correctamente! </p>
 </div>
 
 <div id="modal-error-tarea" title="¡Error de registro tarea!" style="display: none">
+	<p> <b>¡ERROR!</b> Comprueba que no falta ningún dato por rellenar. </p>
+</div>
+
+<div id="modal-success-examen" title="¡Examen registrado!" style="display: none">
+	<p> ¡Se ha registrado el examen correctamente! </p>
+</div>
+
+<div id="modal-error-examen" title="¡Error de registro examen!" style="display: none">
 	<p> <b>¡ERROR!</b> Comprueba que no falta ningún dato por rellenar. </p>
 </div>
 
@@ -989,7 +1010,7 @@
 	    /**
 	     * Recoge los cursos en función del año de promoción.
 	     */
-	    $("#anio-curso-prof").change("click", function(e){
+	    $("#anio-curso-prof-tarea").change("click", function(e){
 	        	
 	    	$(".loader").css("display", "block");
 	    	
@@ -1029,7 +1050,7 @@
 	    		async: false,
 	    		success: function(resp){  
 	  				if(resp != null){
-	  					$("#anio-curso-prof").append("<option> " + resp + "</option>");
+	  					$("#anio-curso-prof-tarea").append("<option> " + resp + "</option>");
 	  				}			
 	    		}
 	    	});
@@ -1037,12 +1058,14 @@
 	    });
 	    
 	    
-	    // Registra la tarea.
+	    /**
+	     * Registra la tarea en la Base de Datos.
+	     */
 	    $("#reg-tarea").on("click", function(e){
 	    	
 	    	e.preventDefault();
 	    	
-	    	var anioprom = $("#anio-curso-prof").val();
+	    	var anioprom = $("#anio-curso-prof-tarea").val();
 	    	var cursoasign = $("#curso-tarea").val();
   	    	var feclimite = $("#fecha-limite-subida-tarea").val();
   	    	var tittarea = $("#tit-tarea").val();
@@ -1059,7 +1082,14 @@
 		    		data: {anioprom: anioprom, cursoasign: cursoasign, feclimite:feclimite, tittarea: tittarea, detalletarea: detalletarea},
 		    		success: function(resp){  
 						
-		    			
+		    			if(resp == "0"){
+	    					$("#modal-error-tarea").dialog();
+	    				}else{
+	    					$("#fecha-limite-subida-tarea").val("");
+	    					$("#tit-tarea").val("");
+	    		    		$("#detalle-tarea").val("");
+	    					$("#modal-success-tarea").dialog();
+	    				}
 		    			
 		    		},
 		    		complete: function(){
@@ -1069,7 +1099,103 @@
 				
 			}
 	    		    	
+	    });
+	    
+	    
+	    //**** REGISTRAR EXAMEN ****//
+	    
+	    /**
+	     * Recoge los cursos en función del año de promoción.
+	     */
+	    $("#anio-curso-prof-examen").change("click", function(e){
+	    		        	
+	    	$(".loader").css("display", "block");
 	    	
+	    	var anio = $(this).val();
+	    	    	
+	    	$.ajax({
+	    		type: "POST",
+	    		dataType: "json",
+	    		url: "/Recoge_cursos",
+	    		data: {anio: anio},
+	    		async: true,
+	    		success: function(resp){  
+					$("#curso-examen").empty();
+	    			for(var i = 0; i < resp.length; i++){	
+	    				if(resp[i] != null || resp[i] != ""){
+	    					$("#curso-examen").append("<option> " + resp[i] + "</option>");
+	    				}
+	     			}    			
+	    		},
+	    		complete: function(){
+	    			$(".loader").fadeOut(1000);
+	    		}
+	    	});
+	    	
+	    });
+	    
+	    
+	    /**
+	     * Carga de años iniciales y finales de la BD curso sobre los campos de profesor.
+	     */
+	    $("#profesor-examenes").on("click", function(e){
+	    	
+	     	$.ajax({
+	    		type: "POST",
+	    		dataType: "json",
+	    		url: "/Recoge_anio",
+	    		async: false,
+	    		success: function(resp){  
+	  				if(resp != null){
+	  					$("#anio-curso-prof-examen").append("<option> " + resp + "</option>");
+	  				}			
+	    		}
+	    	});
+	     	     	    
+	    });
+	    
+	    
+	    /**
+	     * Registra el examen en la Base de Datos.
+	     */
+	    $("#reg-examen").on("click", function(e){
+	    	
+	    	e.preventDefault();
+	    	
+	    	var anioprom = $("#anio-curso-prof-examen").val();
+	    	var cursoasign = $("#curso-examen").val();
+  	    	var feclimite = $("#fecha-limite-subida-examen").val();
+  	    	var titexamen = $("#tit-examen").val();
+ 	    	var detalleexamen = $("#detalleexamen").val();
+	    	
+			if(anioprom == "- Seleccione promoción -" ||  cursoasign == "" || feclimite == "" || titexamen == "" || detalleexamen == ""){
+				$("#modal-error-examen").dialog();
+			}else{
+				
+				$.ajax({
+		    		type: "POST",
+		    		dataType: "json",
+		    		url: "/Reg_examen",
+		    		data: {anioprom: anioprom, cursoasign: cursoasign, feclimite:feclimite, titexamen: titexamen, detalleexamen: detalleexamen},
+		    		success: function(resp){  
+						
+		    			if(resp == "0"){
+	    					$("#modal-error-examen").dialog();
+	    				}else{
+	    					$("#fecha-limite-subida-examen").val("");
+	    					$("#tit-examen").val("");
+	    		    		$("#detalleexamen").val("");
+	    					$("#modal-success-examen").dialog();
+	    				}
+		    			
+		    		},
+		    		complete: function(){
+		    			$(".loader").fadeOut(1000);
+		    		}
+		    	});
+				
+			}
+	    		    	
 	    });
 
 	    
