@@ -1,4 +1,4 @@
-package controller.gestor.listaelementos;
+package controller.alumno.curso;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -13,24 +13,24 @@ import javax.servlet.http.HttpSession;
 import com.google.gson.Gson;
 
 import model.Conexion;
-import model.MProfesor;
+import model.MActividades;
 
 /**
- * Servlet implementation class Prof_individual
+ * Servlet implementation class Actividad_individual
  */
-@WebServlet("/Prof_individual")
-public class Prof_individual extends HttpServlet {
+@WebServlet("/Actividad_individual")
+public class Actividad_individual extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession hs;
-	private MProfesor modelo_profesor;
 	private Conexion conexionBD;
-	private Object profesor[];
-	private String id;
+	private MActividades modelo_actividades;
+	private Object actividad[];
+	private String idactividad;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Prof_individual() {
+    public Actividad_individual() {
         super();
     }
 
@@ -38,31 +38,30 @@ public class Prof_individual extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		// Reopen temporal de la BD.
         conexionBD = new Conexion();
-        modelo_profesor = new MProfesor(conexionBD.getConexion());
+        modelo_actividades = new MActividades(conexionBD.getConexion());
         
         hs = request.getSession();
         
-        Object[] datos_gestor = (Object []) hs.getAttribute("identificacion");
-        
-        if(hs.getAttribute("log") == null || !datos_gestor[1].equals("G")){
+        Object[] datos_alumn = (Object []) hs.getAttribute("identificacion");
+		
+		if(hs.getAttribute("log") == null || !datos_alumn[1].equals("A")){
 			response.sendRedirect("error.jsp");
 		}else{
-							
-			id = request.getParameter("id");
 			
-			profesor = modelo_profesor.dameDatosPorID(id);
+			idactividad = request.getParameter("idactividad");
+						
+			actividad = modelo_actividades.dameActividad(idactividad);
 			
-			
-			String sendProf = new Gson().toJson(profesor);
+			String sendActividades = new Gson().toJson(actividad);
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");
-			response.getWriter().write(sendProf);
+			response.getWriter().write(sendActividades);
 			
 		}
-					        
+        
         //¡IMPORTANTE! Cerrar la conexión.
   		try {
   			conexionBD.getConexion().close();

@@ -123,7 +123,7 @@ public class MProfesor {
      * @param cursoimp
      * @throws IOException
      */
-    public void registraProfesor(	String nombre, String apellido1, String apellido2, String nif, Date fecna_date,
+    public void registraProfesor(	String nombre, String apellido1, String apellido2, String nif, String pass, Date fecna_date,
 									String nacimiento, String nacionalidad, String calle, String cp, String poblacion, String provincia,
 									Date fecalta_date, String email, String tlf, String anioprom, String cursoimp, String idcursos) throws IOException {
     		
@@ -148,7 +148,7 @@ public class MProfesor {
 				 sentencia.setString(2, apellido1);
 				 sentencia.setString(3, apellido2);
 				 sentencia.setString(4, nif);
-				 sentencia.setString(5, nif);
+				 sentencia.setString(5, pass);
 				 sentencia.setDate(6, (java.sql.Date) sqlDate1);
 				 sentencia.setString(7, nif);
 				 sentencia.setString(8, nacimiento);
@@ -269,7 +269,7 @@ public class MProfesor {
 	 */
 	public Object[] dameDatosPorID(String id) {
 		
-		Object datos[] = new Object[21];
+		Object datos[] = new Object[22];
 		String selectDatosProf = "SELECT * FROM bgacademy.profesor WHERE iduser = ?";
 		
 		try{

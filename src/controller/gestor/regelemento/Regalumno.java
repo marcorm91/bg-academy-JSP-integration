@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Random;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -37,6 +38,7 @@ public class Regalumno extends HttpServlet {
 	private Conexion conexionBD;
 	private String nombre, apellido1, apellido2, nif, nacimiento, nacionalidad, calle, cp, poblacion, provincia, email, tlf, anioprom, cursoasign, comentarios;
 	private String fecna, fecalta;
+	private String pass;
 	private String idcurso;
 	private boolean existeAlumno, existeProfesor, existeGestor, existeNoticiario;
        
@@ -122,11 +124,14 @@ public class Regalumno extends HttpServlet {
 					dir = new File("WebContent/recursos/alumnos/"+nif+"/dirpersonal");
 					dir.mkdirs();
 					
-			
+					// Generación de contraseña aleatoria al alumno.
+					pass = getCadenaAlfanumAleatoria(6);
+					
 					modelo_alumno.registraAlumno(		nombre, 
 														apellido1, 
 														apellido2, 
 														nif, 
+														pass,
 														fecna_date, 
 														nacimiento, 
 														nacionalidad, 
@@ -171,6 +176,30 @@ public class Regalumno extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+	}
+	
+	
+	/**
+	 * Genera una cadena alfanumérica aleatoria con una longitud pasada por parámetro.
+	 * @param longitud
+	 * @return
+	 */
+	private String getCadenaAlfanumAleatoria (int longitud){
+		String cadenaAleatoria = "";
+		long milis = new java.util.GregorianCalendar().getTimeInMillis();
+		Random r = new Random(milis);
+		int i = 0;
+		
+		while ( i < longitud){
+			char c = (char)r.nextInt(255);
+			
+			if ( (c >= '0' && c <='9') || (c >='A' && c <='Z') ){
+				cadenaAleatoria += c;
+				i++;
+			}
+		}
+		
+		return cadenaAleatoria;
 	}
 
 }

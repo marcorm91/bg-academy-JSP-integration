@@ -149,7 +149,7 @@ public class MGestor {
 	 * @param email
 	 * @param tlf
 	 */
-	public void registraGestor(	String nombre, String apellido1, String apellido2, String nif,
+	public void registraGestor(	String nombre, String apellido1, String apellido2, String nif, String pass,
 								Date fecalta_date, String email, String tlf) {
 		
 		String insertGestor = "INSERT INTO bgacademy.gestor (nombre, apellido1, apellido2, usuario, pass, nif, tipouser, fecalta, email, tlf, activo) VALUES (?,?,?,?,?,?,?,?,?,?,?);";
@@ -164,7 +164,7 @@ public class MGestor {
 				 sentencia.setString(2, apellido1);
 				 sentencia.setString(3, apellido2);
 				 sentencia.setString(4, nif);
-				 sentencia.setString(5, nif);
+				 sentencia.setString(5, pass);
 				 sentencia.setString(6, nif);
 				 sentencia.setString(7, "G");
 				 sentencia.setDate(8, (java.sql.Date) sqlDate1);		

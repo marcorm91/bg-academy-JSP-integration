@@ -44,6 +44,7 @@
     <link rel="stylesheet" href="../../assets/css/jquery-ui.css">
     <link rel="stylesheet" type="text/css" href="../../assets/fonts/font-awesome/css/font-awesome.min.css">
 	<link rel="shortcut icon" href="../assets/imagenes/favicon.ico">
+	<link rel="stylesheet" type="text/css" href="../assets/css/dataTables.min.css">
     <link rel="stylesheet" href="../assets/css/estilos.css">
 </head>
     
@@ -294,45 +295,23 @@
 <!-- Subpanel tareas alumno -->
 <div id="subpanel-tareas-alumno">
     
-     <div class="container">
+     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12">
-                <table class="table">
+                <table class="table" id="alumn-table-tareas">
                   <thead>
                     <tr>
                       <th>ID</th>
                       <th>Fecha de entrega</th>
-                      <th>Profesor</th>
                       <th>Nombre Actividad</th>
+                      <th>Descripción</th>
                       <th>Seleccione Fichero</th>
                       <th>Subir</th>
+                      <th>Entrega</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>27/04/2017</td>
-                      <td>Luis Fernández</td>
-                      <td>Tema 1 (Writing)</td>
-                      <td><input type="file"></td>
-                      <td class="sube-tarea"><i class="fa fa-upload text-success" aria-hidden="true"></i></td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>01/05/2017</td>
-                      <td>Luis Fernández</td>
-                      <td>Tema 1 (Reading)</td>
-                      <td><input type="file"></td>
-                      <td class="sube-tarea"><i class="fa fa-upload text-success" aria-hidden="true"></i></td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td>15/05/2017</td>
-                      <td>Luis Fernández</td>
-                      <td>Tema 2 (Writing)</td>
-                      <td><input type="file"></td>
-                      <td class="sube-tarea"><i class="fa fa-upload text-success" aria-hidden="true"></i></td>
-                    </tr>
+                   
                   </tbody>
                 </table> 
             </div>
@@ -348,45 +327,23 @@
 <!-- Subpanel examenes alumno -->
 <div id="subpanel-examenes-alumno">
     
-     <div class="container">
+     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12">
-                <table class="table">
+                <table class="table" id="alumn-table-examenes">
                   <thead>
                     <tr>
                       <th>ID</th>
                       <th>Fecha de entrega</th>
-                      <th>Profesor</th>
-                      <th>Nombre Examen</th>
+                      <th>Nombre Actividad</th>
+                      <th>Descripción</th>
                       <th>Seleccione Fichero</th>
                       <th>Subir</th>
+                      <th>Entrega</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>27/04/2017</td>
-                      <td>Luis Fernández</td>
-                      <td>Tema 1 (Writing)</td>
-                      <td><input type="file"></td>
-                      <td class="sube-tarea"><i class="fa fa-upload text-success" aria-hidden="true"></i></td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>01/05/2017</td>
-                      <td>Luis Fernández</td>
-                      <td>Tema 1 (Reading)</td>
-                      <td><input type="file"></td>
-                      <td class="sube-tarea"><i class="fa fa-upload text-success" aria-hidden="true"></i></td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td>15/05/2017</td>
-                      <td>Luis Fernández</td>
-                      <td>Tema 2 (Writing)</td>
-                      <td><input type="file"></td>
-                      <td class="sube-tarea"><i class="fa fa-upload text-success" aria-hidden="true"></i></td>
-                    </tr>
+                    
                   </tbody>
                 </table> 
             </div>
@@ -409,13 +366,233 @@
         
 </div>
 
+<div class="loader" style='display: none;'></div> 
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
+<!-- Modal -->
+<div class="modal fade" id="modal-actividad" role="dialog">
+    <div class="modal-dialog modal-lg">
+    
+      <div class="modal-content">
+        <div class="modal-header bg-primary text-white">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title text-xs-center font-weight-bold">Descripción de la actividad</h4>
+        </div>
+        <div class="modal-body"></div>
+        <div class="modal-footer text-xs-center">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+      
+    </div>
+</div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"></script>
     <script src="../../assets/js/jquery-3.1.1.min.js"></script>
     <script src="../../assets/js/bootstrap.min.js"></script>
     <script src="../../assets/js/jquery-ui.js"></script>
+    <script src="../assets/js/dataTables.min.js"></script>
+    <script src="../assets/js/dataTables-bs4.min.js"></script>
     <script src="../assets/js/calendar.js"></script>
     <script src="../assets/js/script.js"></script>
+    
+    <script>
+    
+    	//**** TAREAS DE ALUMNOS ****//
+    
+    	$("#alumno-tareas").on("click", function(){
+    		
+    		$(".loader").css("display", "block");
+    		
+    		// Cargamos tras el inicio de la página todas las incidencias realizadas por el usuario.
+    		$.ajax({
+    			type: "POST",
+    			dataType: "json",
+    			async: false,
+    			url: "/Ver_tareas",    		
+    			success: function(resp){  
+    				
+    				for(var i = 0; i < resp.length; i++){
+    					for(j = 0; j < 4; j++){
+    						if(resp[i][j] == null){
+            					resp[i][j] = "";
+            				}
+    					}
+        			}
+    				
+    				var fechaactual = $.datepicker.formatDate('yy/mm/dd', new Date());
+    				
+    				for(var i = 0; i < resp.length; i++){
+    					
+    					if(fechaactual <= $.datepicker.formatDate('yy/mm/dd', new Date(resp[i][3]))){
+    					
+	    					$("#alumn-table-tareas tbody").append("<tr>");
+	    					    					
+	    						$("#alumn-table-tareas tbody tr:last-child").append("<td>"+resp[i][0]+"</td>");
+	    						$("#alumn-table-tareas tbody tr:last-child").append("<td>"+$.datepicker.formatDate('dd/mm/yy', new Date(resp[i][3]))+"</td>");
+	    						
+	    						if(resp[i][1].length > 15){
+	    							$("#alumn-table-tareas tbody tr:last-child").append("<td>"+resp[i][1].substr(0,15)+" ...</td>");
+	    						}else{
+	    							$("#alumn-table-tareas tbody tr:last-child").append("<td>"+resp[i][1]+"</td>");
+	    						}
+	    					
+	    						$("#alumn-table-tareas tbody tr:last-child").append("<td class='descr-act text-xs-center'><a href='' data-id="+resp[i][0]+" data-toggle='modal' data-target='#modal-actividad'><i class='fa fa-file-text text-primary' aria-hidden='true'></i></a></td>");
+	    						$("#alumn-table-tareas tbody tr:last-child").append("<td><input type='file'  style='color: transparent; width:10px;'></td>");
+	    						$("#alumn-table-tareas tbody tr:last-child").append("<td class='sube-tarea text-xs-center'><i class='fa fa-upload text-success' aria-hidden='true'></i></td>");
+	    						$("#alumn-table-tareas tbody tr:last-child").append("<td class='act-ok text-xs-center'><i class='fa fa-times text-danger' aria-hidden='true'></i></td>")
+	    						
+	    					$("#alumn-table-tareas tbody").append("</tr>");
+    						
+    					}
+    				}
+    				
+    	    			$("#alumn-table-tareas").DataTable({
+    						 "language":{
+    	    		         "lengthMenu":"Mostrar _MENU_ registros por página.",
+    	    		         "zeroRecords": "Sin resultados en su búsqueda.",
+    	    		               "info": "Hay un total de _MAX_ de tareas.",
+    	    		               "infoEmpty": "No hay registros aún.",
+    	    		               "infoFiltered": "(filtrados de un total de _MAX_ registros)",
+    	    		               "search" : "Búsqueda: ",
+    	    		               "LoadingRecords": "Cargando ...",
+    	    		               "Processing": "Procesando...",
+    	    		               "SearchPlaceholder": "Comience a teclear...",
+    	    		               "paginate": {
+    			    		          "previous": "Anterior",
+    			    		          "next": "Siguiente", 
+    	       					}
+    					 }
+
+    				});
+    				
+    			},
+    			complete: function(){
+    				$(".loader").fadeOut(2000);
+    			}
+    		});
+    		
+    	});
+    		
+    		
+			//**** EXÁMENES DE ALUMNOS ****//
+    		
+    		$("#alumno-examenes").on("click", function(){
+    			
+    			
+    		
+	    		$(".loader").css("display", "block");
+	    		
+	    		// Cargamos tras el inicio de la página todas las incidencias realizadas por el usuario.
+	    		$.ajax({
+	    			type: "POST",
+	    			dataType: "json",
+	    			async: false,
+	    			url: "/Ver_examenes",    		
+	    			success: function(resp){  
+	    				
+	    				for(var i = 0; i < resp.length; i++){
+	    					for(j = 0; j < 4; j++){
+	    						if(resp[i][j] == null){
+	            					resp[i][j] = "";
+	            				}
+	    					}
+	        			}
+	    				
+	    				var fechaactual = $.datepicker.formatDate('yy/mm/dd', new Date());
+	    				
+	    				for(var i = 0; i < resp.length; i++){
+	    					
+	    					if(fechaactual <= $.datepicker.formatDate('yy/mm/dd', new Date(resp[i][3]))){
+	    					
+		    					$("#alumn-table-examenes tbody").append("<tr>");
+		    					    					
+		    						$("#alumn-table-examenes tbody tr:last-child").append("<td>"+resp[i][0]+"</td>");
+		    						$("#alumn-table-examenes tbody tr:last-child").append("<td>"+$.datepicker.formatDate('dd/mm/yy', new Date(resp[i][3]))+"</td>");
+		    						
+		    						if(resp[i][1].length > 15){
+		    							$("#alumn-table-examenes tbody tr:last-child").append("<td>"+resp[i][1].substr(0,15)+" ...</td>");
+		    						}else{
+		    							$("#alumn-table-examenes tbody tr:last-child").append("<td>"+resp[i][1]+"</td>");
+		    						}
+		    					
+		    						$("#alumn-table-examenes tbody tr:last-child").append("<td class='descr-act text-xs-center'><a href='' data-id="+resp[i][0]+" data-toggle='modal' data-target='#modal-actividad'><i class='fa fa-file-text text-primary' aria-hidden='true'></i></a></td>");
+		    						$("#alumn-table-examenes tbody tr:last-child").append("<td><input type='file'  style='color: transparent; width:10px;'></td>");
+		    						$("#alumn-table-examenes tbody tr:last-child").append("<td class='sube-tarea text-xs-center'><i class='fa fa-upload text-success' aria-hidden='true'></i></td>");
+		    						$("#alumn-table-examenes tbody tr:last-child").append("<td class='act-ok text-xs-center'><i class='fa fa-times text-danger' aria-hidden='true'></i></td>")
+		    						
+		    					$("#alumn-table-examenes tbody").append("</tr>");
+	    						
+	    					}
+	    				}
+	    				
+	    	    			$("#alumn-table-examenes").DataTable({
+	    						 "language":{
+	    	    		         "lengthMenu":"Mostrar _MENU_ registros por página.",
+	    	    		         "zeroRecords": "Sin resultados en su búsqueda.",
+	    	    		               "info": "Hay un total de _MAX_ de exámenes.",
+	    	    		               "infoEmpty": "No hay registros aún.",
+	    	    		               "infoFiltered": "(filtrados de un total de _MAX_ registros)",
+	    	    		               "search" : "Búsqueda: ",
+	    	    		               "LoadingRecords": "Cargando ...",
+	    	    		               "Processing": "Procesando...",
+	    	    		               "SearchPlaceholder": "Comience a teclear...",
+	    	    		               "paginate": {
+	    			    		          "previous": "Anterior",
+	    			    		          "next": "Siguiente", 
+	    	       					}
+	    					 }
+	
+	    				});
+	    				
+	    			},
+	    			complete: function(){
+	    				$(".loader").fadeOut(2000);
+	    			}
+	    		});
+    		
+    		});
+    		
+    		
+    		
+    		//Recoge el data-id del alumno para hacer una consulta más exhaustiva en un modal.
+    		$(document).delegate(".descr-act a", "click", function(event){
+    			
+    			var idactividad = $(this).data("id");
+    			$("#modal-actividad").css("cursor", "default");
+    			
+    			$.ajax({
+    	    		type: "POST",
+    	    		dataType: "json",
+    	    		data: {idactividad:idactividad},
+    	    		url: "/Actividad_individual",
+    	    		success: function(resp){  	
+    	    			
+    	    			for(var i = 0; i < resp.length; i++){
+    	    				if(resp[i] == null){
+    	    					resp[i] = "";
+    	    				}
+    	    			}
+    	    			
+    	    			$(".modal-body").empty();
+    	    			
+    	    			$(".modal-body").append("<div class='text-xs-center'><h3 class='text-primary font-weight-bold'>"+resp[0]+"</h3></div>");
+    	    			$(".modal-body").append("<hr/>");
+    	    			
+    	    			if(resp[3] == "T"){
+    	    				$(".modal-body").append("<div class='text-xs-justify'><span class='font-weight-bold'>Descripción de la tarea: </span><p>"+resp[1]+"</p></div>");
+    	    			}else{
+    	    				$(".modal-body").append("<div class='text-xs-justify'><span class='font-weight-bold'>Descripción del examen: </span><p>"+resp[1]+"</p></div>");
+    	    			}
+    	    			
+    	    			$(".modal-body").append("<div><span class='font-weight-bold text-danger'>¡Recuerda!</span> <br/> Tienes hasta el <b>"+$.datepicker.formatDate('dd/mm/yy', new Date(resp[2]))+"</b> para hacer la entrega. </div>")
+    	    			
+    	    		}
+    			});	 
+    			
+    		});
+
+    
+    </script>
     
 </body>
 </html>

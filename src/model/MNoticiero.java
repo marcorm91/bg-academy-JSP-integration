@@ -100,7 +100,7 @@ public class MNoticiero {
 	 * @param email
 	 * @param tlf
 	 */
-	public void registraNoticiario(	String nombre, String apellido1, String apellido2, String nif, Date fecalta_date,
+	public void registraNoticiario(	String nombre, String apellido1, String apellido2, String nif, String pass, Date fecalta_date,
 									String email, String tlf) {
 		
 		String insertNot = "INSERT INTO bgacademy.noticiario (nombre, apellido1, apellido2, usuario, pass, nif, tipouser, fecalta, email, tlf, activo) VALUES (?,?,?,?,?,?,?,?,?,?,?);";
@@ -115,7 +115,7 @@ public class MNoticiero {
 				 sentencia.setString(2, apellido1);
 				 sentencia.setString(3, apellido2);
 				 sentencia.setString(4, nif);
-				 sentencia.setString(5, nif);
+				 sentencia.setString(5, pass);
 				 sentencia.setString(6, nif);
 				 sentencia.setString(7, "N");
 				 sentencia.setDate(8, (java.sql.Date) sqlDate1);		

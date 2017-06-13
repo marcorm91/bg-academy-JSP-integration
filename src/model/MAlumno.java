@@ -124,7 +124,7 @@ public class MAlumno {
 	 * @param cursoimp
 	 * @param comentarios
 	 */
-	public void registraAlumno(	String nombre, String apellido1, String apellido2, String nif, Date fecna_date,
+	public void registraAlumno(	String nombre, String apellido1, String apellido2, String nif, String pass, Date fecna_date,
 								String nacimiento, String nacionalidad, String calle, String cp, String poblacion, String provincia,
 								Date fecalta_date, String email, String tlf, String anioprom, String cursoasign, String comentarios, String idcurso) {
 		
@@ -141,7 +141,7 @@ public class MAlumno {
 				 sentencia.setString(2, apellido1);
 				 sentencia.setString(3, apellido2);
 				 sentencia.setString(4, nif);
-				 sentencia.setString(5, nif);
+				 sentencia.setString(5, pass);
 				 sentencia.setDate(6, (java.sql.Date) sqlDate1);
 				 sentencia.setString(7, nif);
 				 sentencia.setString(8, nacimiento);

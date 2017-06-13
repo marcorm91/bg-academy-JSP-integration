@@ -895,6 +895,7 @@ $(document).ready(function() {
     		url: "/Recogefechas",
     		async: false,
     		success: function(resp){  
+    			$("#anio-curso-profesor").empty().append("<option> - Seleccione curso - </option>");
     			for(var i = 0; i < resp.length; i++){			
     				if(resp[i][0] != null || resp[i][1] != null){
     					$("#anio-curso-profesor").append("<option> " + resp[i][0] + " - " + resp[i][1] + "</option>");

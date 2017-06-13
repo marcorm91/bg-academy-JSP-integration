@@ -83,7 +83,7 @@ $(document).ready(function(){
     		type: "POST",
     		dataType: "json",
     		data: {id:id},
-    		url: "/Noticia_individual",
+    		url: "/Tarea_individual",
     		success: function(resp){  	
     			
     			for(var i = 0; i < resp.length; i++){
@@ -108,7 +108,6 @@ $(document).ready(function(){
     			
     		}
 		});	 
-		
 		
 	});
 	

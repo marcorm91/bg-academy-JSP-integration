@@ -3106,5 +3106,15 @@
 		color: #000;
 		font-weigth: bolder;}
 	}
+	
+	.descr-act i, .act-ok i{
+		font-size: 20px;
+	}
+	
+	#alumn-table-tareas{
+		margin-bottom: 20px !important;}
+		
+	#alumn-table-examenes{
+		margin-bottom: 20px !important;}
 
 /*# sourceMappingURL=estilos.css.map */

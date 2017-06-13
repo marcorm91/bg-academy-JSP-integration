@@ -47,7 +47,7 @@ public class Alumn_individual extends HttpServlet {
         
         Object[] datos_usu = (Object []) hs.getAttribute("identificacion");
                 
-        if(hs.getAttribute("log") == null && !datos_usu[1].equals("G") || !datos_usu[1].equals("P")){
+        if(hs.getAttribute("log") == null || !datos_usu[1].equals("G") && !datos_usu[1].equals("P")){
 			response.sendRedirect("error.jsp");
 		}else{
 							

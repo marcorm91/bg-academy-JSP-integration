@@ -614,7 +614,7 @@ button.ui-button::-moz-focus-inner {
 	border-width: 1px 0 0 0;
 	background-image: none;
 	margin-top: .5em;
-	padding: .3em 1em .5em .4em;
+/* 	padding: .3em 1em .5em .4em; */
 }
 .ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset {
 	float: right;
@@ -664,7 +664,8 @@ button.ui-button::-moz-focus-inner {
 }
 .ui-draggable .ui-dialog-titlebar {
 	cursor: move;
-	background-color: #db605e;
+	background-color: #033766;
+	color: #fff;
 }
 .ui-progressbar {
 	height: 2em;

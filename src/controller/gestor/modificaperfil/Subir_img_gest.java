@@ -59,7 +59,7 @@ public class Subir_img_gest extends HttpServlet {
 					
 				for (Object item : items) {
 				   FileItem uploaded = (FileItem) item;
-				   		   
+				    		   
 				   if (!uploaded.isFormField()) {
 					   
 					   long time = new Date().getTime();
@@ -78,7 +78,6 @@ public class Subir_img_gest extends HttpServlet {
 							  filelist[i].delete();
 						  }
 					  }
-					  
 					   	
 					  // Identificamos la ruta completa del usuario para hacer la subida, y cuando la tengamos
 					  // insertamos en la BD, en la tabla ficheros, un registro con el nombre de usuario, el tipo
