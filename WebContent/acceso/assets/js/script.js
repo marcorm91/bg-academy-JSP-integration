@@ -35,7 +35,7 @@ $(document).ready(function() {
             }            
         
     $("#fecha-nacimiento-profesor, #fecha-nacimiento-alumno, #fnac-modificar-alumn-perfil, #fnac-modificar-prof-perfil").datepicker({maxDate:0, changeYear: true, yearRange:'-90:+0'});
-    $("#fecha-limite-subida-tarea, #fecha-limite-subida-examen").datepicker({minDate:0, changeYear: true, yearRange:'0:+10'});
+    $("#fecha-limite-subida-tarea, #fecha-limite-subida-examen").datepicker({minDate:0, changeYear: true, yearRange:'0:+10', beforeShowDay: $.datepicker.noWeekends});
     
     // Cuando boton-collapse que es el botón de menú en dispositivo mobile se abre, no le daremos ninguna funcionalidad
     // a los elementos del body.
@@ -219,14 +219,6 @@ $(document).ready(function() {
     });
     
     /*** SUBPANELES DE CURSO (PROFESOR) ***/
-    $("#profesor-calendario").on("click", function(){     
-        $(".panel-opciones").slideToggle();
-        $(".panel-principal > h1").replaceWith("<h1><a href='../principal-profesor.jsp'>Panel Principal</a> "+
-                                               "/ <a href='./cursos.jsp'> Mis Cursos Asignados </a>"+
-                                               "/ Calendario </h1>");
-        $("#subpanel-calendario-profesor").slideToggle();
-    });
-    
     $("#profesor-tareas").on("click", function(){     
         $(".panel-opciones").slideToggle();
         $(".panel-principal > h1").replaceWith("<h1><a href='../principal-profesor.jsp'>Panel Principal</a> "+

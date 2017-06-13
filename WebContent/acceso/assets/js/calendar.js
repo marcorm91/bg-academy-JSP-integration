@@ -5,37 +5,39 @@ var meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Ag
 // -------------------------------------------------------------- //
 
 $(document).ready(function(){
-
+	
     fecha = new Date();
     mesActual =  fecha.getMonth();
     anioActual = fecha.getFullYear();
 
     // Con esto imprimimos en la parte superior de la pantalla, como título, el mes y año actual.
     $("#mesActual").text(meses[fecha.getMonth()] + " - " + fecha.getFullYear());
-
+    
+    arrayActividades = actividades();
+    
     // Este evento nos pinta el calendario con el mes y año actual en el que nos encontramos.
     $("#bHoy").on('click', function() {
         mesActual = fecha.getMonth();
         anioActual = fecha.getFullYear();
         $("#mesActual").text(meses[mesActual] + " - " + (anioActual));
-        $('td').removeClass('seleccionada');
-        escribirDias();
+        $('td').removeClass('seleccion');
+        escribirDias(arrayActividades);
     });
 
     // Este evento nos pinta el calendario con el año anterior al situado previamente.
     $("#anioAnterior").on('click', function() {
         anioActual -= 1;
         $("#mesActual").text(meses[mesActual] + " - " + (anioActual));
-        $('td').removeClass('seleccionada');
-         escribirDias();
+        $('td').removeClass('seleccion');
+         escribirDias(arrayActividades);
     });
 
 	// Este evento nos pinta el calendario con el año posterior al situado previamente.
     $("#anioSiguiente").on('click', function() {
         anioActual += 1;
         $("#mesActual").text(meses[mesActual] + " - " + (anioActual));
-        $('td').removeClass('seleccionada');
-         escribirDias();
+        $('td').removeClass('seleccion');
+         escribirDias(arrayActividades);
     });
 
     // Este evento nos pinta el calendario con el mes anterior al situado previamente.
@@ -43,8 +45,8 @@ $(document).ready(function(){
         if(mesActual != 0){
             mesActual -= 1;
             $("#mesActual").text(meses[mesActual] + " - " + (anioActual));
-            $('td').removeClass('seleccionada');
-             escribirDias();
+            $('td').removeClass('seleccion');
+             escribirDias(arrayActividades);
         }
     });
 
@@ -53,12 +55,12 @@ $(document).ready(function(){
         if(mesActual != 11){
             mesActual += 1;
             $("#mesActual").text(meses[mesActual] + " - " + (anioActual));
-            $('td').removeClass('seleccionada');
-             escribirDias();
+            $('td').removeClass('seleccion');
+             escribirDias(arrayActividades);
         }
     });	
     
-    escribirDias();
+    escribirDias(arrayActividades);
     
 });
 
@@ -67,8 +69,8 @@ $(document).ready(function(){
 /**
  * Esta función nos realizará el pintado del calendario sobre el mes y año que seleccionemos.
  **/
-function escribirDias() {
-
+function escribirDias(arrayActividades) {
+		
          primerDia=new Date(anioActual,mesActual,"1")
          primeraSemana = primerDia.getDay()
          primeraSemana--;
@@ -123,9 +125,13 @@ function escribirDias() {
                         $(celda).attr("data-fecha", data);
                         $('td', fila).eq(j).removeClass('sinFecha');
                         $('td', fila).eq(j).addClass('conFecha');
-                        $('td', fila).eq(j).addClass('encima');
+                        //$('td', fila).eq(j).addClass('encima');
+                                                
+                           if(arrayActividades.indexOf(data)>-1){
+                                $('td', fila).eq(j).addClass('seleccion');
+                                //$('td', fila).eq(j).removeClass('encima');
+                           }
 
-                    
                     // Si el día es sábado o domingo, quitamos la clase sinFecha. Tener en cuenta que se quedará
                     // sólo con la clase finde que es fija en la tabla.     
                     }else{
@@ -145,7 +151,7 @@ function escribirDias() {
                     celda.removeAttr('data-fecha');
                     $('td', fila).eq(j).removeClass('conFecha');
                     $('td', fila).eq(j).addClass('sinFecha');
-                    $('td', fila).eq(j).removeClass('encima');
+                    //$('td', fila).eq(j).removeClass('encima');
 
                  }
 
@@ -156,4 +162,28 @@ function escribirDias() {
              }
 
          }
+}
+
+
+function actividades(){
+    var actividades;
+     
+     $.ajax({
+        url: '/Recoge_fecactividades',
+        type: 'POST',
+        dataType: "json",
+        async: false,
+        success: function(respuesta){
+        	        	
+            actividades = new Array(respuesta.length);
+            
+            for(var i = 0; i < respuesta.length; i++){
+            	actividades[i] = respuesta[i];
+            }  
+            
+        }
+
+    });
+
+    return actividades;
 }

@@ -392,8 +392,8 @@
     <script src="../../assets/js/jquery-ui.js"></script>
     <script src="../assets/js/dataTables.min.js"></script>
     <script src="../assets/js/dataTables-bs4.min.js"></script>
-    <script src="../assets/js/calendar.js"></script>
     <script src="../assets/js/script.js"></script>
+        <script src="../assets/js/calendar.js"></script>
     
     <script>
     
@@ -437,7 +437,7 @@
 	    						}
 	    					
 	    						$("#alumn-table-tareas tbody tr:last-child").append("<td class='descr-act text-xs-center'><a href='' data-id="+resp[i][0]+" data-toggle='modal' data-target='#modal-actividad'><i class='fa fa-file-text text-primary' aria-hidden='true'></i></a></td>");
-	    						$("#alumn-table-tareas tbody tr:last-child").append("<td><input type='file'  style='color: transparent; width:10px;'></td>");
+	    						$("#alumn-table-tareas tbody tr:last-child").append("<td><input type='file'></td>");
 	    						$("#alumn-table-tareas tbody tr:last-child").append("<td class='sube-tarea text-xs-center'><i class='fa fa-upload text-success' aria-hidden='true'></i></td>");
 	    						$("#alumn-table-tareas tbody tr:last-child").append("<td class='act-ok text-xs-center'><i class='fa fa-times text-danger' aria-hidden='true'></i></td>")
 	    						
@@ -450,7 +450,7 @@
     						 "language":{
     	    		         "lengthMenu":"Mostrar _MENU_ registros por página.",
     	    		         "zeroRecords": "Sin resultados en su búsqueda.",
-    	    		               "info": "Hay un total de _MAX_ de tareas.",
+    	    		               "info": "Hay un total de _MAX_ tareas.",
     	    		               "infoEmpty": "No hay registros aún.",
     	    		               "infoFiltered": "(filtrados de un total de _MAX_ registros)",
     	    		               "search" : "Búsqueda: ",
@@ -529,7 +529,7 @@
 	    						 "language":{
 	    	    		         "lengthMenu":"Mostrar _MENU_ registros por página.",
 	    	    		         "zeroRecords": "Sin resultados en su búsqueda.",
-	    	    		               "info": "Hay un total de _MAX_ de exámenes.",
+	    	    		               "info": "Hay un total de _MAX_ exámenes.",
 	    	    		               "infoEmpty": "No hay registros aún.",
 	    	    		               "infoFiltered": "(filtrados de un total de _MAX_ registros)",
 	    	    		               "search" : "Búsqueda: ",
@@ -590,6 +590,9 @@
     			});	 
     			
     		});
+    		
+    		
+    		    		
 
     
     </script>

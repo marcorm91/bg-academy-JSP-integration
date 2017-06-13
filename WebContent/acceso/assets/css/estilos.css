@@ -2746,7 +2746,6 @@
     /* line 745, C:/xampp/htdocs/design-project/acceso/assets/css/estilos.scss */
     #subpanel-calendario-alumno #calendario td,
     #subpanel-calendario-profesor #calendario td {
-      cursor: pointer;
       margin: 15px;
       padding: 18px;
       background-color: #FFF;
@@ -2756,7 +2755,6 @@
     /* line 755, C:/xampp/htdocs/design-project/acceso/assets/css/estilos.scss */
     #subpanel-calendario-alumno #calendario th,
     #subpanel-calendario-profesor #calendario th {
-      cursor: default;
       padding-left: 2em;
       padding-right: 2em;
       background-color: #033766;
@@ -2790,7 +2788,6 @@
   /* line 790, C:/xampp/htdocs/design-project/acceso/assets/css/estilos.scss */
   #subpanel-calendario-alumno #calendario .conFecha,
   #subpanel-calendario-profesor #calendario .conFecha {
-    cursor: pointer;
     margin: 15px;
     padding: 15px;
     background-color: #FFF;
@@ -3116,5 +3113,9 @@
 		
 	#alumn-table-examenes{
 		margin-bottom: 20px !important;}
+		
+	.seleccion{
+		background-color: #FFB266 !important;
+	}
 
 /*# sourceMappingURL=estilos.css.map */

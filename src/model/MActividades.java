@@ -130,6 +130,7 @@ public class MActividades {
 		
 	}
 
+	
 	/**
 	 * Devuelve el número de registros de la tabla actividades con el año de promoción y curso asignado establecido.
 	 * @param anioprom
@@ -159,6 +160,37 @@ public class MActividades {
 			System.out.println(e);
 		}
 				 
+		return filas;
+	}
+	
+	/**
+	 * Devuelve el número de registros de la tabla actividades con el año de promoción y curso asignado establecido.
+	 * @param anioprom
+	 * @param cursoasign
+	 * @return
+	 */
+	private int totalRegistrosActividades(String anioprom, String cursoasign) {
+		
+		String totalActividades = "SELECT COUNT(*) AS contador FROM bgacademy.actividades "
+	 			 				+ "WHERE anioprom = ? AND cursoasign = ?;";
+
+		int filas = 0;
+		
+		try{
+		
+			PreparedStatement sentencia = conexion.prepareStatement(totalActividades);	 
+			sentencia.setString(1, anioprom);
+			sentencia.setString(2, cursoasign);
+			ResultSet rs = sentencia.executeQuery();
+			
+			while(rs.next()){
+				filas = rs.getInt("contador");
+			}
+		
+		}catch(Exception e){
+			System.out.println(e);
+		}
+				
 		return filas;
 	}
 
@@ -191,6 +223,42 @@ public class MActividades {
 		 }catch(Exception e){
 	    	 System.out.println(e);
 		 }
+		
+		return datos;
+		
+	}
+
+	
+	/**
+	 * Devuelve la fecha, el título y el tipo de actividad (E ó T).
+	 * @param anioprom
+	 * @param cursoasign
+	 * @return
+	 */
+	public Object[] devuelveFechas(String anioprom, String cursoasign) {
+		
+		int cantidad = totalRegistrosActividades(anioprom, cursoasign);
+		Object datos[] = new Object[cantidad];
+		int i = 0;
+		
+		String selectActividades = "SELECT feclimite FROM bgacademy.actividades WHERE anioprom = ? AND "
+								 + "cursoasign = ?;";
+		
+		try{
+		
+			PreparedStatement sentencia = conexion.prepareStatement(selectActividades);
+			sentencia.setString(1, anioprom);
+			sentencia.setString(2, cursoasign);
+			ResultSet rs = sentencia.executeQuery();
+		
+			while(rs.next()){
+				 datos[i] = rs.getString("feclimite");
+				 i++;
+			 }
+				
+		}catch(SQLException e){
+			System.out.println(e);
+		}
 		
 		return datos;
 		

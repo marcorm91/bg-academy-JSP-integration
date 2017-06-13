@@ -162,11 +162,7 @@
                             </div>
                         </div>
                          <div class="row">
-                            <div class="col-md-4 col-xs-12">
-                                <i class="fa fa-calendar fa-4x" aria-hidden="true" data-toggle="modal"
-                                   id="profesor-calendario"></i> <p> Calendario </p>
-                            </div>
-                            <div class="col-md-4 col-xs-12">
+                            <div class="col-md-12 col-xs-12">
                                 <a href="../principal-profesor.jsp"> <i class="fa fa-arrow-left fa-4x" aria-hidden="true"></i>  </a>
                                 <p> Volver </p>
                             </div>
@@ -178,69 +174,6 @@
     </div>
     
  <!------- SUBPANELES DE MIS CURSOS ASIGNADOS ------->
-    
- <!-- Subpanel profesor calendario -->
- <div id="subpanel-calendario-profesor">
-    
-     <div class="container">
-        
-        <div class="row">
-            <div class="col-xs-4 text-xs-right">
-                <button id="anioAnterior" class="btn btn-info"><i class="fa fa-angle-double-left fa-3x" aria-hidden="true"></i></button>
-                <button id="mesAnterior" class="btn btn-info"><i class="fa fa-angle-left fa-3x" aria-hidden="true"></i></button>
-            </div>
-
-            <div class="col-xs-4 text-xs-center">
-                <div id="mesActual"> </div> 
-            </div>
-
-            <div class="col-xs-4 text-xs-left">
-                <button id="mesSiguiente" class="btn btn-info"><i class="fa fa-angle-right fa-3x" aria-hidden="true"></i></button>
-                <button id="anioSiguiente" class="btn btn-info"><i class="fa fa-angle-double-right fa-3x" aria-hidden="true"></i></button> 
-            </div>
-        </div>
-    
-        
-        <div class="row text-xs-center">
-            <div class="col-xs-12">
-                <div class="hoy"> 
-                    <button id="bHoy" class="btn btn-info"> HOY </button> 
-                </div>
-            </div>
-        </div>
-        
-
-       <div class="row text-xs-center">
-            <table id="calendario">
-
-                <tr>
-                    <th>Lunes</th>
-                    <th>Martes</th>
-                    <th>Miércoles</th>
-                    <th>Jueves</th>
-                    <th>Viernes</th>
-                    <th>Sábado</th>
-                    <th>Domingo</th>
-                </tr>
-
-                <tr id="F1"><td></td><td></td><td></td><td></td><td></td><td class="finde"></td><td class="finde"></td></tr>
-                <tr id="F2"><td></td><td></td><td></td><td></td><td></td><td class="finde"></td><td class="finde"></td></tr>
-                <tr id="F3"><td></td><td></td><td></td><td></td><td></td><td class="finde"></td><td class="finde"></td></tr>
-                <tr id="F4"><td></td><td></td><td></td><td></td><td></td><td class="finde"></td><td class="finde"></td></tr>
-                <tr id="F5"><td></td><td></td><td></td><td></td><td></td><td class="finde"></td><td class="finde"></td></tr>
-                <tr id="F6"><td></td><td></td><td></td><td></td><td></td><td class="finde"></td><td class="finde"></td></tr>
-
-            </table>
-        </div>
-
-    </div>
-        
-     <div class="col-xs-12 text-xs-center btn-atras">
-         <a href="./cursos.jsp"> <button class="btn btn-primary"> Volver </button> </a>
-     </div>
-   
-</div>
-    
     
 <!-- Subpanel subir tarea profesor -->
 <div id="subpanel-sub-tarea-profesor">
@@ -839,7 +772,6 @@
     <script src="../../assets/js/jquery-3.1.1.min.js"></script>
     <script src="../../assets/js/bootstrap.min.js"></script>
     <script src="../../assets/js/jquery-ui.js"></script>
-    <script src="../assets/js/calendar.js"></script>
     <script src="../assets/js/dataTables.min.js"></script>
     <script src="../assets/js/dataTables-bs4.min.js"></script>
     <script src="../assets/js/tooltip/anime.min.js"></script>
@@ -1197,7 +1129,6 @@
 			}
 	    		    	
 	    });
-
 	   
     });
        
