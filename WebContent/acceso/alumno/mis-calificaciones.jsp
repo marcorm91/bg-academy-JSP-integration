@@ -153,23 +153,7 @@
                         </div>
                     </div>
                     <div class="row tareas-notas-alumno collapse in" id="tareas" >
-                        <div class="col-xs-12">
-                            <h4 class="titulo-alumno-calif">Tarea Comprensión Escrita 1</h4>
-                            <h5 class="descripcion-alumno-calif text-justify">
-                                There are two short texts about UK animals and plants in this task. They are symbols of British culture. The aim is to show that you understand the content.
-                            </h5>
-                            <span class="fecha-alumno-calif">15/04/2017</span>
-                            <span class="nota-alumno-calif">Nota: <span id="nota-1" class="text-success">7,5</span></span>
-                            <hr/>
-                        </div>
-                        <div class="col-xs-12">
-                            <h4 class="titulo-alumno-calif">Tarea Comprensión Escrita 2</h4>
-                            <h5 class="descripcion-alumno-calif text-justify">
-                                You will read a text about the story of a Scottish man and his dog. The aim is to show that you understand the content by answering the multiple choice and true/false questions.
-                            </h5>
-                            <span class="fecha-alumno-calif">27/04/2017</span>
-                            <span class="nota-alumno-calif">Nota: <span id="nota-2" class="text-success">6,1</span></span>
-                        </div>
+                        
                     </div>
                     <!-- EXÁMENES -->
                     <div class="row">
@@ -178,31 +162,15 @@
                         </div>
                     </div>
                         <div class="row tareas-notas-alumno collapse in" id="examenes" aria-expanded="true">
-                            <div class="col-xs-12">
-                                <h4 class="titulo-alumno-calif">Examen Comprensión Escrita 1</h4>
-                                <h5 class="descripcion-alumno-calif text-justify">
-                                    Realizado en clase sobre vocabulario de ropa y vestidos.
-                                </h5>
-                                <span class="fecha-alumno-calif">01/04/2017</span>
-                                <span class="nota-alumno-calif">Nota: <span id="nota-3" class="text-danger">3,1</span></span>
-                                <hr/>
-                            </div>
-                            <div class="col-xs-12">
-                                <h4 class="titulo-alumno-calif">Examen Comprensión Escrita 2</h4>
-                                <h5 class="descripcion-alumno-calif text-justify">
-                                    Realizado en clase sobre vocabulario de animales y paisajes.
-                                </h5>
-                                <span class="fecha-alumno-calif">05/04/2017</span>
-                                <span class="nota-alumno-calif">Nota: <span id="nota-4" class="text-success">8</span></span>
-                            </div>
+                           
                         </div>
                
-                    <div class="row text-xs-center pdf">                           
-                        <div class="col-xs-12">
-                            <i class="fa fa-file-pdf-o text-danger" aria-hidden="true"></i>
-                            <p class="text-danger">Descargar en PDF</p>
-                        </div>
-                    </div>
+<!--                     <div class="row text-xs-center pdf">                            -->
+<!--                         <div class="col-xs-12"> -->
+<!--                             <i class="fa fa-file-pdf-o text-danger" aria-hidden="true"></i> -->
+<!--                             <p class="text-danger">Descargar en PDF</p> -->
+<!--                         </div> -->
+<!--                     </div> -->
                     <div class="form-group row text-xs-center">
                         <div class="col-xs-12">
                             <a href="../principal-alumno.jsp"><button type="button" class="btn btn-primary">Volver</button></a>
@@ -223,11 +191,14 @@
         
 </div>
 
+<div class="loader" style='display: none;'></div> 
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"></script>
     <script src="../../assets/js/jquery-3.1.1.min.js"></script>
     <script src="../../assets/js/bootstrap.min.js"></script>
     <script src="../../assets/js/jquery-ui.js"></script>
     <script src="../assets/js/script.js"></script>
+    <script src="../assets/js/a_mis-calificaciones.js"></script>
     
 </body>
 </html>

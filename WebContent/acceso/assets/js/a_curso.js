@@ -4,7 +4,7 @@ $("#alumno-tareas").on("click", function(){
 	
 	$(".loader").css("display", "block");
 	
-	// Cargamos tras el inicio de la página todas las incidencias realizadas por el usuario.
+	// Cargamos tras el inicio de la página todas las tareas a realizar por el usuario.
 	$.ajax({
 		type: "POST",
 		dataType: "json",
@@ -81,7 +81,7 @@ $("#alumno-examenes").on("click", function(){
 	
 	$(".loader").css("display", "block");
 	
-	// Cargamos tras el inicio de la página todas las incidencias realizadas por el usuario.
+	// Cargamos tras el inicio de la página todos los exámenes a realizar por el usuario.
 	$.ajax({
 		type: "POST",
 		dataType: "json",

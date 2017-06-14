@@ -104,7 +104,7 @@ public class MActividades {
 		int i = 0;
 		
 		String selectIncidencias = "SELECT idactividad, titulo, detalles, feclimite FROM bgacademy.actividades WHERE anioprom = ? AND "
-								 + "cursoasign = ? AND tipo = ?;";
+								 + "cursoasign = ? AND tipo = ? ORDER BY feclimite desc;";
 		
 		try{
 		
