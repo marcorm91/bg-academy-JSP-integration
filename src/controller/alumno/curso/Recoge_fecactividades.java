@@ -24,7 +24,7 @@ public class Recoge_fecactividades extends HttpServlet {
 	private HttpSession hs;
 	private MActividades modelo_actividades;
 	private Conexion conexionBD;
-	private Object fecactividades[];
+	private Object fecactividades[][];
 	private String anioprom, cursoasign;
        
     /**

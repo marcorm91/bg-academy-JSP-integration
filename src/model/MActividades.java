@@ -235,14 +235,14 @@ public class MActividades {
 	 * @param cursoasign
 	 * @return
 	 */
-	public Object[] devuelveFechas(String anioprom, String cursoasign) {
+	public Object[][] devuelveFechas(String anioprom, String cursoasign) {
 		
 		int cantidad = totalRegistrosActividades(anioprom, cursoasign);
-		Object datos[] = new Object[cantidad];
+		Object datos[][] = new Object[cantidad][3];
 		int i = 0;
 		
-		String selectActividades = "SELECT feclimite FROM bgacademy.actividades WHERE anioprom = ? AND "
-								 + "cursoasign = ?;";
+		String selectActividades = "SELECT feclimite, tipo, titulo FROM bgacademy.actividades WHERE anioprom = ? AND "
+								 + "cursoasign = ? order by feclimite asc;";
 		
 		try{
 		
@@ -252,7 +252,9 @@ public class MActividades {
 			ResultSet rs = sentencia.executeQuery();
 		
 			while(rs.next()){
-				 datos[i] = rs.getString("feclimite");
+				 datos[i][0] = rs.getString("feclimite");
+				 datos[i][1] = rs.getString("tipo");
+				 datos[i][2] = rs.getString("titulo");
 				 i++;
 			 }
 				

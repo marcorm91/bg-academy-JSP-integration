@@ -129,7 +129,6 @@ function escribirDias(arrayActividades) {
                                                 
                            if(arrayActividades.indexOf(data)>-1){
                                 $('td', fila).eq(j).addClass('seleccion');
-                                //$('td', fila).eq(j).removeClass('encima');
                            }
 
                     // Si el día es sábado o domingo, quitamos la clase sinFecha. Tener en cuenta que se quedará
@@ -178,7 +177,7 @@ function actividades(){
             actividades = new Array(respuesta.length);
             
             for(var i = 0; i < respuesta.length; i++){
-            	actividades[i] = respuesta[i];
+            	actividades[i] = respuesta[i][0];
             }  
             
         }

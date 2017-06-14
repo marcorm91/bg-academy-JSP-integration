@@ -291,7 +291,7 @@
     
     <script>
     
- // Crear un input oculto para pasar el nombre del fichero a la BD.
+ 	// Crear un input oculto para pasar el nombre del fichero a la BD.
 	document.getElementById('img-modificar-prof-perfil').onchange = uploadOnChange;	   
 	
 	function uploadOnChange() { 

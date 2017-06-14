@@ -230,6 +230,15 @@
                 <tr id="F6"><td></td><td></td><td></td><td></td><td></td><td class="finde"></td><td class="finde"></td></tr>
 
             </table>
+            
+            <div class="row text-xs-center" id="prox-actividades" style="cursor:default;">
+            	<div class="col-xs-12">
+            		<h5 class="font-weight-bold text-primary">Próximas actividades</h5> 
+            		<span> <em><b>¡Atención!</b> Sólo se muestran las actividades entregables en los próximos 15 días.</em></span><hr/>
+            		
+            	</div>
+            </div>
+            
         </div>
 
     </div>
@@ -393,209 +402,8 @@
     <script src="../assets/js/dataTables.min.js"></script>
     <script src="../assets/js/dataTables-bs4.min.js"></script>
     <script src="../assets/js/script.js"></script>
-        <script src="../assets/js/calendar.js"></script>
-    
-    <script>
-    
-    	//**** TAREAS DE ALUMNOS ****//
-    
-    	$("#alumno-tareas").on("click", function(){
-    		
-    		$(".loader").css("display", "block");
-    		
-    		// Cargamos tras el inicio de la página todas las incidencias realizadas por el usuario.
-    		$.ajax({
-    			type: "POST",
-    			dataType: "json",
-    			async: false,
-    			url: "/Ver_tareas",    		
-    			success: function(resp){  
-    				
-    				for(var i = 0; i < resp.length; i++){
-    					for(j = 0; j < 4; j++){
-    						if(resp[i][j] == null){
-            					resp[i][j] = "";
-            				}
-    					}
-        			}
-    				
-    				var fechaactual = $.datepicker.formatDate('yy/mm/dd', new Date());
-    				
-    				for(var i = 0; i < resp.length; i++){
-    					
-    					if(fechaactual <= $.datepicker.formatDate('yy/mm/dd', new Date(resp[i][3]))){
-    					
-	    					$("#alumn-table-tareas tbody").append("<tr>");
-	    					    					
-	    						$("#alumn-table-tareas tbody tr:last-child").append("<td>"+resp[i][0]+"</td>");
-	    						$("#alumn-table-tareas tbody tr:last-child").append("<td>"+$.datepicker.formatDate('dd/mm/yy', new Date(resp[i][3]))+"</td>");
-	    						
-	    						if(resp[i][1].length > 15){
-	    							$("#alumn-table-tareas tbody tr:last-child").append("<td>"+resp[i][1].substr(0,15)+" ...</td>");
-	    						}else{
-	    							$("#alumn-table-tareas tbody tr:last-child").append("<td>"+resp[i][1]+"</td>");
-	    						}
-	    					
-	    						$("#alumn-table-tareas tbody tr:last-child").append("<td class='descr-act text-xs-center'><a href='' data-id="+resp[i][0]+" data-toggle='modal' data-target='#modal-actividad'><i class='fa fa-file-text text-primary' aria-hidden='true'></i></a></td>");
-	    						$("#alumn-table-tareas tbody tr:last-child").append("<td><input type='file'></td>");
-	    						$("#alumn-table-tareas tbody tr:last-child").append("<td class='sube-tarea text-xs-center'><i class='fa fa-upload text-success' aria-hidden='true'></i></td>");
-	    						$("#alumn-table-tareas tbody tr:last-child").append("<td class='act-ok text-xs-center'><i class='fa fa-times text-danger' aria-hidden='true'></i></td>")
-	    						
-	    					$("#alumn-table-tareas tbody").append("</tr>");
-    						
-    					}
-    				}
-    				
-    	    			$("#alumn-table-tareas").DataTable({
-    						 "language":{
-    	    		         "lengthMenu":"Mostrar _MENU_ registros por página.",
-    	    		         "zeroRecords": "Sin resultados en su búsqueda.",
-    	    		               "info": "Hay un total de _MAX_ tareas.",
-    	    		               "infoEmpty": "No hay registros aún.",
-    	    		               "infoFiltered": "(filtrados de un total de _MAX_ registros)",
-    	    		               "search" : "Búsqueda: ",
-    	    		               "LoadingRecords": "Cargando ...",
-    	    		               "Processing": "Procesando...",
-    	    		               "SearchPlaceholder": "Comience a teclear...",
-    	    		               "paginate": {
-    			    		          "previous": "Anterior",
-    			    		          "next": "Siguiente", 
-    	       					}
-    					 }
-
-    				});
-    				
-    			},
-    			complete: function(){
-    				$(".loader").fadeOut(2000);
-    			}
-    		});
-    		
-    	});
-    		
-    		
-			//**** EXÁMENES DE ALUMNOS ****//
-    		
-    		$("#alumno-examenes").on("click", function(){
-    			
-    			
-    		
-	    		$(".loader").css("display", "block");
-	    		
-	    		// Cargamos tras el inicio de la página todas las incidencias realizadas por el usuario.
-	    		$.ajax({
-	    			type: "POST",
-	    			dataType: "json",
-	    			async: false,
-	    			url: "/Ver_examenes",    		
-	    			success: function(resp){  
-	    				
-	    				for(var i = 0; i < resp.length; i++){
-	    					for(j = 0; j < 4; j++){
-	    						if(resp[i][j] == null){
-	            					resp[i][j] = "";
-	            				}
-	    					}
-	        			}
-	    				
-	    				var fechaactual = $.datepicker.formatDate('yy/mm/dd', new Date());
-	    				
-	    				for(var i = 0; i < resp.length; i++){
-	    					
-	    					if(fechaactual <= $.datepicker.formatDate('yy/mm/dd', new Date(resp[i][3]))){
-	    					
-		    					$("#alumn-table-examenes tbody").append("<tr>");
-		    					    					
-		    						$("#alumn-table-examenes tbody tr:last-child").append("<td>"+resp[i][0]+"</td>");
-		    						$("#alumn-table-examenes tbody tr:last-child").append("<td>"+$.datepicker.formatDate('dd/mm/yy', new Date(resp[i][3]))+"</td>");
-		    						
-		    						if(resp[i][1].length > 15){
-		    							$("#alumn-table-examenes tbody tr:last-child").append("<td>"+resp[i][1].substr(0,15)+" ...</td>");
-		    						}else{
-		    							$("#alumn-table-examenes tbody tr:last-child").append("<td>"+resp[i][1]+"</td>");
-		    						}
-		    					
-		    						$("#alumn-table-examenes tbody tr:last-child").append("<td class='descr-act text-xs-center'><a href='' data-id="+resp[i][0]+" data-toggle='modal' data-target='#modal-actividad'><i class='fa fa-file-text text-primary' aria-hidden='true'></i></a></td>");
-		    						$("#alumn-table-examenes tbody tr:last-child").append("<td><input type='file'  style='color: transparent; width:10px;'></td>");
-		    						$("#alumn-table-examenes tbody tr:last-child").append("<td class='sube-tarea text-xs-center'><i class='fa fa-upload text-success' aria-hidden='true'></i></td>");
-		    						$("#alumn-table-examenes tbody tr:last-child").append("<td class='act-ok text-xs-center'><i class='fa fa-times text-danger' aria-hidden='true'></i></td>")
-		    						
-		    					$("#alumn-table-examenes tbody").append("</tr>");
-	    						
-	    					}
-	    				}
-	    				
-	    	    			$("#alumn-table-examenes").DataTable({
-	    						 "language":{
-	    	    		         "lengthMenu":"Mostrar _MENU_ registros por página.",
-	    	    		         "zeroRecords": "Sin resultados en su búsqueda.",
-	    	    		               "info": "Hay un total de _MAX_ exámenes.",
-	    	    		               "infoEmpty": "No hay registros aún.",
-	    	    		               "infoFiltered": "(filtrados de un total de _MAX_ registros)",
-	    	    		               "search" : "Búsqueda: ",
-	    	    		               "LoadingRecords": "Cargando ...",
-	    	    		               "Processing": "Procesando...",
-	    	    		               "SearchPlaceholder": "Comience a teclear...",
-	    	    		               "paginate": {
-	    			    		          "previous": "Anterior",
-	    			    		          "next": "Siguiente", 
-	    	       					}
-	    					 }
-	
-	    				});
-	    				
-	    			},
-	    			complete: function(){
-	    				$(".loader").fadeOut(2000);
-	    			}
-	    		});
-    		
-    		});
-    		
-    		
-    		
-    		//Recoge el data-id del alumno para hacer una consulta más exhaustiva en un modal.
-    		$(document).delegate(".descr-act a", "click", function(event){
-    			
-    			var idactividad = $(this).data("id");
-    			$("#modal-actividad").css("cursor", "default");
-    			
-    			$.ajax({
-    	    		type: "POST",
-    	    		dataType: "json",
-    	    		data: {idactividad:idactividad},
-    	    		url: "/Actividad_individual",
-    	    		success: function(resp){  	
-    	    			
-    	    			for(var i = 0; i < resp.length; i++){
-    	    				if(resp[i] == null){
-    	    					resp[i] = "";
-    	    				}
-    	    			}
-    	    			
-    	    			$(".modal-body").empty();
-    	    			
-    	    			$(".modal-body").append("<div class='text-xs-center'><h3 class='text-primary font-weight-bold'>"+resp[0]+"</h3></div>");
-    	    			$(".modal-body").append("<hr/>");
-    	    			
-    	    			if(resp[3] == "T"){
-    	    				$(".modal-body").append("<div class='text-xs-justify'><span class='font-weight-bold'>Descripción de la tarea: </span><p>"+resp[1]+"</p></div>");
-    	    			}else{
-    	    				$(".modal-body").append("<div class='text-xs-justify'><span class='font-weight-bold'>Descripción del examen: </span><p>"+resp[1]+"</p></div>");
-    	    			}
-    	    			
-    	    			$(".modal-body").append("<div><span class='font-weight-bold text-danger'>¡Recuerda!</span> <br/> Tienes hasta el <b>"+$.datepicker.formatDate('dd/mm/yy', new Date(resp[2]))+"</b> para hacer la entrega. </div>")
-    	    			
-    	    		}
-    			});	 
-    			
-    		});
-    		
-    		
-    		    		
-
-    
-    </script>
+    <script src="../assets/js/calendar.js"></script>
+    <script src="../assets/js/a_curso.js"></script>
     
 </body>
 </html>
