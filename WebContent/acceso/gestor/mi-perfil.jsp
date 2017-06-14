@@ -239,11 +239,17 @@
 
 <!-- MODAL SUCCESS / ERROR-->
 <div id="modal-success-perfil" title="¡Usuario modificado!" style="display: none">
-	<p> ¡Se ha modificado el usuario correctamente! </p>
+	<div class="text-xs-center" style="margin-bottom:10px;"> 
+		<i class="fa fa-check text-success fa-2x" aria-hidden="true"> </i>
+	</div>
+	<div class="text-xs-center"> <p> <b>¡Se ha modificado el usuario correctamente!</b> </p> </div>
 </div>
 
 <div id="modal-error-perfil" title="¡Comprueba los datos!" style="display: none">
-	<p> ¡ERROR! Comprueba que no falta ningún dato. </p>
+	<div class="text-xs-center" style="margin-bottom:10px;"> 
+		<i class="fa fa-exclamation-triangle text-danger fa-2x" aria-hidden="true"> </i>
+	</div>
+	<div class="text-xs-center"> <p> <b>Comprueba que no falta ningún dato.</b> </p> </div>
 </div>
 
 <div class="loader" style='display: none;'></div> 

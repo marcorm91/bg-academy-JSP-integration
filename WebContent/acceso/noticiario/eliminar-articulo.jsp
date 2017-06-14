@@ -162,21 +162,22 @@
 
 <!-- DELETE MODAL -->
 <div id="dialog-confirm" title="Eliminar elemento" style="display:none">
-	 <p>
-	 	¿Está seguro que quiere <b>eliminar</b> este elemento?
-	 </p>
+	<div class="text-xs-center" style="margin-bottom:10px;"><i class="fa fa-question fa-2x text-warning" aria-hidden="true"></i></div>
+	<div class="text-xs-center"><span> ¿Está seguro que quiere <b>eliminar</b> este elemento? </span></div>
 </div>
 
 <div id="dialog-confirm-ok" title="Eliminación correcta" style="display:none;">
-	<p>
-		El elemento ha sido eliminado correctamente.
-	</p>
+	<div class="text-xs-center" style="margin-bottom:10px;"> 
+		<i class="fa fa-check text-success fa-2x" aria-hidden="true"> </i>
+	</div>
+	<div class="text-xs-center"> <p> <b>El elemento ha sido eliminado correctamente.</b> </div>
 </div>
 
 <div id="dialog-confirm-nook" title="Eliminación incorrecta" style="display:none;">
-	<p>
-		El elemento NO ha sido eliminado correctamente.
-	</p>
+	<div class="text-xs-center" style="margin-bottom:10px;"> 
+		<i class="fa fa-exclamation-triangle text-danger fa-2x" aria-hidden="true"> </i>
+	</div>
+	<div class="text-xs-center"> <p> <b>El elemento NO ha sido eliminado correctamente.</b> </p> </div>
 </div>
 
 <div class="loader" style='display: none;'></div>

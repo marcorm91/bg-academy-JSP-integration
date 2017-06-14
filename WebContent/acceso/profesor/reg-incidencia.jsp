@@ -170,11 +170,17 @@
 
 <!-- MODAL SUCCESS / ERROR-->
 <div id="modal-success-incidencia" title="¡Incidencia registrada!" style="display: none">
-	<p> ¡Se ha registrado la incidencia correctamente! </p>
+	<div class="text-xs-center" style="margin-bottom:10px;"> 
+		<i class="fa fa-check text-success fa-2x" aria-hidden="true"> </i>
+	</div>
+	<div class="text-xs-center"> <p> <b>¡Se ha registrado la incidencia correctamente!</b> </div>
 </div>
 
 <div id="modal-error-incidencia" title="¡Error de incidencia!" style="display: none">
-	<p> ¡ERROR! Debe contener texto la incidencia para poder registrarla. </p>
+	<div class="text-xs-center" style="margin-bottom:10px;"> 
+		<i class="fa fa-exclamation-triangle text-danger fa-2x" aria-hidden="true"> </i>
+	</div>
+	<div class="text-xs-center"> <p> <b>Debe contener texto la incidencia para poder registrarla.</b> </p> </div>
 </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"></script>

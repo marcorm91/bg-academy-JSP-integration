@@ -678,27 +678,44 @@
 
 <!-- MODAL SUCCESS / ERROR-->
 <div id="modal-success" title="¡Usuario registrado!" style="display: none">
-	<p> ¡Se ha registrado el usuario correctamente! </p>
+	<div class="text-xs-center" style="margin-bottom:10px;"> 
+		<i class="fa fa-check text-success fa-2x" aria-hidden="true"> </i>
+	</div>
+	<div class="text-xs-center"> <p> <b>¡Se ha registrado el usuario correctamente!</b> </p> </div>
+	<div class="text-xs-center"> <p> <i class="fa fa-key fa-2x text-warning" aria-hidden="true"></i> <br/>
+									 <b>¡No olvides darle los credenciales de acceso a la plataforma!</b>
+								 </p> </div>
 </div>
 
 <div id="modal-error" title="¡Comprueba los datos!" style="display: none">
-	<p> <b>¡ERROR!</b> Comprueba que no falta ningún dato. </p>
+	<div class="text-xs-center" style="margin-bottom:10px;"> 
+		<i class="fa fa-exclamation-triangle text-danger fa-2x" aria-hidden="true"> </i>
+	</div>
+	<div class="text-xs-center"> <p> <b>Comprueba que no falta ningún dato.</b> </p> </div>
 </div>
 
 <div id="modal-existe" title="¡Usuario existente!" style="display: none">
-	<p> <b>¡ERROR!</b> Ese usuario ya fue registrado en la Base de Datos. </p>
+	<div class="text-xs-center" style="margin-bottom:10px;"> 
+		<i class="fa fa-exclamation-triangle text-danger fa-2x" aria-hidden="true"> </i>
+	</div>
+	<div class="text-xs-center"> <p> <b>Ese usuario ya fue registrado en la Base de Datos.</b> </p> </div>
 </div>
 
 <div id="modal-existe-curso" title="¡Curso existente!" style="display: none">
-	<p> <b>¡ERROR!</b> Ese curso, año fin e inicio ya fue registrado en la Base de Datos. </p>
+	<div class="text-xs-center" style="margin-bottom:10px;"> 
+		<i class="fa fa-exclamation-triangle text-danger fa-2x" aria-hidden="true"> </i>
+	</div>
+	<div class="text-xs-center"> <p> <b>Ese curso, año fin e inicio ya fue registrado en la Base de Datos.</b> </p> </div>
 </div>
 
 <div id="modal-ok-curso" title="¡Curso registrado!" style="display: none">
-	<p> ¡Se ha registrado el curso correctamente! </p>
+	<div class="text-xs-center" style="margin-bottom:10px;"> 
+		<i class="fa fa-check text-success fa-2x" aria-hidden="true"> </i>
+	</div>
+	<div class="text-xs-center"> <p> <b>¡Se ha registrado el curso correctamente!</b> </p> </div>
 </div>
 
 <div class="loader" style='display: none;'></div>
-
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"></script>
     <script src="../../assets/js/jquery-3.1.1.min.js"></script>

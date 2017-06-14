@@ -727,11 +727,17 @@
 
 <!-- MODAL SUCCESS / ERROR-->
 <div id="modal-success-perfil" title="¡Usuario modificado!" style="display: none">
-	<div class="text-xs-center"><b>¡Se ha modificado el usuario correctamente!</b> <br/><br/> Actualiza la pantalla para ver los cambios efectuados.</div>
+	<div class="text-xs-center" style="margin-bottom:10px;"> 
+		<i class="fa fa-check text-success fa-2x" aria-hidden="true"> </i>
+	</div>
+	<div class="text-xs-center"> <p> <b>¡Se ha modificado el usuario correctamente!</b> <br/><br/> Actualiza la pantalla para ver los cambios efectuados.</p> </div>
 </div>
 
 <div id="modal-error-perfil" title="¡Comprueba los datos!" style="display: none">
-	<div class="text-xs-center"><b>¡ERROR!</b> <br/><br/> Comprueba que no falta ningún dato. </div>
+	<div class="text-xs-center" style="margin-bottom:10px;"> 
+		<i class="fa fa-exclamation-triangle text-danger fa-2x" aria-hidden="true"> </i>
+	</div>
+	<div class="text-xs-center"> <p> <b>Comprueba que no falta ningún dato.</b> </p> </div>
 </div>
 
 <div class="loader" style='display: none;'></div>

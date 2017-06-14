@@ -753,19 +753,31 @@
 
 <!-- MODAL SUCCESS / ERROR-->
 <div id="modal-success-tarea" title="¡Tarea registrada!" style="display: none">
-	<p> ¡Se ha registrado la tarea correctamente! </p>
+	<div class="text-xs-center" style="margin-bottom:10px;"> 
+		<i class="fa fa-check text-success fa-2x" aria-hidden="true"> </i>
+	</div>
+	<div class="text-xs-center"> <p> <b>¡Se ha registrado la tarea correctamente!</b> </div>
 </div>
 
 <div id="modal-error-tarea" title="¡Error de registro tarea!" style="display: none">
-	<p> <b>¡ERROR!</b> Comprueba que no falta ningún dato por rellenar. </p>
+	<div class="text-xs-center" style="margin-bottom:10px;"> 
+		<i class="fa fa-exclamation-triangle text-danger fa-2x" aria-hidden="true"> </i>
+	</div>
+	<div class="text-xs-center"> <p> <b>Comprueba que no falta ningún dato por rellenar.</b> </p> </div>
 </div>
 
 <div id="modal-success-examen" title="¡Examen registrado!" style="display: none">
-	<p> ¡Se ha registrado el examen correctamente! </p>
+	<div class="text-xs-center" style="margin-bottom:10px;"> 
+		<i class="fa fa-check text-success fa-2x" aria-hidden="true"> </i>
+	</div>
+	<div class="text-xs-center"> <p> <b>¡Se ha registrado el examen correctamente!</b> </div>
 </div>
 
 <div id="modal-error-examen" title="¡Error de registro examen!" style="display: none">
-	<p> <b>¡ERROR!</b> Comprueba que no falta ningún dato por rellenar. </p>
+	<div class="text-xs-center" style="margin-bottom:10px;"> 
+		<i class="fa fa-exclamation-triangle text-danger fa-2x" aria-hidden="true"> </i>
+	</div>
+	<div class="text-xs-center"> <p> <b>Comprueba que no falta ningún dato por rellenar.</b> </p> </div>
 </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"></script>

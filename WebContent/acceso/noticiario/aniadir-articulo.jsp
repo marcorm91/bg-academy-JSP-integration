@@ -183,11 +183,17 @@
 
 <!-- MODAL SUCCESS / ERROR-->
 <div id="modal-success" title="¡Artículo registrado!" style="display: none">
-	<p> ¡Se ha registrado el artículo correctamente! </p>
+	<div class="text-xs-center" style="margin-bottom:10px;"> 
+		<i class="fa fa-check text-success fa-2x" aria-hidden="true"> </i>
+	</div>
+	<div class="text-xs-center"> <p> <b>¡Se ha registrado el artículo correctamente!</b> </div>
 </div>
 
 <div id="modal-error" title="¡Error!" style="display: none">
-	<div class="text-xs-center"><b>¡ERROR!</b> </div> <br/>Hubo un problema al registrar el artículo. <br/> Comprueba que no falta ningún campo por rellenar.
+	<div class="text-xs-center" style="margin-bottom:10px;"> 
+		<i class="fa fa-exclamation-triangle text-danger fa-2x" aria-hidden="true"> </i>
+	</div>
+	<div class="text-xs-center"> <p> <b>Hubo un problema al registrar el artículo. <br/> Comprueba que no falta ningún campo por rellenar.</b> </p> </div>
 </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"></script>

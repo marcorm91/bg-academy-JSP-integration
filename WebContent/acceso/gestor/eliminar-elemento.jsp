@@ -354,21 +354,24 @@
 </div>
 
 <div id="dialog-confirm-ok" title="Eliminación correcta" style="display:none;">
-	<p>
-		El elemento ha sido eliminado correctamente.
-	</p>
+	<div class="text-xs-center" style="margin-bottom:10px;"> 
+		<i class="fa fa-check text-success fa-2x" aria-hidden="true"> </i>
+	</div>
+	<div class="text-xs-center"> <p> <b>El elemento ha sido eliminado correctamente.</b> </p> </div>
 </div>
 
 <div id="dialog-confirm-nook" title="Eliminación incorrecta" style="display:none;">
-	<p>
-		El elemento NO ha sido eliminado correctamente.
-	</p>
+	<div class="text-xs-center" style="margin-bottom:10px;"> 
+		<i class="fa fa-exclamation-triangle text-danger fa-2x" aria-hidden="true"> </i>
+	</div>
+	<div class="text-xs-center"> <p> <b>El elemento NO ha sido eliminado correctamente.</b> </p> </div>
 </div>
 
 <div id="dialog-gestor" title="¡Error!" style="display:none;">
-	<p>
-		¡No puede eliminar <b>su propia cuenta</b>! Debe pedirle a otro usuario con privilegios que lo haga.
-	</p>
+	<div class="text-xs-center" style="margin-bottom:10px;"> 
+		<i class="fa fa-exclamation-triangle text-danger fa-2x" aria-hidden="true"> </i>
+	</div>
+	<div class="text-xs-center"> <p> <b>¡No puede eliminar <b>su propia cuenta</b>! Debe pedirle a otro usuario con privilegios que lo haga.</b> </p> </div>
 </div>
 
 <div class="loader" style='display: none;'></div> 

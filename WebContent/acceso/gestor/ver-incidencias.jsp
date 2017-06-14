@@ -253,8 +253,15 @@
     </div>
 </div>
 
-<div id="dialog-confirm" title="Validar incidencia" style='display: none'><span> Está a punto de <b>validar</b> una incidencia. <br/>  <b>¿Está seguro?</b> </span></div>
-<div id="dialog-cancel" title="Cancelar incidencia" style='display: none'><span> Está a punto de <b>cancelar</b> una incidencia. <br/>  <b>¿Está seguro?</b> </span></div>
+<div id="dialog-confirm" title="Validar incidencia" style='display: none'>
+	<div class="text-xs-center" style="margin-bottom:10px;"><i class="fa fa-question fa-2x text-warning" aria-hidden="true"></i></div>
+	<div class="text-xs-center"><span> Está a punto de <b>validar</b> una incidencia. <br/>  <b>¿Está seguro?</b> </span></div>
+</div>
+
+<div id="dialog-cancel" title="Cancelar incidencia" style='display: none'>
+	<div class="text-xs-center" style="margin-bottom:10px;"><i class="fa fa-question fa-2x text-warning" aria-hidden="true"></i></div>
+	<div class="text-xs-center"><span> Está a punto de <b>cancelar</b> una incidencia. <br/>  <b>¿Está seguro?</b> </span></div>
+</div>
 
 <div class="loader" style='display: none;'></div> 
 
