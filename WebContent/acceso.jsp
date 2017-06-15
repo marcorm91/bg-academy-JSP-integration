@@ -17,7 +17,7 @@
 						return;
 					}else
 						if(session.getAttribute("log").equals("logNot")){
-							response.sendRedirect("acceso/principal-noticiero.jsp");
+							response.sendRedirect("acceso/principal-noticiario.jsp");
 							return;
 						}
 		%>

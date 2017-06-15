@@ -16,7 +16,7 @@ import model.Conexion;
 import model.MIncidencias;
 
 /**
- * Servlet implementation class Resolucion_s
+ * Clase controladora - Clase que se encargará de proceder con la aceptación de una incidencia.
  */
 @WebServlet("/Resolucion_s")
 public class Resolucion_s extends HttpServlet {
@@ -24,9 +24,7 @@ public class Resolucion_s extends HttpServlet {
 	private HttpSession hs;
 	private MIncidencias modelo_incidencia;
 	private Conexion conexionBD;
-	private String id;
-	private String updateDate;
-       
+  
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -44,17 +42,22 @@ public class Resolucion_s extends HttpServlet {
         modelo_incidencia = new MIncidencias(conexionBD.getConexion());
         
         hs = request.getSession();
-        
         Object[] datos_gestor = (Object []) hs.getAttribute("identificacion");
         
         if(hs.getAttribute("log") == null || !datos_gestor[1].equals("G")){
 			response.sendRedirect("error.jsp");
 		}else{
+			
+			String id;
+			String updateDate;
 							
 			id = request.getParameter("id");
 			
+			// Tras recoger el ID de la incidencia vamos a proceder a actualizarla siendo ésta aceptada por parte
+			// del gestor.
 			updateDate = modelo_incidencia.updateInci_s(id);
 			
+			// Envío de los resultados por Gson.
 			String sendInci = new Gson().toJson(updateDate);
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");

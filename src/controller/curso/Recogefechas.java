@@ -16,7 +16,8 @@ import model.Conexion;
 import model.MCurso;
 
 /**
- * Servlet implementation class Recogefechas
+ * Clase controladora - Con esta clase tratamos de recoger todos los años de promoción que se encuentren
+ * registrados en la Base de Datos.
  */
 @WebServlet("/Recogefechas")
 public class Recogefechas extends HttpServlet {
@@ -24,7 +25,6 @@ public class Recogefechas extends HttpServlet {
 	private HttpSession hs;
 	private MCurso modelo_curso;
 	private Conexion conexionBD;
-	private String [][] fechas;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -44,21 +44,26 @@ public class Recogefechas extends HttpServlet {
         
         hs = request.getSession();
         
+        // Si la session log viene como nula...
         if(hs.getAttribute("log") == null){
 			response.sendRedirect("error.jsp");
 		}else{
 						
-			try{			
-				//Llamamos al modelo para realizar la consulta sobre las fechas en la BD.
+			try{	
+				
+				String [][] fechas;
+				
+				//Llamamos al modelo para realizar la consulta sobre las fechas (años de promoción) en la BD.
 				fechas = modelo_curso.devuelveFechas();
-							
+					
+				// Envío de los resultados por Gson.
 				String sendFechas = new Gson().toJson(fechas);
 				response.setContentType("application/json");
 				response.setCharacterEncoding("UTF-8");
 				response.getWriter().write(sendFechas);
 								
 			}catch(Exception e){
-				response.sendRedirect("error.jsp");
+				response.sendRedirect("acceso.jsp");
 				System.out.println(e);
 			}
 			

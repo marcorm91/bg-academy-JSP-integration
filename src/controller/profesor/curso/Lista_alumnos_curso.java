@@ -16,7 +16,7 @@ import model.Conexion;
 import model.MAlumno;
 
 /**
- * Servlet implementation class Lista_alumnos_curso
+ * Clase controladora - Lista el número de alumnos en relación al año de promoción y curso del profesor.
  */
 @WebServlet("/Lista_alumnos_curso")
 public class Lista_alumnos_curso extends HttpServlet {
@@ -24,8 +24,7 @@ public class Lista_alumnos_curso extends HttpServlet {
 	private HttpSession hs;
 	private MAlumno modelo_alumno;
 	private Conexion conexionBD;
-	private Object alumnos[][];
-	private String anioprom_prof, cursosasign_prof;
+
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -43,21 +42,27 @@ public class Lista_alumnos_curso extends HttpServlet {
         conexionBD = new Conexion();
         modelo_alumno = new MAlumno(conexionBD.getConexion());
         
+        // Recogemos la session y los datos del usuario que entra a la plataforma.
         hs = request.getSession();
-        
         Object[] datos_profesor = (Object []) hs.getAttribute("identificacion");
         
+        // Si la session log viene como nula (sin identificación previa) ó el alumno que viene no es de tipo Profesor...
         if(hs.getAttribute("log") == null || !datos_profesor[1].equals("P")){
 			response.sendRedirect("error.jsp");
 		}else{
+			
+			Object alumnos[][];
+			String anioprom_prof, cursosasign_prof;
 			
 			anioprom_prof = datos_profesor[17].toString();
 			cursosasign_prof = datos_profesor[21].toString();
 			
 			cursosasign_prof = cursosasign_prof.substring(1, cursosasign_prof.length()-1);
 			
+			// Nos devolverá un listado de alumnos en relación al año de promoción y los cursos asignados del profesor.
 			alumnos = modelo_alumno.alumnosPorCurso(anioprom_prof, cursosasign_prof);
 			
+			// Envío de los resultados por Gson.
 			String sendAlumnos = new Gson().toJson(alumnos);
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");

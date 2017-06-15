@@ -16,7 +16,7 @@ import model.Conexion;
 import model.MGestor;
 
 /**
- * Servlet implementation class Gest_individual
+ * Clase controladora - Clase que se encargará de tratar el control de datos por parte del gestor.
  */
 @WebServlet("/Gest_individual")
 public class Gest_individual extends HttpServlet {
@@ -24,8 +24,6 @@ public class Gest_individual extends HttpServlet {
 	private HttpSession hs;
 	private MGestor modelo_gestor;
 	private Conexion conexionBD;
-	private Object gestor[];
-	private String id;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -43,18 +41,24 @@ public class Gest_individual extends HttpServlet {
         conexionBD = new Conexion();
         modelo_gestor = new MGestor(conexionBD.getConexion());
         
+        // Recogemos la session y los datos del usuario que entra a la plataforma.
         hs = request.getSession();
-        
         Object[] datos_gestor = (Object []) hs.getAttribute("identificacion");
         
+        // Si la session log viene como nula (sin identificación previa) ó el usuario que viene no es de tipo Gestor...
         if(hs.getAttribute("log") == null || !datos_gestor[1].equals("G")){
 			response.sendRedirect("error.jsp");
 		}else{
+			
+			Object gestor[];
+			String id;
 							
 			id = request.getParameter("id");
 			
+			// Vamos a recoger el gestor de la Base de Datos pasándole previamente por parámetro la ID del mismo.
 			gestor = modelo_gestor.dameDatosPorID(id);
 			
+			// Envío de los resultados por Gson.
 			String sendGest = new Gson().toJson(gestor);
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");

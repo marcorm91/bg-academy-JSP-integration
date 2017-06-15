@@ -16,7 +16,7 @@ import model.Conexion;
 import model.MIncidencias;
 
 /**
- * Servlet implementation class Verincidenciasalumn
+ * Clase controladora - Recogerá todas las incidencias del alumno pasándole como parámetro el ID del mismo.
  */
 @WebServlet("/Verincidenciasalumn")
 public class Verincidenciasalumn extends HttpServlet {
@@ -24,8 +24,7 @@ public class Verincidenciasalumn extends HttpServlet {
 	private HttpSession hs;
 	private MIncidencias modelo_incidencia;
 	private Conexion conexionBD;
-	private Object incidencias[][];
-	private String id;
+
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -43,18 +42,24 @@ public class Verincidenciasalumn extends HttpServlet {
         conexionBD = new Conexion();
         modelo_incidencia = new MIncidencias(conexionBD.getConexion());
         
+        // Recogemos la session y los datos del usuario que entra a la plataforma.
         hs = request.getSession();
-        
         Object[] datos_alumn = (Object []) hs.getAttribute("identificacion");
         
+        // Comprobamos que la session no sea null o que el tipo de usuario sea de tipo Alumno...
         if(hs.getAttribute("log") == null || !datos_alumn[1].equals("A")){
 			response.sendRedirect("error.jsp");
 		}else{
+			
+			Object incidencias[][];
+			String id;
 						
 			id = datos_alumn[0].toString();
-						
+				
+			// Recoge todas las incidencias del alumno pasándole previamente el ID como parámetro.
 			incidencias = modelo_incidencia.devuelveIncidenciasAlumn(id);
 		
+			// Envío de los resultados por Gson.
 			String sendIncidencias = new Gson().toJson(incidencias);
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");

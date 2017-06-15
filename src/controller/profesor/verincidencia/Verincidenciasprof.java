@@ -43,18 +43,21 @@ public class Verincidenciasprof extends HttpServlet {
         conexionBD = new Conexion();
         modelo_incidencia = new MIncidencias(conexionBD.getConexion());
         
+        // Recogemos la session y los datos del usuario que entra a la plataforma.
         hs = request.getSession();
-        
         Object[] datos_prof = (Object []) hs.getAttribute("identificacion");
         
+        // Comprobamos que la session no sea null o que el tipo de usuario sea de tipo Profesor...
         if(hs.getAttribute("log") == null || !datos_prof[1].equals("P")){
 			response.sendRedirect("error.jsp");
 		}else{
 
 			id = datos_prof[0].toString();
-						
+				
+			// Devuelve las incidencias del profesor relacionado a la ID que se le pasa por parámetro.
 			incidencias = modelo_incidencia.devuelveIncidenciasProf(id);
 		
+			// Envío de los resultados por Gson.
 			String sendIncidencias = new Gson().toJson(incidencias);
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");

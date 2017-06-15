@@ -15,15 +15,14 @@ import model.Conexion;
 import model.MNoticias;
 
 /**
- * Servlet implementation class Noticia_individual
+ * Clase controladora - Captura todos los datos de la noticia seleccionada por parte del usuario.
  */
 @WebServlet("/Noticia_individual")
 public class Noticia_individual extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private MNoticias modelo_noticias;
 	private Conexion conexionBD;
-	private Object noticia[];
-	private String id;
+
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -41,18 +40,22 @@ public class Noticia_individual extends HttpServlet {
         conexionBD = new Conexion();
         modelo_noticias = new MNoticias(conexionBD.getConexion());
                 
+    	Object noticia[];
+    	String id;
         			
-			id = request.getParameter("id");
+		id = request.getParameter("id");
+		
+		// Cogemos el ID de la noticia a través del request (por data-id) y lo enviamos al modelo
+		// para capturar todos los datos necesarios en relación a la noticia.
+		noticia = modelo_noticias.dameDatosPorID(id);
+		
+		// Envío de los resultados por Gson.
+		String sendNot = new Gson().toJson(noticia);
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
+		response.getWriter().write(sendNot);
 			
-			noticia = modelo_noticias.dameDatosPorID(id);
-			
-			String sendNot = new Gson().toJson(noticia);
-			response.setContentType("application/json");
-			response.setCharacterEncoding("UTF-8");
-			response.getWriter().write(sendNot);
-			
-
-					        
+		        
         //¡IMPORTANTE! Cerrar la conexión.
   		try {
   			conexionBD.getConexion().close();

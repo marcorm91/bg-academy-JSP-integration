@@ -23,7 +23,7 @@ import model.MNoticiero;
 import model.MProfesor;
 
 /**
- * Servlet implementation class Regprofesor
+ * Clase controladora - Clase que se encargará de procesar el registro del profesor.
  */
 @WebServlet("/Regprofesor")
 public class Regprofesor extends HttpServlet {
@@ -34,14 +34,7 @@ public class Regprofesor extends HttpServlet {
 	private MGestor modelo_gestor;
 	private MNoticiero modelo_noticiario;
 	private Conexion conexionBD;
-	private String nombre, apellido1, apellido2, nif, nacimiento, nacionalidad, calle, cp, poblacion, provincia, email, tlf, anioprom;
-	private String fecna, fecalta;
-	private String cursoimp;
-	private String idcursos;
-	private String pass;
-	private boolean existeAlumno, existeProfesor, existeGestor, existeNoticiario;
-	
-       
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -61,13 +54,24 @@ public class Regprofesor extends HttpServlet {
         modelo_gestor = new MGestor(conexionBD.getConexion());
         modelo_noticiario = new MNoticiero(conexionBD.getConexion());
 			
-		hs = request.getSession();
-		
-		if(hs.getAttribute("log") == null){
+        // Recogemos la session y los datos del usuario que entra a la plataforma.
+        hs = request.getSession();
+        Object[] datos_gestor = (Object []) hs.getAttribute("identificacion");
+     		
+         // Si la session log viene como nula (sin identificación previa) ó el usuario que viene no es de tipo Gestor...  
+ 		if(hs.getAttribute("log") == null || !datos_gestor[1].equals("G")){
 			response.sendRedirect("error.jsp");
 		}else{
 
 			try{
+				
+				String nombre, apellido1, apellido2, nif, nacimiento, nacionalidad, calle, cp, poblacion, provincia, email, tlf, anioprom;
+				String fecna, fecalta;
+				String cursoimp;
+				String idcursos;
+				String pass;
+				boolean existeAlumno, existeProfesor, existeGestor, existeNoticiario;
+				
 				nif = request.getParameter("nif");
 				nombre = request.getParameter("nombre");
 				apellido1 = request.getParameter("apellido1");
@@ -86,11 +90,12 @@ public class Regprofesor extends HttpServlet {
 				cursoimp = request.getParameter("cursos");
 				idcursos = request.getParameter("idcursos");
 				
-													
+				// Instanciamos el tipo de formato para posteriormente parsear la fecha que nos envíe el usuario.									
 				SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 				Date fecna_date = null;
 				Date fecalta_date = null;
 				
+				// Parseo de la fecha recibida para hacer el insert en la Base de Datos del profesor.
 				try {
 					fecna_date =  sdf.parse(fecna);
 				} catch (ParseException e) {
@@ -103,6 +108,10 @@ public class Regprofesor extends HttpServlet {
 					e.printStackTrace();
 				}
 				
+				// Haremos una consulta previa sobre los distintos modelos de usuario.
+				// Desde el alumno hasta el noticiario comprobamos si el NIF con el que se registra el usuario
+				// ya existe en la Base de Datos.
+				// Esa existencia devolverá true en el caso de su existencia o false si no es así.
 				existeAlumno = modelo_alumno.compruebaExistencia(nif);
 				existeProfesor = modelo_profesor.compruebaExistencia(nif);
 				existeGestor = modelo_gestor.compruebaExistencia(nif);
@@ -118,15 +127,22 @@ public class Regprofesor extends HttpServlet {
 					response.getWriter().write(existe);
 				}else{
 				
+					// De no ser así, y ese usuario no exista, vamos a proceder con la creación.
+					
+					// En primer lugar vamos a crear su directorio personal del cual colgarán dos subdirectorios.
+					// Este subdirectorio nos servirá para localizar posteriormente su foto personal y así imprimiarla
+					// por pantalla.
 					File dir = new File("WebContent/recursos/profesores/"+nif+"/fotopersonal");
 					dir.mkdirs();
 					
+					// Y este subdirectorio servirá para otro tipo de recursos en relación al usuario.		
 					dir = new File("WebContent/recursos/profesores/"+nif+"/dirpersonal");
 					dir.mkdirs();
 					
 					// Generación de contraseña aleatoria al profesor.
 					pass = getCadenaAlfanumAleatoria(6);
 					
+					// Realiza el registro del profesor.
 					modelo_profesor.registraProfesor(	nombre, 
 														apellido1, 
 														apellido2, 
@@ -146,6 +162,7 @@ public class Regprofesor extends HttpServlet {
 														cursoimp,
 														idcursos);
 				
+					// Envío de los resultados por Gson.
 					existe = new Gson().toJson("0");
 					response.setContentType("application/json");
 					response.setCharacterEncoding("UTF-8");
@@ -179,8 +196,8 @@ public class Regprofesor extends HttpServlet {
 	
 	/**
 	 * Genera una cadena alfanumérica aleatoria con una longitud pasada por parámetro.
-	 * @param longitud
-	 * @return
+	 * @param longitud Número de caracteres que tendrá la contraseña.
+	 * @return Devuelve la cadena alfanumérica random.
 	 */
 	private String getCadenaAlfanumAleatoria (int longitud){
 		String cadenaAleatoria = "";

@@ -24,7 +24,7 @@ import model.MNoticiero;
 import model.MProfesor;
 
 /**
- * Servlet implementation class Reggestor
+ * Clase controladora - Clase que se encargará de procesar el registro del gestor.
  */
 @WebServlet("/Reggestor")
 public class Reggestor extends HttpServlet {
@@ -34,12 +34,7 @@ public class Reggestor extends HttpServlet {
 	private MProfesor modelo_profesor;
 	private MGestor modelo_gestor;
 	private MNoticiero modelo_noticiario;
-	private Conexion conexionBD;
-	private String nombre, apellido1, apellido2, nif, email, tlf;
-	private String fecalta;
-	private String pass;
-	private boolean existeAlumno, existeProfesor, existeGestor, existeNoticiario;
-	
+	private Conexion conexionBD;	
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -60,13 +55,20 @@ public class Reggestor extends HttpServlet {
         modelo_gestor = new MGestor(conexionBD.getConexion());
         modelo_noticiario = new MNoticiero(conexionBD.getConexion());
 
-		hs = request.getSession();
+    	// Recogemos la session y los datos del usuario que entra a la plataforma.
+ 		hs = request.getSession();
+        Object[] datos_gestor = (Object []) hs.getAttribute("identificacion");
 		
-		if(hs.getAttribute("log") == null){
+		if(hs.getAttribute("log") == null || !datos_gestor[1].equals("G")){
 			response.sendRedirect("error.jsp");
 		}else{
 			
 			try{
+				
+				String nombre, apellido1, apellido2, nif, email, tlf;
+				String fecalta;
+				String pass;
+				boolean existeAlumno, existeProfesor, existeGestor, existeNoticiario;
 				
 				nif = request.getParameter("nif");
 				nombre = request.getParameter("nombre");
@@ -75,16 +77,22 @@ public class Reggestor extends HttpServlet {
 				fecalta = request.getParameter("fecalta");
 				email = request.getParameter("email");
 				tlf = request.getParameter("tlf");
-									
+					
+				// Instanciamos el tipo de formato para posteriormente parsear la fecha que nos envíe el usuario.
 				SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 				Date fecalta_date = null;
 				
+				// Parseo de la fecha recibida para hacer el insert en la Base de Datos del gestor.
 				try {
 					fecalta_date = sdf.parse(fecalta);
 				} catch (ParseException e) {
 					e.printStackTrace();
 				}
 				
+				// Haremos una consulta previa sobre los distintos modelos de usuario.
+				// Desde el alumno hasta el noticiario comprobamos si el NIF con el que se registra el usuario
+				// ya existe en la Base de Datos.
+				// Esa existencia devolverá true en el caso de su existencia o false si no es así.
 				existeAlumno = modelo_alumno.compruebaExistencia(nif);
 				existeProfesor = modelo_profesor.compruebaExistencia(nif);
 				existeGestor = modelo_gestor.compruebaExistencia(nif);
@@ -101,15 +109,23 @@ public class Reggestor extends HttpServlet {
 					return;
 				}else{
 				
+					// De no ser así, y ese usuario no exista, vamos a proceder con la creación.
+					
+					// En primer lugar vamos a crear su directorio personal del cual colgarán dos subdirectorios.
+					// Este subdirectorio nos servirá para localizar posteriormente su foto personal y así imprimiarla
+					// por pantalla.
+					
 					File dir = new File("WebContent/recursos/gestor/"+nif+"/fotopersonal");
 					dir.mkdirs();
 					
+					// Y este subdirectorio servirá para otro tipo de recursos en relación al usuario.					
 					dir = new File("WebContent/recursos/gestor/"+nif+"/dirpersonal");
 					dir.mkdirs();
 					
 					// Generación de contraseña aleatoria al gestor.
 					pass = getCadenaAlfanumAleatoria(6);					
 			
+					// Realiza el registro del gestor.
 					modelo_gestor.registraGestor(		nombre, 
 														apellido1, 
 														apellido2, 
@@ -117,7 +133,9 @@ public class Reggestor extends HttpServlet {
 														pass,
 														fecalta_date,
 														email,
-														tlf );					
+														tlf );		
+					
+					// Envío de los resultados por Gson.
 					existe = new Gson().toJson("0");
 					response.setContentType("application/json");
 					response.setCharacterEncoding("UTF-8");
@@ -152,8 +170,8 @@ public class Reggestor extends HttpServlet {
 	
 	/**
 	 * Genera una cadena alfanumérica aleatoria con una longitud pasada por parámetro.
-	 * @param longitud
-	 * @return
+	 * @param longitud Número de caracteres que tendrá la contraseña.
+	 * @return Devuelve la cadena alfanumérica random.
 	 */
 	private String getCadenaAlfanumAleatoria (int longitud){
 		String cadenaAleatoria = "";

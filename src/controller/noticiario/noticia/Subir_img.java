@@ -18,7 +18,7 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 /**
- * Servlet implementation class Subir_img
+ * Clase controladora - Clase que se encargará del proceso de subida de la imagen.
  */
 @WebServlet("/Subir_img")
 public class Subir_img extends HttpServlet {

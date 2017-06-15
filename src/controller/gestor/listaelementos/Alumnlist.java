@@ -16,7 +16,7 @@ import model.Conexion;
 import model.MAlumno;
 
 /**
- * Servlet implementation class Alumnlist
+ * Clase controladora - Clase que tratará el listado completo de los alumnos.
  */
 @WebServlet("/Alumnlist")
 public class Alumnlist extends HttpServlet {
@@ -24,7 +24,6 @@ public class Alumnlist extends HttpServlet {
 	private HttpSession hs;
 	private MAlumno modelo_alumno;
 	private Conexion conexionBD;
-	private Object alumnos[][];
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -42,16 +41,21 @@ public class Alumnlist extends HttpServlet {
         conexionBD = new Conexion();
         modelo_alumno = new MAlumno(conexionBD.getConexion());
         
+        // Recogemos la session y los datos del usuario que entra a la plataforma.
         hs = request.getSession();
-        
         Object[] datos_gestor = (Object []) hs.getAttribute("identificacion");
-        
+
+        // Si la session log viene como nula (sin identificación previa) ó el usuario que viene no es de tipo Gestor...
         if(hs.getAttribute("log") == null || !datos_gestor[1].equals("G")){
 			response.sendRedirect("error.jsp");
 		}else{
 			
+			Object alumnos[][];
+			
+			// Recogeremos en una matriz todos los alumnos que se encuentren matriculados en la Base de Datos.
 			alumnos = modelo_alumno.devuelveAlumnos();
 		
+			// Envío de los resultados por Gson.
 			String sendAlumnos = new Gson().toJson(alumnos);
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");

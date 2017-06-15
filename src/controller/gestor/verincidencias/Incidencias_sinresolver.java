@@ -16,7 +16,7 @@ import model.Conexion;
 import model.MIncidencias;
 
 /**
- * Servlet implementation class Incidencias_sinresolver
+ * Clase controladora - Clase que se encargará de mostrar el total de incidencias al gestor.
  */
 @WebServlet("/Incidencias_sinresolver")
 public class Incidencias_sinresolver extends HttpServlet {
@@ -42,14 +42,19 @@ public class Incidencias_sinresolver extends HttpServlet {
         conexionBD = new Conexion();
         modelo_incidencia = new MIncidencias(conexionBD.getConexion());
         
-        hs = request.getSession();
-		
-		if(hs.getAttribute("log") == null){
+        // Recogemos la session y los datos del usuario que entra a la plataforma.
+		hs = request.getSession();
+        Object[] datos_gestor = (Object []) hs.getAttribute("identificacion");
+        
+        // Si la session log viene como nula (sin identificación previa) ó el usuario que viene no es de tipo Gestor...  
+        if(hs.getAttribute("log") == null || !datos_gestor[1].equals("G")){
 			response.sendRedirect("error.jsp");
 		}else{
 			
+			// Nos devuelve el número de incidencias sin resolver por parte del profesor y el alumno.
 			incidencias = modelo_incidencia.totalIncidencias();
 			
+			// Envío de los resultados por Gson.
 			String sendInci = new Gson().toJson(incidencias);
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");

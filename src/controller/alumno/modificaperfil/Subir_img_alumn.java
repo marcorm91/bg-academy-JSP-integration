@@ -19,7 +19,8 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 /**
- * Servlet implementation class Subir_img_alumn
+ * Clase controladora - Controlador que se encargará de subir la imagen al directorio que le toque por parte 
+ * del usuario Alumno.
  */
 @WebServlet("/Subir_img_alumn")
 public class Subir_img_alumn extends HttpServlet {
@@ -39,12 +40,13 @@ public class Subir_img_alumn extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-request.setCharacterEncoding("UTF-8");
+		request.setCharacterEncoding("UTF-8");
 		
+        // Recogemos la session y los datos del usuario que entra a la plataforma.
 		hs = request.getSession();
-		
 		Object[] datos_alumn = (Object []) hs.getAttribute("identificacion");
         
+		// Si la session log viene como nula (sin identificación previa) ó el usuario que viene no es de tipo Alumno...
         if(hs.getAttribute("log") == null || !datos_alumn[1].equals("A")){
 			response.sendRedirect("error.jsp");
 		}else{
@@ -80,11 +82,12 @@ request.setCharacterEncoding("UTF-8");
 					  }
 					  
 					   	
-					  // Identificamos la ruta completa del usuario para hacer la subida, y cuando la tengamos
-					  // insertamos en la BD, en la tabla ficheros, un registro con el nombre de usuario, el tipo
-					  // de fichero que es (público o privado) y la ruta absoluta del mismo.
+					  // Identificamos la ruta completa del usuario para hacer la subida.
+					  // Para identificar el directorio personal debemos de tener el NIF de este usuario que ya se
+					  // recogió previamente de la session.
 				      File fichero = new File("WebContent/recursos/alumnos/"+nif+"/fotopersonal", fich);
-				      				       
+				      	
+				      // Realización de la subida del fichero al servidor.
 				      if(!fichero.isDirectory()){
 					      try {
 							uploaded.write(fichero);

@@ -24,8 +24,7 @@ public class Recoge_fecactividades extends HttpServlet {
 	private HttpSession hs;
 	private MActividades modelo_actividades;
 	private Conexion conexionBD;
-	private Object fecactividades[][];
-	private String anioprom, cursoasign;
+
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -43,34 +42,39 @@ public class Recoge_fecactividades extends HttpServlet {
         conexionBD = new Conexion();
         modelo_actividades = new MActividades(conexionBD.getConexion());
         
+        // Recogemos la session y los datos del usuario que entra a la plataforma.
         hs = request.getSession();
-        
         Object[] datos_alumno = (Object []) hs.getAttribute("identificacion");
         
+        // Si la session log viene como nula (sin identificación previa) ó el alumno que viene no es de tipo Alumno...
         if(hs.getAttribute("log") == null || !datos_alumno[1].equals("A")){
 			response.sendRedirect("error.jsp");
 		}else{
 						
 			try{
+				
+				String anioprom, cursoasign;
+				Object fecactividades[][];
 								
 				anioprom = datos_alumno[16].toString();
 				cursoasign = datos_alumno[17].toString();
 								
-				//Llamamos al modelo para realizar la consulta sobre las fechas en la BD.
+				// Llamamos al modelo para realizar la consulta sobre las fechas en la BD pasándole
+				// como parámetros el año de promoción y el curso asignado del alumno.
 				fecactividades = modelo_actividades.devuelveFechas(anioprom, cursoasign);
 			
+				// Envío de los resultados por Gson.
 				String sendFechas = new Gson().toJson(fecactividades);
 				response.setContentType("application/json");
 				response.setCharacterEncoding("UTF-8");
 				response.getWriter().write(sendFechas);
 								
 			}catch(Exception e){
-				response.sendRedirect("error.jsp");
+				response.sendRedirect("acceso/principal-alumno.jsp");
 				System.out.println(e);
 			}
 			
 		}
-        
         
         //¡IMPORTANTE! Cerrar la conexión.
   		try {

@@ -16,7 +16,7 @@ import model.Conexion;
 import model.MGestor;
 
 /**
- * Servlet implementation class Modificaperfilgest_gest
+ * Clase controladora - Clase que controlará la modificación del Gestor por parte del usuario Gestor.
  */
 @WebServlet("/Modificaperfilgest_gest")
 public class Modificaperfilgest_gest extends HttpServlet {
@@ -24,9 +24,6 @@ public class Modificaperfilgest_gest extends HttpServlet {
 	private HttpSession hs;
 	private MGestor modelo_gestor;
 	private Conexion conexionBD;
-	private String id;
-	private String nombre, apellido1, apellido2, usuario, tlf, nif, email;
-	private int envioGest;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -43,14 +40,19 @@ public class Modificaperfilgest_gest extends HttpServlet {
 		// Reopen temporal de la BD.
         conexionBD = new Conexion();
         modelo_gestor = new MGestor(conexionBD.getConexion());
-        
+
+        // Recogemos la session y los datos del usuario que entra a la plataforma.
         hs = request.getSession();
-        
         Object[] datos_gestor = (Object []) hs.getAttribute("identificacion");
         
+		// Si la session log viene como nula (sin identificación previa) ó el usuario que viene no es de tipo Gestor... 
         if(hs.getAttribute("log") == null || !datos_gestor[1].equals("G")){
 			response.sendRedirect("error.jsp");
 		}else{
+			
+			String id;
+			String nombre, apellido1, apellido2, usuario, tlf, nif, email;
+			int envioGest;
 								
 			id = request.getParameter("id");
 			nombre = request.getParameter("nombre");
@@ -61,6 +63,8 @@ public class Modificaperfilgest_gest extends HttpServlet {
 			tlf = request.getParameter("tlf");
 			email = request.getParameter("email");
 
+			// Nos devolverá el número de registros que se modificaron sobre el usuario Gestor,
+			// siendo, anteriormente la modificación del mismo.
 			envioGest = modelo_gestor.updateGestor(	id,
 											   		nombre,
 												    apellido1,
@@ -70,6 +74,7 @@ public class Modificaperfilgest_gest extends HttpServlet {
 												    nif,
 												    email);
 		
+			// Envío de los resultados por Gson.
 			String sendProf = new Gson().toJson(envioGest);
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");
@@ -83,8 +88,7 @@ public class Modificaperfilgest_gest extends HttpServlet {
   		} catch (SQLException e) {
   			e.printStackTrace();
   		}
-		
-		
+
 	}
 
 	/**

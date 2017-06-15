@@ -30,7 +30,7 @@ import model.Conexion;
 import model.MGestor;
 
 /**
- * Servlet implementation class PDF_gest_gest
+ * Clase controladora - Controla la impresión por pantalla en PDF los datos del gestor.
  */
 @WebServlet("/PDF_gest_gest.pdf")
 public class PDF_gest_gest extends HttpServlet {
@@ -38,9 +38,7 @@ public class PDF_gest_gest extends HttpServlet {
 	private HttpSession hs;
 	private String id;
     private Conexion conexionBD;
-	private MGestor modelo_gestor;  
-	private Object[] datos_gest;
-	
+	private MGestor modelo_gestor;  	
 	
     /**
      * @see HttpServlet#HttpServlet()
@@ -59,19 +57,23 @@ public class PDF_gest_gest extends HttpServlet {
         modelo_gestor = new MGestor(conexionBD.getConexion());
 		
 		OutputStream out = response.getOutputStream();
-		hs = request.getSession();
 		
+		// Recogemos la session y los datos del usuario que entra a la plataforma.
+		hs = request.getSession();
 		Object[] datos_gestor = (Object []) hs.getAttribute("identificacion");
 		
+		// Comprobamos que la session no sea null y además, que el tipo de usuario sea sólo sea acceso a Gestor.
 		if(hs.getAttribute("identificacion") == null  || !datos_gestor[1].equals("G")){  
 			response.sendRedirect("error.jsp");
 		}else{
-			
 								
 			try{
 								
 				id = request.getParameter("id");
+				
+				Object[] datos_gest;
 
+				// Vamos a recoger todos los datos del gestor para su posterior impresión por PDF.
 				datos_gest = modelo_gestor.dameDatosPorID(id);
 								
 				try{

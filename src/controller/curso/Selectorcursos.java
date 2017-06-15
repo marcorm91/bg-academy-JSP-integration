@@ -16,7 +16,7 @@ import model.Conexion;
 import model.MCurso;
 
 /**
- * Servlet implementation class Selectorcursos
+ * Clase controladora - Clase que se encargará de recoger todos los cursos existentes en la Base de Datos.
  */
 @WebServlet("/Selectorcursos")
 public class Selectorcursos extends HttpServlet {
@@ -24,8 +24,7 @@ public class Selectorcursos extends HttpServlet {
 	private HttpSession hs;
 	private MCurso modelo_curso;
 	private Conexion conexionBD;
-	private String [][] cursos;
-	private String anios;
+
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -45,28 +44,36 @@ public class Selectorcursos extends HttpServlet {
         
         hs = request.getSession();
         
+        // Si la session log viene como nula...
         if(hs.getAttribute("log") == null){
 			response.sendRedirect("error.jsp");
 		}else{
 						
-			try{		
+			try{	
+				
+				String [][] cursos;
+				String anios;
 				
 				anios = request.getParameter("anio");
 				
+				// Vamos a splitear el parámetro que venga por parte del usuario.  Con esto vamos a conseguir
+				// dividir el año de promoción en 2 variables (año inicio - año fin).  
+				// Este parámetro viene previamente como uno sólo.
 				String split_anios[] = anios.split("-");
 				String anio1 = split_anios[0].trim();
 				String anio2 = split_anios[1].trim();
 								
 				//Llamamos al modelo para realizar la consulta sobre las fechas en la BD.
 				cursos = modelo_curso.devuelveCursos(anio1, anio2);
-						
+					
+				// Envío de los resultados por Gson.
 				String sendCursos = new Gson().toJson(cursos);
 				response.setContentType("application/json");
 				response.setCharacterEncoding("UTF-8");
 				response.getWriter().write(sendCursos);
 								
 			}catch(Exception e){
-				response.sendRedirect("error.jsp");
+				response.sendRedirect("acceso.jsp");
 				System.out.println(e);
 			}
 			

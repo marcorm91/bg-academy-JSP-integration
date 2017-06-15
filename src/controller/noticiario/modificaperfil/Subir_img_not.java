@@ -19,7 +19,8 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 /**
- * Servlet implementation class Subir_img_not
+ * Clase controladora - Controlador que se encargará de subir la imagen al directorio que le toque por parte 
+ * del usuario Noticiario.
  */
 @WebServlet("/Subir_img_not")
 public class Subir_img_not extends HttpServlet {
@@ -41,10 +42,11 @@ public class Subir_img_not extends HttpServlet {
 		
 		request.setCharacterEncoding("UTF-8");
 		
+        // Recogemos la session y los datos del usuario que entra a la plataforma.
 		hs = request.getSession();
-		
 		Object[] datos_not = (Object []) hs.getAttribute("identificacion");
         
+		// Si la session log viene como nula (sin identificación previa) ó el usuario que viene no es de tipo Noticiario...
         if(hs.getAttribute("log") == null || !datos_not[1].equals("N")){
 			response.sendRedirect("error.jsp");
 		}else{

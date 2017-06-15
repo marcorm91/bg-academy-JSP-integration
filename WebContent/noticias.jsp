@@ -75,8 +75,6 @@
       									<a class="page-link" href="#" tabindex="-1">«</a>
    									</li>
     								<li class="page-item"><a class="page-link" href="#">1</a></li>
-    								<li class="page-item"><a class="page-link" href="#">2</a></li>
-    								<li class="page-item"><a class="page-link" href="#">3</a></li>
     								<li class="page-item">
       									<a class="page-link" href="#">»</a>
    									</li>
@@ -152,7 +150,7 @@
             </div>
              <div class="row">
             	<div class="col-xs-12 ultima-edicion">
-            		<label><span class="font-weight-bold">Última edición por: </span><span id="autored-mod-not"></span> el <span id="fpubled-mod-not"></span></label>
+            		<label><span class="font-weight-bold">Última edición por: </span><span id="autored-mod-not"> el</span> <span id="fpubled-mod-not"></span></label>
             	</div>
             </div>
             <div class="row">

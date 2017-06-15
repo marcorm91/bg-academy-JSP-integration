@@ -83,7 +83,7 @@ $(document).ready(function(){
     		type: "POST",
     		dataType: "json",
     		data: {id:id},
-    		url: "/Tarea_individual",
+    		url: "/Noticia_individual",
     		success: function(resp){  	
     			
     			for(var i = 0; i < resp.length; i++){
@@ -92,16 +92,25 @@ $(document).ready(function(){
     				}
     			}
     			
+    			$("#tit-modal-not").text("");
+    			$("#fpubl-mod-not").text("");
+    			$("#autor-mod-not").text("");
+    			$("#cont-mod-not").text("");
+    			$("#autored-mod-not").text("");
+				$("#fpubled-mod-not").text("");
+    			
     			$("#img-modal-not").attr("src", "recursos/imgnoticias/"+resp[2]+"");
 				$("#tit-modal-not").append(resp[1]);
 				$("#fpubl-mod-not").append(resp[5]);
 				$("#autor-mod-not").append(resp[4]);
 				$("#cont-mod-not").append(resp[3]);
-				
-				if(resp[6] == "" || resp[7] == ""){
-					$(".ultima-edicion").remove();
+									
+				if(resp[6] == null || resp[7] == null){
+					$(".ultima-edicion > label").toggle();
 					$("#autor-original").css("margin-bottom", "15px");
-				}else{
+				}
+				
+				if(resp[6] != "" || resp[7] != ""){
 					$("#autored-mod-not").append(resp[6]);
 					$("#fpubled-mod-not").append(resp[7]);
 				}

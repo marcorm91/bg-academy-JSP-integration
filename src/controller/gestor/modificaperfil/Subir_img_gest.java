@@ -19,7 +19,8 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 /**
- * Servlet implementation class Subir_img_gest
+ * Clase controladora - Controlador que se encargará de subir la imagen al directorio que le toque por parte 
+ * del usuario Gestor.
  */
 @WebServlet("/Subir_img_gest")
 public class Subir_img_gest extends HttpServlet {
@@ -31,7 +32,6 @@ public class Subir_img_gest extends HttpServlet {
      */
     public Subir_img_gest() {
         super();
-        
     }
 
 	/**
@@ -41,10 +41,11 @@ public class Subir_img_gest extends HttpServlet {
 		
 		request.setCharacterEncoding("UTF-8");
 		
+        // Recogemos la session y los datos del usuario que entra a la plataforma.
 		hs = request.getSession();
-		
 		Object[] datos_gestor = (Object []) hs.getAttribute("identificacion");
         
+		// Si la session log viene como nula (sin identificación previa) ó el usuario que viene no es de tipo Gestor...
         if(hs.getAttribute("log") == null || !datos_gestor[1].equals("G")){
 			response.sendRedirect("error.jsp");
 		}else{

@@ -16,7 +16,7 @@ import model.Conexion;
 import model.MCurso;
 
 /**
- * Servlet implementation class Cursoslist
+ * Clase controladora - Clase que tratará el listado completo de los cursos.
  */
 @WebServlet("/Cursoslist")
 public class Cursoslist extends HttpServlet {
@@ -24,8 +24,7 @@ public class Cursoslist extends HttpServlet {
 	private HttpSession hs;
 	private MCurso modelo_curso;
 	private Conexion conexionBD;
-	private Object cursos[][];
-       
+ 
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -42,16 +41,21 @@ public class Cursoslist extends HttpServlet {
         conexionBD = new Conexion();
         modelo_curso = new MCurso(conexionBD.getConexion());
         
+        // Recogemos la session y los datos del usuario que entra a la plataforma.
         hs = request.getSession();
-        
         Object[] datos_gestor = (Object []) hs.getAttribute("identificacion");
         
+        // Si la session log viene como nula (sin identificación previa) ó el usuario que viene no es de tipo Gestor...
         if(hs.getAttribute("log") == null || !datos_gestor[1].equals("G")){
 			response.sendRedirect("error.jsp");
 		}else{
 			
+			Object cursos[][];
+			
+			// Recogeremos en una matriz todos los cursos que se encuentren matriculados en la Base de Datos.
 			cursos = modelo_curso.devuelveCursos();
 		
+			// Envío de los resultados por Gson.
 			String sendCursos = new Gson().toJson(cursos);
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");

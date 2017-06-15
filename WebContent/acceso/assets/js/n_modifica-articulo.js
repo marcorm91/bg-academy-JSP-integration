@@ -93,7 +93,7 @@ $(document).ready(function(){
     			}
     			
    				$("#id-modal-art").text(resp[0]);
-   				$("#fpubl-modal-art").text($.datepicker.formatDate('dd/mm/yy', new Date(resp[5])));
+   				$("#fpubl-modal-art").text(resp[5])
    				$("#autor-modal-art").text(resp[4]);
    				$("#titular-modal-art").val(resp[1]);
    				$("#contenido-modal-art").val(resp[3]);

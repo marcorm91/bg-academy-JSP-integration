@@ -17,7 +17,7 @@ import model.MNoticiero;
 import model.MProfesor;
 
 /**
- * Servlet implementation class Acceso_plataforma
+ * Clase controladora - Control de acceso a la plataforma por parte del usuario registrado.
  */
 @WebServlet("/Acceso_plataforma")
 public class Acceso_plataforma extends HttpServlet {

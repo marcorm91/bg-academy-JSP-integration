@@ -16,7 +16,7 @@ import model.Conexion;
 import model.MIncidencias;
 
 /**
- * Servlet implementation class Resolucion_s
+ * Clase controladora - Clase que se encargará de proceder con la cancelación de una incidencia.
  */
 @WebServlet("/Resolucion_n")
 public class Resolucion_n extends HttpServlet {
@@ -24,7 +24,6 @@ public class Resolucion_n extends HttpServlet {
 	private HttpSession hs;
 	private MIncidencias modelo_incidencia;
 	private Conexion conexionBD;
-	private String id;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -42,18 +41,24 @@ public class Resolucion_n extends HttpServlet {
         conexionBD = new Conexion();
         modelo_incidencia = new MIncidencias(conexionBD.getConexion());
         
-        hs = request.getSession();
-        
+        // Recogemos la session y los datos del usuario que entra a la plataforma.
+		hs = request.getSession();
         Object[] datos_gestor = (Object []) hs.getAttribute("identificacion");
         
+        // Si la session log viene como nula (sin identificación previa) ó el usuario que viene no es de tipo Gestor...  
         if(hs.getAttribute("log") == null || !datos_gestor[1].equals("G")){
 			response.sendRedirect("error.jsp");
 		}else{
-							
+				
+			String id;
+			
 			id = request.getParameter("id");
 			
+			// Tras recoger el ID de la incidencia vamos a proceder a actualizarla siendo ésta cancelada por parte
+			// del gestor.
 			modelo_incidencia.updateInci_n(id);
 			
+			// Envío de los resultados por Gson.
 			String sendInci = new Gson().toJson(" - ");
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");

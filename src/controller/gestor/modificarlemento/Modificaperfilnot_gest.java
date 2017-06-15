@@ -16,7 +16,7 @@ import model.Conexion;
 import model.MNoticiero;
 
 /**
- * Servlet implementation class Modificaperfilnot_gest
+ * Clase controladora - Clase que controlará la modificación del Noticiario por parte del usuario Gestor.
  */
 @WebServlet("/Modificaperfilnot_gest")
 public class Modificaperfilnot_gest extends HttpServlet {
@@ -24,9 +24,6 @@ public class Modificaperfilnot_gest extends HttpServlet {
 	private HttpSession hs;
 	private MNoticiero modelo_noticiario;
 	private Conexion conexionBD;
-	private String id;
-	private String nombre, apellido1, apellido2, usuario, tlf, nif, email;
-	private int envioNot;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -44,13 +41,18 @@ public class Modificaperfilnot_gest extends HttpServlet {
         conexionBD = new Conexion();
         modelo_noticiario = new MNoticiero(conexionBD.getConexion());
         
+        // Recogemos la session y los datos del usuario que entra a la plataforma.
         hs = request.getSession();
-        
         Object[] datos_gestor = (Object []) hs.getAttribute("identificacion");
         
+        // Si la session log viene como nula (sin identificación previa) ó el usuario que viene no es de tipo Gestor... 
         if(hs.getAttribute("log") == null || !datos_gestor[1].equals("G")){
 			response.sendRedirect("error.jsp");
 		}else{
+			
+			String id;
+			String nombre, apellido1, apellido2, usuario, tlf, nif, email;
+			int envioNot;
 								
 			id = request.getParameter("id");
 			nombre = request.getParameter("nombre");
@@ -61,6 +63,8 @@ public class Modificaperfilnot_gest extends HttpServlet {
 			tlf = request.getParameter("tlf");
 			email = request.getParameter("email");
 
+			// Nos devolverá el número de registros que se modificaron sobre el usuario Noticiario,
+			// siendo, anteriormente la modificación del mismo.
 			envioNot = modelo_noticiario.updateNoticiario( 	id,
 													   		nombre,
 														    apellido1,
@@ -70,6 +74,7 @@ public class Modificaperfilnot_gest extends HttpServlet {
 														    nif,
 														    email);
 			
+			// Envío de los resultados por Gson.
 			String sendProf = new Gson().toJson(envioNot);
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");
@@ -83,7 +88,6 @@ public class Modificaperfilnot_gest extends HttpServlet {
   		} catch (SQLException e) {
   			e.printStackTrace();
   		}
-		
 		
 	}
 

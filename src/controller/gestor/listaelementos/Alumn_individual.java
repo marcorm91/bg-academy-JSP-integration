@@ -16,7 +16,7 @@ import model.Conexion;
 import model.MAlumno;
 
 /**
- * Servlet implementation class Prof_individual
+ * Clase controladora - Clase que se encargará de tratar el control de datos por parte del alumno.
  */
 @WebServlet("/Alumn_individual")
 public class Alumn_individual extends HttpServlet {
@@ -24,9 +24,7 @@ public class Alumn_individual extends HttpServlet {
 	private HttpSession hs;
 	private MAlumno modelo_alumno;
 	private Conexion conexionBD;
-	private Object alumno[];
-	private String id;
-       
+   
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -43,18 +41,24 @@ public class Alumn_individual extends HttpServlet {
         conexionBD = new Conexion();
         modelo_alumno = new MAlumno(conexionBD.getConexion());
         
+        // Recogemos la session y los datos del usuario que entra a la plataforma.
         hs = request.getSession();
-        
         Object[] datos_usu = (Object []) hs.getAttribute("identificacion");
-                
+          
+		// Comprobamos que la session no sea null y además, que el tipo de usuario sea sólo sea acceso a Gestor y Profesor.
         if(hs.getAttribute("log") == null || !datos_usu[1].equals("G") && !datos_usu[1].equals("P")){
 			response.sendRedirect("error.jsp");
 		}else{
+			
+			Object alumno[];
+			String id;
 							
 			id = request.getParameter("id");
 			
+			// Vamos a recoger el alumno de la Base de Datos pasándole previamente por parámetro la ID del mismo.
 			alumno = modelo_alumno.dameDatosPorID(id);
 			
+			// Envío de los resultados por Gson.
 			String sendAlumn = new Gson().toJson(alumno);
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");

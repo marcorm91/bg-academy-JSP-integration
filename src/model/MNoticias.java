@@ -60,7 +60,7 @@ public class MNoticias {
 		int cantidad = totalRegistrosNoticias();
 		String total = "SELECT bgacademy.noticias.idnoticia AS idnoticia, bgacademy.noticias.titular AS titular, bgacademy.noticias.imagen AS rutaImg,"
 					 + " bgacademy.noticias.contenido AS contenido, bgacademy.noticiario.nombre AS autor, bgacademy.noticias.fpubl AS fechapublicacion "
-					 + " FROM bgacademy.noticias INNER JOIN bgacademy.noticiario ON bgacademy.noticias.iduser = bgacademy.noticiario.iduser;";
+					 + " FROM bgacademy.noticias INNER JOIN bgacademy.noticiario ON bgacademy.noticias.iduser = bgacademy.noticiario.iduser order by idnoticia desc;";
 		Object datos[][] = new Object[cantidad][6];
 		int i = 0;
 		

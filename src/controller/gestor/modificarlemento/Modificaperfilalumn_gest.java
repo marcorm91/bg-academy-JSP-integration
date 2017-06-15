@@ -19,7 +19,7 @@ import model.Conexion;
 import model.MAlumno;
 
 /**
- * Servlet implementation class Modificaperfilalumn_gest
+ * Clase controladora - Clase que controlará la modificación del Alumno por parte del usuario Gestor.
  */
 @WebServlet("/Modificaperfilalumn_gest")
 public class Modificaperfilalumn_gest extends HttpServlet {
@@ -27,9 +27,6 @@ public class Modificaperfilalumn_gest extends HttpServlet {
 	private HttpSession hs;
 	private MAlumno modelo_alumno;
 	private Conexion conexionBD;
-	private String id;
-	private String nombre, apellido1, apellido2, usuario, fecna, tlf, nif, nacimiento, nacionalidad, calle, cp, provincia, poblacion, email;
-	private int envioAlumn;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -47,13 +44,18 @@ public class Modificaperfilalumn_gest extends HttpServlet {
         conexionBD = new Conexion();
         modelo_alumno = new MAlumno(conexionBD.getConexion());
         
+        // Recogemos la session y los datos del usuario que entra a la plataforma.
         hs = request.getSession();
-        
         Object[] datos_gestor = (Object []) hs.getAttribute("identificacion");
         
+		// Si la session log viene como nula (sin identificación previa) ó el usuario que viene no es de tipo Gestor...  
         if(hs.getAttribute("log") == null || !datos_gestor[1].equals("G")){
 			response.sendRedirect("error.jsp");
 		}else{
+			
+			String id;
+			String nombre, apellido1, apellido2, usuario, fecna, tlf, nif, nacimiento, nacionalidad, calle, cp, provincia, poblacion, email;
+			int envioAlumn;
 								
 			id = request.getParameter("id");
 			nombre = request.getParameter("nombre");
@@ -70,17 +72,20 @@ public class Modificaperfilalumn_gest extends HttpServlet {
 			provincia = request.getParameter("provincia");
 			poblacion = request.getParameter("poblacion");
 			email = request.getParameter("email");
-									
+				
+			// Instanciamos el tipo de formato para posteriormente parsear la fecha que nos envíe el usuario.
 			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 			Date fecna_date = null;
 			
+			// Parseo de la fecha recibida para hacer el update en la Base de Datos del alumno.
 			try {
 				fecna_date =  sdf.parse(fecna);
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}
 			
-			
+			// Nos devolverá el número de registros que se modificaron sobre el usuario Alumno,
+			// siendo, anteriormente la modificación del mismo.
 			envioAlumn = modelo_alumno.updateAlumno(   id,
 													   nombre,
 													   apellido1,
@@ -97,6 +102,7 @@ public class Modificaperfilalumn_gest extends HttpServlet {
 													   poblacion,
 													   email);
 			
+			// Envío de los resultados por Gson.
 			String sendProf = new Gson().toJson(envioAlumn);
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");

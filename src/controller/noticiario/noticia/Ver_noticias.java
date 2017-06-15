@@ -22,7 +22,6 @@ public class Ver_noticias extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private Conexion conexionBD;
 	private MNoticias modelo_noticias;
-	private Object noticias[][];
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -38,14 +37,18 @@ public class Ver_noticias extends HttpServlet {
 		
 		// Reopen temporal de la BD.
         conexionBD = new Conexion();
-        modelo_noticias = new MNoticias(conexionBD.getConexion());  
-       
-			noticias = modelo_noticias.dameNoticias();
-			
-			String sendRegs = new Gson().toJson(noticias);
-			response.setContentType("application/json");
-			response.setCharacterEncoding("UTF-8");
-			response.getWriter().write(sendRegs);
+        modelo_noticias = new MNoticias(conexionBD.getConexion()); 
+        
+		Object noticias[][];
+   
+		// Obtenemos todas las noticias registradas en la Base de Datos.
+		noticias = modelo_noticias.dameNoticias();
+		
+		// Envío de los resultados por Gson.
+		String sendRegs = new Gson().toJson(noticias);
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
+		response.getWriter().write(sendRegs);
 						
         //¡IMPORTANTE! Cerrar la conexión.
   		try {

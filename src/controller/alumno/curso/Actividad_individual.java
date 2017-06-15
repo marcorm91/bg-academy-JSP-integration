@@ -16,7 +16,8 @@ import model.Conexion;
 import model.MActividades;
 
 /**
- * Servlet implementation class Actividad_individual
+ * Clase controladora - Recoge los detalles de una actividad para mostrar el resultado de lo devuelto
+ * en un modal al usuario.
  */
 @WebServlet("/Actividad_individual")
 public class Actividad_individual extends HttpServlet {
@@ -24,8 +25,6 @@ public class Actividad_individual extends HttpServlet {
 	private HttpSession hs;
 	private Conexion conexionBD;
 	private MActividades modelo_actividades;
-	private Object actividad[];
-	private String idactividad;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -43,18 +42,26 @@ public class Actividad_individual extends HttpServlet {
         conexionBD = new Conexion();
         modelo_actividades = new MActividades(conexionBD.getConexion());
         
+        // Recogemos la session y los datos del usuario que entra a la plataforma.
         hs = request.getSession();
-        
         Object[] datos_alumn = (Object []) hs.getAttribute("identificacion");
 		
+        // Si la session log viene como nula (sin identificación previa) ó el usuario que viene no es de tipo Alumno...
 		if(hs.getAttribute("log") == null || !datos_alumn[1].equals("A")){
 			response.sendRedirect("error.jsp");
 		}else{
 			
+			Object actividad[];
+			String idactividad;
+			
+			// Recogemos el ID de la actividad que nos pasa el usuario desde la vista a través de un data-id.
 			idactividad = request.getParameter("idactividad");
-						
+			
+			// Recogemos todos los datos de dicha actividad para ingresarlos en un array.  Éste será posteriormente
+			// impreso por pantalla para la muestra de la misma al usuario.
 			actividad = modelo_actividades.dameActividad(idactividad);
 			
+			// Envío de los resultados por Gson.
 			String sendActividades = new Gson().toJson(actividad);
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");

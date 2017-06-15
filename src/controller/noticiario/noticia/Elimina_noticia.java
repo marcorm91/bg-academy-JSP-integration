@@ -16,7 +16,7 @@ import model.Conexion;
 import model.MNoticias;
 
 /**
- * Servlet implementation class Elimina_noticia
+ * Clase controladora - Elimina la noticia desde el panel del Noticiario.
  */
 @WebServlet("/Elimina_noticia")
 public class Elimina_noticia extends HttpServlet {
@@ -24,7 +24,6 @@ public class Elimina_noticia extends HttpServlet {
 	private Conexion conexionBD;
 	private MNoticias modelo_noticias;
 	private HttpSession hs;
-	private String id;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -42,19 +41,23 @@ public class Elimina_noticia extends HttpServlet {
         conexionBD = new Conexion();
         modelo_noticias = new MNoticias(conexionBD.getConexion());
         
+        // Recogemos la session y los datos del usuario que entra a la plataforma.
         hs = request.getSession();
-        
         Object[] datos_not = (Object []) hs.getAttribute("identificacion");
         
+        // Comprobamos que la session no sea null y además, que el tipo de usuario sea sólo sea acceso a Noticiario.
         if(hs.getAttribute("identificacion") == null  || !datos_not[1].equals("N")){  
 			response.sendRedirect("error.jsp");
 		}else{
 			
+			String id;
 			id = request.getParameter("id");
 			int rowDelete;
 			
+			// La variable nos devolverá el número de noticias eliminadas cuando llamamos al método.
 			rowDelete = modelo_noticias.eliminaNoticia(id);
 			
+			// Envío de los resultados por Gson.
 			String sendRegs = new Gson().toJson(rowDelete);
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");

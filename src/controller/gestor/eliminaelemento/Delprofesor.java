@@ -17,7 +17,7 @@ import model.Conexion;
 import model.MProfesor;
 
 /**
- * Servlet implementation class Delprofesor
+ * Clase controladora - Clase que se encargará de eliminar el profesor de la BD, y además, borrará su directorio personal.
  */
 @WebServlet("/Delprofesor")
 public class Delprofesor extends HttpServlet {
@@ -25,8 +25,7 @@ public class Delprofesor extends HttpServlet {
 	private HttpSession hs;
 	private MProfesor modelo_profesor;
 	private Conexion conexionBD;
-	private String id, nif;
-	private int resultado;
+
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -44,26 +43,33 @@ public class Delprofesor extends HttpServlet {
         conexionBD = new Conexion();
         modelo_profesor = new MProfesor(conexionBD.getConexion());
         
+        // Recogemos la session y los datos del usuario que entra a la plataforma.
         hs = request.getSession();
-        
         Object[] datos_gestor = (Object []) hs.getAttribute("identificacion");
         
+        // Si la session log viene como nula (sin identificación previa) ó el usuario que viene no es de tipo Gestor...
         if(hs.getAttribute("log") == null || !datos_gestor[1].equals("G")){
 			response.sendRedirect("error.jsp");
 		}else{
+			
+			String id, nif;
+			int resultado;
 							
 			id = request.getParameter("id");
 			
-			// Recoge el NIF del profesor.
+			// Recoge el NIF del profesor que viene de la request.
 			nif = modelo_profesor.dameNif(id);
 
+			// Instancia el directorio previamente con el nif del profesor.
 			File directorio = new File("WebContent/recursos/profesores/"+nif);
 			
-			//Método que elimina el directorio completo del profesor.
+			// Método que elimina el directorio personal completo del profesor.
 			eliminaDirectorio(directorio);
 			
+			// Devolverá un entero (número de registros que se eliminó) pasándole por parámetro la ID.
 			resultado = modelo_profesor.eliminaProfesor(id);
 			
+			// Envío de los resultados por Gson.
 			String sendDelProf = new Gson().toJson(resultado);
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");
@@ -90,8 +96,8 @@ public class Delprofesor extends HttpServlet {
 	
 	
 	/**
-	 * Función que elimina el directorio personal del usuario.
-	 * @param directorio
+	 * Función que elimina el directorio personal del usuario de forma recursiva.
+	 * @param directorio Le pasamos como parámetro el directorio a eliminar.
 	 */
 	private void eliminaDirectorio(File directorio){
 

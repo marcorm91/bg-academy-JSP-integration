@@ -43,18 +43,21 @@ public class Verincidencias_individual extends HttpServlet {
         conexionBD = new Conexion();
         modelo_incidencia = new MIncidencias(conexionBD.getConexion());
         
-        hs = request.getSession();
-        
+        // Recogemos la session y los datos del usuario que entra a la plataforma.
+ 		hs = request.getSession();
         Object[] datos_gestor = (Object []) hs.getAttribute("identificacion");
-        
-        if(hs.getAttribute("log") == null || !datos_gestor[1].equals("G")){
+             
+	    // Si la session log viene como nula (sin identificación previa) ó el usuario que viene no es de tipo Gestor...  
+	    if(hs.getAttribute("log") == null || !datos_gestor[1].equals("G")){
 			response.sendRedirect("error.jsp");
 		}else{
 							
 			id = request.getParameter("id");
 			
+			// Recoge la incidencia del usuario.
 			incidencia = modelo_incidencia.dameIncidencia(id);
 			
+			// Envío de los resultados por Gson.
 			String sendInci = new Gson().toJson(incidencia);
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");

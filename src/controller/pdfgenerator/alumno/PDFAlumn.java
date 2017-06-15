@@ -26,7 +26,7 @@ import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfWriter;
 
 /**
- * Servlet implementation class PDFAlumn
+ * Clase controladora - Generación de PDF de alumno.
  */
 @WebServlet("/PDFAlumn.pdf")
 public class PDFAlumn extends HttpServlet {
@@ -46,15 +46,17 @@ public class PDFAlumn extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		OutputStream out = response.getOutputStream();
-		hs = request.getSession();
 		
-		if(hs.getAttribute("identificacion") == null){  
+        // Recogemos la session y los datos del usuario que entra a la plataforma.
+		hs = request.getSession();
+		Object[] datos_alumn = (Object []) request.getSession().getAttribute("identificacion");
+		
+		// Comprobamos que la session no sea null y además, que el tipo de usuario sea sólo sea acceso a Alumno.
+		if(hs.getAttribute("identificacion") == null || !datos_alumn[1].equals("A")){  
 			response.sendRedirect("error.jsp");
 		}else{
 		
 			try{
-				
-				Object[] datos_alumn = (Object []) request.getSession().getAttribute("identificacion");
 				
 				try{
 					
@@ -268,13 +270,11 @@ public class PDFAlumn extends HttpServlet {
 					System.out.println(e);
 				}
 				
-				
 			}finally{
 				out.close();
 			}
 		
 		}
-		
 		
 	}
 

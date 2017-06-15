@@ -16,7 +16,8 @@ import model.Conexion;
 import model.MAlumno;
 
 /**
- * Servlet implementation class Activo_alumno
+ * Clase controladora - Comprueba el primer acceso de un usuario registrado en la plataforma.
+ * Con esto conseguimos mostrarle un mensaje de bienvenida tras su primer acceso.
  */
 @WebServlet("/Activo_alumno")
 public class Activo_alumno extends HttpServlet {
@@ -24,8 +25,6 @@ public class Activo_alumno extends HttpServlet {
 	private HttpSession hs;
 	private MAlumno modelo_alumno;
 	private Conexion conexionBD;
-	private String id;
-	private String resultado;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -43,21 +42,31 @@ public class Activo_alumno extends HttpServlet {
         conexionBD = new Conexion();
         modelo_alumno = new MAlumno(conexionBD.getConexion());
         
+        // Recogemos la session y los datos del usuario que entra a la plataforma.
         hs = request.getSession();
         Object[] datos_alumno = (Object []) hs.getAttribute("identificacion");
         
+        // Si la session log viene como nula (sin identificación previa) ó el alumno que viene no es de tipo Alumno...
         if(hs.getAttribute("log") == null || !datos_alumno[1].equals("A")){
 			response.sendRedirect("error.jsp");
 		}else{
+			
+			String id;
+			String resultado;
         
 			id = datos_alumno[0].toString();
 			
+			// Recogemos el String 'S' (Activo) ó 'N' (No activo) para hacer el update sobre su campo (si es necesario)
+			// y mostrar o no la pantalla de bienvenida.
 			resultado = modelo_alumno.compruebaActivo(id);
 			
+			// Si resultado == 'N' quiere decir que estamos ante un usuario nuevo, por lo que modificamos 
+			// en su registro en el campo activo a 'S'.
 			if(resultado.equalsIgnoreCase("N")){
 				modelo_alumno.setActivo(id);
 			}
 			
+			// Envío de los resultados por Gson.
 			String sendAct = new Gson().toJson(resultado);
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");

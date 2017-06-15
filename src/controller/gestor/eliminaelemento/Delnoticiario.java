@@ -17,7 +17,7 @@ import model.Conexion;
 import model.MNoticiero;
 
 /**
- * Servlet implementation class Delnoticiario
+ * Clase controladora - Clase que se encargará de eliminar el noticiario de la BD, y además, borrará su directorio personal.
  */
 @WebServlet("/Delnoticiario")
 public class Delnoticiario extends HttpServlet {
@@ -25,8 +25,6 @@ public class Delnoticiario extends HttpServlet {
 	private HttpSession hs;
 	private MNoticiero modelo_noticiario;
 	private Conexion conexionBD;
-	private String id, nif;
-	private int resultado;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -44,26 +42,33 @@ public class Delnoticiario extends HttpServlet {
         conexionBD = new Conexion();
         modelo_noticiario = new MNoticiero(conexionBD.getConexion());
         
+        // Recogemos la session y los datos del usuario que entra a la plataforma.
         hs = request.getSession();
-        
         Object[] datos_gestor = (Object []) hs.getAttribute("identificacion");
         
+        // Si la session log viene como nula (sin identificación previa) ó el usuario que viene no es de tipo Gestor...
         if(hs.getAttribute("log") == null || !datos_gestor[1].equals("G")){
 			response.sendRedirect("error.jsp");
 		}else{
+			
+			String id, nif;
+			int resultado;
 							
 			id = request.getParameter("id");
 			
-			// Recoge el NIF del alumno.
+			// Recoge el NIF del noticiario que viene de la request.
 			nif = modelo_noticiario.dameNif(id);
 
+			// Instancia el directorio previamente con el nif del noticiario.
 			File directorio = new File("WebContent/recursos/noticiario/"+nif);
 			
-			//Método que elimina el directorio completo del alumno.
+			// Método que elimina el directorio personal completo del noticiario.
 			eliminaDirectorio(directorio);
 			
+			// Devolverá un entero (número de registros que se eliminó) pasándole por parámetro la ID.
 			resultado = modelo_noticiario.eliminaNoticiario(id);
 			
+			// Envío de los resultados por Gson.
 			String sendDelNot = new Gson().toJson(resultado);
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");
@@ -90,8 +95,8 @@ public class Delnoticiario extends HttpServlet {
 	
 	
 	/**
-	 * Función que elimina el directorio personal del usuario.
-	 * @param directorio
+	 * Función que elimina el directorio personal del usuario de forma recursiva.
+	 * @param directorio Le pasamos como parámetro el directorio a eliminar.
 	 */
 	private void eliminaDirectorio(File directorio){
 

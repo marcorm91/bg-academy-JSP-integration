@@ -16,7 +16,7 @@ import model.Conexion;
 import model.MProfesor;
 
 /**
- * Servlet implementation class Recoge_anio
+ * Clase controladora - Recoge los años de promoción en relación al alumno y profesor.
  */
 @WebServlet("/Recoge_anio")
 public class Recoge_anio extends HttpServlet {
@@ -24,7 +24,6 @@ public class Recoge_anio extends HttpServlet {
 	private HttpSession hs;
 	private MProfesor modelo_profesor;
 	private Conexion conexionBD;
-	private String anio, id;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -42,21 +41,25 @@ public class Recoge_anio extends HttpServlet {
         conexionBD = new Conexion();
         modelo_profesor = new MProfesor(conexionBD.getConexion());
         
+        // Recogemos la session y los datos del usuario que entra a la plataforma.
         hs = request.getSession();
-        
         Object[] datos_profesor = (Object []) hs.getAttribute("identificacion");
         
+        // Si la session log viene como nula (sin identificación previa) ó el alumno que viene no es de tipo Profesor...
         if(hs.getAttribute("log") == null || !datos_profesor[1].equals("P")){
 			response.sendRedirect("error.jsp");
 		}else{
 						
 			try{
 				
+				String anio, id;
+				
 				id = datos_profesor[0].toString();
 				
 				//Llamamos al modelo para realizar la consulta sobre las fechas en la BD.
 				anio = modelo_profesor.devuelveFechas(id);
-											
+				
+				// Envío de los resultados por Gson.
 				String sendFechas = new Gson().toJson(anio);
 				response.setContentType("application/json");
 				response.setCharacterEncoding("UTF-8");

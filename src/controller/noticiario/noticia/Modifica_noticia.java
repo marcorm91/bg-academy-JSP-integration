@@ -18,7 +18,7 @@ import model.Conexion;
 import model.MNoticias;
 
 /**
- * Servlet implementation class Modifica_noticia
+ * Clase controladora - Modifica la noticia desde el panel del Noticiario.
  */
 @WebServlet("/Modifica_noticia")
 public class Modifica_noticia extends HttpServlet {
@@ -26,10 +26,7 @@ public class Modifica_noticia extends HttpServlet {
 	private HttpSession hs;
 	private MNoticias modelo_noticias;
 	private Conexion conexionBD;
-	private String id;
-	private String titular, contenido;
-	private String edicionautor;
-	private int envioArt;
+
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -47,30 +44,38 @@ public class Modifica_noticia extends HttpServlet {
         conexionBD = new Conexion();
         modelo_noticias = new MNoticias(conexionBD.getConexion());
         
+        // Recogemos la session y los datos del usuario que entra a la plataforma.
         hs = request.getSession();
-        
         Object[] datos_noticiario = (Object []) hs.getAttribute("identificacion");
         
+        // Comprobamos que la session no sea null y además, que el tipo de usuario sea sólo sea acceso a Noticiario.
         if(hs.getAttribute("log") == null || !datos_noticiario[1].equals("N")){
 			response.sendRedirect("error.jsp");
 		}else{
+			
+			String id;
+			String titular, contenido;
+			String edicionautor;
+			int envioArt;
 								
 			id = request.getParameter("id");
 			titular = request.getParameter("titular");
 			contenido = request.getParameter("contenido");
 			edicionautor = datos_noticiario[2].toString();
 			
+			// Capturamos la fecha actual.
 			Calendar cal = Calendar.getInstance();
 		    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		    String fechaedicion = sdf.format(cal.getTime());
 		
-			
+			// Esta variable nos devolverá el número de artículos que se modificaron.
 			envioArt = modelo_noticias.updateNoticia(  id,
 													   titular,
 													   contenido,
 													   edicionautor,
 													   fechaedicion);
 			
+			// Envío de los resultados por Gson.
 			String sendProf = new Gson().toJson(envioArt);
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");

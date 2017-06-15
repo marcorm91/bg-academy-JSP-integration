@@ -16,7 +16,7 @@ import model.Conexion;
 import model.MIncidencias;
 
 /**
- * Servlet implementation class Regincidenciaalumn
+ * Clase controladora - Se encargará de registrar una incidencia por parte del usuario Profesor.
  */
 @WebServlet("/Regincidenciaprof")
 public class Regincidenciaprof extends HttpServlet {
@@ -24,9 +24,7 @@ public class Regincidenciaprof extends HttpServlet {
 	private HttpSession hs;
 	private Conexion conexionBD;
 	private MIncidencias modelo_incidencias;
-	private String incidencia;
-	private String id;
-       
+    
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -43,21 +41,28 @@ public class Regincidenciaprof extends HttpServlet {
         conexionBD = new Conexion();
         modelo_incidencias = new MIncidencias(conexionBD.getConexion());
         
+        // Recogemos la session y los datos del usuario que entra a la plataforma.
         hs = request.getSession();
+        Object[] datos_prof = (Object []) hs.getAttribute("identificacion");
 		
-		if(hs.getAttribute("log") == null){
+        // Comprobamos que la session no sea null o que el tipo de usuario sea de tipo Profesor...
+		if(hs.getAttribute("log") == null || !datos_prof[1].equals("P")){
 			response.sendRedirect("error.jsp");
 		}else{
 			
-			Object[] datos_prof = (Object []) hs.getAttribute("identificacion");
-			
 			try{
 				
+				String incidencia, id;
+				
+				// Recogemos el texto que nos envía el usuario (profesor) de la incidencia y su ID.
 				incidencia = request.getParameter("profincidencia");
 				id = datos_prof[0].toString();
 				
+				// Vamos a registrar en el modelo de incidencias la incidencia en sí y el ID del usuario
+				// que deja la incidencia.
 				modelo_incidencias.registraIncidenciaProf(id, incidencia);
 				
+				// Envío de los resultados por Gson.
 				String inciOK = new Gson().toJson("0");
 				response.setContentType("application/json");
 				response.setCharacterEncoding("UTF-8");

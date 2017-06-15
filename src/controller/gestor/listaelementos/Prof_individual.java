@@ -16,7 +16,7 @@ import model.Conexion;
 import model.MProfesor;
 
 /**
- * Servlet implementation class Prof_individual
+ * Clase controladora - Clase que se encargará de tratar el control de datos por parte del profesor.
  */
 @WebServlet("/Prof_individual")
 public class Prof_individual extends HttpServlet {
@@ -24,8 +24,6 @@ public class Prof_individual extends HttpServlet {
 	private HttpSession hs;
 	private MProfesor modelo_profesor;
 	private Conexion conexionBD;
-	private Object profesor[];
-	private String id;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -43,19 +41,24 @@ public class Prof_individual extends HttpServlet {
         conexionBD = new Conexion();
         modelo_profesor = new MProfesor(conexionBD.getConexion());
         
+        // Recogemos la session y los datos del usuario que entra a la plataforma.
         hs = request.getSession();
-        
         Object[] datos_gestor = (Object []) hs.getAttribute("identificacion");
         
+        // Si la session log viene como nula (sin identificación previa) ó el usuario que viene no es de tipo Gestor...
         if(hs.getAttribute("log") == null || !datos_gestor[1].equals("G")){
 			response.sendRedirect("error.jsp");
 		}else{
+			
+			Object profesor[];
+			String id;
 							
 			id = request.getParameter("id");
 			
+			// Vamos a recoger el profesor de la Base de Datos pasándole previamente por parámetro la ID del mismo.
 			profesor = modelo_profesor.dameDatosPorID(id);
 			
-			
+			// Envío de los resultados por Gson.
 			String sendProf = new Gson().toJson(profesor);
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");

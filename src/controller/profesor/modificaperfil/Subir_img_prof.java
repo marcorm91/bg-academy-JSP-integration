@@ -19,7 +19,8 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 /**
- * Servlet implementation class Subir_img_prof
+ * Clase controladora - Controlador que se encargará de subir la imagen al directorio que le toque por parte 
+ * del usuario Profesor.
  */
 @WebServlet("/Subir_img_prof")
 public class Subir_img_prof extends HttpServlet {
@@ -31,7 +32,6 @@ public class Subir_img_prof extends HttpServlet {
      */
     public Subir_img_prof() {
         super();
-        
     }
 
 	/**
@@ -39,12 +39,13 @@ public class Subir_img_prof extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-request.setCharacterEncoding("UTF-8");
+		request.setCharacterEncoding("UTF-8");
 		
+		// Recogemos la session y los datos del usuario que entra a la plataforma.
 		hs = request.getSession();
-		
 		Object[] datos_prof = (Object []) hs.getAttribute("identificacion");
         
+		// Si la session log viene como nula (sin identificación previa) ó el usuario que viene no es de tipo Profesor...
         if(hs.getAttribute("log") == null || !datos_prof[1].equals("P")){
 			response.sendRedirect("error.jsp");
 		}else{

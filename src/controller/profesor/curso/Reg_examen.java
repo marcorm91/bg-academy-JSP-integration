@@ -19,7 +19,7 @@ import model.Conexion;
 import model.MActividades;
 
 /**
- * Servlet implementation class Reg_examen
+ * Clase controladora - Registra un examen a un determinado curso y año de promoción.
  */
 @WebServlet("/Reg_examen")
 public class Reg_examen extends HttpServlet {
@@ -27,9 +27,7 @@ public class Reg_examen extends HttpServlet {
 	private Conexion conexionBD;
 	private MActividades modelo_actividades;
 	private HttpSession hs;
-	private String anioprom, cursoasign, titexamen, detalleexamen;
-	private String feclimite;
-       
+   
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -46,13 +44,17 @@ public class Reg_examen extends HttpServlet {
         conexionBD = new Conexion();
         modelo_actividades = new MActividades(conexionBD.getConexion());
         
+        // Recogemos la session y los datos del usuario que entra a la plataforma.
         hs = request.getSession();
-        
         Object[] datos_prof = (Object []) hs.getAttribute("identificacion");
         
+        // Comprobamos que la session no sea null y además, que el tipo de usuario sea sólo sea acceso a Profesor.
         if(hs.getAttribute("identificacion") == null  || !datos_prof[1].equals("P")){  
 			response.sendRedirect("error.jsp");
 		}else{
+			
+			String anioprom, cursoasign, titexamen, detalleexamen;
+			String feclimite;
 			
 			anioprom = request.getParameter("anioprom");
 			cursoasign = request.getParameter("cursoasign");
@@ -60,9 +62,11 @@ public class Reg_examen extends HttpServlet {
 			titexamen = request.getParameter("titexamen");
 			detalleexamen = request.getParameter("detalleexamen");
 			
+			// Vamos a preparar el formato de fecha que venga de fecha límite.
 			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 			Date feclimite_parse = null;
 			
+			// Realizamos el parseo al formato anterior.
 			try {
 				feclimite_parse =  sdf.parse(feclimite);
 			} catch (ParseException e) {
@@ -70,9 +74,12 @@ public class Reg_examen extends HttpServlet {
 			}
 			
 			int rowsInsert = 0;
-						
+			
+			// Hacemos el registro del examen.  Nos devolverá un entero que será el número de registros que se 
+			// introdujeron en la BD.
 			rowsInsert = modelo_actividades.registraExamen(titexamen, detalleexamen, feclimite_parse, anioprom, cursoasign);
 
+			// Envío de los resultados por Gson.
 			String sendRegs = new Gson().toJson(rowsInsert);
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");

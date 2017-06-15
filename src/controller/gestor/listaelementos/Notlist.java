@@ -16,7 +16,7 @@ import model.Conexion;
 import model.MNoticiero;
 
 /**
- * Servlet implementation class Notlist
+ * Clase controladora - Clase que tratará el listado completo de los noticiarios.
  */
 @WebServlet("/Notlist")
 public class Notlist extends HttpServlet {
@@ -24,7 +24,6 @@ public class Notlist extends HttpServlet {
 	private HttpSession hs;
 	private MNoticiero modelo_noticiero;
 	private Conexion conexionBD;
-	private Object noticiarios[][];
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -42,16 +41,21 @@ public class Notlist extends HttpServlet {
         conexionBD = new Conexion();
         modelo_noticiero = new MNoticiero(conexionBD.getConexion());
         
+        // Recogemos la session y los datos del usuario que entra a la plataforma.
         hs = request.getSession();
-        
         Object[] datos_gestor = (Object []) hs.getAttribute("identificacion");
         
+        // Si la session log viene como nula (sin identificación previa) ó el usuario que viene no es de tipo Gestor...
         if(hs.getAttribute("log") == null || !datos_gestor[1].equals("G")){
 			response.sendRedirect("error.jsp");
 		}else{
+			
+			Object noticiarios[][];
 
+			// Recogeremos en una matriz todos los noticiarios que se encuentren matriculados en la Base de Datos.
 			noticiarios = modelo_noticiero.devuelveNoticiarios();
 		
+			// Envío de los resultados por Gson.
 			String sendNoticiarios = new Gson().toJson(noticiarios);
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");

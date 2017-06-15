@@ -17,7 +17,7 @@ import model.Conexion;
 import model.MAlumno;
 
 /**
- * Servlet implementation class Delalumno
+ * Clase controladora - Clase que se encargará de eliminar el alumno de la BD, y además, borrará su directorio personal.
  */
 @WebServlet("/Delalumno")
 public class Delalumno extends HttpServlet {
@@ -25,17 +25,14 @@ public class Delalumno extends HttpServlet {
 	private HttpSession hs;
 	private MAlumno modelo_alumno;
 	private Conexion conexionBD;
-	private String id, nif;
-	private int resultado;
 	
-       
     /**
      * @see HttpServlet#HttpServlet()
      */
     public Delalumno() {
         super();
     }
-
+    
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -45,26 +42,33 @@ public class Delalumno extends HttpServlet {
         conexionBD = new Conexion();
         modelo_alumno = new MAlumno(conexionBD.getConexion());
         
+        // Recogemos la session y los datos del usuario que entra a la plataforma.
         hs = request.getSession();
         Object[] datos_gestor = (Object []) hs.getAttribute("identificacion");
         
-        
+        // Si la session log viene como nula (sin identificación previa) ó el usuario que viene no es de tipo Gestor...
         if(hs.getAttribute("log") == null || !datos_gestor[1].equals("G")){
 			response.sendRedirect("error.jsp");
 		}else{
+			
+			String id, nif;
+			int resultado;
 							
 			id = request.getParameter("id");
 			
-			// Recoge el NIF del alumno.
+			// Recoge el NIF del alumno que viene de la request.
 			nif = modelo_alumno.dameNif(id);
 
+			// Instancia el directorio previamente con el nif del alumno.
 			File directorio = new File("WebContent/recursos/alumnos/"+nif);
 			
-			//Método que elimina el directorio completo del alumno.
+			// Método que elimina el directorio personal completo del alumno.
 			eliminaDirectorio(directorio);
 			
+			// Devolverá un entero (número de registros que se eliminó) pasándole por parámetro la ID.
 			resultado = modelo_alumno.eliminaAlumno(id);
 
+			// Envío de los resultados por Gson.
 			String sendDelAlumn = new Gson().toJson(resultado);
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");
@@ -92,8 +96,8 @@ public class Delalumno extends HttpServlet {
 	
 	
 	/**
-	 * Función que elimina el directorio personal del usuario.
-	 * @param directorio
+	 * Función que elimina el directorio personal del usuario de forma recursiva.
+	 * @param directorio Le pasamos como parámetro el directorio a eliminar.
 	 */
 	private void eliminaDirectorio(File directorio){
 

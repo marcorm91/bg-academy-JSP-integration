@@ -30,7 +30,7 @@ import model.Conexion;
 import model.MNoticiero;
 
 /**
- * Servlet implementation class PDF_not_gest
+ * Clase controladora - Controla la impresión por pantalla en PDF los datos del noticiario.
  */
 @WebServlet("/PDF_not_gest.pdf")
 public class PDF_not_gest extends HttpServlet {
@@ -38,9 +38,7 @@ public class PDF_not_gest extends HttpServlet {
 	private HttpSession hs;
 	private String id;
     private Conexion conexionBD;
-	private MNoticiero modelo_noticiero;  
-	private Object[] datos_not;
-	
+	private MNoticiero modelo_noticiero;  	
 	
     /**
      * @see HttpServlet#HttpServlet()
@@ -59,19 +57,23 @@ public class PDF_not_gest extends HttpServlet {
         modelo_noticiero = new MNoticiero(conexionBD.getConexion());
 		
 		OutputStream out = response.getOutputStream();
-		hs = request.getSession();
 		
+		// Recogemos la session y los datos del usuario que entra a la plataforma.
+		hs = request.getSession();
 		Object[] datos_gestor = (Object []) hs.getAttribute("identificacion");
 		
+		// Comprobamos que la session no sea null y además, que el tipo de usuario sea sólo sea acceso a Gestor.
 		if(hs.getAttribute("identificacion") == null  || !datos_gestor[1].equals("G")){  
 			response.sendRedirect("error.jsp");
 		}else{
-			
-								
+										
 			try{
 								
 				id = request.getParameter("id");
+				
+				Object[] datos_not;
 
+				// Vamos a recoger todos los datos del noticiario para su posterior impresión por PDF.
 				datos_not = modelo_noticiero.dameDatosPorID(id);
 								
 				try{

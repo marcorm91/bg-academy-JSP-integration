@@ -16,7 +16,7 @@ import model.Conexion;
 import model.MNoticiero;
 
 /**
- * Servlet implementation class Not_individual
+ * Clase controladora - Clase que se encargará de tratar el control de datos por parte del noticiario.
  */
 @WebServlet("/Not_individual")
 public class Not_individual extends HttpServlet {
@@ -24,8 +24,7 @@ public class Not_individual extends HttpServlet {
 	private HttpSession hs;
 	private MNoticiero modelo_noticiario;
 	private Conexion conexionBD;
-	private Object noticiario[];
-	private String id;
+
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -43,18 +42,24 @@ public class Not_individual extends HttpServlet {
         conexionBD = new Conexion();
         modelo_noticiario = new MNoticiero(conexionBD.getConexion());
         
-        hs = request.getSession();
-        
+        // Recogemos la session y los datos del usuario que entra a la plataforma.
+        hs = request.getSession();       
         Object[] datos_gestor = (Object []) hs.getAttribute("identificacion");
         
+        // Si la session log viene como nula (sin identificación previa) ó el usuario que viene no es de tipo Gestor...
         if(hs.getAttribute("log") == null || !datos_gestor[1].equals("G")){
 			response.sendRedirect("error.jsp");
 		}else{
+			
+			Object noticiario[];
+			String id;
 							
 			id = request.getParameter("id");
 			
+			// Vamos a recoger el noticiario de la Base de Datos pasándole previamente por parámetro la ID del mismo.
 			noticiario = modelo_noticiario.dameDatosPorID(id);
 			
+			// Envío de los resultados por Gson.
 			String sendNot = new Gson().toJson(noticiario);
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");

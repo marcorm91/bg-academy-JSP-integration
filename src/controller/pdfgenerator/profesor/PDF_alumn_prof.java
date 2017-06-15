@@ -30,7 +30,7 @@ import model.Conexion;
 import model.MAlumno;
 
 /**
- * Servlet implementation class PDF_alumn_prof
+ * Clase controladora - Controla la impresión por pantalla en PDF los datos del alumno desde el usuario profesor.
  */
 @WebServlet("/PDF_alumn_prof.pdf")
 public class PDF_alumn_prof extends HttpServlet {
@@ -38,9 +38,7 @@ public class PDF_alumn_prof extends HttpServlet {
 	private HttpSession hs;
 	private String id;
     private Conexion conexionBD;
-	private MAlumno modelo_alumno;  
-	private Object[] datos_alumn;
-	
+	private MAlumno modelo_alumno;  	
 	
     /**
      * @see HttpServlet#HttpServlet()
@@ -59,10 +57,12 @@ public class PDF_alumn_prof extends HttpServlet {
         modelo_alumno = new MAlumno(conexionBD.getConexion());
 		
 		OutputStream out = response.getOutputStream();
-		hs = request.getSession();
 		
+		// Recogemos la session y los datos del usuario que entra a la plataforma.
+		hs = request.getSession();	
 		Object[] datos_prof = (Object []) hs.getAttribute("identificacion");
 		
+		// Comprobamos que la session no sea null y además, que el tipo de usuario sea sólo sea acceso a Profesor.
 		if(hs.getAttribute("identificacion") == null  && !datos_prof[1].equals("P")){  
 			response.sendRedirect("error.jsp");
 		}else{
@@ -71,6 +71,9 @@ public class PDF_alumn_prof extends HttpServlet {
 								
 				id = request.getParameter("id");
 				
+				Object[] datos_alumn;
+				
+				// Vamos a recoger todos los datos del alumno para su posterior impresión por PDF.
 				datos_alumn = modelo_alumno.dameDatosPorID(id);
 								
 				try{

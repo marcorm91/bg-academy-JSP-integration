@@ -16,7 +16,7 @@ import model.Conexion;
 import model.MProfesor;
 
 /**
- * Servlet implementation class Recoge_cursos
+ * Clase controladora - Recoge los cursos en relación a los alumnos y profesores.
  */
 @WebServlet("/Recoge_cursos")
 public class Recoge_cursos extends HttpServlet {
@@ -24,8 +24,6 @@ public class Recoge_cursos extends HttpServlet {
 	private HttpSession hs;
 	private MProfesor modelo_profesor;
 	private Conexion conexionBD;
-	private String id;
-	private String cursos;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -43,21 +41,25 @@ public class Recoge_cursos extends HttpServlet {
         conexionBD = new Conexion();
         modelo_profesor = new MProfesor(conexionBD.getConexion());
         
+        // Recogemos la session y los datos del usuario que entra a la plataforma.
         hs = request.getSession();
-        
         Object[] datos_profesor = (Object []) hs.getAttribute("identificacion");
         
         if(hs.getAttribute("log") == null){
 			response.sendRedirect("error.jsp");
 		}else{
 						
-			try{		
+			try{
+				
+				String id;
+				String cursos;
 				
 				id = datos_profesor[0].toString();
 												
 				//Llamamos al modelo para realizar la consulta sobre las fechas en la BD.
 				cursos = modelo_profesor.devuelveCursos(id);
 				
+				// Los cursos nos llegará en un array, por lo que tendremos que splitear por comas.
 				cursos = cursos.substring(1, cursos.length()-1);
 				
 				String [] split = cursos.split(",");
@@ -65,7 +67,8 @@ public class Recoge_cursos extends HttpServlet {
 				for(int i = 0; i < split.length; i++){
 					split[i] = split[i].trim();
 				}
-					
+				
+				// Envío de los resultados por Gson.
 				String sendCursos = new Gson().toJson(split);
 				response.setContentType("application/json");
 				response.setCharacterEncoding("UTF-8");

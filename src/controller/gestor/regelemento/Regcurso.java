@@ -16,7 +16,7 @@ import model.Conexion;
 import model.MCurso;
 
 /**
- * Servlet implementation class Regcurso
+ * Clase controladora - Clase que se encargará de procesar el registro del curso.
  */
 @WebServlet("/Regcurso")
 public class Regcurso extends HttpServlet {
@@ -24,8 +24,6 @@ public class Regcurso extends HttpServlet {
 	private HttpSession hs;
 	private MCurso modelo_curso;
 	private Conexion conexionBD;
-	private String curso, anioinicio, aniofin;
-	private boolean existeCurso;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -43,21 +41,31 @@ public class Regcurso extends HttpServlet {
         conexionBD = new Conexion();
         modelo_curso = new MCurso(conexionBD.getConexion());
 		
+        // Recogemos la session y los datos del usuario que entra a la plataforma.
 		hs = request.getSession();
+        Object[] datos_gestor = (Object []) hs.getAttribute("identificacion");
 		
-		if(hs.getAttribute("log") == null){
+        // Si la session log viene como nula (sin identificación previa) ó el usuario que viene no es de tipo Gestor...  
+		if(hs.getAttribute("log") == null || !datos_gestor[1].equals("G")){
 			response.sendRedirect("error.jsp");
 		}else{
 			
 			try{
+				
+				String curso, anioinicio, aniofin;
+				boolean existeCurso;
+				
 				curso = request.getParameter("curso");
 				anioinicio = request.getParameter("anioinicio");
 				aniofin = request.getParameter("aniofin");
 				
+				// Vamos a comprobar previamente la existencia del curso.
+				// Para ello, no debe coincidir en año de inicio, fin y curso.
 				existeCurso = modelo_curso.compruebaExistencia(anioinicio, aniofin, curso);
 				
 				String existe = "";
 				
+				// Si existeCurso devuelve true quiere decir que el Gestor intenta registrar un curso que ya existe.
 				if(existeCurso){
 					existe = new Gson().toJson("1");
 					response.setContentType("application/json");
@@ -65,10 +73,12 @@ public class Regcurso extends HttpServlet {
 					response.getWriter().write(existe);					
 				}else{
 					
+					// De no existir, se procede al registro del mismo.
 					modelo_curso.registraCurso(		curso, 
 													anioinicio, 
 													aniofin);
-									
+					
+					// Envío de los resultados por Gson.
 					existe = new Gson().toJson("0");
 					response.setContentType("application/json");
 					response.setCharacterEncoding("UTF-8");
