@@ -11,7 +11,7 @@ $(document).ready(function(){
     		type: "POST",
     		dataType: "json",
     		async: false,
-    		url: "/Proflist",
+    		url: "../../Proflist",
     		success: function(resp){  
     			
     			for(var i = 0; i < resp.length; i++){
@@ -114,7 +114,7 @@ $(document).ready(function(){
 	    	    		type: "POST",
 	    	    		dataType: "json",
 	    	    		data: {id:id},
-	    	    		url: "/Delprofesor",
+	    	    		url: "../../Delprofesor",
 	    	    		success: function(resp){  	
 	    	    			
 	    	    			if(resp > 0){
@@ -147,7 +147,7 @@ $(document).ready(function(){
     		type: "POST",
     		dataType: "json",
     		async: false,
-    		url: "/Alumnlist",
+    		url: "../../Alumnlist",
     		success: function(resp){  
     			
     			for(var i = 0; i < resp.length; i++){
@@ -248,7 +248,7 @@ $(document).ready(function(){
 	    	    		type: "POST",
 	    	    		dataType: "json",
 	    	    		data: {id:id},
-	    	    		url: "/Delalumno",
+	    	    		url: "../../Delalumno",
 	    	    		success: function(resp){  	
 	    	    			
 	    	    			if(resp > 0){
@@ -281,7 +281,7 @@ $(document).ready(function(){
     		type: "POST",
     		dataType: "json",
     		async: false,
-    		url: "/Notlist",
+    		url: "../../Notlist",
     		success: function(resp){  
     			
     			for(var i = 0; i < resp.length; i++){
@@ -376,7 +376,7 @@ $(document).ready(function(){
 	    	    		type: "POST",
 	    	    		dataType: "json",
 	    	    		data: {id:id},
-	    	    		url: "/Delnoticiario",
+	    	    		url: "../../Delnoticiario",
 	    	    		success: function(resp){  	
 	    	    			
 	    	    			if(resp > 0){
@@ -409,7 +409,7 @@ $(document).ready(function(){
     		type: "POST",
     		dataType: "json",
     		async: false,
-    		url: "/Gestlist",
+    		url: "../../Gestlist",
     		success: function(resp){  
     			
     			for(var i = 0; i < resp.length; i++){
@@ -504,7 +504,7 @@ $(document).ready(function(){
 	    	    		type: "POST",
 	    	    		dataType: "json",
 	    	    		data: {id:id},
-	    	    		url: "/Delgestor",
+	    	    		url: "../../Delgestor",
 	    	    		success: function(resp){  
 	    	    		
 	    	    			// Condición que comprueba si está eliminando su propia cuenta.
@@ -543,7 +543,7 @@ $(document).ready(function(){
     		type: "POST",
     		dataType: "json",
     		async: false,
-    		url: "/Cursoslist",
+    		url: "../../Cursoslist",
     		success: function(resp){  
     			for(var i = 0; i < resp.length; i++){
     			    	    				
@@ -620,7 +620,7 @@ $(document).ready(function(){
 	    	    		type: "POST",
 	    	    		dataType: "json",
 	    	    		data: {id:id},
-	    	    		url: "/Delcurso",
+	    	    		url: "../../Delcurso",
 	    	    		success: function(resp){  
 
     	    				if(resp > 0){

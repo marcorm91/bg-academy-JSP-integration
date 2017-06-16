@@ -339,7 +339,7 @@ $(document).ready(function() {
 	    		type: "POST",
 	    		dataType: "json",
 	    		data: {nombre:nombre, apellido1:apellido1, apellido2: apellido2, nif:nif, fecna:fecna, nacimiento:nacimiento, nacionalidad:nacionalidad, calle:calle, cp:cp, poblacion:poblacion, provincia:provincia, fecalta:fecalta, email:email, tlf:tlf, aniocurso:aniocurso, curso:curso, comentarios:comentarios, idcurso:idcurso},
-	    		url: "/Regalumno",
+	    		url: "../../Regalumno",
 	    		success: function(resp){
 	    			    			
 	    			if(resp == "1"){
@@ -407,7 +407,7 @@ $(document).ready(function() {
 	    		type: "POST",
 	    		dataType: "json",
 	    		data: {nombre:nombre, apellido1:apellido1, apellido2: apellido2, nif:nif, fecna:fecna, nacimiento:nacimiento, nacionalidad:nacionalidad, calle:calle, cp:cp, poblacion:poblacion, provincia:provincia, fecalta:fecalta, email:email, tlf:tlf, aniocurso:aniocurso, cursos:cursos, idcursos:idcursos},
-	    		url: "/Regprofesor",
+	    		url: "../../Regprofesor",
 	    		success: function(resp){
 	    			    			
 	    			if(resp == "1"){
@@ -454,7 +454,7 @@ $(document).ready(function() {
 	    		type: "POST",
 	    		dataType: "json",
 	    		data: {nombre:nombre, apellido1:apellido1, apellido2: apellido2, nif:nif, fecalta:fecalta, email:email, tlf:tlf},
-	    		url: "/Reggestor",
+	    		url: "../../Reggestor",
 	    		success: function(resp){
 	    			    			
 	    			if(resp == "1"){
@@ -501,7 +501,7 @@ $(document).ready(function() {
 	    		type: "POST",
 	    		dataType: "json",
 	    		data: {nombre:nombre, apellido1:apellido1, apellido2: apellido2, nif:nif, fecalta:fecalta, email:email, tlf:tlf},
-	    		url: "/Regnoticiario",
+	    		url: "../../Regnoticiario",
 	    		success: function(resp){
 	    			    			
 	    			if(resp == "1"){
@@ -544,7 +544,7 @@ $(document).ready(function() {
 	    		type: "POST",
 	    		dataType: "json",
 	    		data: {curso:curso, anioinicio:anioinicio, aniofin: aniofin},
-	    		url: "/Regcurso",
+	    		url: "../../Regcurso",
 	    		success: function(resp){
 	    			    			
 	    			if(resp == "1"){
@@ -604,7 +604,7 @@ $(document).ready(function() {
      		
 	     		$.ajax({
 	 			    type: "POST",
-	 			    url: "/Subir_img_gest",
+	 			    url: "../../Subir_img_gest",
 	 	            cache: false,
 	 	            async: false,
 	 	            processData: false,
@@ -674,7 +674,7 @@ $(document).ready(function() {
      		
 	     		$.ajax({
 	 			    type: "POST",
-	 			    url: "/Subir_img_not",
+	 			    url: "../../Subir_img_not",
 	 	            cache: false,
 	 	            async: false,
 	 	            processData: false,
@@ -688,7 +688,7 @@ $(document).ready(function() {
 	    		type: "POST",
 	    		dataType: "json",
 	    		data: {nombre:nombre, apellido1:apellido1, apellido2:apellido2, email:email, tlf:tlf, pass:pass, imagen:imagen},
-	    		url: "/Modificaperfilnot",
+	    		url: "../../Modificaperfilnot",
 	    		success: function(resp){  			
 	    			if(resp == "0"){
     					$("#form-mod-perfil-noticiario")[0].reset();
@@ -751,7 +751,7 @@ $(document).ready(function() {
      		
 	     		$.ajax({
 	 			    type: "POST",
-	 			    url: "/Subir_img_alumn",
+	 			    url: "../../Subir_img_alumn",
 	 	            cache: false,
 	 	            async: false,
 	 	            processData: false,
@@ -829,7 +829,7 @@ $(document).ready(function() {
      		
 	     		$.ajax({
 	 			    type: "POST",
-	 			    url: "/Subir_img_prof",
+	 			    url: "../../Subir_img_prof",
 	 	            cache: false,
 	 	            async: false,
 	 	            processData: false,
@@ -884,7 +884,7 @@ $(document).ready(function() {
      	$.ajax({
     		type: "POST",
     		dataType: "json",
-    		url: "/Recogefechas",
+    		url: "../../Recogefechas",
     		async: false,
     		success: function(resp){  
     			$("#anio-curso-profesor").empty().append("<option> - Seleccione curso - </option>");
@@ -911,7 +911,7 @@ $(document).ready(function() {
     	$.ajax({
     		type: "POST",
     		dataType: "json",
-    		url: "/Selectorcursos",
+    		url: "../../Selectorcursos",
     		data: {anio: anio},
     		async: true,
     		success: function(resp){  
@@ -943,7 +943,7 @@ $(document).ready(function() {
     	$.ajax({
     		type: "POST",
     		dataType: "json",
-    		url: "/Selectorcursos",
+    		url: "../../Selectorcursos",
     		data: {anio: anio},
     		async: true,
     		success: function(resp){  
@@ -973,7 +973,7 @@ $(document).ready(function() {
      	$.ajax({
     		type: "POST",
     		dataType: "json",
-    		url: "/Recogefechas",
+    		url: "../../Recogefechas",
     		async: false,
     		success: function(resp){  
     			for(var i = 0; i < resp.length; i++){			
@@ -1004,7 +1004,7 @@ $(document).ready(function() {
 	    		type: "POST",
 	    		dataType: "json",
 	    		data: {alumnincidencia:alumnincidencia},
-	    		url: "/Regincidenciaalumn",
+	    		url: "../../Regincidenciaalumn",
 	    		success: function(resp){  			
 	    			if(resp == "0"){
     					$("#form-reg-incidencia-alumn")[0].reset();
@@ -1045,7 +1045,7 @@ $(document).ready(function() {
 	    		type: "POST",
 	    		dataType: "json",
 	    		data: {profincidencia:profincidencia},
-	    		url: "/Regincidenciaprof",
+	    		url: "../../Regincidenciaprof",
 	    		success: function(resp){  			
 	    			if(resp == "0"){
     					$("#form-reg-incidencia-prof")[0].reset();

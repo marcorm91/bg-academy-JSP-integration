@@ -7,7 +7,7 @@ $(document).ready(function(){
 		type: "POST",
 		dataType: "json",
 		async: false,
-		url: "/Verincidenciasprof",
+		url: "../../Verincidenciasprof",
 		success: function(resp){  			
 			for(var i = 0; i < resp.length; i++){
 				$("table tbody").append("<tr>");
@@ -66,7 +66,7 @@ $(document).ready(function(){
     		type: "POST",
     		dataType: "json",
     		data: {id:id},
-    		url: "/Verincidencia_p",
+    		url: "../../Verincidencia_p",
     		success: function(resp){  	
     			$("#modal-incidencia .modal-content .modal-body").empty();
     			$("#modal-incidencia .modal-content .modal-body").append("<p>"+resp+"</p>");

@@ -7,7 +7,7 @@ $(document).ready(function(){
 		type: "POST",
 		dataType: "json",
 		async: false,
-		url: "/Ver_tareas",    		
+		url: "../../Ver_tareas",    		
 		success: function(resp){  
 			
 			for(var i = 0; i < resp.length; i++){
@@ -38,7 +38,7 @@ $(document).ready(function(){
 		type: "POST",
 		dataType: "json",
 		async: false,
-		url: "/Ver_examenes",    		
+		url: "../../Ver_examenes",    		
 		success: function(resp){  
 			
 			for(var i = 0; i < resp.length; i++){

@@ -6,7 +6,7 @@
     		type: "POST",
     		dataType: "json",
     		async: false,
-    		url: "/Ver_noticias",
+    		url: "../../Ver_noticias",
     		success: function(resp){  
     			
     			for(var i = 0; i < resp.length; i++){
@@ -96,7 +96,7 @@
      	    	    		type: "POST",
      	    	    		dataType: "json",
      	    	    		data: {id:id},
-     	    	    		url: "/Elimina_noticia",
+     	    	    		url: "../../Elimina_noticia",
      	    	    		success: function(resp){  	
     	    	    			
      	    	    			if(resp > 0){

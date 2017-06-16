@@ -105,7 +105,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/Logout" title="Salir">
+                            <a class="nav-link" href="../../Logout" title="Salir">
                                 <i class="fa fa-sign-out fa-2x" aria-hidden="true"></i>
                                 <span class="hidden-sm-up"> Salir </span>
                             </a>
@@ -114,7 +114,7 @@
                             <span class="nav-link">
                                 Conectado como 
                                 <span id="quien" title="Ir a Mi Perfil"><a href="./mi-perfil.jsp"> <% out.print(datos_gest[2]); %> </a></span>
-                                <a href="/Logout"> <span id="desconectar">(Desconectar)</span></a>
+                                <a href="../../Logout"> <span id="desconectar">(Desconectar)</span></a>
                             </span>
                         </li>
                     </ul>
@@ -127,7 +127,7 @@
                 <span class="nav-link hidden-lg-up">
                     Conectado como 
                     <span id="quien" title="Ir a Mi Perfil"><a href="./mi-perfil.jsp"> <% out.print(datos_gest[2]); %> </a></span> 
-                    <a href="/Logout"> <span id="desconectar">(Desconectar)</span></a>
+                    <a href="../../Logout"> <span id="desconectar">(Desconectar)</span></a>
                 </span> 
             </div>
         
@@ -348,7 +348,7 @@
 </div>
 
 <!-- MODAL PROFESOR -->
-<form id="modal-form-prof" action="/PDF_prof_gest.pdf" method="POST">
+<form id="modal-form-prof" action="../../PDF_prof_gest.pdf" method="POST">
   <div class="modal fade" id="modal-info-prof" role="dialog">
     <div class="modal-dialog modal-lg">
     
@@ -467,7 +467,7 @@
 					<div class="col-xs-12 text-xs-center">
 						<div class="tooltip tooltip--smaug" data-type="smaug" style='opacity: 1;'>
 							<div class="tooltip__trigger" role="tooltip" aria-describedby="info-smaug">
-								<a id="down-pdf-prof-gest">
+								<a id="down-pdf-prof-gest" download>
 									<span class="tooltip__trigger-text"><i class="fa fa-file-pdf-o fa-3x text-danger" aria-hidden="true"></i></span>
 								</a>
 							</div>
@@ -495,7 +495,7 @@
 
 
 <!-- MODAL ALUMNO -->
-<form id="modal-form-alumn" action="/PDF_alumn_gest.pdf" method="POST">
+<form id="modal-form-alumn" action="../../PDF_alumn_gest.pdf" method="POST">
   <div class="modal fade" id="modal-info-alumn" role="dialog">
     <div class="modal-dialog modal-lg">
     
@@ -614,7 +614,7 @@
 					<div class="col-xs-12 text-xs-center">
 						<div class="tooltip tooltip--smaug" data-type="smaug" style='opacity: 1;'>
 							<div class="tooltip__trigger" role="tooltip" aria-describedby="info-smaug">
-								<a id="down-pdf-alumn-gest">
+								<a id="down-pdf-alumn-gest" download>
 									<span class="tooltip__trigger-text"><i class="fa fa-file-pdf-o fa-3x text-danger" aria-hidden="true"></i></span>
 								</a>
 							</div>
@@ -641,7 +641,7 @@
 
 
 <!-- MODAL NOTICIARIO -->
-<form id="modal-form-not" action="/PDF_not_gest.pdf" method="POST">
+<form id="modal-form-not" action="../../PDF_not_gest.pdf" method="POST" download>
   <div class="modal fade" id="modal-info-not" role="dialog">
     <div class="modal-dialog modal-lg">
     
@@ -712,7 +712,7 @@
 					<div class="col-xs-12 text-xs-center">
 						<div class="tooltip tooltip--smaug" data-type="smaug" style='opacity: 1;'>
 							<div class="tooltip__trigger" role="tooltip" aria-describedby="info-smaug">
-								<a id="down-pdf-not-gest">
+								<a id="down-pdf-not-gest" download>
 									<span class="tooltip__trigger-text"><i class="fa fa-file-pdf-o fa-3x text-danger" aria-hidden="true"></i></span>
 								</a>
 							</div>
@@ -739,7 +739,7 @@
 
 
 <!-- MODAL GESTOR -->
-<form id="modal-form-gest" action="/PDF_gest_gest.pdf" method="POST">
+<form id="modal-form-gest" action="../../PDF_gest_gest.pdf" method="POST">
   <div class="modal fade" id="modal-info-gest" role="dialog">
     <div class="modal-dialog modal-lg">
     
@@ -810,7 +810,7 @@
 					<div class="col-xs-12 text-xs-center">
 						<div class="tooltip tooltip--smaug" data-type="smaug" style='opacity: 1;'>
 							<div class="tooltip__trigger" role="tooltip" aria-describedby="info-smaug">
-								<a id="down-pdf-gest-gest">
+								<a id="down-pdf-gest-gest" download>
 									<span class="tooltip__trigger-text"><i class="fa fa-file-pdf-o fa-3x text-danger" aria-hidden="true"></i></span>
 								</a>
 							</div>
@@ -857,7 +857,7 @@
 	    	$.ajax({
 	    		type: "POST",
 	    		dataType: "json",
-	    		url: "/Incidencias_sinresolver",    		
+	    		url: "../../Incidencias_sinresolver",    		
 	    		success: function(resp){ 
 	    			if(resp == "0"){
 	    				$(".bola").css("display", "none");

@@ -8,7 +8,7 @@ $.ajax({
 	type: "POST",
 	dataType: "json",
 	async: false,
-	url: "/Verincidenciasproftotal",
+	url: "../../Verincidenciasproftotal",
 	success: function(resp){  
 		for(var i = 0; i < resp.length; i++){
 			$("#prof-table tbody").append("<tr>");
@@ -64,7 +64,7 @@ $.ajax({
 	type: "POST",
 	dataType: "json",
 	async: false,
-	url: "/Verincidenciasalumntotal",
+	url: "../../Verincidenciasalumntotal",
 	success: function(resp){  			
 		for(var i = 0; i < resp.length; i++){
 			$("#alumn-table tbody").append("<tr>");
@@ -123,7 +123,7 @@ $(".tabla-incidencia-ver a").on("click", function() {
 		type: "POST",
 		dataType: "json",
 		data: {id:id},
-		url: "/Verincidencias_individual",
+		url: "../../Verincidencias_individual",
 		success: function(resp){  	
 			$("#modal-incidencia .modal-content .modal-body").empty();
 			if(resp == null || resp == ""){
@@ -160,7 +160,7 @@ $(".tabla-incidencia-resolucion i").on("click", function() {
 		    		type: "POST",
 		    		dataType: "json",
 		    		data: {id:id},
-		    		url: "/Resolucion_s",
+		    		url: "../../Resolucion_s",
 		    		success: function(resp){ 
 		    			
 			    			numincidencias = $(".bola #num-incidencias").text();
@@ -205,7 +205,7 @@ $(".tabla-incidencia-resolucion i").on("click", function() {
 		    		type: "POST",
 		    		dataType: "json",
 		    		data: {id:id},
-		    		url: "/Resolucion_n",
+		    		url: "../../Resolucion_n",
 		    		success: function(resp){ 
 		    			
 		    			numincidencias = $(".bola #num-incidencias").text();

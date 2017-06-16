@@ -13,7 +13,7 @@ $(document).ready(function(){
 				type: "POST",
 				dataType: "json",
 				async: false,
-				url: "/Lista_alumnos_curso",
+				url: "../../Lista_alumnos_curso",
 				success: function(resp){  
 					
 					for(var i = 0; i < resp.length; i++){
@@ -110,7 +110,7 @@ $(document).ready(function(){
 	    		type: "POST",
 	    		dataType: "json",
 	    		data: {id:id},
-	    		url: "/Alumn_individual",
+	    		url: "../../Alumn_individual",
 	    		success: function(resp){  	
 	    			
 	    			for(var i = 0; i < resp.length; i++){
@@ -168,7 +168,7 @@ $(document).ready(function(){
     	$.ajax({
     		type: "POST",
     		dataType: "json",
-    		url: "/Recoge_cursos",
+    		url: "../../Recoge_cursos",
     		data: {anio: anio},
     		async: true,
     		success: function(resp){  
@@ -195,7 +195,7 @@ $(document).ready(function(){
      	$.ajax({
     		type: "POST",
     		dataType: "json",
-    		url: "/Recoge_anio",
+    		url: "../../Recoge_anio",
     		async: false,
     		success: function(resp){  
   				if(resp != null){
@@ -227,7 +227,7 @@ $(document).ready(function(){
 			$.ajax({
 	    		type: "POST",
 	    		dataType: "json",
-	    		url: "/Reg_tarea",
+	    		url: "../../Reg_tarea",
 	    		data: {anioprom: anioprom, cursoasign: cursoasign, feclimite:feclimite, tittarea: tittarea, detalletarea: detalletarea},
 	    		success: function(resp){  
 					
@@ -265,7 +265,7 @@ $(document).ready(function(){
     	$.ajax({
     		type: "POST",
     		dataType: "json",
-    		url: "/Recoge_cursos",
+    		url: "../../Recoge_cursos",
     		data: {anio: anio},
     		async: true,
     		success: function(resp){  
@@ -292,7 +292,7 @@ $(document).ready(function(){
      	$.ajax({
     		type: "POST",
     		dataType: "json",
-    		url: "/Recoge_anio",
+    		url: "../../Recoge_anio",
     		async: false,
     		success: function(resp){  
   				if(resp != null){
@@ -324,7 +324,7 @@ $(document).ready(function(){
 			$.ajax({
 	    		type: "POST",
 	    		dataType: "json",
-	    		url: "/Reg_examen",
+	    		url: "../../Reg_examen",
 	    		data: {anioprom: anioprom, cursoasign: cursoasign, feclimite:feclimite, titexamen: titexamen, detalleexamen: detalleexamen},
 	    		success: function(resp){  
 					

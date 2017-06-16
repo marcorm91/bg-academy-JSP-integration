@@ -4,7 +4,7 @@ $(document).ready(function(){
 			type: "POST",
 		dataType: "json",
 		async: false,
-		url: "/Activo_alumno",
+		url: "../Activo_alumno",
 		success: function(resp){  
 			
 			if(resp == "N"){

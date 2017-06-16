@@ -168,7 +168,7 @@ function actividades(){
     var actividades;
      
      $.ajax({
-        url: '/Recoge_fecactividades',
+        url: '../../Recoge_fecactividades',
         type: 'POST',
         dataType: "json",
         async: false,

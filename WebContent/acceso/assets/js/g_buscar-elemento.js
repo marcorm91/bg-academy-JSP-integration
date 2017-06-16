@@ -11,7 +11,7 @@ $(document).ready(function(){
     		type: "POST",
     		dataType: "json",
     		async: false,
-    		url: "/Proflist",
+    		url: "../../Proflist",
     		success: function(resp){  
     			
     			for(var i = 0; i < resp.length; i++){
@@ -102,7 +102,7 @@ $(document).ready(function(){
     		dataType: "json",
     		data: {id:id},
     		async: false,
-    		url: "/Prof_individual",
+    		url: "../../Prof_individual",
     		success: function(resp){  	
     			
     			for(var i = 0; i < resp.length; i++){
@@ -157,7 +157,7 @@ $(document).ready(function(){
     		type: "POST",
     		dataType: "json",
     		async: false,
-    		url: "/Alumnlist",
+    		url: "../../Alumnlist",
     		success: function(resp){  
     			
     			for(var i = 0; i < resp.length; i++){
@@ -245,7 +245,7 @@ $(document).ready(function(){
     		type: "POST",
     		dataType: "json",
     		data: {id:id},
-    		url: "/Alumn_individual",
+    		url: "../../Alumn_individual",
     		success: function(resp){  	
     			
     			for(var i = 0; i < resp.length; i++){
@@ -301,7 +301,7 @@ $(document).ready(function(){
     		type: "POST",
     		dataType: "json",
     		async: false,
-    		url: "/Notlist",
+    		url: "../../Notlist",
     		success: function(resp){  
     			
     			for(var i = 0; i < resp.length; i++){
@@ -383,7 +383,7 @@ $(document).ready(function(){
     		type: "POST",
     		dataType: "json",
     		data: {id:id},
-    		url: "/Not_individual",
+    		url: "../../Not_individual",
     		success: function(resp){  	
     			
     			for(var i = 0; i < resp.length; i++){
@@ -430,7 +430,7 @@ $(document).ready(function(){
     		type: "POST",
     		dataType: "json",
     		async: false,
-    		url: "/Gestlist",
+    		url: "../../Gestlist",
     		success: function(resp){  
     			
     			for(var i = 0; i < resp.length; i++){
@@ -512,7 +512,7 @@ $(document).ready(function(){
     		type: "POST",
     		dataType: "json",
     		data: {id:id},
-    		url: "/Gest_individual",
+    		url: "../../Gest_individual",
     		success: function(resp){  	
     			
     			for(var i = 0; i < resp.length; i++){
@@ -559,7 +559,7 @@ $(document).ready(function(){
     		type: "POST",
     		dataType: "json",
     		async: false,
-    		url: "/Cursoslist",
+    		url: "../../Cursoslist",
     		success: function(resp){  
     			
     			for(var i = 0; i < resp.length; i++){

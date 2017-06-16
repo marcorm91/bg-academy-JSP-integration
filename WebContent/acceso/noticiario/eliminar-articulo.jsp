@@ -88,7 +88,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/Logout" title="Salir">
+                            <a class="nav-link" href="../../Logout" title="Salir">
                                 <i class="fa fa-sign-out fa-2x" aria-hidden="true"></i>
                                 <span class="hidden-sm-up"> Salir </span>
                             </a>
@@ -97,7 +97,7 @@
                             <span class="nav-link">
                                 Conectado como 
                                 <span id="quien" title="Ir a Mi Perfil"> <a href="./mi-perfil.jsp"> <% out.print(datos_not[2]); %> </a> </span>
-                                <a href="/Logout"> <span id="desconectar">(Desconectar)</span></a>
+                                <a href="../../Logout"> <span id="desconectar">(Desconectar)</span></a>
                             </span>
                         </li>
                     </ul>
@@ -110,7 +110,7 @@
                 <span class="nav-link hidden-lg-up">
                     Conectado como 
                     <span id="quien" title="Ir a Mi Perfil"><a href="./mi-perfil.jsp"> <% out.print(datos_not[2]); %> </a></span>
-                    <a href="/Logout"> <span id="desconectar">(Desconectar)</span></a>
+                    <a href="../../Logout"> <span id="desconectar">(Desconectar)</span></a>
                 </span> 
             </div>
         

@@ -6,7 +6,7 @@ $(document).ready(function(){
 		type: "POST",
 		dataType: "json",
 		async: false,
-		url: "/Ver_noticias",
+		url: "../../Ver_noticias",
 		success: function(resp){  
 			
 			for(var i = 0; i < resp.length; i++){
@@ -83,7 +83,7 @@ $(document).ready(function(){
     		type: "POST",
     		dataType: "json",
     		data: {id:id},
-    		url: "/Noticia_individual",
+    		url: "../../Noticia_individual",
     		success: function(resp){  	
     			
     			for(var i = 0; i < resp.length; i++){
@@ -140,7 +140,7 @@ $(document).ready(function(){
 	    		type: "POST",
 	    		dataType: "json",
 	    		data: {id:id, titular:titular, contenido:contenido},
-	    		url: "/Modifica_noticia",
+	    		url: "../../Modifica_noticia",
 	    		success: function(resp){  			
 	    			if(resp == "0"){
     					$("#modal-error-art").dialog();

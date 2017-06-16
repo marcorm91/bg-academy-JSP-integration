@@ -9,7 +9,7 @@ $("#alumno-tareas").on("click", function(){
 		type: "POST",
 		dataType: "json",
 		async: false,
-		url: "/Ver_tareas",    		
+		url: "../../Ver_tareas",    		
 		success: function(resp){  
 			
 			for(var i = 0; i < resp.length; i++){
@@ -86,7 +86,7 @@ $("#alumno-examenes").on("click", function(){
 		type: "POST",
 		dataType: "json",
 		async: false,
-		url: "/Ver_examenes",    		
+		url: "../../Ver_examenes",    		
 		success: function(resp){  
 			
 			for(var i = 0; i < resp.length; i++){
@@ -162,7 +162,7 @@ $(document).delegate(".descr-act a", "click", function(event){
 		type: "POST",
 		dataType: "json",
 		data: {idactividad:idactividad},
-		url: "/Actividad_individual",
+		url: "../../Actividad_individual",
 		success: function(resp){  	
 			
 			for(var i = 0; i < resp.length; i++){
@@ -194,7 +194,7 @@ $(document).delegate(".descr-act a", "click", function(event){
 $("#alumno-calendario").on("click", function(){
 
 	$.ajax({
-        url: '/Recoge_fecactividades',
+        url: '../../Recoge_fecactividades',
         type: 'POST',
         dataType: "json",
         async: false,

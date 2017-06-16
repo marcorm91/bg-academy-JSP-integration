@@ -13,7 +13,7 @@
     		type: "POST",
     		dataType: "json",
     		async: false,
-    		url: "/Proflist",
+    		url: "../../Proflist",
     		success: function(resp){  
     			
     			for(var i = 0; i < resp.length; i++){
@@ -111,7 +111,7 @@
     		type: "POST",
     		dataType: "json",
     		data: {id:id},
-    		url: "/Prof_individual",
+    		url: "../../Prof_individual",
     		success: function(resp){  	
     			
     			for(var i = 0; i < resp.length; i++){
@@ -175,7 +175,7 @@
 	    		type: "POST",
 	    		dataType: "json",
 	    		data: {id:id, nombre:nombre, apellido1:apellido1, apellido2:apellido2, fnac:fnac, usuario:usuario, nif:nif, nacimiento:nacimiento, nacionalidad:nacionalidad, calle:calle, cp:cp, provincia:provincia, poblacion:poblacion, tlf:tlf, email:email},
-	    		url: "/Modificaperfilprof_gest",
+	    		url: "../../Modificaperfilprof_gest",
 	    		success: function(resp){  			
 	    			if(resp == "0"){
     					$("#modal-error-perfil").dialog();
@@ -204,7 +204,7 @@
     		type: "POST",
     		dataType: "json",
     		async: false,
-    		url: "/Alumnlist",
+    		url: "../../Alumnlist",
     		success: function(resp){
     			
     			for(var i = 0; i < resp.length; i++){
@@ -300,7 +300,7 @@
     		type: "POST",
     		dataType: "json",
     		data: {id:id},
-    		url: "/Alumn_individual",
+    		url: "../../Alumn_individual",
     		success: function(resp){  	
     			
     			for(var i = 0; i < resp.length; i++){
@@ -363,7 +363,7 @@
 	    		type: "POST",
 	    		dataType: "json",
 	    		data: {id:id, nombre:nombre, apellido1:apellido1, apellido2:apellido2, fnac:fnac, usuario:usuario, nif:nif, nacimiento:nacimiento, nacionalidad:nacionalidad, calle:calle, cp:cp, provincia:provincia, poblacion:poblacion, tlf:tlf, email:email},
-	    		url: "/Modificaperfilalumn_gest",
+	    		url: "../../Modificaperfilalumn_gest",
 	    		success: function(resp){  			
 	    			if(resp == "0"){
     					$("#modal-error-perfil").dialog();
@@ -390,7 +390,7 @@
     		type: "POST",
     		dataType: "json",
     		async: false,
-    		url: "/Notlist",
+    		url: "../../Notlist",
     		success: function(resp){  
     			
     			for(var i = 0; i < resp.length; i++){
@@ -480,7 +480,7 @@
     		type: "POST",
     		dataType: "json",
     		data: {id:id},
-    		url: "/Not_individual",
+    		url: "../../Not_individual",
     		success: function(resp){  	
     			
     			for(var i = 0; i < resp.length; i++){
@@ -527,7 +527,7 @@
 	    		type: "POST",
 	    		dataType: "json",
 	    		data: {id:id, nombre:nombre, apellido1:apellido1, apellido2:apellido2, usuario:usuario, nif:nif, tlf:tlf, email:email},
-	    		url: "/Modificaperfilnot_gest",
+	    		url: "../../Modificaperfilnot_gest",
 	    		success: function(resp){  			
 	    			if(resp == "0"){
     					$("#modal-error-perfil").dialog();
@@ -554,7 +554,7 @@
     		type: "POST",
     		dataType: "json",
     		async: false,
-    		url: "/Gestlist",
+    		url: "../../Gestlist",
     		success: function(resp){  
     			
     			for(var i = 0; i < resp.length; i++){
@@ -636,7 +636,7 @@
     		type: "POST",
     		dataType: "json",
     		data: {id:id},
-    		url: "/Gest_individual",
+    		url: "../../Gest_individual",
     		success: function(resp){  	
     			
     			for(var i = 0; i < resp.length; i++){
@@ -684,7 +684,7 @@
 	    		type: "POST",
 	    		dataType: "json",
 	    		data: {id:id, nombre:nombre, apellido1:apellido1, apellido2:apellido2, usuario:usuario, nif:nif, tlf:tlf, email:email},
-	    		url: "/Modificaperfilgest_gest",
+	    		url: "../../Modificaperfilgest_gest",
 	    		success: function(resp){  			
 	    			if(resp == "0"){
     					$("#modal-error-perfil").dialog();

@@ -38,7 +38,7 @@
 			    		
  			$.ajax({
  			    type: "POST",
- 			    url: "/Subir_img",
+ 			    url: "../../Subir_img",
  	            cache: false,
  	            async: false,
  	            processData: false,
@@ -52,7 +52,7 @@
     			dataType: "json",
     			async: false,
     			data: {titnoticia: titnoticia, contenido: contenido, imagen:imagen},
-    			url: "/Registra_noticia",    		
+    			url: "../../Registra_noticia",    		
     			success: function(resp){ 
     				
     				if(resp == "0"){
@@ -68,8 +68,6 @@
     			}
     		});
     		
-
-		
 		}
 		
 	});
