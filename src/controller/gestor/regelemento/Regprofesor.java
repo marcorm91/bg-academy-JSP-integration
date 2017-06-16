@@ -25,7 +25,7 @@ import model.MProfesor;
 /**
  * Clase controladora - Clase que se encargará de procesar el registro del profesor.
  */
-@WebServlet("/Regprofesor")
+@WebServlet("Regprofesor")
 public class Regprofesor extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession hs;

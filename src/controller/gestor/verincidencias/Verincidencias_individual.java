@@ -18,7 +18,7 @@ import model.MIncidencias;
 /**
  * Servlet implementation class Verincidencias_aindividual
  */
-@WebServlet("/Verincidencias_individual")
+@WebServlet("Verincidencias_individual")
 public class Verincidencias_individual extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession hs;

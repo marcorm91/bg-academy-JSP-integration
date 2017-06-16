@@ -18,7 +18,7 @@ import model.MIncidencias;
 /**
  * Clase controladora - Clase que se encargará de proceder con la aceptación de una incidencia.
  */
-@WebServlet("/Resolucion_s")
+@WebServlet("Resolucion_s")
 public class Resolucion_s extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession hs;

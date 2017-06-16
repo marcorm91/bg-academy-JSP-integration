@@ -21,7 +21,7 @@ import model.MProfesor;
 /**
  * Clase controladora - Clase que controlará la modificación del Profesor por parte del usuario Gestor.
  */
-@WebServlet("/Modificaperfilprof_gest")
+@WebServlet("Modificaperfilprof_gest")
 public class Modificaperfilprof_gest extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession hs;

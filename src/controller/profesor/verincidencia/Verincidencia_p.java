@@ -18,7 +18,7 @@ import model.MIncidencias;
 /**
  * Clase controladora - Se encargará de recoger la incidencia del profesor pasándole previamente el ID como parámetro.
  */
-@WebServlet("/Verincidencia_p")
+@WebServlet("Verincidencia_p")
 public class Verincidencia_p extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession hs;

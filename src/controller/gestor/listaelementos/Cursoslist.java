@@ -18,7 +18,7 @@ import model.MCurso;
 /**
  * Clase controladora - Clase que tratará el listado completo de los cursos.
  */
-@WebServlet("/Cursoslist")
+@WebServlet("Cursoslist")
 public class Cursoslist extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession hs;

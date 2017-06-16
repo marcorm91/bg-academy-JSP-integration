@@ -19,7 +19,7 @@ import model.MNoticiero;
 /**
  * Clase controladora - Clase que se encargará de eliminar el noticiario de la BD, y además, borrará su directorio personal.
  */
-@WebServlet("/Delnoticiario")
+@WebServlet("Delnoticiario")
 public class Delnoticiario extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession hs;

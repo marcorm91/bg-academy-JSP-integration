@@ -18,7 +18,7 @@ import model.MAlumno;
 /**
  * Clase controladora - Clase que tratará el listado completo de los alumnos.
  */
-@WebServlet("/Alumnlist")
+@WebServlet("Alumnlist")
 public class Alumnlist extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession hs;

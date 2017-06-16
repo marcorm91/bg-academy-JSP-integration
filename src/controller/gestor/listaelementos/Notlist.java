@@ -18,7 +18,7 @@ import model.MNoticiero;
 /**
  * Clase controladora - Clase que tratará el listado completo de los noticiarios.
  */
-@WebServlet("/Notlist")
+@WebServlet("Notlist")
 public class Notlist extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession hs;

@@ -19,7 +19,7 @@ import model.MGestor;
 /**
  * Clase controladora - Clase que se encargará de eliminar el usuario Gestor de la Base de Datos.
  */
-@WebServlet("/Delgestor")
+@WebServlet("Delgestor")
 public class Delgestor extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession hs;

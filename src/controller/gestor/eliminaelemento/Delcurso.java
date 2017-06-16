@@ -18,7 +18,7 @@ import model.MCurso;
 /**
  * Clase controladora - Clase que se encargará de la eliminación del curso.
  */
-@WebServlet("/Delcurso")
+@WebServlet("Delcurso")
 public class Delcurso extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession hs;

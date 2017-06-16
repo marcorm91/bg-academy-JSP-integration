@@ -18,7 +18,7 @@ import model.MProfesor;
 /**
  * Clase controladora - Recoge los años de promoción en relación al alumno y profesor.
  */
-@WebServlet("/Recoge_anio")
+@WebServlet("Recoge_anio")
 public class Recoge_anio extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession hs;

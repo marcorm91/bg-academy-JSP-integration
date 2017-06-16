@@ -32,7 +32,7 @@ import model.MNoticiero;
 /**
  * Clase controladora - Controla la impresión por pantalla en PDF los datos del noticiario.
  */
-@WebServlet("/PDF_not_gest.pdf")
+@WebServlet("PDF_not_gest.pdf")
 public class PDF_not_gest extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession hs;

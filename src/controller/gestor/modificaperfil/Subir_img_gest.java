@@ -22,7 +22,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
  * Clase controladora - Controlador que se encargará de subir la imagen al directorio que le toque por parte 
  * del usuario Gestor.
  */
-@WebServlet("/Subir_img_gest")
+@WebServlet("Subir_img_gest")
 public class Subir_img_gest extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession hs;

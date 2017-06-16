@@ -20,7 +20,7 @@ import model.MNoticias;
 /**
  * Clase controladora - Modifica la noticia desde el panel del Noticiario.
  */
-@WebServlet("/Modifica_noticia")
+@WebServlet("Modifica_noticia")
 public class Modifica_noticia extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession hs;

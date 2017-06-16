@@ -18,7 +18,7 @@ import model.MCurso;
 /**
  * Clase controladora - Clase que se encargará de recoger todos los cursos existentes en la Base de Datos.
  */
-@WebServlet("/Selectorcursos")
+@WebServlet("Selectorcursos")
 public class Selectorcursos extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession hs;

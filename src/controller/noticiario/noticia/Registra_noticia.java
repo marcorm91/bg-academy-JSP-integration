@@ -19,7 +19,7 @@ import model.MNoticias;
 /**
  * Clase controladora - Clase que controla el registro de noticias por parte del Noticiario.
  */
-@WebServlet("/Registra_noticia")
+@WebServlet("Registra_noticia")
 public class Registra_noticia extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private Conexion conexionBD;

@@ -19,7 +19,7 @@ import model.MProfesor;
 /**
  * Clase controladora - Clase que se encargará de eliminar el profesor de la BD, y además, borrará su directorio personal.
  */
-@WebServlet("/Delprofesor")
+@WebServlet("Delprofesor")
 public class Delprofesor extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession hs;

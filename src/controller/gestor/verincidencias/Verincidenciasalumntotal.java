@@ -18,7 +18,7 @@ import model.MIncidencias;
 /**
  * Clase controladora - Clase que se encarga de visualizar todas las incidencias de los alumnos.
  */
-@WebServlet("/Verincidenciasalumntotal")
+@WebServlet("Verincidenciasalumntotal")
 public class Verincidenciasalumntotal extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession hs;

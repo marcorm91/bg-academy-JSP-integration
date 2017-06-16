@@ -32,7 +32,7 @@ import model.MAlumno;
 /**
  * Clase controladora - Controla la impresión por pantalla en PDF los datos del alumno.
  */
-@WebServlet("/PDF_alumn_gest.pdf")
+@WebServlet("PDF_alumn_gest.pdf")
 public class PDF_alumn_gest extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession hs;

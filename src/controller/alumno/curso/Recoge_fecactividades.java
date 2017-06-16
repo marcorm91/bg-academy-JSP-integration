@@ -18,7 +18,7 @@ import model.MActividades;
 /**
  * Servlet implementation class Recoge_fecactividades
  */
-@WebServlet("/Recoge_fecactividades")
+@WebServlet("Recoge_fecactividades")
 public class Recoge_fecactividades extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession hs;

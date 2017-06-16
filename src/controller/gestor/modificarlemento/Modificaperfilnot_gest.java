@@ -18,7 +18,7 @@ import model.MNoticiero;
 /**
  * Clase controladora - Clase que controlará la modificación del Noticiario por parte del usuario Gestor.
  */
-@WebServlet("/Modificaperfilnot_gest")
+@WebServlet("Modificaperfilnot_gest")
 public class Modificaperfilnot_gest extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession hs;

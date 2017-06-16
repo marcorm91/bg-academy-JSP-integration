@@ -18,7 +18,7 @@ import model.MNoticias;
 /**
  * Clase controladora - Elimina la noticia desde el panel del Noticiario.
  */
-@WebServlet("/Elimina_noticia")
+@WebServlet("Elimina_noticia")
 public class Elimina_noticia extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private Conexion conexionBD;

@@ -19,7 +19,7 @@ import model.MNoticiero;
 /**
  * Clase controladora - Control de modificación de datos de usuario, en este caso Noticiario.
  */
-@WebServlet("/Modificaperfilnot")
+@WebServlet("Modificaperfilnot")
 public class Modificaperfilnot extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession hs;

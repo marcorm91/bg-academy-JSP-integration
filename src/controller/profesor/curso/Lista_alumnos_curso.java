@@ -18,7 +18,7 @@ import model.MAlumno;
 /**
  * Clase controladora - Lista el número de alumnos en relación al año de promoción y curso del profesor.
  */
-@WebServlet("/Lista_alumnos_curso")
+@WebServlet("Lista_alumnos_curso")
 public class Lista_alumnos_curso extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession hs;

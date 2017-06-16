@@ -26,7 +26,7 @@ import model.MProfesor;
 /**
  * Clase controladora - Clase que se encargará de procesar el registro del noticiario.
  */
-@WebServlet("/Regnoticiario")
+@WebServlet("Regnoticiario")
 public class Regnoticiario extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession hs;

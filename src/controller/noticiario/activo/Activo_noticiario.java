@@ -19,7 +19,7 @@ import model.MNoticiero;
  * Clase controladora - Comprueba el primer acceso de un usuario registrado en la plataforma.
  * Con esto conseguimos mostrarle un mensaje de bienvenida tras su primer acceso.
  */
-@WebServlet("/Activo_noticiario")
+@WebServlet("Activo_noticiario")
 public class Activo_noticiario extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession hs;

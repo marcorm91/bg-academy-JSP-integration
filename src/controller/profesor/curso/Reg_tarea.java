@@ -21,7 +21,7 @@ import model.MActividades;
 /**
  * Clase controladora - Registra una tarea a un determinado curso y año de promoción.
  */
-@WebServlet("/Reg_tarea")
+@WebServlet("Reg_tarea")
 public class Reg_tarea extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private Conexion conexionBD;

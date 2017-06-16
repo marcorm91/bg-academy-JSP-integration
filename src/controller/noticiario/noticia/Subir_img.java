@@ -20,7 +20,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 /**
  * Clase controladora - Clase que se encargará del proceso de subida de la imagen.
  */
-@WebServlet("/Subir_img")
+@WebServlet("Subir_img")
 public class Subir_img extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

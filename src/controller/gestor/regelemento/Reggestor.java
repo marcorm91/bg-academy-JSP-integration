@@ -26,7 +26,7 @@ import model.MProfesor;
 /**
  * Clase controladora - Clase que se encargará de procesar el registro del gestor.
  */
-@WebServlet("/Reggestor")
+@WebServlet("Reggestor")
 public class Reggestor extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession hs;

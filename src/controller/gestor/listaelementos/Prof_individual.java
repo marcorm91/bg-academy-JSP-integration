@@ -18,7 +18,7 @@ import model.MProfesor;
 /**
  * Clase controladora - Clase que se encargará de tratar el control de datos por parte del profesor.
  */
-@WebServlet("/Prof_individual")
+@WebServlet("Prof_individual")
 public class Prof_individual extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession hs;

@@ -19,7 +19,7 @@ import model.MCurso;
  * Clase controladora - Con esta clase tratamos de recoger todos los años de promoción que se encuentren
  * registrados en la Base de Datos.
  */
-@WebServlet("/Recogefechas")
+@WebServlet("Recogefechas")
 public class Recogefechas extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession hs;

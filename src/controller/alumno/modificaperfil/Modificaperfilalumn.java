@@ -21,7 +21,7 @@ import model.MAlumno;
 /**
  * Clase controladora - Control de modificación de datos de usuario, en este caso Alumno.
  */
-@WebServlet("/Modificaperfilalumn")
+@WebServlet("Modificaperfilalumn")
 public class Modificaperfilalumn extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession hs;

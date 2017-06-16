@@ -21,7 +21,7 @@ import model.MActividades;
 /**
  * Clase controladora - Registra un examen a un determinado curso y año de promoción.
  */
-@WebServlet("/Reg_examen")
+@WebServlet("Reg_examen")
 public class Reg_examen extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private Conexion conexionBD;

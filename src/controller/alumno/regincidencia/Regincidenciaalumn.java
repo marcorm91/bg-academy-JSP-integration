@@ -18,7 +18,7 @@ import model.MIncidencias;
 /**
  * Clase controladora - Se encargará de registrar una incidencia por parte del usuario Alumno.
  */
-@WebServlet("/Regincidenciaalumn")
+@WebServlet("Regincidenciaalumn")
 public class Regincidenciaalumn extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession hs;

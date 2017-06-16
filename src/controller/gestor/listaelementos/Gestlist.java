@@ -18,7 +18,7 @@ import model.MGestor;
 /**
  * Clase controladora - Clase que tratará el listado completo de los gestores.
  */
-@WebServlet("/Gestlist")
+@WebServlet("Gestlist")
 public class Gestlist extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession hs;

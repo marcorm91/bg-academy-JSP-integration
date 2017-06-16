@@ -19,7 +19,7 @@ import model.MAlumno;
 /**
  * Clase controladora - Clase que se encargará de eliminar el alumno de la BD, y además, borrará su directorio personal.
  */
-@WebServlet("/Delalumno")
+@WebServlet("Delalumno")
 public class Delalumno extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession hs;

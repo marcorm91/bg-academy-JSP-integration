@@ -19,7 +19,7 @@ import model.MGestor;
 /**
  * Clase controladora - Control de modificación de datos de usuario, en este caso Gestor.
  */
-@WebServlet("/Modificarperfilgest")
+@WebServlet("Modificarperfilgest")
 public class Modificaperfilgest extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession hs;

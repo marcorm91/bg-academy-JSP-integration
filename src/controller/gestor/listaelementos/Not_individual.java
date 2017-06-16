@@ -18,7 +18,7 @@ import model.MNoticiero;
 /**
  * Clase controladora - Clase que se encargará de tratar el control de datos por parte del noticiario.
  */
-@WebServlet("/Not_individual")
+@WebServlet("Not_individual")
 public class Not_individual extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession hs;

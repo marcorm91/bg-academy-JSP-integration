@@ -18,7 +18,7 @@ import model.MCurso;
 /**
  * Clase controladora - Clase que se encargará de procesar el registro del curso.
  */
-@WebServlet("/Regcurso")
+@WebServlet("Regcurso")
 public class Regcurso extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession hs;

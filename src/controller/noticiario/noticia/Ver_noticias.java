@@ -17,7 +17,7 @@ import model.MNoticias;
 /**
  * Servlet implementation class Ver_noticias
  */
-@WebServlet("/Ver_noticias")
+@WebServlet("Ver_noticias")
 public class Ver_noticias extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private Conexion conexionBD;

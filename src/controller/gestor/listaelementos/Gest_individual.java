@@ -18,7 +18,7 @@ import model.MGestor;
 /**
  * Clase controladora - Clase que se encargará de tratar el control de datos por parte del gestor.
  */
-@WebServlet("/Gest_individual")
+@WebServlet("Gest_individual")
 public class Gest_individual extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession hs;

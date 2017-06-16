@@ -19,7 +19,7 @@ import model.MActividades;
  * Clase controladora - Recoge los detalles de una actividad para mostrar el resultado de lo devuelto
  * en un modal al usuario.
  */
-@WebServlet("/Actividad_individual")
+@WebServlet("Actividad_individual")
 public class Actividad_individual extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession hs;

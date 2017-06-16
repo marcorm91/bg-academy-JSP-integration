@@ -28,7 +28,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 /**
  * Clase controladora - Generación de PDF de alumno.
  */
-@WebServlet("/PDFAlumn.pdf")
+@WebServlet("PDFAlumn.pdf")
 public class PDFAlumn extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession hs;

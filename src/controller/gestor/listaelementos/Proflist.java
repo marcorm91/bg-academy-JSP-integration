@@ -18,7 +18,7 @@ import model.MProfesor;
 /**
  * Clase controladora - Clase que tratará el listado completo de los profesores.
  */
-@WebServlet("/Proflist")
+@WebServlet("Proflist")
 public class Proflist extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession hs;

@@ -18,7 +18,7 @@ import model.MProfesor;
 /**
  * Clase controladora - Recoge los cursos en relación a los alumnos y profesores.
  */
-@WebServlet("/Recoge_cursos")
+@WebServlet("Recoge_cursos")
 public class Recoge_cursos extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession hs;

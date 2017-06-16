@@ -17,7 +17,7 @@ import model.MNoticias;
 /**
  * Clase controladora - Captura todos los datos de la noticia seleccionada por parte del usuario.
  */
-@WebServlet("/Noticia_individual")
+@WebServlet("Noticia_individual")
 public class Noticia_individual extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private MNoticias modelo_noticias;

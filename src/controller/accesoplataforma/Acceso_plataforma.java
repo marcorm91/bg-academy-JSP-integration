@@ -19,7 +19,7 @@ import model.MProfesor;
 /**
  * Clase controladora - Control de acceso a la plataforma por parte del usuario registrado.
  */
-@WebServlet("/Acceso_plataforma")
+@WebServlet("Acceso_plataforma")
 public class Acceso_plataforma extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private MAlumno modelo_alumno;

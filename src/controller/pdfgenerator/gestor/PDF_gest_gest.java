@@ -32,7 +32,7 @@ import model.MGestor;
 /**
  * Clase controladora - Controla la impresión por pantalla en PDF los datos del gestor.
  */
-@WebServlet("/PDF_gest_gest.pdf")
+@WebServlet("PDF_gest_gest.pdf")
 public class PDF_gest_gest extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession hs;

@@ -19,7 +19,7 @@ import model.MActividades;
  * Clase controladora - Llamamos al modelo de actividades para que éste nos devuelva todos los exámenes
  * de un curso y promoción determinados.
  */
-@WebServlet("/Ver_examenes")
+@WebServlet("Ver_examenes")
 public class Ver_examenes extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession hs;

@@ -21,7 +21,7 @@ import model.MAlumno;
 /**
  * Clase controladora - Clase que controlará la modificación del Alumno por parte del usuario Gestor.
  */
-@WebServlet("/Modificaperfilalumn_gest")
+@WebServlet("Modificaperfilalumn_gest")
 public class Modificaperfilalumn_gest extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession hs;

@@ -18,7 +18,7 @@ import model.MIncidencias;
 /**
  * Clase controladora - Clase que se encargará de mostrar el total de incidencias al gestor.
  */
-@WebServlet("/Incidencias_sinresolver")
+@WebServlet("Incidencias_sinresolver")
 public class Incidencias_sinresolver extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession hs;

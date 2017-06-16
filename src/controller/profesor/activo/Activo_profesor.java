@@ -19,7 +19,7 @@ import model.MProfesor;
  * Clase controladora - Comprueba el primer acceso de un usuario registrado en la plataforma.
  * Con esto conseguimos mostrarle un mensaje de bienvenida tras su primer acceso.
  */
-@WebServlet("/Activo_profesor")
+@WebServlet("Activo_profesor")
 public class Activo_profesor extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession hs;
