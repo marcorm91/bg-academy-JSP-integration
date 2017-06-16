@@ -54,6 +54,11 @@ public class MNoticiero {
     }
 
     
+    /**
+     * Recoge todos los datos del usuario tras iniciar la sesión por primera vez.
+     * @param user Nombre de usuario.
+     * @return Retorna en un array los 12 elementos asociados al usuario que se le pasa por parámetro.
+     */
     public Object[] dameDatos(String user) {
 		
 		Object datos[] = new Object[12];
@@ -92,13 +97,14 @@ public class MNoticiero {
 
 	/**
 	 * Registra noticiario en la base de datos.
-	 * @param nombre
-	 * @param apellido1
-	 * @param apellido2
-	 * @param nif
-	 * @param fecalta_date
-	 * @param email
-	 * @param tlf
+	 * @param nombre Nombre del noticiario. 
+	 * @param apellido1 Apellido 1 del noticiario.
+	 * @param apellido2 Apellido 2 del noticiario.
+	 * @param nif NIF del noticiario.
+	 * @param fecna_date Fecha de nacimiento del noticiario.
+	 * @param fecalta_date Fecha de alta del noticiario.
+	 * @param email Email del noticiario.
+	 * @param tlf Teléfono del noticiario.
 	 */
 	public void registraNoticiario(	String nombre, String apellido1, String apellido2, String nif, String pass, Date fecalta_date,
 									String email, String tlf) {
@@ -133,9 +139,9 @@ public class MNoticiero {
 
 	
 	/**
-	 * Comprueba existencia de noticiario con ese NIF.
-	 * @param nif
-	 * @return
+	 * Comprueba existencia de noticiario en la academia con ese NIF.
+	 * @param nif NIF del gestor.
+	 * @return Devuelve true si ese usuario ya existe, de lo contrario devuelve false.
 	 */
 	public boolean compruebaExistencia(String nif) {
 		String selectNIF = "SELECT COUNT(*) AS contador FROM bgacademy.noticiario WHERE nif = ?";
@@ -170,14 +176,14 @@ public class MNoticiero {
 
 	
 	/**
-	 * Realiza el update del usuario noticiario.
-	 * @param id
-	 * @param nombre
-	 * @param apellido1
-	 * @param apellido2
-	 * @param email
-	 * @param tlf
-	 * @param pass
+	 * Actualización del usuario gestor.
+	 * @param id ID del gestor.
+	 * @param nombre Nombre del gestor.
+	 * @param apellido1 Apellido 1 del gestor.
+	 * @param apellido2 Apellido 2 del gestor.
+	 * @param email Email del gestor.
+	 * @param tlf Teléfono del gestor.
+	 * @param pass Contraseña del noticiario.
 	 */
 	public void updateNoticiario(	String id, String nombre, String apellido1, String apellido2, String email, String tlf,
 									String pass) {
@@ -202,13 +208,13 @@ public class MNoticiero {
 	
 	/**
 	 * Realiza el update del usuario noticiario.
-	 * @param id
-	 * @param nombre
-	 * @param apellido1
-	 * @param apellido2
-	 * @param email
-	 * @param tlf
-	 * @param pass
+	 * @param id ID del noticiario.
+	 * @param nombre Nombre del noticiario.
+	 * @param apellido1 Apellido 1 del noticiario.
+	 * @param apellido2 Apellido 2 del noticiario.
+	 * @param email Email del noticiario.
+	 * @param tlf Teléfono del noticiario.
+	 * @param pass Contraseña del noticiario.
 	 */
 	public void updateNoticiario_img(	String id, String nombre, String apellido1, String apellido2, String email, String tlf,
 										String pass, String img) {
@@ -235,8 +241,8 @@ public class MNoticiero {
 	
 	/**
 	 * Devuelve los datos del usuario con la ID del mismo.
-	 * @param id
-	 * @return
+	 * @param id ID del usuario.
+	 * @return Devuelve en un array los 12 campos asociados al usuario.
 	 */
 	public Object[] dameDatosPorID(String id) {
 		
@@ -277,7 +283,7 @@ public class MNoticiero {
 	
 	/**
 	 * Devuelve un listado de noticiarios registrados en la academia.
-	 * @return
+	 * @return Retorna en una matriz los noticiarios registrados en la academia.
 	 */
 	public Object[][] devuelveNoticiarios() {
 		
@@ -312,7 +318,7 @@ public class MNoticiero {
 	
 	/***
 	 * Devuelve el total de alumnos registrados en la BD.
-	 * @return
+	 * @return Retorna un entero la cantidad de noticiarios registrados en la tabla.
 	 */
 	private int totalNoticiarios() {
 		
@@ -338,8 +344,8 @@ public class MNoticiero {
 
 	/**
 	 * Elimina el noticiario seleccionado de la base de datos.
-	 * @param id
-	 * @return
+	 * @param id ID del noticiario.
+	 * @return Retorna el número de registros que fueron eliminados de la tabla.
 	 */
 	public int eliminaNoticiario(String id) {
 		
@@ -364,15 +370,15 @@ public class MNoticiero {
 	
 	/**
 	 * Modifica el perfil del noticiario desde el usuario GESTOR.
-	 * @param id
-	 * @param nombre
-	 * @param apellido1
-	 * @param apellido2
-	 * @param usuario
-	 * @param tlf
-	 * @param nif
-	 * @param email
-	 * @return
+	 * @param id ID del noticiario.
+	 * @param nombre Nombre del noticiario.
+	 * @param apellido1 Apellido 1 del noticiario.
+	 * @param apellido2 Apellido 2 del noticiario.
+	 * @param usuario Nombre de usuario.
+	 * @param tlf Teléfono del noticiario.
+	 * @param nif NIF del noticiario.
+	 * @param email Email del noticiario.
+	 * @return Retorna la cantidad de registros que se modificaron en la tabla.
 	 */
 	public int updateNoticiario(String id, String nombre, String apellido1, String apellido2, String usuario,
 								String tlf, String nif, String email) {
@@ -400,9 +406,9 @@ public class MNoticiero {
 	
 	
 	/**
-	 * Recoge el NIF del noticiaroi.
-	 * @param id
-	 * @return
+	 * Recoge el NIF del noticiario.
+	 * @param id ID del noticiario.
+	 * @return Recoge en una cadena el NIF del noticiario.
 	 */
 	public String dameNif(String id) {
 		
@@ -431,8 +437,8 @@ public class MNoticiero {
 	
 	/**
 	 * Devuelve el valor de la columna activo.
-	 * @param id
-	 * @return
+	 * @param id ID del noticiario.
+	 * @return Devuelve una cadena el cual nos dirá si este usuario entró a la plataforma o no por primera vez.
 	 */
 	public String compruebaActivo(String id) {
 		
@@ -460,7 +466,7 @@ public class MNoticiero {
 
 	
 	/**
-	 * Cambia el valor de la columna activo.
+	 * Modifica el valor de la columna activo.
 	 */
 	public void setActivo(String id) {
 		

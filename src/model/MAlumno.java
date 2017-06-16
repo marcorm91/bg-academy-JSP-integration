@@ -56,8 +56,8 @@ public class MAlumno {
 
     /**
      * Recoge todos los datos del usuario que se loguea.
-     * @param user
-     * @return
+     * @param user Nombre de usuario.
+     * @return Devuelve un array de 22 elementos el cual contiene todos los datos del usuario.
      */
     public Object[] dameDatos(String user) {
 		
@@ -106,23 +106,23 @@ public class MAlumno {
 
 	/**
 	 * Registrar un alumno en base de datos.
-	 * @param nombre
-	 * @param apellido1
-	 * @param apellido2
-	 * @param nif
-	 * @param fecna_date
-	 * @param nacimiento
-	 * @param nacionalidad
-	 * @param calle
-	 * @param cp
-	 * @param poblacion
-	 * @param provincia
-	 * @param fecalta_date
-	 * @param email
-	 * @param tlf
-	 * @param anioprom
-	 * @param cursoimp
-	 * @param comentarios
+	 * @param nombre Nombre del alumno.
+	 * @param apellido1 Apellido 1 del alumno.
+	 * @param apellido2 Apellido 2 del alumno.
+	 * @param nif NIF del alumno.
+	 * @param fecna_date Fecha de nacimiento del alumno.
+	 * @param nacimiento Lugar de nacimiento del alumno.
+	 * @param nacionalidad Nacionalidad del alumno.
+	 * @param calle Calle del alumno.
+	 * @param cp Código postal del alumno.
+	 * @param poblacion Población del alumno.
+	 * @param provincia Provincia del alumno.
+	 * @param fecalta_date Fecha de alta del usuario.
+	 * @param email Email del alumno.
+	 * @param tlf Teléfono del alumno.
+	 * @param anioprom Año de promoción del alumno.
+	 * @param cursoimp Curso asignado al alumno.
+	 * @param comentarios Comentarios, detalles sobre el alumno.
 	 */
 	public void registraAlumno(	String nombre, String apellido1, String apellido2, String nif, String pass, Date fecna_date,
 								String nacimiento, String nacionalidad, String calle, String cp, String poblacion, String provincia,
@@ -171,8 +171,8 @@ public class MAlumno {
 	
 	/**
 	 * Comprueba la existencia de usuario para realizar el registro.
-	 * @param nif
-	 * @return
+	 * @param nif NIF del alumno.
+	 * @return Devuelve true si existe, de lo contrario devolverá false.
 	 */
 	public boolean compruebaExistencia(String nif) {
 		
@@ -191,8 +191,7 @@ public class MAlumno {
             while(rs.next()){
             	contador = rs.getInt("contador");
             }
-            
-            
+                
         }catch(SQLException e){
             System.out.println(e);
         }
@@ -210,19 +209,19 @@ public class MAlumno {
 	
 	/**
 	 * Actualización de datos de alumno.
-	 * @param id
-	 * @param nombre
-	 * @param apellido1
-	 * @param apellido2
-	 * @param email
-	 * @param tlf
-	 * @param poblacion
-	 * @param calle
-	 * @param cp
-	 * @param nacido
-	 * @param nacionalidad
-	 * @param fecna
-	 * @param pass
+	 * @param id ID del alumno.
+	 * @param nombre Nombre del alumno.
+	 * @param apellido1 Apellido 1 del alumno.
+	 * @param apellido2 Apellido 2 del alumno.
+	 * @param email Email del alumno.
+	 * @param tlf Teléfono del alumno.
+	 * @param poblacion Población del alumno.
+	 * @param calle Calle del alumno.
+	 * @param cp Código postal del alumno.
+	 * @param nacido Lugar de nacimiento del alumno.
+	 * @param nacionalidad Nacionalidad del alumno.
+	 * @param fecna Fecha de nacimiento del alumno.
+	 * @param pass Contraseña del alumno.
 	 */
 	public void updateAlumno(	String id, String nombre, String apellido1, String apellido2, String email, String tlf,
 								String poblacion, String calle, String cp, String nacimiento, String nacionalidad, Date fnac, String pass, String imagen) {
@@ -256,9 +255,9 @@ public class MAlumno {
 
 	
 	/**
-	 * Devuelve todos los datos del alumno por ID.
-	 * @param id
-	 * @return
+	 * Recoge todos los datos del alumno por ID.
+	 * @param id ID del alumno.
+	 * @return Devuelve en un array todos los datos del alumno por ID.
 	 */
 	public Object[] dameDatosPorID(String id) {
 		
@@ -309,7 +308,7 @@ public class MAlumno {
 	
 	/**
 	 * Devuelve un listado de alumnos registrados en la academia.
-	 * @return
+	 * @return Devuelve en una matriz los alumnos registrados en la academia.
 	 */
 	public Object[][] devuelveAlumnos() {
 		
@@ -346,7 +345,7 @@ public class MAlumno {
 	
 	/***
 	 * Devuelve el total de alumnos registrados en la BD.
-	 * @return
+	 * @return Devuelve con un entero el total de alumnos registrados en la academia.
 	 */
 	private int totalAlumnos() {
 		
@@ -373,8 +372,8 @@ public class MAlumno {
 	
 	/**
 	 * Elimina un alumno de la base de datos.
-	 * @param id
-	 * @return
+	 * @param id ID del alumno.
+	 * @return Devuelve un entero el cual nos dice el número de registros que fueron eliminados.
 	 */
 	public int eliminaAlumno(String id) {
 		
@@ -399,22 +398,22 @@ public class MAlumno {
 	
 	/**
 	 * Modifica el perfil del alumno desde el usuario GESTOR.
-	 * @param id
-	 * @param nombre
-	 * @param apellido1
-	 * @param apellido2
-	 * @param usuario
-	 * @param tlf
-	 * @param nif
-	 * @param nacimiento
-	 * @param fecna_date
-	 * @param nacionalidad
-	 * @param calle
-	 * @param cp
-	 * @param provincia
-	 * @param poblacion
-	 * @param email
-	 * @return
+	 * @param id ID del alumno.
+	 * @param nombre Nombre del alumno.
+	 * @param apellido1 Apellido 1 del alumno.
+	 * @param apellido2 Apellido 2 del alumno.
+	 * @param usuario Nombre de usuario del alumno.
+	 * @param tlf Teléfono del alumno.
+	 * @param nif NIF del alumno.
+	 * @param nacimiento Lugar de nacimiento del alumno.
+	 * @param fecna_date Fecha de nacimiento del alumno.
+	 * @param nacionalidad Nacionalidad del alumno.
+	 * @param calle Calle del alumno.
+	 * @param cp Código postal del alumno.
+	 * @param provincia Provincia del alumno.
+	 * @param poblacion Población del alumno.
+	 * @param email Email del alumno.
+	 * @return Devuelve el número de registros modificados.
 	 */
 	public int updateAlumno(String id, String nombre, String apellido1, String apellido2, String usuario, String tlf,
 							String nif, String nacimiento, Date fecna_date, String nacionalidad, String calle, String cp,
@@ -452,8 +451,8 @@ public class MAlumno {
 	
 	/**
 	 * Recoge el NIF del alumno.
-	 * @param id
-	 * @return
+	 * @param id ID del alumno.
+	 * @return Devuelve en una cadena el NIF del alumno pasado previamente su ID.
 	 */
 	public String dameNif(String id) {
 		
@@ -482,8 +481,8 @@ public class MAlumno {
 	
 	/**
 	 * Devuelve el valor de la columna activo.
-	 * @param id
-	 * @return
+	 * @param id ID del alumno.
+	 * @return Recoge en una cadena si el usuario está activado o no.
 	 */
 	public String compruebaActivo(String id) {
 		
@@ -511,7 +510,7 @@ public class MAlumno {
 
 	
 	/**
-	 * Cambia el valor de la columna activo.
+	 * Modifica el valor de la columna activo.
 	 */
 	public void setActivo(String id) {
 		
@@ -531,19 +530,19 @@ public class MAlumno {
 	
 	/**
 	 * Actualización del alumno sin pasar por parámetro la imagen.
-	 * @param id
-	 * @param nombre
-	 * @param apellido1
-	 * @param apellido2
-	 * @param email
-	 * @param tlf
-	 * @param poblacion
-	 * @param calle
-	 * @param cp
-	 * @param nacido
-	 * @param nacionalidad
-	 * @param fecna_date
-	 * @param pass
+	 * @param id ID del alumno.
+	 * @param nombre Nombre del alumno.
+	 * @param apellido1 Apellido 1 del alumno.
+	 * @param apellido2 Apellido 2 del alumno.
+	 * @param email Email del alumno.
+	 * @param tlf Teléfono del alumno.
+	 * @param poblacion Población del alumno.
+	 * @param calle Calle del alumno.
+	 * @param cp Código postal del alumno.
+	 * @param nacido Lugar de nacimiento del alumno.
+	 * @param nacionalidad Nacionalidad del alumno.
+	 * @param fecna_date Fecha de nacimiento del alumno.
+	 * @param pass Contraseña del alumno.
 	 */
 	public void updateAlumno(	String id, String nombre, String apellido1, String apellido2, String email, String tlf,
 								String poblacion, String calle, String cp, String nacido, String nacionalidad, Date fecna_date,
@@ -578,9 +577,9 @@ public class MAlumno {
 	
 	/**
 	 * Devuelve los alumnos pertenecientes al año de promoción y curso impartido por el profesor.
-	 * @param anioprom_prof
-	 * @param cursosasign_prof
-	 * @return
+	 * @param anioprom_prof Año de promoción del profesor.
+	 * @param cursosasign_prof Cursos asignados del profesor.
+	 * @return Retorna en una matriz los alumnos que pertenecen al mismo año de promoción y curso que el profesor.
 	 */
 	public Object[][] alumnosPorCurso(String anioprom_prof, String cursosasign_prof) {
 				
@@ -620,9 +619,9 @@ public class MAlumno {
 	
 	/**
 	 * Devuelve el total de alumnos pertenecientes a un curso y año de promoción determinado.
-	 * @param cursosasign_prof 
-	 * @param anioprom_prof 
-	 * @return
+	 * @param cursosasign_prof Cursos asignados al profesor.
+	 * @param anioprom_prof Año de promoción del profesor.
+	 * @return Retorna un entero el cual nos dice el número de alumnos en relación al año de promoción y curso del profesor.
 	 */
 	private int totalAlumnosPorCurso(String anioprom_prof, String cursosasign_prof) {
 	

@@ -17,8 +17,8 @@ public class MIncidencias {
 
 	/**
 	 * Realiza el registro de una incidencia (Alumno).
-	 * @param id
-	 * @param incidencia
+	 * @param id ID del alumno.
+	 * @param incidencia Contenido de la incidencia.
 	 */
 	public void registraIncidenciaAlumn(String id, String incidencia) {
 		
@@ -52,8 +52,8 @@ public class MIncidencias {
 	
 	/**
 	 * Realiza el registro de una incidencia (Profesor).
-	 * @param id
-	 * @param incidencia
+	 * @param id ID del profesor.
+	 * @param incidencia Contenido de la incidencia.
 	 */
 	public void registraIncidenciaProf(String id, String incidencia) {
 		
@@ -87,8 +87,8 @@ public class MIncidencias {
 	
 	/**
 	 * Devuelve las incidencias registradas por el usuario Alumno.
-	 * @param id
-	 * @return
+	 * @param id ID del alumno.
+	 * @return Devuelve en una matriz todas las incidencias del alumno que se le pasa por parámetro el ID.
 	 */
 	public Object[][] devuelveIncidenciasAlumn(String id) {
 		
@@ -121,9 +121,9 @@ public class MIncidencias {
 	
 	
 	/**
-	 * Devuelve las incidencias registradas por el usuario Alumno.
-	 * @param id
-	 * @return
+	 * Devuelve las incidencias registradas por el usuario Profesor.
+	 * @param id ID del profesor.
+	 * @return Devuelve en una matriz todas las incidencias del profesor que se le pasa por parámetro el ID.
 	 */
 	public Object[][] devuelveIncidenciasProf(String id) {
 		
@@ -157,8 +157,8 @@ public class MIncidencias {
 	
 	/**
 	 * Devuelve el total de filas de incidencias del profesor.
-	 * @param id
-	 * @return
+	 * @param id ID del profesor.
+	 * @return Devuelve el total de incidencias que registró un profesor en concreto.
 	 */
 	private int totalRegistrosIncidenciasProf(String id) {
 		
@@ -186,8 +186,8 @@ public class MIncidencias {
 	
 	/**
 	 * Devuelve el total de incidencias por alumno.
-	 * @param id
-	 * @return
+	 * @param id ID del alumno.
+	 * @return Devuelve el total de incidencias que registró un alumno en concreto.
 	 */
 	private int totalRegistrosIncidenciasAlumn(String id) {
 		
@@ -215,8 +215,8 @@ public class MIncidencias {
 	
 	/**
 	 * Devuelve el contenido de la incidencia.
-	 * @param id
-	 * @return
+	 * @param id ID de la incidencia.
+	 * @return Retorna el detalle de la incidencia.
 	 */
 	public String dameIncidencia(String id) {
 		
@@ -244,7 +244,7 @@ public class MIncidencias {
 	
 	/**
 	 * Devuelve todas las incidencias de los profesores de la academia.
-	 * @return
+	 * @return Devuelve en una matriz todas las incidencias registradas por el profesor.
 	 */
 	public Object[][] devuelveIncidenciasProf() {
 				
@@ -280,8 +280,7 @@ public class MIncidencias {
 	
 	/**
 	 * Devuelve el total de incidencias de los profesores.
-	 * @param id
-	 * @return
+	 * @return Devuelve la cantidad de registros de incidencias por parte de los profesores.
 	 */
 	private int totalRegistrosIncidenciasProf() {
 
@@ -309,7 +308,7 @@ public class MIncidencias {
 	
 	/**
 	 * Devuelve todas las incidencias de los alumnos de la academia.
-	 * @return
+	 * @return Retorna en una matriz todas las incidencias de los alumnos.
 	 */
 	public Object[][] devuelveIncidenciasAlumn() {
 		
@@ -344,7 +343,7 @@ public class MIncidencias {
 
 	/**
 	 * Devuelve el total de incidencias de los alumnos.
-	 * @return
+	 * @return Devuelve la cantidad de registros de incidencias por parte de los alumnos.
 	 */
 	private int totalRegistrosIncidenciasAlumn() {
 		
@@ -372,8 +371,8 @@ public class MIncidencias {
 	
 	/**
 	 * Resolución de incidencia.
-	 * @param id
-	 * @return
+	 * @param id ID de la incidencia
+	 * @return Retorna la fecha en que se modificó la incidencia.
 	 */
 	public String updateInci_s(String id) {
 		
@@ -397,9 +396,8 @@ public class MIncidencias {
 	}
 
 	/**
-	 * Retorna la resolución de incidencia.
-	 * @param id
-	 * @return
+	 * Retorna la cancelación de incidencia.
+	 * @param id ID de la incidencia.
 	 */
 	public void updateInci_n(String id) {
 		
@@ -420,7 +418,7 @@ public class MIncidencias {
 	
 	/**
 	 * Devuelve el total de incidencias sin resolver.
-	 * @return
+	 * @return Retorna un entero con la cantidad de incidencias sin resolver.
 	 */
 	public int totalIncidencias() {
 		

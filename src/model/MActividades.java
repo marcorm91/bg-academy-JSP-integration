@@ -17,11 +17,12 @@ public class MActividades {
 	
 	/**
 	 * Realiza el registro de una actividad (Tarea).
-	 * @param tipo
-	 * @param titulo
-	 * @param detalles
-	 * @param feclimite
-	 * @param idcurso
+	 * @param titulo Título de la actividad.
+	 * @param detalles Contenido de la actividad.
+	 * @param feclimite Fecha límite de la actividad.
+	 * @param anioprom Año de promoción.
+	 * @param cursoasign Curso de asignación de actividad.
+	 * @return Retorna el número de filas insertadas en la tabla.
 	 */
 	public int registraTarea(String tittarea, String detalletarea, Date feclimite_parse, String anioprom, String cursoasign) {
 		
@@ -54,13 +55,13 @@ public class MActividades {
 
 	
 	/**
-	 * Registra el registro de una actividad (Examen)
-	 * @param titexamen
-	 * @param detalleexamen
-	 * @param feclimite_parse
-	 * @param anioprom
-	 * @param cursoasign
-	 * @return
+	 * Registra el registro de una actividad (Examen).
+	 * @param titexamen Título de la actividad.
+	 * @param detalleexamen Contenido de la actividad.
+	 * @param feclimite_parse Fecha límite de la actividad.
+	 * @param anioprom Año de promoción de la actividad.
+	 * @param cursoasign Curso de asignación de actividad.
+	 * @return Retorna en número de filas insertadas en la tabla.
 	 */
 	public int registraExamen(	String titexamen, String detalleexamen, Date feclimite_parse, String anioprom, String cursoasign) {
 		
@@ -93,9 +94,9 @@ public class MActividades {
 	
 	/**
 	 * Recoge todas las actividades (Tareas) para el año de promoción y curso asignado indicados.
-	 * @param anioprom
-	 * @param cursoasign
-	 * @return
+	 * @param anioprom Año de promoción.
+	 * @param cursoasign Curso asignado.
+	 * @return Retorna una matriz con todas las tareas recogidas según condiciones establecidas.
 	 */
 	public Object[][] dameActividades(String anioprom, String cursoasign, String tipo) {
 		
@@ -132,10 +133,11 @@ public class MActividades {
 
 	
 	/**
-	 * Devuelve el número de registros de la tabla actividades con el año de promoción y curso asignado establecido.
-	 * @param anioprom
-	 * @param cursoasign
-	 * @return
+	 * Total de registros de actividades en la tabla.
+	 * @param anioprom Año de promoción.
+	 * @param cursoasign Curso asignado.
+	 * @param tipo Tipo de actividad a recoger (Examen o Tarea).
+	 * @return Devuelve el número de registros de la tabla actividades con el año de promoción y curso asignado establecido.
 	 */
 	private int totalRegistrosActividades(String anioprom, String cursoasign, String tipo) {
 		
@@ -164,10 +166,10 @@ public class MActividades {
 	}
 	
 	/**
-	 * Devuelve el número de registros de la tabla actividades con el año de promoción y curso asignado establecido.
-	 * @param anioprom
-	 * @param cursoasign
-	 * @return
+	 * Total de registros de actividades según parámetros.
+	 * @param anioprom Año de promoción.
+	 * @param cursoasign Curso asignado.
+	 * @return Devuelve el número de registros de la tabla actividades con el año de promoción y curso asignado establecido.
 	 */
 	private int totalRegistrosActividades(String anioprom, String cursoasign) {
 		
@@ -196,9 +198,9 @@ public class MActividades {
 
 	
 	/**
-	 * Devuelve una actividad (Tarea) por ID.
-	 * @param idactividad
-	 * @return
+	 * Recoge los datos de una actividad en concreto.
+	 * @param idactividad ID de una actividad
+	 * @return Retorna una actividad con los campos a imprimir.
 	 */
 	public Object[] dameActividad(String idactividad) {
 		
@@ -230,10 +232,10 @@ public class MActividades {
 
 	
 	/**
-	 * Devuelve la fecha, el título y el tipo de actividad (E ó T).
-	 * @param anioprom
-	 * @param cursoasign
-	 * @return
+	 * Recoge una serie de fechas límites sobre las actividades según las condiciones establecidas.
+	 * @param anioprom Año de promoción.
+	 * @param cursoasign Curso asignado.
+	 * @return Devuelve la fecha, el título y el tipo de actividad (E ó T).
 	 */
 	public Object[][] devuelveFechas(String anioprom, String cursoasign) {
 		

@@ -17,11 +17,11 @@ public class MNoticias {
 	
 	/**
 	 * Registra noticia en la BD.
-	 * @param idnot
-	 * @param contenido 
-	 * @param titular 
-	 * @param rutaImg 
-	 * @return
+	 * @param idnot ID del noticiario.
+	 * @param contenido  Contenido de la noticia.
+	 * @param titular Titular de la noticia.
+	 * @param rutaImg Nombre de la imagen.
+	 * @return Retorna el número de registros insertados en la tabla.
 	 */
 	public int registraNoticia(String idnot, String titular, String contenido, String rutaImg) {
 		
@@ -54,7 +54,10 @@ public class MNoticias {
 	}
 
 
-	
+	/**
+	 * Retorna todas las noticias registradas en la tabla.
+	 * @return Retorna en una matriz todas las noticias registradas.
+	 */
 	public Object[][] dameNoticias() {
 		
 		int cantidad = totalRegistrosNoticias();
@@ -90,7 +93,7 @@ public class MNoticias {
 	
 	/**
 	 * Devuelve el total de noticias existente en la BD.
-	 * @return
+	 * @return Retorna la cantidad de registros de noticias de la tabla.
 	 */
 	private int totalRegistrosNoticias() {
 
@@ -117,8 +120,8 @@ public class MNoticias {
 
 	/**
 	 * Elimina un artículo de la BD.
-	 * @param id
-	 * @return
+	 * @param id ID de la noticia.
+	 * @return Retorna la cantidad de noticias que se eliminó de la tabla.
 	 */
 	public int eliminaNoticia(String id) {
 		
@@ -144,8 +147,8 @@ public class MNoticias {
 
 	/**
 	 * Recoge la noticia por ID.
-	 * @param id
-	 * @return
+	 * @param id ID de la noticia.
+	 * @return Retorna en un array todos los campos de una noticia en concreto.
 	 */
 	public Object[] dameDatosPorID(String id) {
 		
@@ -186,12 +189,12 @@ public class MNoticias {
 
 	/**
 	 * Actualización de noticia.
-	 * @param id
-	 * @param titular
-	 * @param contenido
-	 * @param edicionautor
-	 * @param strDate
-	 * @return
+	 * @param id ID de la noticia.
+	 * @param titular Titular de la noticia.
+	 * @param contenido Contenido de la noticia.
+	 * @param edicionautor Autor de edición.
+	 * @param fechaedicion Fecha de edición.
+	 * @return Retorna el número de registros que se modificaron en la tabla.
 	 */
 	public int updateNoticia(String id, String titular, String contenido, String edicionautor, String fechaedicion) {
 		

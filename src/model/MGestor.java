@@ -58,8 +58,8 @@ public class MGestor {
     
     /**
      * Recoge todos los datos del usuario tras iniciar la sesión por primera vez.
-     * @param user
-     * @return
+     * @param user Nombre de usuario.
+     * @return Retorna en un array los 22 elementos asociados al usuario que se le pasa por parámetro.
      */
     public Object[] dameDatos(String user) {
 		
@@ -98,9 +98,9 @@ public class MGestor {
     
     
     /**
-     * Recoge todos los datos del usuario tras iniciar la sesión por primera vez.
-     * @param user
-     * @return
+     * Recoge todos los datos del usuario.
+     * @param id ID del gestor.
+     * @return Retorna en un array los 22 elementos asociados al usuario pasándole como parámetro el ID.
      */
     public Object[] dameDatosPorID(String id) {
 		
@@ -140,14 +140,14 @@ public class MGestor {
 
 	/**
 	 * Registra gestor en la base de datos.
-	 * @param nombre
-	 * @param apellido1
-	 * @param apellido2
-	 * @param nif
-	 * @param fecna_date
-	 * @param fecalta_date
-	 * @param email
-	 * @param tlf
+	 * @param nombre Nombre del gestor. 
+	 * @param apellido1 Apellido 1 del gestor.
+	 * @param apellido2 Apellido 2 del gestor.
+	 * @param nif NIF del gestor.
+	 * @param fecna_date Fecha de nacimiento del gestor.
+	 * @param fecalta_date Fecha de alta del gestor.
+	 * @param email Email del gestor.
+	 * @param tlf Teléfono del gestor.
 	 */
 	public void registraGestor(	String nombre, String apellido1, String apellido2, String nif, String pass,
 								Date fecalta_date, String email, String tlf) {
@@ -183,8 +183,8 @@ public class MGestor {
 	
 	/**
 	 * Comprueba existencia de gestor en la academia con ese NIF.
-	 * @param nif
-	 * @return
+	 * @param nif NIF del gestor.
+	 * @return Devuelve true si ese usuario ya existe, de lo contrario devuelve false.
 	 */
 	public boolean compruebaExistencia(String nif) {
 		
@@ -220,12 +220,13 @@ public class MGestor {
 
 	/**
 	 * Actualización del usuario gestor.
-	 * @param id
-	 * @param nombre
-	 * @param apellido1
-	 * @param apellido2
-	 * @param email
-	 * @param tlf
+	 * @param id ID del gestor.
+	 * @param nombre Nombre del gestor.
+	 * @param apellido1 Apellido 1 del gestor.
+	 * @param apellido2 Apellido 2 del gestor.
+	 * @param email Email del gestor.
+	 * @param tlf Teléfono del gestor.
+	 * @param pass Contraseña del gestor.
 	 */
 	public void updateGestor(	String id, String nombre, String apellido1, String apellido2, String email,
 								String tlf, String pass) {
@@ -251,7 +252,7 @@ public class MGestor {
 	
 	/**
 	 * Devuelve un listado de gestores registrados en la academia.
-	 * @return
+	 * @return Devuelve en una matriz todos los gestores que se registraron en la tabla.
 	 */
 	public Object[][] devuelveGestores() {
 		
@@ -286,7 +287,7 @@ public class MGestor {
 	
 	/**
 	 * Devuelve el total de gestores registrados en la academia.
-	 * @return
+	 * @return Devuelve un entero con el total de gestores registrados en la academia.
 	 */
 	private int totalGestores() {
 		
@@ -312,8 +313,8 @@ public class MGestor {
 	
 	/**
 	 * Elimina el gestor seleccionado de la base de datos.
-	 * @param id
-	 * @return
+	 * @param id ID del gestor.
+	 * @return Devuelve el número de registros que se eliminaron de la tabla.
 	 */
 	public int eliminarGestor(String id) {
 		
@@ -338,15 +339,15 @@ public class MGestor {
 	
 	/**
 	 * Modifica el perfil del gestor desde el usuario GESTOR.
-	 * @param id
-	 * @param nombre
-	 * @param apellido1
-	 * @param apellido2
-	 * @param usuario
-	 * @param tlf
-	 * @param nif
-	 * @param email
-	 * @return
+	 * @param id ID del gestor.
+	 * @param nombre Nombre del gestor.
+	 * @param apellido1 Apellido 1 del gestor.
+	 * @param apellido2 Apellido 2 del gestor.
+	 * @param usuario Nombre de usuario del gestor.
+	 * @param tlf Teléfono del gestor.
+	 * @param nif NIF del gestor.
+	 * @param email Email del gestor.
+	 * @return Devuelve el número de registros que se modificaron en la tabla.
 	 */
 	public int updateGestor(String id, String nombre, String apellido1, String apellido2, String email, String tlf,
 							String nif, String img) {
@@ -376,8 +377,8 @@ public class MGestor {
 	
 	/**
 	 * Recoge el NIF del gestor.
-	 * @param id
-	 * @return
+	 * @param id ID del gestor.
+	 * @return Devuelve en una cadena el NIF del gestor.
 	 */
 	public String dameNif(String id) {
 		
@@ -405,8 +406,8 @@ public class MGestor {
 
 	/**
 	 * Devuelve el valor de la columna activo.
-	 * @param id
-	 * @return
+	 * @param id ID del gestor.
+	 * @return Devuelve una cadena el cual nos dirá si este usuario entró a la plataforma o no por primera vez.
 	 */
 	public String compruebaActivo(String id) {
 		
@@ -433,7 +434,7 @@ public class MGestor {
 	}
 
 	/**
-	 * Cambia el valor de la columna activo.
+	 * Modifica el valor de la columna activo.
 	 */
 	public void setActivo(String id) {
 		

@@ -14,10 +14,10 @@ public class MCurso {
 	}
 
 	/**
-	 * Registra curso en base de datos.
-	 * @param curso
-	 * @param anioinicio
-	 * @param aniofin
+	 * Registra un curso en base de datos.
+	 * @param curso Nombre del curso.
+	 * @param anioinicio Año de inicio.
+	 * @param aniofin Año de fin.
 	 */
 	public void registraCurso(String curso, String anioinicio, String aniofinal) {
 
@@ -42,9 +42,9 @@ public class MCurso {
 	
 	/**
 	 * Comprueba la existencia de años registrados en la Base de Datos.
-	 * @param anioinicio
-	 * @param aniofin
-	 * @return
+	 * @param anioinicio Año de inicio.
+	 * @param aniofin Año de fin.
+	 * @return Retorna un booleano el cual devuelve true si existe, y si no devolverá false.
 	 */
 	public boolean compruebaExistencia(String anioinicio, String aniofin, String curso) {
 		
@@ -66,7 +66,6 @@ public class MCurso {
             	contador = rs.getInt("contador");
             }
             
-            
         }catch(SQLException e){
             System.out.println(e);
         }
@@ -84,7 +83,7 @@ public class MCurso {
 	
 	/**
 	 * Recoge todas las fechas existentes en la BD.
-	 * @return
+	 * @return Devuelve en una matriz todas las fechas existentes en la tabla.
 	 */
 	public String[][] devuelveFechas() {
 		
@@ -116,7 +115,7 @@ public class MCurso {
 	
 	/**
 	 * Total de registros en BD.
-	 * @return
+	 * @return Retorna un entero, el cual nos dice el número de registros que hay en la tabla curso.
 	 */
 	private int totalRegistros() {
 		
@@ -142,9 +141,9 @@ public class MCurso {
 	
 	/**
 	 * Devuelve los cursos en los años correspondientes.
-	 * @param anio1
-	 * @param anio2
-	 * @return
+	 * @param anio1 Año de inicio.
+	 * @param anio2 Año de fin.
+	 * @return Devuelve una matriz con todos los cursos pertenecientes a ese año de promoción.
 	 */
 	public String[][] devuelveCursos(String anio1, String anio2) {
 		
@@ -180,7 +179,7 @@ public class MCurso {
 	
 	/**
 	 * Devuelve un listado de cursos registrados en la academia.
-	 * @return
+	 * @return Devuelve una matriz con todos los cursos registrados en la academia.
 	 */
 	public Object[][] devuelveCursos() {
 		
@@ -215,7 +214,7 @@ public class MCurso {
 	
 	/***
 	 * Devuelve el total de cursos registrados en la BD.
-	 * @return
+	 * @return Retorna un entero con el total de cursos registrados en la tabla.
 	 */
 	private int totalCursos() {
 		
@@ -241,8 +240,8 @@ public class MCurso {
 
 	/**
 	 * Elimina el curso seleccionado de la base de datos.
-	 * @param id
-	 * @return
+	 * @param id ID del curso.
+	 * @return Retorna el número de registros que fueron eliminado de la tabla curso.
 	 */
 	public int eliminaCurso(String id) {
 		

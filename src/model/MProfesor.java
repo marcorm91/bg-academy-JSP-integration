@@ -57,6 +57,11 @@ public class MProfesor {
     }
 
     
+    /**
+     * Recoge todos los datos del usuario que se loguea.
+     * @param user Nombre de usuario.
+     * @return Devuelve un array de 22 elementos el cual contiene todos los datos del usuario.
+     */
     public Object[] dameDatos(String user) {
 		
 		Object datos[] = new Object[22];
@@ -104,23 +109,23 @@ public class MProfesor {
     }
 
     /**
-     * Realiza un INSERT en la tabla profesor.
-     * @param nombre
-     * @param apellido1
-     * @param apellido2
-     * @param nif
-     * @param fecna_date
-     * @param nacimiento
-     * @param nacionalidad
-     * @param calle
-     * @param cp
-     * @param poblacion
-     * @param provincia
-     * @param fecalta_date
-     * @param email
-     * @param tlf
-     * @param anioprom
-     * @param cursoimp
+     * Registro de un profesor en la base de datos.
+     * @param nombre Nombre del profesor.
+     * @param apellido1 Apellido 1 del profesor.
+     * @param apellido2 Apellido 2 del profesor.
+     * @param nif NIF del profesor.
+     * @param fecna_date Fecha de nacimiento del profesor.
+     * @param nacimiento Lugar de nacimiento del profesor.
+     * @param nacionalidad Nacionalidad del profesor.
+     * @param calle Calle del profesor.
+     * @param cp Código postal del profesor.
+     * @param poblacion Población del profesor.
+     * @param provincia Provincia del profesor.
+     * @param fecalta_date Fecha de alta del profesor.
+     * @param email Email del profesor.
+     * @param tlf Teléfono del profesor.
+     * @param anioprom Año de promoción del profesor.
+     * @param cursoimp Cursos impartidos.
      * @throws IOException
      */
     public void registraProfesor(	String nombre, String apellido1, String apellido2, String nif, String pass, Date fecna_date,
@@ -177,8 +182,8 @@ public class MProfesor {
 
     /**
      * Comprueba existencia de profesor con ese NIF.
-     * @param nif
-     * @return
+     * @param nif NIF del profesor.
+	 * @return Devuelve true si existe, de lo contrario devolverá false.
      */
 	public boolean compruebaExistencia(String nif) {
 		
@@ -215,20 +220,20 @@ public class MProfesor {
 
 	
 	/**
-	 * Actualización de datos de profesor desde el perfil PROFESOR.
-	 * @param id
-	 * @param nombre
-	 * @param apellido1
-	 * @param apellido2
-	 * @param email
-	 * @param tlf
-	 * @param poblacion
-	 * @param calle
-	 * @param cp
-	 * @param nacido
-	 * @param nacionalidad
-	 * @param fecna_date
-	 * @param pass
+	 * Actualización de datos de profesor.
+	 * @param id ID del profesor.
+	 * @param nombre Nombre del profesor.
+	 * @param apellido1 Apellido 1 del profesor.
+	 * @param apellido2 Apellido 2 del profesor.
+	 * @param email Email del profesor.
+	 * @param tlf Teléfono del profesor.
+	 * @param poblacion Población del profesor.
+	 * @param calle Calle del profesor.
+	 * @param cp Código postal del profesor.
+	 * @param nacido Nacimiento del profesor.
+	 * @param nacionalidad Nacionalidad del profesor.
+	 * @param fecna_date Fecha de nacimiento del profesor.
+	 * @param pass Contraseña del profesor.
 	 */
 	public void updateProfesor(	String id, String nombre, String apellido1, String apellido2, String email, String tlf,
 								String poblacion, String calle, String cp, String nacido, String nacionalidad, Date fecna,
@@ -263,9 +268,9 @@ public class MProfesor {
 
 	
 	/**
-	 * Devuelve todos los datos del profesor por ID.
-	 * @param id
-	 * @return
+     * Recoge todos los datos del usuario que se loguea.
+     * @param id ID de usuario.
+     * @return Devuelve un array de 22 elementos el cual contiene todos los datos del usuario.
 	 */
 	public Object[] dameDatosPorID(String id) {
 		
@@ -315,8 +320,8 @@ public class MProfesor {
 
 	
 	/**
-	 * Devuelve una lista completa de profesores registrados en la BD.
-	 * @return
+	 * Devuelve un listado de alumnos registrados en la academia.
+	 * @return Devuelve en una matriz los profesores registrados en la academia.
 	 */
 	public Object[][] devuelveProfesores() {
 
@@ -352,7 +357,7 @@ public class MProfesor {
 	
 	/***
 	 * Devuelve el total de profesores registrados en la BD.
-	 * @return
+	 * @return Retorna el total de profesores registrados en la tabla profesor.
 	 */
 	private int totalProfesores() {
 		
@@ -379,8 +384,8 @@ public class MProfesor {
 	
 	/**
 	 * Elimina el profesor seleccionado de la base de datos.
-	 * @param id
-	 * @return
+	 * @param id ID del profesor.
+	 * @return Devuelve el número de registros que se eliminaron de la tabla profesor.
 	 */
 	public int eliminaProfesor(String id) {
 		
@@ -403,21 +408,21 @@ public class MProfesor {
 
 	 /**
 	 * Modifica el perfil del profesor desde el usuario GESTOR.
-	 * @param id
-	 * @param nombre
-	 * @param apellido1
-	 * @param apellido2
-	 * @param usuario
-	 * @param fecna
-	 * @param nif
-	 * @param nacimiento
-	 * @param nacionalidad
-	 * @param calle
-	 * @param cp
-	 * @param provincia
-	 * @param poblacion
-	 * @param email
-	 * @return
+	 * @param id ID del profesor.
+	 * @param nombre Nombre del profesor.
+	 * @param apellido1 Apellido 1 del profesor.
+	 * @param apellido2 Apellido 2 del profesor.
+	 * @param usuario Nombre de usuario.
+	 * @param fecna Fecha de nacimiento del profesor.
+	 * @param nif NIF del profesor.
+	 * @param nacimiento Nacimiento del profesor.
+	 * @param nacionalidad Nacionalidad del profesor.
+	 * @param calle Calle del profesor.
+	 * @param cp Código postal del profesor.
+	 * @param provincia Provincia del profesor.
+	 * @param poblacion Población del profesor.
+	 * @param email Email del profesor.
+	 * @return Retorna la cantidad de registros que fueron modificados en la tabla profesor.
 	 */
 	public int updateProfesor(  String id, String nombre, String apellido1, String apellido2, String usuario,  String tlf,
 								String nif, String nacimiento, Date fecna, String nacionalidad, String calle, String cp, String provincia,
@@ -454,8 +459,8 @@ public class MProfesor {
 	
 	/**
 	 * Recoge el NIF del profesor.
-	 * @param id
-	 * @return
+	 * @param id ID del profesor.
+	 * @return Retorna en una cadena el NIF del profesor.
 	 */
 	public String dameNif(String id) {
 		
@@ -484,8 +489,8 @@ public class MProfesor {
 	
 	/**
 	 * Devuelve el valor de la columna activo.
-	 * @param id
-	 * @return
+	 * @param id ID del profesor.
+	 * @return Recoge en una cadena si el usuario está activado o no.
 	 */
 	public String compruebaActivo(String id) {
 		
@@ -513,7 +518,7 @@ public class MProfesor {
 
 	
 	/**
-	 * Cambia el valor de la columna activo.
+	 * Modifica el valor de la columna activo.
 	 */
 	public void setActivo(String id) {
 		
@@ -533,19 +538,19 @@ public class MProfesor {
 	
 	/**
 	 * Actualización del perfil de profesor sin pasar como parámetro la imagen.
-	 * @param id
-	 * @param nombre
-	 * @param apellido1
-	 * @param apellido2
-	 * @param email
-	 * @param tlf
-	 * @param poblacion
-	 * @param calle
-	 * @param cp
-	 * @param nacido
-	 * @param nacionalidad
-	 * @param fecna_date
-	 * @param pass
+	 * @param id ID del profesor.
+	 * @param nombre Nombre del profesor.
+	 * @param apellido1 Apellido 1 del profesor.
+	 * @param apellido2 Apellido 2 del profesor.
+	 * @param email Email del profesor.
+	 * @param tlf Teléfono del profesor.
+	 * @param poblacion Población del profesor.
+	 * @param calle Calle del profesor.
+	 * @param cp Código postal del profesor.
+	 * @param nacido Nacimiento del profesor.
+	 * @param nacionalidad Nacionalidad del profesor.
+	 * @param fecna_date Fecha de nacimiento del profesor.
+	 * @param pass Contraseña del profesor.
 	 */
 	public void updateProfesor( String id, String nombre, String apellido1, String apellido2, String email, String tlf,
 								String poblacion, String calle, String cp, String nacido, String nacionalidad, Date fecna_date,
@@ -580,8 +585,8 @@ public class MProfesor {
 	
 	/**
 	 * Devuelve el año de promoción al que está asignado el profesor.
-	 * @param id
-	 * @return
+	 * @param id ID del profesor.
+	 * @return Retorna en una cadena el año de promoción al que está asignado el profesor.
 	 */
 	public String devuelveFechas(String id) {
 		
@@ -609,9 +614,9 @@ public class MProfesor {
 
 	
 	/**
-	 * Devuelve los cursos 
-	 * @param id
-	 * @return
+	 * Devuelve los cursos al que está asignado el profesor.
+	 * @param id ID del profesor.
+	 * @return Retorna en una cadena los cursos a los que está asignado el profesor.
 	 */
 	public String devuelveCursos(String id) {
 	
