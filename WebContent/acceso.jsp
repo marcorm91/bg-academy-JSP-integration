@@ -30,9 +30,9 @@
 	<title>Acceso - Big Ben Academy</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="${request.contextPath}/assets/css/bootstrap/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="${request.contextPath}/assets/css/sass/estilos.css">
-	<link rel="shortcut icon" href="${request.contextPath}/assets/imagenes/favicon.ico">
+	<link rel="stylesheet" type="text/css" href="./assets/css/bootstrap/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="./assets/css/sass/estilos.css">
+	<link rel="shortcut icon" href="./assets/imagenes/favicon.ico">
 </head>
 <body>
 
@@ -105,13 +105,13 @@
 
 
 	<!-- jQuery -->
-	<script type="text/javascript" src="${request.contextPath}/assets/js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="./assets/js/jquery-3.1.1.min.js"></script>
 	<!-- Tether -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"></script>
 	<!-- Bootstrap -->
-	<script type="text/javascript" src="${request.contextPath}/assets/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="./assets/js/bootstrap.min.js"></script>
 	<!-- Script personal -->
-	<script type="text/javascript" src="${request.contextPath}/assets/js/script.js"></script>
+	<script type="text/javascript" src="./assets/js/script.js"></script>
 </body>
 </html>
 

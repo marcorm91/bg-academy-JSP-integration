@@ -41,11 +41,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Principal Profesor - Big Ben Academy</title>
-    <link rel="stylesheet" href="${request.contextPath}/assets/css/bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="${request.contextPath}/assets/css/jquery-ui.css">
-    <link rel="stylesheet" type="text/css" href="${request.contextPath}/assets/fonts/font-awesome/css/font-awesome.min.css">
-	<link rel="shortcut icon" href="${request.contextPath}/assets/imagenes/favicon.ico">
-    <link rel="stylesheet" href="${request.contextPath}/acceso/assets/css/estilos.css">
+    <link rel="stylesheet" href="./../assets/css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="./../assets/css/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="./../assets/fonts/font-awesome/css/font-awesome.min.css">
+	<link rel="shortcut icon" href="./assets/imagenes/favicon.ico">
+    <link rel="stylesheet" href="./assets/css/estilos.css">
 </head>
 
 <body>
@@ -167,7 +167,7 @@
                                 <p> Ayuda </p>
                             </div>
                              <div class="col-md-4 col-xs-12">
-                                <a href="${pageContext.request.contextPath}/Logout"> <i class="fa fa-sign-out fa-4x" aria-hidden="true"> </i> </a> 
+                                <a href="/Logout"> <i class="fa fa-sign-out fa-4x" aria-hidden="true"> </i> </a> 
                                 <p> Salir </p>
                             </div>
                         </div>
@@ -201,11 +201,11 @@
 </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"></script>
-    <script src="${request.contextPath}/assets/js/jquery-3.1.1.min.js"></script>
-    <script src="${request.contextPath}/assets/js/bootstrap.min.js"></script>
-    <script src="${request.contextPath}/assets/js/jquery-ui.js"></script>
-    <script src="${request.contextPath}/acceso/assets/js/script.js"></script>
-    <script src="${request.contextPath}/acceso/assets/js/p_principal.js"></script>
+    <script src="./../assets/js/jquery-3.1.1.min.js"></script>
+    <script src="./../assets/js/bootstrap.min.js"></script>
+    <script src="./../assets/js/jquery-ui.js"></script>
+    <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/p_principal.js"></script>
     
 </body>
 </html>
