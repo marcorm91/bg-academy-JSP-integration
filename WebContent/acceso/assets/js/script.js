@@ -618,7 +618,7 @@ $(document).ready(function() {
 	    		type: "POST",
 	    		dataType: "json",
 	    		data: {nombre:nombre, apellido1:apellido1, apellido2:apellido2, email:email, tlf:tlf, pass:pass, imagen:imagen},
-	    		url: "/Modificarperfilgest",
+	    		url: "../../Modificarperfilgest",
 	    		success: function(resp){  			
 	    			if(resp == "0"){
     					$("#form-mod-perfil-gestor")[0].reset();

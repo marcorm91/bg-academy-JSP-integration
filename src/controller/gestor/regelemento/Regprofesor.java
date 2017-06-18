@@ -132,11 +132,11 @@ public class Regprofesor extends HttpServlet {
 					// En primer lugar vamos a crear su directorio personal del cual colgarán dos subdirectorios.
 					// Este subdirectorio nos servirá para localizar posteriormente su foto personal y así imprimiarla
 					// por pantalla.
-					File dir = new File("WebContent/recursos/profesores/"+nif+"/fotopersonal");
+					File dir = new File(getServletContext().getRealPath("recursos/profesores/"+nif+"/fotopersonal"));
 					dir.mkdirs();
 					
 					// Y este subdirectorio servirá para otro tipo de recursos en relación al usuario.		
-					dir = new File("WebContent/recursos/profesores/"+nif+"/dirpersonal");
+					dir = new File(getServletContext().getRealPath("recursos/profesores/"+nif+"/dirpersonal"));
 					dir.mkdirs();
 					
 					// Generación de contraseña aleatoria al profesor.

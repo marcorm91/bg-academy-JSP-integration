@@ -4,7 +4,7 @@ $(document).ready(function(){
 		type: "POST",
 		dataType: "json",
 		async: false,
-		url: "/Ver_noticias",
+		url: "./Ver_noticias",
 		success: function(resp){  
 							
 			if(resp.length > 0){
@@ -44,7 +44,7 @@ $(document).ready(function(){
     		type: "POST",
     		dataType: "json",
     		data: {id:id},
-    		url: "/Noticia_individual",
+    		url: "./Noticia_individual",
     		success: function(resp){  	
     			
     			for(var i = 0; i < resp.length; i++){

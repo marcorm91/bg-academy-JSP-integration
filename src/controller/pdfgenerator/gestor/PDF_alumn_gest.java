@@ -77,7 +77,7 @@ public class PDF_alumn_gest extends HttpServlet {
 				datos_alumn = modelo_alumno.dameDatosPorID(id);
 								
 				try{
-					
+										
 					Document documento = new Document();
 					PdfWriter.getInstance(documento, out);
 					

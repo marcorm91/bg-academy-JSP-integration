@@ -69,7 +69,7 @@ public class Subir_img_alumn extends HttpServlet {
 						
 					   String fich = time_str+"_"+uploaded.getName();
 					   
-					  File dir = new File("WebContent/recursos/alumnos/"+nif+"/fotopersonal");
+					  File dir = new File(getServletContext().getRealPath("recursos/alumnos/"+nif+"/fotopersonal"));
 					  
 					  File[] filelist = dir.listFiles();
 					  
@@ -85,7 +85,7 @@ public class Subir_img_alumn extends HttpServlet {
 					  // Identificamos la ruta completa del usuario para hacer la subida.
 					  // Para identificar el directorio personal debemos de tener el NIF de este usuario que ya se
 					  // recogió previamente de la session.
-				      File fichero = new File("WebContent/recursos/alumnos/"+nif+"/fotopersonal", fich);
+				      File fichero = new File(getServletContext().getRealPath("recursos/alumnos/"+nif+"/fotopersonal"), fich);
 				      	
 				      // Realización de la subida del fichero al servidor.
 				      if(!fichero.isDirectory()){

@@ -134,11 +134,11 @@ public class Regalumno extends HttpServlet {
 					// En primer lugar vamos a crear su directorio personal del cual colgarán dos subdirectorios.
 					// Este subdirectorio nos servirá para localizar posteriormente su foto personal y así imprimiarla
 					// por pantalla.
-					File dir = new File("WebContent/recursos/alumnos/"+nif+"/fotopersonal");
+					File dir = new File(getServletContext().getRealPath("recursos/alumnos/"+nif+"/fotopersonal"));
 					dir.mkdirs();
 					
 					// Y este subdirectorio servirá para otro tipo de recursos en relación al usuario.
-					dir = new File("WebContent/recursos/alumnos/"+nif+"/dirpersonal");
+					dir = new File(getServletContext().getRealPath("recursos/alumnos/"+nif+"/dirpersonal"));
 					dir.mkdirs();
 					
 					// Generación de contraseña aleatoria al alumno.

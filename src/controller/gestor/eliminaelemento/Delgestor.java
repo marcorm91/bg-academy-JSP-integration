@@ -73,7 +73,7 @@ public class Delgestor extends HttpServlet {
 				nif = modelo_gestor.dameNif(id);
 
 				// Instancia el directorio previamente con el nif del gestor. 
-				File directorio = new File("WebContent/recursos/gestor/"+nif);
+				File directorio = new File(getServletContext().getRealPath("recursos/gestor/"+nif));
 				
 				// Método que elimina el directorio personal completo del gestor.
 				eliminaDirectorio(directorio);

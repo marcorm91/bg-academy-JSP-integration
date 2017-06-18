@@ -58,7 +58,7 @@ public class Subir_img extends HttpServlet {
 				  // Identificamos la ruta completa del usuario para hacer la subida, y cuando la tengamos
 				  // insertamos en la BD, en la tabla ficheros, un registro con el nombre de usuario, el tipo
 				  // de fichero que es (público o privado) y la ruta absoluta del mismo.
-			      File fichero = new File("WebContent/recursos/imgnoticias", fich);
+			      File fichero = new File(getServletContext().getRealPath("recursos/imgnoticias"), fich);
 			      			      
 			      if(!fichero.isDirectory()){
 				      try {

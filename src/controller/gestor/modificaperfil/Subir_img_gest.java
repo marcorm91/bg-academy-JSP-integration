@@ -68,7 +68,7 @@ public class Subir_img_gest extends HttpServlet {
 						
 					   String fich = time_str+"_"+uploaded.getName();
 					   
-					  File dir = new File("WebContent/recursos/gestor/"+nif+"/fotopersonal");
+					  File dir = new File(getServletContext().getRealPath("recursos/gestor/"+nif+"/fotopersonal"));
 					  
 					  File[] filelist = dir.listFiles();
 					  
@@ -83,7 +83,7 @@ public class Subir_img_gest extends HttpServlet {
 					  // Identificamos la ruta completa del usuario para hacer la subida, y cuando la tengamos
 					  // insertamos en la BD, en la tabla ficheros, un registro con el nombre de usuario, el tipo
 					  // de fichero que es (público o privado) y la ruta absoluta del mismo.
-				      File fichero = new File("WebContent/recursos/gestor/"+nif+"/fotopersonal", fich);
+				      File fichero = new File(getServletContext().getRealPath("recursos/gestor/"+nif+"/fotopersonal"), fich);
 				      				       
 				      if(!fichero.isDirectory()){
 					      try {

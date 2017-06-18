@@ -115,11 +115,11 @@ public class Reggestor extends HttpServlet {
 					// Este subdirectorio nos servirá para localizar posteriormente su foto personal y así imprimiarla
 					// por pantalla.
 					
-					File dir = new File("WebContent/recursos/gestor/"+nif+"/fotopersonal");
+					File dir = new File(getServletContext().getRealPath("recursos/gestor/"+nif+"/fotopersonal"));
 					dir.mkdirs();
 					
 					// Y este subdirectorio servirá para otro tipo de recursos en relación al usuario.					
-					dir = new File("WebContent/recursos/gestor/"+nif+"/dirpersonal");
+					dir = new File(getServletContext().getRealPath("recursos/gestor/"+nif+"/dirpersonal"));
 					dir.mkdirs();
 					
 					// Generación de contraseña aleatoria al gestor.

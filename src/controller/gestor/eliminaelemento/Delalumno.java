@@ -60,7 +60,7 @@ public class Delalumno extends HttpServlet {
 			nif = modelo_alumno.dameNif(id);
 
 			// Instancia el directorio previamente con el nif del alumno.
-			File directorio = new File("WebContent/recursos/alumnos/"+nif);
+			File directorio = new File(getServletContext().getRealPath("recursos/alumnos/"+nif));
 			
 			// Método que elimina el directorio personal completo del alumno.
 			eliminaDirectorio(directorio);

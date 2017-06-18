@@ -114,7 +114,7 @@ public class Regnoticiario extends HttpServlet {
 					// En primer lugar vamos a crear su directorio personal del cual colgarán dos subdirectorios.
 					// Este subdirectorio nos servirá para localizar posteriormente su foto personal y así imprimiarla
 					// por pantalla.
-					File dir = new File("WebContent/recursos/noticiario/"+nif+"/fotopersonal");
+					File dir = new File(getServletContext().getRealPath("recursos/noticiario/"+nif+"/fotopersonal"));
 					dir.mkdirs();
 					
 					// Y este subdirectorio servirá para otro tipo de recursos en relación al usuario.					

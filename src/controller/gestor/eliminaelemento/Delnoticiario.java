@@ -60,7 +60,7 @@ public class Delnoticiario extends HttpServlet {
 			nif = modelo_noticiario.dameNif(id);
 
 			// Instancia el directorio previamente con el nif del noticiario.
-			File directorio = new File("WebContent/recursos/noticiario/"+nif);
+			File directorio = new File(getServletContext().getRealPath("recursos/noticiario/"+nif));
 			
 			// Método que elimina el directorio personal completo del noticiario.
 			eliminaDirectorio(directorio);
