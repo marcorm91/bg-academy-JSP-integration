@@ -41,6 +41,7 @@ cursar dichos cursos realizando este tipo de actividades.
 Grosso modo son las condiciones previas que nos proporciona el cliente y que debemos tener en
 cuenta a lo largo del proyecto.
 
+---
 
 #### LIBRERÍAS EMPLEADAS PARA EL PROYECTO
 
@@ -62,6 +63,8 @@ Las librerías empleadas para este proyecto fueron las siguientes:
 - *Tooltip anime (https://github.com/codrops/TooltipAnimations/)*
 - *dataTables (https://datatables.net/)*
 
+---
+
 #### ENTORNOS DE DESARROLLO
 
 Los entornos de desarrollo que se emplearon para el desarrollo del proyecto y su posterior integración fueron:
@@ -72,4 +75,3 @@ Los entornos de desarrollo que se emplearon para el desarrollo del proyecto y su
 ---
 *Si desea una documentación completa / integración del proyecto completo con scripts SQL o tiene cualquier duda puede contactar conmigo a*
 > [marco.romeromartin@hotmail.com](mailto:marco.romeromartin@hotmail.com)
----
