@@ -15,8 +15,8 @@ $("#alumno-tareas").on("click", function(){
 			for(var i = 0; i < resp.length; i++){
 				for(j = 0; j < 4; j++){
 					if(resp[i][j] == null){
-    					resp[i][j] = "";
-    				}
+    						resp[i][j] = "";
+    					}
 				}
 			}
 			
@@ -48,7 +48,7 @@ $("#alumno-tareas").on("click", function(){
 			}
 			
     			$("#alumn-table-tareas").DataTable({
-					 "language":{
+			 "language":{
     		         "lengthMenu":"Mostrar _MENU_ registros por página.",
     		         "zeroRecords": "Sin resultados en su búsqueda.",
     		               "info": "Hay un total de _MAX_ tareas.",
@@ -92,8 +92,8 @@ $("#alumno-examenes").on("click", function(){
 			for(var i = 0; i < resp.length; i++){
 				for(j = 0; j < 4; j++){
 					if(resp[i][j] == null){
-    					resp[i][j] = "";
-    				}
+    						resp[i][j] = "";
+    					}
 				}
 			}
 			
@@ -125,7 +125,7 @@ $("#alumno-examenes").on("click", function(){
 			}
 			
     			$("#alumn-table-examenes").DataTable({
-					 "language":{
+			 "language":{
     		         "lengthMenu":"Mostrar _MENU_ registros por página.",
     		         "zeroRecords": "Sin resultados en su búsqueda.",
     		               "info": "Hay un total de _MAX_ exámenes.",
@@ -200,7 +200,7 @@ $("#alumno-calendario").on("click", function(){
         async: false,
         success: function(resp){
         	
-        	var fechaactual = $.datepicker.formatDate('dd/mm/yy', new Date());
+            var fechaactual = $.datepicker.formatDate('dd/mm/yy', new Date());
         	
             for(var i = 0; i < resp.length; i++){
             	
@@ -219,20 +219,20 @@ $("#alumno-calendario").on("click", function(){
 	            		tipo = "Tarea";
 	            	}
 	            	
-	            	$("#prox-actividades > div").append( "<span class='font-weight-bold col-md-3 text-xs-right'>Fecha de entrega: </span>						 	     		"+
-       								  			 		 "<span class='col-md-9 text-xs-left'>"+$.datepicker.formatDate('dd/mm/yy', new Date(resp[i][0]))+"</span><br/>  		"+
-       								  			 		 "<span class='font-weight-bold col-md-3 text-xs-right'>Nombre de actividad: </span>							 		"+
-       								  			 		 "<span class='col-md-9 text-xs-left'>"+resp[i][2]+"</span><br/>												 		"+
-       								  			 		 "<span class='font-weight-bold col-md-3 text-xs-right'>Tipo: </span>							 				 		");
+	            	$("#prox-actividades > div").append( "<span class='font-weight-bold col-md-3 text-xs-right'>Fecha de entrega: </span>					"+
+       							     "<span class='col-md-9 text-xs-left'>"+$.datepicker.formatDate('dd/mm/yy', new Date(resp[i][0]))+"</span><br/>  	"+
+       							     "<span class='font-weight-bold col-md-3 text-xs-right'>Nombre de actividad: </span>				"+
+       							     "<span class='col-md-9 text-xs-left'>"+resp[i][2]+"</span><br/>							"+
+       							     "<span class='font-weight-bold col-md-3 text-xs-right'>Tipo: </span>						");
        						
-	            			if(tipo == "Examen"){
-       							$("#prox-actividades > div").append("<span class='col-md-9 text-xs-left text-danger'>"+tipo+" <i class='fa fa-exclamation text-danger' aria-hidden='true'></i></span><br/><hr/>	");
-       						}else{
-       							$("#prox-actividades > div").append("<span class='col-md-9 text-xs-left text-success'>"+tipo+" </span><br/><hr/>");
-       						}	
+			if(tipo == "Examen"){
+				$("#prox-actividades > div").append("<span class='col-md-9 text-xs-left text-danger'>"+tipo+" <i class='fa fa-exclamation text-danger' aria-hidden='true'></i></span><br/><hr/>	");
+			}else{
+				$("#prox-actividades > div").append("<span class='col-md-9 text-xs-left text-success'>"+tipo+" </span><br/><hr/>");
+			}	
             	}
 	            	
-	       }  
+	    }  
             
         }
 
