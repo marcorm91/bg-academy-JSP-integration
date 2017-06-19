@@ -1,7 +1,7 @@
 $(document).ready(function(){
     	
     	$.ajax({
-			type: "POST",
+		type: "POST",
 		dataType: "json",
 		async: false,
 		url: "../Activo_alumno",
@@ -13,7 +13,7 @@ $(document).ready(function(){
 				
 				$("#md-welcome").dialog({
 	    			maxWidth:600,
-	                width: 600,
+	                	width: 600,
 	    			closeOnEscape: false,
 	    			resizable: false,
 	    			draggable: false,
@@ -32,10 +32,10 @@ $(document).ready(function(){
 		        		}
 		    		}
 	    	
-	    		}).prev(".ui-dialog-titlebar").css	({
-    	    											"background":"#033766",
-    	    											"color": "#fff"
-	    											});
+	    		}).prev(".ui-dialog-titlebar").css({
+								"background":"#033766",
+								"color": "#fff"
+							   });
 			
 			}
 			
