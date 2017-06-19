@@ -46,7 +46,7 @@ public class Actividad_individual extends HttpServlet {
         hs = request.getSession();
         Object[] datos_alumn = (Object []) hs.getAttribute("identificacion");
 		
-        // Si la session log viene como nula (sin identificación previa) ó el usuario que viene no es de tipo Alumno...
+        // Si la session log viene como nula (sin identificaciÃ³n previa) Ã³ el usuario que viene no es de tipo Alumno...
 		if(hs.getAttribute("log") == null || !datos_alumn[1].equals("A")){
 			response.sendRedirect("error.jsp");
 		}else{
@@ -54,14 +54,14 @@ public class Actividad_individual extends HttpServlet {
 			Object actividad[];
 			String idactividad;
 			
-			// Recogemos el ID de la actividad que nos pasa el usuario desde la vista a través de un data-id.
+			// Recogemos el ID de la actividad que nos pasa el usuario desde la vista a travÃ©s de un data-id.
 			idactividad = request.getParameter("idactividad");
 			
-			// Recogemos todos los datos de dicha actividad para ingresarlos en un array.  Éste será posteriormente
+			// Recogemos todos los datos de dicha actividad para ingresarlos en un array.  Ã‰ste serÃ¡ posteriormente
 			// impreso por pantalla para la muestra de la misma al usuario.
 			actividad = modelo_actividades.dameActividad(idactividad);
 			
-			// Envío de los resultados por Gson.
+			// EnvÃ­o de los resultados por Gson.
 			String sendActividades = new Gson().toJson(actividad);
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");
@@ -69,7 +69,7 @@ public class Actividad_individual extends HttpServlet {
 			
 		}
         
-        //¡IMPORTANTE! Cerrar la conexión.
+        //Â¡IMPORTANTE! Cerrar la conexiÃ³n.
   		try {
   			conexionBD.getConexion().close();
   		} catch (SQLException e) {
@@ -86,5 +86,4 @@ public class Actividad_individual extends HttpServlet {
 		doGet(request, response);
 	}
 	
-
 }
