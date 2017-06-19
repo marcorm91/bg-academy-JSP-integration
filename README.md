@@ -1,3 +1,3 @@
-# bg-academy-JSP-integration-
-Integración proyecto con J2EE.
-![GitHub Logo](/images/logo.png)
+### bg-academy-JSP-integration
+#### Integración proyecto Big Ben Academy con J2EE.
+
