@@ -85,5 +85,6 @@ public class Actividad_individual extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
+	
 
 }
