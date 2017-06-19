@@ -41,9 +41,12 @@ cursar dichos cursos realizando este tipo de actividades.
 Grosso modo son las condiciones previas que nos proporciona el cliente y que debemos tener en
 cuenta a lo largo del proyecto.
 
-#### Librerías empleadas para el proyecto
+
+#### LIBRERÍAS EMPLEADAS PARA EL PROYECTO
 
 Las librerías empleadas para este proyecto fueron las siguientes:
+
+<b>Tecnología servidor Java</b>
 
 - *commons-fileupload-1.3.2.jar*
 - *commons-io-2.5.jar*
@@ -51,7 +54,15 @@ Las librerías empleadas para este proyecto fueron las siguientes:
 - *itextpdf-5.5.9.jar*
 - *postgresql-jdbc3-9.2.jar*
 
-#### Entornos de desarrollo
+<b>Tecnología cliente - Frameworks y plugins</b>
+
+- *Bootstrap v4*
+- *jQuery 3.1.1*
+- *jQuery UI v1.12.1*
+- *Tooltip anime (https://github.com/codrops/TooltipAnimations/)*
+- *dataTables (https://datatables.net/)*
+
+#### ENTORNOS DE DESARROLLO
 
 Los entornos de desarrollo que se emplearon para el desarrollo del proyecto y su posterior integración fueron:
 
