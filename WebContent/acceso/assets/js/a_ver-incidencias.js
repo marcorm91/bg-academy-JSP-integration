@@ -63,17 +63,17 @@ $(document).ready(function(){
 		$("#modal-incidencia").css("cursor", "default");
 		var id = $(this).data("id");
 		$.ajax({
-    		type: "POST",
-    		dataType: "json",
-    		data: {id:id},
-    		url: "../../Verincidencia_a",
-    		success: function(resp){  	
-    			$("#modal-incidencia .modal-content .modal-body").empty();
-    			$("#modal-incidencia .modal-content .modal-body").append("<p>"+resp+"</p>");
-    		},
-    		complete: function(){
-    			$(".loader").fadeOut(1000);
-    		}
+			type: "POST",
+			dataType: "json",
+			data: {id:id},
+			url: "../../Verincidencia_a",
+			success: function(resp){  	
+				$("#modal-incidencia .modal-content .modal-body").empty();
+				$("#modal-incidencia .modal-content .modal-body").append("<p>"+resp+"</p>");
+			},
+			complete: function(){
+				$(".loader").fadeOut(1000);
+			}
 		});	 
 		
 	});
