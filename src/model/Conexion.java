@@ -14,15 +14,15 @@ public class Conexion {
 	}
 	
 	/**
-	 * Conexión con la base de datos.
+	 * ConexiÃ³n con la base de datos.
 	 */
 	private void conectar(){
 		try {
 			Class.forName("org.postgresql.Driver");
-			String url = "jdbc:postgresql://ns3034756.ip-91-121-81.eu:5432/amromero";
+			String url = "XXX server_url XXX";
 			Properties props = new Properties();
-			props.setProperty("user", "amromero");
-			props.setProperty("password", "amromero");
+			props.setProperty("user", "XXXX");
+			props.setProperty("password", "XXXX");
 			try {
 				conexion = DriverManager.getConnection(url, props);
 			} catch (SQLException e) {
@@ -34,7 +34,7 @@ public class Conexion {
 	}
 	
 	/**
-	 * Devuelve un objeto de tipo Connection para realizar la conexión en el controller.
+	 * Devuelve un objeto de tipo Connection para realizar la conexiÃ³n en el controller.
 	 * @return
 	 */
 	public Connection getConexion(){
